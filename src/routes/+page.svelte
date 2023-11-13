@@ -44,9 +44,17 @@
 </div>
 <div class="my-20 grid grid-cols-5 gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
-		<a href="/rageinside">
-			<div class="card w-60 bg-base-200 shadow-xl">
-				<figure><img src="https://placehold.co/400x400/grey/white" alt="Shoes" /></figure>
+		<a href="/rageinside" class="group">
+			<div
+				class="card w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:opacity-80 group-hover:scale-105"
+			>
+				<figure>
+					<img
+						src="https://placehold.co/400x400/grey/white"
+						alt="Shoes"
+						class="ease-in-out duration-300 group-hover:scale-110"
+					/>
+				</figure>
 				<div class="card-body items-center text-center">
 					<h2 class="card-title">{game.name}</h2>
 				</div>
