@@ -3,7 +3,7 @@
 </script>
 
 <div class="bg-cards bg-fixed bg-cover">
-	<div class="min-h-screen bg-base-100 bg-opacity-95">
+	<div class="min-h-screen bg-base-100 bg-opacity-90 backdrop-blur-sm">
 		<slot />
 
 		<footer
