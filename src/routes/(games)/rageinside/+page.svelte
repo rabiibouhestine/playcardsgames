@@ -3,7 +3,7 @@
 	import ArrowDownIcon from '$lib/components/ArrowDownIcon.svelte';
 </script>
 
-<div class="min-h-screen bg-red-200">
+<div class="min-h-screen">
 	<Header title="Rage Inside" />
 	<div id="pixi" />
 	<div class="w-full grid justify-items-center absolute bottom-2">
