@@ -42,7 +42,7 @@
 	<p>Enjoy amazing solitaire cards games right from your browser</p>
 	<a href="/contact" class="btn btn-outline"> <CardsIcon /> REQUEST A GAME </a>
 </div>
-<div class="p-20 grid grid-cols-5 gap-5 max-w-screen-2xl mx-auto">
+<div class="my-20 grid grid-cols-5 gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
 		<a href="/rageinside">
 			<div class="card w-60 bg-base-100 shadow-xl">
