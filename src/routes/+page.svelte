@@ -41,7 +41,7 @@
 	<p>Enjoy amazing solitaire cards games right from your browser</p>
 	<button class="btn btn-outline">SUBMIT A GAME</button>
 </div>
-<div class="p-20 grid grid-cols-5 gap-5">
+<div class="p-20 grid grid-cols-5 gap-5 max-w-screen-2xl mx-auto">
 	{#each games as game}
 		<a href="/rageinside/play">
 			<div class="card w-60 bg-base-100 shadow-xl">
