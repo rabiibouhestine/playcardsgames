@@ -46,7 +46,7 @@
 	{#each games as game}
 		<a href="/rageinside" class="group">
 			<div
-				class="card w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:opacity-80 group-hover:scale-105"
+				class="card overflow-hidden w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:scale-105"
 			>
 				<figure>
 					<img
@@ -58,6 +58,9 @@
 				<div class="card-body items-center text-center">
 					<h2 class="card-title">{game.name}</h2>
 				</div>
+				<div
+					class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-base-200 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-25"
+				/>
 			</div>
 		</a>
 	{/each}
