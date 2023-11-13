@@ -2,6 +2,16 @@
 	import logo from '$lib/assets/logo.svg';
 
 	export let title = '';
+
+	let theme = 'dracula';
+
+	function toggleTheme() {
+		if (theme === 'dracula') {
+			theme = 'nord';
+		} else {
+			theme = 'dracula';
+		}
+	}
 </script>
 
 <div class="navbar bg-base-200 px-4 sticky top-0 z-10">
@@ -46,7 +56,7 @@
 
 		<label class="swap swap-rotate">
 			<!-- this hidden checkbox controls the state -->
-			<input type="checkbox" />
+			<input type="checkbox" class="theme-controller" value={theme} on:click={toggleTheme} />
 
 			<!-- sun icon -->
 			<svg
