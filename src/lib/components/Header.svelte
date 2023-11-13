@@ -1,8 +1,8 @@
-<div class="navbar bg-base-200">
+<div class="navbar bg-base-200 px-4">
 	<div class="navbar-start">
 		<a class="btn btn-ghost text-xl">Play Cards Games</a>
 	</div>
-	<div class="navbar-end">
+	<div class="navbar-end space-x-4">
 		<label class="swap">
 			<!-- this hidden checkbox controls the state -->
 			<input type="checkbox" />
