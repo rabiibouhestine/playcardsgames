@@ -10,11 +10,11 @@
 	>
 		<nav class="grid grid-flow-col gap-4">
 			<a href="/about" class="link link-hover">About us</a>
-			<a href="/" class="link link-hover">Terms of use</a>
-			<a href="/" class="link link-hover">Privacy policy</a>
-			<a href="/" class="link link-hover">Disclaimer</a>
-			<a href="/" class="link link-hover">Credits</a>
-			<a href="/" class="link link-hover">Contact</a>
+			<a href="/terms" class="link link-hover">Terms of use</a>
+			<a href="/privacy" class="link link-hover">Privacy policy</a>
+			<a href="/disclaimer" class="link link-hover">Disclaimer</a>
+			<a href="/credits" class="link link-hover">Credits</a>
+			<a href="/contact" class="link link-hover">Contact</a>
 		</nav>
 		<aside>
 			<p>Copyright © 2023 - All right reserved by playcards.games</p>
