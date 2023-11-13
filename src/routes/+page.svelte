@@ -43,7 +43,7 @@
 </div>
 <div class="p-20 grid grid-cols-5 gap-5 max-w-screen-2xl mx-auto">
 	{#each games as game}
-		<a href="/rageinside/play">
+		<a href="/rageinside">
 			<div class="card w-60 bg-base-100 shadow-xl">
 				<figure><img src="https://placehold.co/400x400/grey/white" alt="Shoes" /></figure>
 				<div class="card-body items-center text-center">
