@@ -3,14 +3,24 @@
 	import ArrowDownIcon from '$lib/components/ArrowDownIcon.svelte';
 </script>
 
-<div class="min-h-screen">
+<div class="min-h-screen relative">
 	<Header title="Rage Inside" />
 	<div id="pixi" />
-	<div class="w-full grid justify-items-center absolute bottom-2">
+	<div class="w-full grid justify-items-center absolute bottom-0">
 		<h1 class="text-xl font-bold">ABOUT THE GAME</h1>
 		<ArrowDownIcon />
 	</div>
 </div>
-<article>
-	<h1 class="text-5xl font-bold">Rage Inside Game</h1>
-</article>
+<div class="bg-base-100">
+	<article class="max-w-screen-md mx-auto">
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
+	</article>
+</div>
