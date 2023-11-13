@@ -4,7 +4,7 @@
 
 	const games = [
 		{
-			name: 'Rage Inside'
+			name: 'Kings Die'
 		},
 		{
 			name: 'name 2'
