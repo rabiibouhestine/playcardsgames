@@ -1,6 +1,12 @@
+<script>
+	import logo from '$lib/assets/logo.svg';
+</script>
+
 <div class="navbar bg-base-200 px-4">
 	<div class="navbar-start">
-		<a class="btn btn-ghost text-xl">Play Cards Games</a>
+		<a href="/">
+			<img src={logo} />
+		</a>
 	</div>
 	<div class="navbar-end space-x-4">
 		<label class="swap">
