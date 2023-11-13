@@ -45,7 +45,7 @@
 	{#each games as game}
 		<a href="/rageinside/game">
 			<div class="card w-60 bg-base-100 shadow-xl">
-				<figure><img src="https://placehold.co/400x400" alt="Shoes" /></figure>
+				<figure><img src="https://placehold.co/400x400/grey/white" alt="Shoes" /></figure>
 				<div class="card-body items-center text-center">
 					<h2 class="card-title">{game.name}</h2>
 				</div>
