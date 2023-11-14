@@ -25,7 +25,7 @@
 	</div>
 </div>
 <div class="bg-base-100">
-	<article class="max-w-screen-md mx-auto">
+	<article class="max-w-screen-md mx-auto py-10">
 		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
 		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
 		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
