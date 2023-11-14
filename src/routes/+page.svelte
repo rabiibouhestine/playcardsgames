@@ -7,7 +7,7 @@
 			name: 'Kings Must Die'
 		},
 		{
-			name: 'name 2'
+			name: 'Dungeon Push'
 		},
 		{
 			name: 'name 3'
