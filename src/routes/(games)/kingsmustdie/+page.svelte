@@ -17,7 +17,7 @@
 </script>
 
 <div class="flex flex-col h-screen relative">
-	<Header title="Kings Must Die" />
+	<Header title="Zombies in the Castle" />
 	<div bind:this={canvas} id="pixi" class="h-full" />
 	<div class="w-full grid justify-items-center absolute bottom-0">
 		<h1 class="text-md font-bold">ABOUT THE GAME</h1>

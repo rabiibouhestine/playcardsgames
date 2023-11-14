@@ -23,7 +23,7 @@
 			</a>
 		</div>
 		<div class="navbar-center lg:flex">
-			<h1 class="text-2xl font-bold">{title}</h1>
+			<h1 class="text-md sm:text-2xl font-bold">{title}</h1>
 		</div>
 		<div class="navbar-end space-x-4">
 			<label class="swap">
