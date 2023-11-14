@@ -11,7 +11,7 @@
 		game = new Game(canvas);
 
 		return () => {
-			// game.end();
+			game.end();
 		};
 	});
 </script>

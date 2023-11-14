@@ -34,4 +34,8 @@ export class App {
         // this.app.stage.y = (canvasHeight - 720 * stageScale ) / 2;
     }
 
+    end() {
+        this.app.stop();
+        this.app.destroy(true, true);
+    }
 }
