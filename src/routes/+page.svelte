@@ -1,19 +1,19 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 	import CardsIcon from '$lib/components/CardsIcon.svelte';
-	import zombiesvskings from '$lib/assets/zombiesvskings.jpg';
+	import zombiesInCastlesCover from '$lib/assets/zombiesInCastlesCover.jpg';
 
 	const games = [
 		{
-			name: 'Kings Must Die',
-			src: zombiesvskings
+			name: 'Zombies in Castles',
+			src: zombiesInCastlesCover
 		},
 		{
 			name: 'Dungeon Push',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'Zombies vs Kings',
+			name: 'name 3',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
@@ -57,7 +57,7 @@
 </div>
 <div class="my-20 flex flex-wrap justify-center gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
-		<a href="/kingsmustdie" class="group">
+		<a href="/zombies-in-castles" class="group">
 			<div
 				class="card overflow-hidden w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:scale-105"
 			>
