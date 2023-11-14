@@ -4,7 +4,7 @@
 
 	const games = [
 		{
-			name: 'Kings Die'
+			name: 'Kings Must Die'
 		},
 		{
 			name: 'name 2'
@@ -44,7 +44,7 @@
 </div>
 <div class="my-20 grid grid-cols-5 gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
-		<a href="/kingsdie" class="group">
+		<a href="/kingsmustdie" class="group">
 			<div
 				class="card overflow-hidden w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:scale-105"
 			>
