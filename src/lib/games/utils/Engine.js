@@ -28,10 +28,11 @@ export class Stack {
 
     removeCards() {
         const removedCards = [];
+        this.adjustCards();
         return removedCards;
     }
 
     addCards(cards) {
-
+        this.adjustCards();
     }
 }
