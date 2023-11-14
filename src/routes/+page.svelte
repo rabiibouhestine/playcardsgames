@@ -43,6 +43,26 @@
 		{
 			name: 'name 10',
 			src: 'https://placehold.co/400x400/grey/white'
+		},
+		{
+			name: 'name 6',
+			src: 'https://placehold.co/400x400/grey/white'
+		},
+		{
+			name: 'name 7',
+			src: 'https://placehold.co/400x400/grey/white'
+		},
+		{
+			name: 'name 8',
+			src: 'https://placehold.co/400x400/grey/white'
+		},
+		{
+			name: 'name 9',
+			src: 'https://placehold.co/400x400/grey/white'
+		},
+		{
+			name: 'name 10',
+			src: 'https://placehold.co/400x400/grey/white'
 		}
 	];
 </script>
