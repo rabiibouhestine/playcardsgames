@@ -23,7 +23,7 @@ export class Pile {
 }
 
 export class Stack {
-    constructor() {
+    constructor(cards, direction, minGap, maxGap, maxCards) {
         this.cards = [];
     }
 
