@@ -39,7 +39,9 @@
 <Header />
 <div class="grid justify-items-center space-y-6 mt-10">
 	<h1 class="text-4xl md:text-5xl font-bold">Play Cards Games</h1>
-	<p>Enjoy amazing solo card games right from your browser</p>
+	<p class="px-6 text-center">
+		Enjoy an amazing collection of solitaire games right from your browser
+	</p>
 	<a href="/contact" class="btn btn-outline"> <CardsIcon /> REQUEST A GAME </a>
 </div>
 <div class="my-20 flex flex-wrap justify-center gap-5 max-w-screen-xl mx-auto">
