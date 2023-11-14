@@ -42,7 +42,7 @@
 	<p>Enjoy amazing solo card games right from your browser</p>
 	<a href="/contact" class="btn btn-outline"> <CardsIcon /> REQUEST A GAME </a>
 </div>
-<div class="my-20 grid grid-cols-5 gap-5 max-w-screen-xl mx-auto">
+<div class="my-20 flex flex-wrap justify-center gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
 		<a href="/kingsmustdie" class="group">
 			<div
