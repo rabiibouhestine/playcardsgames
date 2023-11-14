@@ -19,7 +19,7 @@ export class Pile {
 
 export class Stack {
     constructor() {
-
+        this.cards = [];
     }
 
     adjustCards() {
