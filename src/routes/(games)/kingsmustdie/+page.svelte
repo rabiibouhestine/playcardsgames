@@ -1,11 +1,24 @@
 <script>
+	import { onMount } from 'svelte';
 	import Header from '$lib/components/Header.svelte';
 	import ArrowDownIcon from '$lib/components/ArrowDownIcon.svelte';
+	import { Game } from '$lib/games/kingsmustdie/Game.js';
+
+	let game;
+	let canvas;
+
+	onMount(() => {
+		game = new Game(canvas);
+
+		return () => {
+			// game.end();
+		};
+	});
 </script>
 
-<div class="min-h-screen relative">
+<div class="flex flex-col h-screen relative">
 	<Header title="Kings Must Die" />
-	<div id="pixi" />
+	<div bind:this={canvas} id="pixi" class="h-full" />
 	<div class="w-full grid justify-items-center absolute bottom-0">
 		<h1 class="text-md font-bold">ABOUT THE GAME</h1>
 		<ArrowDownIcon />
