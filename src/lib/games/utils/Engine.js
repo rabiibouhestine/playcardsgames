@@ -1,29 +1,20 @@
 export class Card {
-
-}
-
-export class Pile {
-    constructor() {
+    constructor(name) {
 
     }
 
-    adjustCards() {
-
-    }
-
-    removeCards() {
-        const removedCards = [];
-        this.adjustCards();
-        return removedCards;
-    }
-
-    addCards(cards) {
-        this.adjustCards();
+    moveTo(x, y, immediate) {
+        if (immediate) {
+            this.x = x;
+            this.y = y;
+        } else {
+            // tween.to(x, y)
+        }
     }
 }
 
-export class Stack {
-    constructor(cards, direction, minGap, maxGap, maxCards) {
+export class Cards {
+    constructor(cards, faceUp, direction, minGap, maxGap, maxCards) {
         this.cards = [];
     }
 
