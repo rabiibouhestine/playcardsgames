@@ -29,6 +29,7 @@ export class Cards {
     }
 
     addCards(cards) {
+        this.cards.push(...cards);
         this.adjustCards();
     }
 }
