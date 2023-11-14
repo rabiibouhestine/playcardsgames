@@ -38,7 +38,7 @@
 
 <Header />
 <div class="grid justify-items-center space-y-6 mt-10">
-	<h1 class="text-5xl font-bold">Play Cards Games</h1>
+	<h1 class="text-4xl md:text-5xl font-bold">Play Cards Games</h1>
 	<p>Enjoy amazing solo card games right from your browser</p>
 	<a href="/contact" class="btn btn-outline"> <CardsIcon /> REQUEST A GAME </a>
 </div>
