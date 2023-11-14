@@ -1,37 +1,48 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 	import CardsIcon from '$lib/components/CardsIcon.svelte';
+	import zombiesvskings from '$lib/assets/zombiesvskings.jpg';
 
 	const games = [
 		{
-			name: 'Kings Must Die'
+			name: 'Kings Must Die',
+			src: zombiesvskings
 		},
 		{
-			name: 'Dungeon Push'
+			name: 'Dungeon Push',
+			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 3'
+			name: 'Zombies vs Kings',
+			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 4'
+			name: 'name 4',
+			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 5'
+			name: 'name 5',
+			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 6'
+			name: 'name 6',
+			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 7'
+			name: 'name 7',
+			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 8'
+			name: 'name 8',
+			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 9'
+			name: 'name 9',
+			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 10'
+			name: 'name 10',
+			src: 'https://placehold.co/400x400/grey/white'
 		}
 	];
 </script>
@@ -51,11 +62,7 @@
 				class="card overflow-hidden w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:scale-105"
 			>
 				<figure>
-					<img
-						src="https://placehold.co/400x400/grey/white"
-						alt="Shoes"
-						class="ease-in-out duration-300 group-hover:scale-110"
-					/>
+					<img src={game.src} alt="Shoes" class="ease-in-out duration-300 group-hover:scale-110" />
 				</figure>
 				<div class="card-body items-center text-center">
 					<h2 class="card-title">{game.name}</h2>
