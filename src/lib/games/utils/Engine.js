@@ -1,5 +1,5 @@
 export class Card {
-    constructor(name) {
+    constructor(name, spritesheet, faceUp) {
 
     }
 
@@ -14,11 +14,11 @@ export class Card {
 }
 
 export class Cards {
-    constructor(cards, faceUp, direction, minGap, maxGap, maxCards) {
+    constructor(direction, minGap, maxGap, maxCards) {
         this.cards = [];
     }
 
-    initCards(names, spritesheet) {
+    initCards(names, spritesheet, faceUp) {
 
     }
 
@@ -38,6 +38,6 @@ export class Cards {
     }
 
     shuffleCards() {
-        
+
     }
 }
