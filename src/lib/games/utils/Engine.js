@@ -7,13 +7,18 @@ export class Pile {
 
     }
 
+    adjustCards() {
+
+    }
+
     removeCards() {
         const removedCards = [];
+        this.adjustCards();
         return removedCards;
     }
 
     addCards(cards) {
-
+        this.adjustCards();
     }
 }
 
