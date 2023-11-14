@@ -18,7 +18,7 @@ export class Cards {
         this.cards = [];
     }
 
-    adjustCards() {
+    adjustCards(immediate) {
 
     }
 
