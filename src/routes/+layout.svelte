@@ -9,7 +9,7 @@
 		<footer
 			class="footer footer-center p-10 bg-base-200 text-base-content rounded sticky top-[100vh]"
 		>
-			<nav class="grid grid-flow-col gap-4">
+			<nav class="flex flex-wrap justify-center gap-4">
 				<a href="/about" class="link link-hover">About us</a>
 				<a href="/terms" class="link link-hover">Terms of use</a>
 				<a href="/privacy" class="link link-hover">Privacy policy</a>
