@@ -4,38 +4,38 @@ export class Layout {
     constructor(app) {
 
         // Add hand zone to mattress
-        const battlefield = new PIXI.Graphics();
-        battlefield.beginFill(0x000000, 0.25);
-        battlefield.drawRoundedRect(195, 301, 330, 118, 8);
-        battlefield.endFill();
-        app.stage.addChild(battlefield);
+        const handZone = new PIXI.Graphics();
+        handZone.beginFill(0x000000, 0.25);
+        handZone.drawRoundedRect(4, 360, 712, 128, 8);
+        handZone.endFill();
+        app.stage.addChild(handZone);
 
         // Add field zone to mattress
-        const playerBase = new PIXI.Graphics();
-        playerBase.beginFill(0x000000, 0.25);
-        playerBase.drawRoundedRect(535, 301, 170, 118, 8);
-        playerBase.endFill();
-        app.stage.addChild(playerBase);
+        const fieldZone = new PIXI.Graphics();
+        fieldZone.beginFill(0x000000, 0.25);
+        fieldZone.drawRoundedRect(4, 202, 492, 138, 8);
+        fieldZone.endFill();
+        app.stage.addChild(fieldZone);
 
         // Add base zone to mattress
-        const enemyBase = new PIXI.Graphics();
-        enemyBase.beginFill(0x000000, 0.25);
-        enemyBase.drawRoundedRect(15, 301, 170, 118, 8);
-        enemyBase.endFill();
-        app.stage.addChild(enemyBase);
+        const baseZone = new PIXI.Graphics();
+        baseZone.beginFill(0x000000, 0.25);
+        baseZone.drawRoundedRect(516, 202, 200, 138, 8);
+        baseZone.endFill();
+        app.stage.addChild(baseZone);
 
         // Add jokers zone to mattress
-        const enemysBase = new PIXI.Graphics();
-        enemyBase.beginFill(0x000000, 0.25);
-        enemyBase.drawRoundedRect(15, 301, 170, 118, 8);
-        enemyBase.endFill();
-        app.stage.addChild(enemyBase);
+        const jokersZone = new PIXI.Graphics();
+        jokersZone.beginFill(0x000000, 0.25);
+        jokersZone.drawRoundedRect(516, 44, 200, 138, 8);
+        jokersZone.endFill();
+        app.stage.addChild(jokersZone);
 
         // Add castle zone to mattress
-        const enemysssBase = new PIXI.Graphics();
-        enemyBase.beginFill(0x000000, 0.25);
-        enemyBase.drawRoundedRect(15, 301, 170, 118, 8);
-        enemyBase.endFill();
-        app.stage.addChild(enemyBase);
+        const castleZone = new PIXI.Graphics();
+        castleZone.beginFill(0x000000, 0.25);
+        castleZone.drawRoundedRect(213, 47, 110, 138, 8);
+        castleZone.endFill();
+        app.stage.addChild(castleZone);
     }
 }
