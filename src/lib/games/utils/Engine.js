@@ -18,6 +18,10 @@ export class Cards {
         this.cards = [];
     }
 
+    initCards(names, spritesheet) {
+
+    }
+
     adjustCards(immediate) {
 
     }
@@ -31,5 +35,9 @@ export class Cards {
     addCards(cards) {
         this.cards.push(...cards);
         this.adjustCards();
+    }
+
+    shuffleCards() {
+        
     }
 }
