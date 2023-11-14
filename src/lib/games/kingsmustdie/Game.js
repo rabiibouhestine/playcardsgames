@@ -3,10 +3,6 @@ import { Layout } from "./Layout";
 
 export class Game {
     constructor(canvasRef) {
-        this.init(canvasRef);
-    }
-
-    async init(canvasRef) {
         this.canvasRef = canvasRef;
 
         this.app = new PIXI.Application({
