@@ -14,11 +14,12 @@ export class Card {
 }
 
 export class Cards {
-    constructor(direction, minGap, maxGap, maxCards) {
+    constructor(faceUp, direction, minGap, maxGap, maxCards) {
         this.cards = [];
+        this.faceUp = faceUp;
     }
 
-    initCards(names, spritesheet, faceUp) {
+    initCards(names, spritesheet) {
 
     }
 
