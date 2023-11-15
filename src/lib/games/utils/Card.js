@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class Card {
-    constructor(app, spritesheet, faceName, backName, position, faceUp = false) {
+    constructor(app, spritesheet, faceName, backName, position, faceUp = false, isClickable = false) {
         this.spritesheet = spritesheet;
         this.faceName = faceName;
         this.backName = backName;
@@ -16,7 +16,14 @@ export class Card {
         this.sprite.y = position.y;
         this.sprite.width = this.width;
         this.sprite.height = this.height;
+        this.sprite.eventMode = isClickable? 'static' : 'none';
+        this.sprite.cursor = isClickable? 'pointer' : 'default';
         app.stage.addChild(this.sprite);
+    }
+
+    setClickable(isClickable) {
+        this.sprite.eventMode = isClickable? 'static' : 'none';
+        this.sprite.cursor = isClickable? 'pointer' : 'default';
     }
 
     flip(faceUp, immediate = false) {
