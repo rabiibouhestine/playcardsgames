@@ -15,8 +15,8 @@ export class Card {
 
     moveTo(x, y, immediate) {
         if (immediate) {
-            this.x = x;
-            this.y = y;
+            this.sprite.x = x;
+            this.sprite.y = y;
         } else {
             // tween.to(x, y)
         }
