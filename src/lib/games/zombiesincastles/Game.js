@@ -21,5 +21,15 @@ export class Game extends App {
 
         this.layout = new Layout(this.app);
         const card = new Card(this.app, this.sheet, "KH", {x: 350, y: 350});
+
+        // Add button
+        const castleZone = new PIXI.Graphics();
+        castleZone.beginFill(0x000000, 0.25);
+        castleZone.drawRoundedRect(260, 508, 200, 50, 8);
+        castleZone.endFill();
+        this.app.stage.addChild(castleZone);
+        castleZone.eventMode = 'static';
+        castleZone.cursor = 'pointer';
+        castleZone.on('pointerdown', () => {console.log("clicked")});
     }
 }
