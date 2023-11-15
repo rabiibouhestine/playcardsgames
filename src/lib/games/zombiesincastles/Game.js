@@ -30,6 +30,8 @@ export class Game extends App {
         this.app.stage.addChild(castleZone);
         castleZone.eventMode = 'static';
         castleZone.cursor = 'pointer';
-        castleZone.on('pointerdown', () => {console.log("clicked")});
+        castleZone.on('pointerdown', () => {
+            card.moveTo(200, 400, true)
+        });
     }
 }
