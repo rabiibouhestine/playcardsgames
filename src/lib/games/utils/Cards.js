@@ -35,8 +35,8 @@ export class Cards {
         }
     }
 
-    removeCards() {
-        const removedCards = [];
+    removeCards(n) {
+        const removedCards = this.cards.splice(-n);
         this.adjustCards();
         return removedCards;
     }

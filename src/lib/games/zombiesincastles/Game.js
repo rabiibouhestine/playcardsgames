@@ -55,12 +55,14 @@ export class Game extends App {
         castleZone.eventMode = 'static';
         castleZone.cursor = 'pointer';
         castleZone.on('pointerdown', () => {
-            card.flip(!card.faceUp);
-            card.moveTo(
-                Math.floor(Math.random() * (600 - 50 + 1)) + 50,
-                Math.floor(Math.random() * (600 - 50 + 1)) + 50,
-                false
-            )
+            // card.flip(!card.faceUp);
+            // card.moveTo(
+            //     Math.floor(Math.random() * (600 - 50 + 1)) + 50,
+            //     Math.floor(Math.random() * (600 - 50 + 1)) + 50,
+            //     false
+            // )
+            const movedCards = stack1.removeCards(2);
+            stack2.addCards(movedCards);
         });
     }
 }
