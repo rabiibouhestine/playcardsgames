@@ -21,8 +21,9 @@ export class Game extends App {
         await this.sheet.parse();
 
         this.layout = new Layout(this.app);
-        const card = new Card(this.app, this.sheet, "KH", "B1", {x: 350, y: 350}, true, true, false);
-        const cards = new Cards(this.app, this.sheet, ["AD", "2D", "5S"], "B1", {x: 200, y: 150});
+        const card = new Card(this.app, this.sheet, "KH", "B1", {x: 350, y: 100}, true, true, false);
+        const cards1 = new Cards(this.app, this.sheet, ["AD", "2D", "5S"], "B1", {x: 200, y: 250}, true);
+        const cards2 = new Cards(this.app, this.sheet, ["KD", "9H", "2C"], "B1", {x: 200, y: 400}, true);
 
         // Add button
         const castleZone = new PIXI.Graphics();
