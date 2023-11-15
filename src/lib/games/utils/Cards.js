@@ -58,13 +58,13 @@ export class Cards {
     addCards(cards, position = 'top') {
         switch (position) {
             case 'top':
-                removedCards = this.cards.push(...cards);
+                this.cards.push(...cards);
                 break;
             case 'bottom':
-                removedCards = this.cards.unshift(...cards);
+                this.cards.unshift(...cards);
                 break;
             case 'random':
-                removedCards = this.cards.unshift(...cards);
+                this.cards.unshift(...cards);
                 break;
             default:
                 break;
