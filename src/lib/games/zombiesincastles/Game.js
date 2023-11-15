@@ -20,7 +20,12 @@ export class Game extends App {
         await this.sheet.parse();
 
         this.layout = new Layout(this.app);
-        const card = new Card(this.app, this.sheet, "KH", {x: 350, y: 350});
+        const card = new Card(this.app, this.sheet, "KH", "B1", {x: 350, y: 350}, true);
+        card.sprite.eventMode = 'static';
+        card.sprite.cursor = 'pointer';
+        card.sprite.on('pointerdown', () => {
+            card.flip(!card.faceUp, true);
+        });
 
         // Add button
         const castleZone = new PIXI.Graphics();

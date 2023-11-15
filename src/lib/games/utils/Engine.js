@@ -2,11 +2,13 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class Card {
-    constructor(app, spritesheet, name, position, faceUp = false) {
-        this.name = name;
+    constructor(app, spritesheet, faceName, backName, position, faceUp = false) {
+        this.spritesheet = spritesheet;
+        this.faceName = faceName;
+        this.backName = backName;
         this.faceUp = faceUp;
 
-        this.sprite = new PIXI.Sprite(spritesheet.textures[name]);
+        this.sprite = new PIXI.Sprite(spritesheet.textures[faceUp? this.faceName : this.backName]);
         this.sprite.anchor.set(0.5);
         this.sprite.x = position.x;
         this.sprite.y = position.y;
@@ -20,9 +22,10 @@ export class Card {
             return;
         }
         if (immediate) {
-
+            this.faceUp = !this.faceUp;
+            this.sprite.texture = this.spritesheet.textures[faceUp? this.faceName : this.backName];
         } else {
-
+            // tween flip
         }
     }
 
@@ -60,10 +63,10 @@ export class Card {
 }
 
 export class Cards {
-    constructor(app, spritesheet, names, position, faceUp, direction, minGap, maxGap, maxCards) {
+    constructor(app, spritesheet, faceNames, position, faceUp, direction, minGap, maxGap, maxCards) {
         this.cards = [];
-        for (const name in names) {
-            const card = new Card(app, spritesheet, name, position, faceUp);
+        for (const faceName in faceNames) {
+            const card = new Card(app, spritesheet, faceName, position, faceUp);
             this.cards.push(card);
         }
     }
