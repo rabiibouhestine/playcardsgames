@@ -22,8 +22,29 @@ export class Game extends App {
 
         this.layout = new Layout(this.app);
         const card = new Card(this.app, this.sheet, "KH", "B1", {x: 350, y: 100}, true, true, false);
-        const cards1 = new Cards(this.app, this.sheet, ["AD", "2D", "5S"], "B1", {x: 200, y: 250}, true);
-        const cards2 = new Cards(this.app, this.sheet, ["KD", "9H", "2C"], "B1", {x: 200, y: 400}, true);
+        const pile = new Cards(this.app, this.sheet, {
+            type: 'pile',
+            faceNames: ["AH", "2S", "5C"],
+            backName: "B1",
+            position: {x: 600, y: 350},
+            faceUp: false
+        });
+        const stack1 = new Cards(this.app, this.sheet, {
+            type: 'tableau',
+            faceNames: ["AD", "2D", "5S"],
+            backName: "B1",
+            position: {x: 200, y: 250},
+            faceUp: true,
+            gap: 10
+        });
+        const stack2 = new Cards(this.app, this.sheet, {
+            type: 'tableau',
+            faceNames: ["KD", "9H", "2C"],
+            backName: "B1",
+            position: {x: 200, y: 400},
+            faceUp: true,
+            gap: 10
+        });
 
         // Add button
         const castleZone = new PIXI.Graphics();
