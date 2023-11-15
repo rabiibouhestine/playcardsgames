@@ -21,7 +21,7 @@ export class Game extends App {
 
         this.layout = new Layout(this.app);
         const card = new Card(this.app, this.sheet, "KH", "B1", {x: 350, y: 350}, true);
-        card.setClickable(true);
+        card.setInteractive(true);
         card.sprite.on('pointerdown', () => {
             card.flip(!card.faceUp);
         });
