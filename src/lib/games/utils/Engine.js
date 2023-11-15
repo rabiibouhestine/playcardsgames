@@ -8,8 +8,8 @@ export class Card {
         this.sprite.anchor.set(0.5);
         this.sprite.x = position.x;
         this.sprite.y = position.y;
-        this.sprite.width = 70;
-        this.sprite.height = 98;
+        this.sprite.width = 80;
+        this.sprite.height = 112;
         app.stage.addChild(this.sprite);
     }
 
