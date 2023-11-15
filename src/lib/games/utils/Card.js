@@ -2,13 +2,15 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class Card {
-    constructor(app, spritesheet, faceName, backName, position, faceUp = false, isInteractive = false) {
+    constructor(app, spritesheet, faceName, backName, position, faceUp = false, isInteractive = false, isDraggable = false) {
+        this.app = app;
         this.spritesheet = spritesheet;
         this.faceName = faceName;
         this.backName = backName;
         this.faceUp = faceUp;
         this.width = 80;
         this.height = 112;
+        this.isDragged = false;
 
         this.sprite = new PIXI.Sprite(spritesheet.textures[faceUp? this.faceName : this.backName]);
         this.sprite.anchor.set(0.5);
@@ -18,7 +20,32 @@ export class Card {
         this.sprite.height = this.height;
         this.sprite.eventMode = isInteractive? 'static' : 'none';
         this.sprite.cursor = isInteractive? 'pointer' : 'default';
+
+        if (isDraggable) {
+            this.sprite.on('pointerdown', this.onDragStart, this);
+            this.sprite.on('pointerup', this.onDragEnd, this);
+            this.sprite.on('pointerupoutside', this.onDragEnd, this);
+            app.stage.eventMode = 'static';
+            app.stage.on('pointermove', this.onDragMove, this);
+        }
+
         app.stage.addChild(this.sprite);
+    }
+
+    setDraggable(isDraggable) {
+        if (isDraggable) {
+            this.sprite.on('pointerdown', this.onDragStart, this);
+            this.sprite.on('pointerup', this.onDragEnd, this);
+            this.sprite.on('pointerupoutside', this.onDragEnd, this);
+            app.stage.eventMode = 'static';
+            app.stage.on('pointermove', this.onDragMove, this);
+        } else {
+            this.sprite.off('pointerdown', this.onDragStart, this);
+            this.sprite.off('pointerup', this.onDragEnd, this);
+            this.sprite.off('pointerupoutside', this.onDragEnd, this);
+            app.stage.eventMode = 'none';
+            app.stage.off('pointermove', this.onDragMove, this);
+        }
     }
 
     setInteractive(isInteractive) {
@@ -104,5 +131,20 @@ export class Card {
         
             requestAnimationFrame(updatePosition);
         }
+    }
+
+    onDragStart() {
+        this.isDragged = true;
+    }
+
+    onDragMove(event) {
+        if (this.isDragged) {
+            this.sprite.parent.toLocal(event.global, null, this.sprite.position);
+        }
+    }
+
+    onDragEnd()
+    {
+        this.isDragged = false;
     }
 }
