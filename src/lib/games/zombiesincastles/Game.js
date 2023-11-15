@@ -31,7 +31,11 @@ export class Game extends App {
         castleZone.eventMode = 'static';
         castleZone.cursor = 'pointer';
         castleZone.on('pointerdown', () => {
-            card.moveTo(200, 400, true)
+            card.moveTo(
+                Math.floor(Math.random() * (600 - 50 + 1)) + 50,
+                Math.floor(Math.random() * (600 - 50 + 1)) + 50,
+                true
+            )
         });
     }
 }
