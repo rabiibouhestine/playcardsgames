@@ -61,8 +61,12 @@ export class Game extends App {
             //     Math.floor(Math.random() * (600 - 50 + 1)) + 50,
             //     false
             // )
-            const movedCards = stack1.removeCards(2);
-            stack2.addCards(movedCards);
+            for (let index = 0; index < 3; index++) {
+                setTimeout(() => {
+                    const movedCards = stack1.removeCards(1);
+                    stack2.addCards(movedCards);
+                }, index * 100);
+            }
         });
     }
 }
