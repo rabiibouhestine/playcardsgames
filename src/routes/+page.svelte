@@ -9,11 +9,11 @@
 			src: zombiesInCastlesCover
 		},
 		{
-			name: 'Dungeon Push',
+			name: 'Scoundrel',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 3',
+			name: 'Clear the Dungeon',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
@@ -70,9 +70,12 @@
 <Header />
 <div class="grid justify-items-center space-y-6 mt-10">
 	<h1 class="text-4xl md:text-5xl font-bold">Play Cards Games</h1>
-	<p class="px-6 text-center">
-		Enjoy an amazing collection of solitaire games right from your browser
-	</p>
+	<div>
+		<p class="px-6 text-center">
+			Enjoy an amazing collection of solitaire games right from your browser
+		</p>
+		<p class="px-6 text-center">All games can be played with a standard deck of playing cards</p>
+	</div>
 	<a href="/contact" class="btn btn-outline"> <CardsIcon /> REQUEST A GAME </a>
 </div>
 <div class="my-20 flex flex-wrap justify-center gap-5 max-w-screen-xl mx-auto">
