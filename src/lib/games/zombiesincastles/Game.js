@@ -62,7 +62,13 @@ export class Game extends App {
             //     false
             // )
             const movedCards = stack1.removeCards(2, 'top');
-            stack2.addCards(movedCards, 'bottom');
+            stack2.addCards(movedCards, 'top');
+            const movedCards2 = stack2.removeCards(1, 'top');
+            movedCards2[0].moveTo(
+                500,
+                350,
+                false
+            );
         });
     }
 }
