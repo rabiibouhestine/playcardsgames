@@ -1,11 +1,13 @@
 import * as PIXI from "pixi.js";
-import { App } from "../utils/App";
-import { Layout } from "./Layout";
+
 import cardsSpritesheetImage from '$lib/games/assets/images/cardsSpritesheet.png';
 import cardsSpritesheetAtlas from '$lib/games/assets/json/cardsSpritesheet.json';
 
+import { App } from '$lib/games/utils/App';
 import { Card } from '$lib/games/utils/Card';
 import { Cards } from '$lib/games/utils/Cards';
+
+import { Layout } from "./Layout";
 
 export class Game extends App {
     constructor(canvasRef) {
