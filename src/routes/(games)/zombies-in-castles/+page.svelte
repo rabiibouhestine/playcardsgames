@@ -16,7 +16,7 @@
 	});
 </script>
 
-<div class="flex flex-col h-screen relative bg-green-600">
+<div class="flex flex-col h-screen relative bg-emerald-600">
 	<Header title="Zombies in Castles" />
 	<div bind:this={canvas} id="pixi" class="h-full" />
 	<div class="w-full grid justify-items-center absolute bottom-0">
