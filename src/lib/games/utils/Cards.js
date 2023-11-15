@@ -35,14 +35,40 @@ export class Cards {
         }
     }
 
-    removeCards(n) {
-        const removedCards = this.cards.splice(-n);
+    removeCards(n, position = 'top') {
+        let removedCards;
+        switch (position) {
+            case 'top':
+                removedCards = this.cards.splice(-n);
+                break;
+            case 'bottom':
+                removedCards = this.cards.splice(0, n);
+                break;
+            case 'random':
+                removedCards = this.cards.splice(0, n);
+                break;
+            default:
+                removedCards = [];
+                break;
+        }
         this.adjustCards();
         return removedCards;
     }
 
-    addCards(cards) {
-        this.cards.push(...cards);
+    addCards(cards, position = 'top') {
+        switch (position) {
+            case 'top':
+                removedCards = this.cards.push(...cards);
+                break;
+            case 'bottom':
+                removedCards = this.cards.unshift(...cards);
+                break;
+            case 'random':
+                removedCards = this.cards.unshift(...cards);
+                break;
+            default:
+                break;
+        }
         this.adjustCards();
     }
 
