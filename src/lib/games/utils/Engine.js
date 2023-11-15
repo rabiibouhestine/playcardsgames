@@ -1,6 +1,16 @@
+import * as PIXI from "pixi.js";
+
 export class Card {
-    constructor(name, spritesheet, faceUp) {
+    constructor(app, spritesheet, name, position, faceUp = false) {
         this.name = name;
+
+        this.sprite = new PIXI.Sprite(spritesheet.textures[name]);
+        this.sprite.anchor.set(0.5);
+        this.sprite.x = position.x;
+        this.sprite.y = position.y;
+        this.sprite.width = 70;
+        this.sprite.height = 98;
+        app.stage.addChild(this.sprite);
     }
 
     moveTo(x, y, immediate) {
