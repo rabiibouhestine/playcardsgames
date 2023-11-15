@@ -1,10 +1,10 @@
 import { Card } from '$lib/games/utils/Card';
 
 export class Cards {
-    constructor(app, spritesheet, faceNames, position, faceUp, direction, minGap, maxGap, maxCards) {
+    constructor(app, spritesheet, faceNames, backName, position, faceUp = false, isInteractive = false, isDraggable = false, direction, minGap, maxGap, maxCards) {
         this.cards = [];
-        for (const faceName in faceNames) {
-            const card = new Card(app, spritesheet, faceName, position, faceUp);
+        for (const faceName of faceNames) {
+            const card = new Card(app, spritesheet, faceName, backName, position, faceUp, isInteractive, isDraggable);
             this.cards.push(card);
         }
     }

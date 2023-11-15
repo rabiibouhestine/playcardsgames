@@ -5,6 +5,7 @@ import cardsSpritesheetImage from '$lib/games/assets/images/cardsSpritesheet.png
 import cardsSpritesheetAtlas from '$lib/games/assets/json/cardsSpritesheet.json';
 
 import { Card } from '$lib/games/utils/Card';
+import { Cards } from '$lib/games/utils/Cards';
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -21,6 +22,7 @@ export class Game extends App {
 
         this.layout = new Layout(this.app);
         const card = new Card(this.app, this.sheet, "KH", "B1", {x: 350, y: 350}, true, true, false);
+        const cards = new Cards(this.app, this.sheet, ["AD", "2D", "5S"], "B1", {x: 200, y: 150});
 
         // Add button
         const castleZone = new PIXI.Graphics();
