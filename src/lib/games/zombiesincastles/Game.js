@@ -24,7 +24,7 @@ export class Game extends App {
         card.sprite.eventMode = 'static';
         card.sprite.cursor = 'pointer';
         card.sprite.on('pointerdown', () => {
-            card.flip(!card.faceUp, true);
+            card.flip(!card.faceUp);
         });
 
         // Add button
@@ -36,6 +36,7 @@ export class Game extends App {
         castleZone.eventMode = 'static';
         castleZone.cursor = 'pointer';
         castleZone.on('pointerdown', () => {
+            card.flip(!card.faceUp);
             card.moveTo(
                 Math.floor(Math.random() * (600 - 50 + 1)) + 50,
                 Math.floor(Math.random() * (600 - 50 + 1)) + 50,

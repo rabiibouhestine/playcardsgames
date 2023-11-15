@@ -7,13 +7,15 @@ export class Card {
         this.faceName = faceName;
         this.backName = backName;
         this.faceUp = faceUp;
+        this.width = 80;
+        this.height = 112;
 
         this.sprite = new PIXI.Sprite(spritesheet.textures[faceUp? this.faceName : this.backName]);
         this.sprite.anchor.set(0.5);
         this.sprite.x = position.x;
         this.sprite.y = position.y;
-        this.sprite.width = 80;
-        this.sprite.height = 112;
+        this.sprite.width = this.width;
+        this.sprite.height = this.height;
         app.stage.addChild(this.sprite);
     }
 
@@ -21,11 +23,47 @@ export class Card {
         if (faceUp === this.faceUp) {
             return;
         }
+        this.faceUp = !this.faceUp;
         if (immediate) {
-            this.faceUp = !this.faceUp;
             this.sprite.texture = this.spritesheet.textures[faceUp? this.faceName : this.backName];
         } else {
-            // tween flip
+            const propreties = {
+                width: this.sprite.width,
+                height: this.sprite.height
+            };
+    
+            const tweenUp = new TWEEN.Tween(propreties, false)
+                .to({
+                    width: 0,
+                    height: this.height * 1.1
+                }, 150)
+                .onUpdate(() => {
+                    this.sprite.width = propreties.width;
+                    this.sprite.height = propreties.height;
+                })
+                .onComplete(() => {
+                    this.sprite.texture = this.spritesheet.textures[faceUp? this.faceName : this.backName];
+                });
+    
+            const tweenDown = new TWEEN.Tween(propreties, false)
+                .to({
+                    width: this.width,
+                    height: this.height
+                }, 150)
+                .onUpdate(() => {
+                    this.sprite.width = propreties.width;
+                    this.sprite.height = propreties.height;
+                });
+    
+            const updateFlip = (delta) => {
+                if (!tweenUp.isPlaying() && !tweenDown.isPlaying()) return;
+                tweenUp.update(delta);
+                tweenDown.update(delta);
+                requestAnimationFrame(updateFlip);
+            };
+        
+            tweenUp.chain(tweenDown).start();
+            requestAnimationFrame(updateFlip);
         }
     }
 
