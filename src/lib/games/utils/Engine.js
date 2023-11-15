@@ -24,13 +24,12 @@ export class Card {
 }
 
 export class Cards {
-    constructor(faceUp, direction, minGap, maxGap, maxCards) {
+    constructor(app, spritesheet, names, position, faceUp, direction, minGap, maxGap, maxCards) {
         this.cards = [];
-        this.faceUp = faceUp;
-    }
-
-    initCards(names, spritesheet) {
-
+        for (const name in names) {
+            const card = new Card(app, spritesheet, name, position, faceUp);
+            this.cards.push(card);
+        }
     }
 
     adjustCards(immediate) {
