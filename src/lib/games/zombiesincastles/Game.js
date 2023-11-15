@@ -34,7 +34,7 @@ export class Game extends App {
             card.moveTo(
                 Math.floor(Math.random() * (600 - 50 + 1)) + 50,
                 Math.floor(Math.random() * (600 - 50 + 1)) + 50,
-                true
+                false
             )
         });
     }

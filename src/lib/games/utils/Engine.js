@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import * as TWEEN from '@tweenjs/tween.js';
 
 export class Card {
     constructor(app, spritesheet, name, position, faceUp = false) {
@@ -18,7 +19,30 @@ export class Card {
             this.sprite.x = x;
             this.sprite.y = y;
         } else {
-            // tween.to(x, y)
+            const propreties = {
+                x: this.sprite.x,
+                y: this.sprite.y
+            };
+    
+            const tween = new TWEEN.Tween(propreties, false)
+                .to({
+                    x: x,
+                    y: y
+                }, 600)
+                .easing(TWEEN.Easing.Exponential.Out)
+                .onUpdate(() => {
+                    this.sprite.x = propreties.x;
+                    this.sprite.y = propreties.y;
+                })
+                .start()
+    
+            const updatePosition = (delta) => {
+                if (!tween.isPlaying()) return;
+                tween.update(delta);
+                requestAnimationFrame(updatePosition);
+            };
+        
+            requestAnimationFrame(updatePosition);
         }
     }
 }
