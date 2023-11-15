@@ -4,6 +4,7 @@ import * as TWEEN from '@tweenjs/tween.js';
 export class Card {
     constructor(app, spritesheet, name, position, faceUp = false) {
         this.name = name;
+        this.faceUp = faceUp;
 
         this.sprite = new PIXI.Sprite(spritesheet.textures[name]);
         this.sprite.anchor.set(0.5);
@@ -14,7 +15,18 @@ export class Card {
         app.stage.addChild(this.sprite);
     }
 
-    moveTo(x, y, immediate) {
+    flip(faceUp, immediate = false) {
+        if (faceUp === this.faceUp) {
+            return;
+        }
+        if (immediate) {
+
+        } else {
+
+        }
+    }
+
+    moveTo(x, y, immediate = false) {
         if (immediate) {
             this.sprite.x = x;
             this.sprite.y = y;
@@ -56,7 +68,7 @@ export class Cards {
         }
     }
 
-    adjustCards(immediate) {
+    adjustCards(immediate = false) {
 
     }
 
