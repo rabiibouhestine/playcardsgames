@@ -9,7 +9,7 @@ import { Cards } from '$lib/games/utils/Cards';
 
 export class Game extends App {
     constructor(canvasRef) {
-        super(canvasRef, 0x7d80ca);
+        super(canvasRef);
         this.init();
     }
 

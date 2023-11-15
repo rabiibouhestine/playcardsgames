@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 
 export class App {
-    constructor(canvasRef, backgroundColor) {
+    constructor(canvasRef) {
         this.canvasRef = canvasRef;
 
         this.app = new PIXI.Application({
@@ -10,7 +10,7 @@ export class App {
             height: 720,
             resolution: window.devicePixelRatio || 1,
             autoDensity: true,
-            backgroundColor: backgroundColor
+            backgroundAlpha: 0
         });
 
         this.resize();
