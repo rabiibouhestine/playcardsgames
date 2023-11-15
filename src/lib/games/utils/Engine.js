@@ -1,6 +1,6 @@
 export class Card {
     constructor(name, spritesheet, faceUp) {
-
+        this.name = name;
     }
 
     moveTo(x, y, immediate) {
