@@ -4,7 +4,7 @@ import { Layout } from "./Layout";
 import cardsSpritesheetImage from '$lib/games/assets/images/cardsSpritesheet.png';
 import cardsSpritesheetAtlas from '$lib/games/assets/json/cardsSpritesheet.json';
 
-import { Card } from '$lib/games/utils/Engine';
+import { Card } from '$lib/games/utils/Card';
 
 export class Game extends App {
     constructor(canvasRef) {
