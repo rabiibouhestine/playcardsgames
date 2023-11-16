@@ -78,11 +78,11 @@
 	</div>
 	<a href="/contact" class="btn btn-outline"> <CardsIcon /> REQUEST A GAME </a>
 </div>
-<div class="my-20 flex flex-wrap justify-center gap-5 max-w-screen-xl mx-auto">
+<div class="my-20 flex flex-wrap justify-center gap-10 sm:gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
 		<a href="/zombies-in-castles" class="group">
 			<div
-				class="card overflow-hidden w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:scale-105"
+				class="card overflow-hidden w-80 sm:w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:scale-105"
 			>
 				<figure>
 					<img src={game.src} alt="Shoes" class="ease-in-out duration-300 group-hover:scale-110" />
