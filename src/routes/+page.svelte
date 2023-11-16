@@ -76,7 +76,7 @@
 		</p>
 		<p class="px-6 text-center">All games can be played with a standard deck of playing cards</p>
 	</div>
-	<a href="/contact" class="btn btn-outline"> <CardsIcon /> REQUEST A GAME </a>
+	<a href="/contact" class="btn btn-outline"> <CardsIcon /> SUBMIT A GAME </a>
 </div>
 <div class="my-20 flex flex-wrap justify-center gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
