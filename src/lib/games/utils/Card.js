@@ -8,8 +8,8 @@ export class Card {
         this.faceName = faceName;
         this.backName = backName;
         this.faceUp = faceUp;
-        this.width = 76;
-        this.height = 104;
+        this.width = 80;
+        this.height = 110;
         this.isDragged = false;
 
         this.sprite = new PIXI.Sprite(spritesheet.textures[faceUp? this.faceName : this.backName]);
