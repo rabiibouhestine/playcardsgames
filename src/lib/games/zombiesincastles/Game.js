@@ -48,6 +48,9 @@ export class Game extends App {
             gap: 10
         });
 
+        const movedCards = stack1.removeCards(2, 'top');
+        stack2.addCards(movedCards, 'top');
+
         // Add button
         const castleZone = new PIXI.Graphics();
         castleZone.beginFill(0x000000, 0.25);
@@ -63,14 +66,14 @@ export class Game extends App {
             //     Math.floor(Math.random() * (600 - 50 + 1)) + 50,
             //     false
             // )
-            const movedCards = stack1.removeCards(2, 'top');
-            stack2.addCards(movedCards, 'top');
-            const movedCards2 = stack2.removeCards(1, 'top');
-            movedCards2[0].moveTo(
-                500,
-                350,
-                false
-            );
+            // const movedCards = stack1.removeCards(2, 'top');
+            // stack2.addCards(movedCards, 'top');
+            // const movedCards2 = stack2.removeCards(1, 'top');
+            // movedCards2[0].moveTo(
+            //     500,
+            //     350,
+            //     false
+            // );
         });
     }
 }
