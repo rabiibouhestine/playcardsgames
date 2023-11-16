@@ -18,7 +18,7 @@
 
 <div class="flex flex-col h-screen relative bg-emerald-600">
 	<Header title="Zombies in Castles" />
-	<div class="h-full shadow-[inset_0_0_200px_50px_rgba(0,0,0,0.3)]">
+	<div class="h-full">
 		<div bind:this={canvas} class="h-full" />
 	</div>
 	<div class="w-full grid justify-items-center absolute bottom-0">
