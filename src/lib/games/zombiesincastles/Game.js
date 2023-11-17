@@ -123,21 +123,16 @@ export class Game extends App {
     }
 
     handleCardClick(card) {
-        console.log(card.faceName)
-        console.log(this.hand.cards)
-
         if (card.location === 'hand') {
             if (this.selectionNames.includes(card.faceName)) {
                 this.selectionNames = this.selectionNames.filter(name => name !== card.faceName);
             } else {
                 this.selectionNames.push(card.faceName);
             }
-            console.log(this.selectionNames)
         }
     }
 
     handleConfirmButtonClick() {
-        console.log(this.selectionNames);
         const selectedCards = this.hand.removeSelection(this.selectionNames);
         this.hand.adjustCards(false, true);
         this.field.addCards(selectedCards);
