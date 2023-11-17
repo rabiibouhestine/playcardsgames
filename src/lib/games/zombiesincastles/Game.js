@@ -77,6 +77,14 @@ export class Game extends App {
             onPointerdown: this.handleCardClick
         });
 
+        this.field = new Cards(this.app, this.sheet, {
+            name: 'field',
+            type: 'tableau',
+            gap: 10,
+            position: {x: 260, y: 267},
+            onPointerdown: this.handleCardClick
+        });
+
         this.hand = new Cards(this.app, this.sheet, {
             name: 'hand',
             type: 'tableau',
