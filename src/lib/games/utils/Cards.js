@@ -13,7 +13,7 @@ export class Cards {
             const card = new Card(app, spritesheet, faceName, backName, position, faceUp, isInteractive, isDraggable);
             this.cards.push(card);
         }
-        this.adjustCards(true);
+        this.adjustCards(true, faceUp);
     }
 
     adjustCards(immediate = false, faceUp = false) {
