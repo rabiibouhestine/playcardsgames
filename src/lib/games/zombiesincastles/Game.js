@@ -48,7 +48,7 @@ export class Game extends App {
             position: {x: 576, y: 117},
             faceUp: true,
             isInteractive: true,
-            location: "Joker",
+            location: "joker",
             onPointerdown: this.handleJokerClick
         });
 
@@ -57,7 +57,7 @@ export class Game extends App {
             position: {x: 666, y: 117},
             faceUp: true,
             isInteractive: true,
-            location: "Joker",
+            location: "joker",
             onPointerdown: this.handleJokerClick
         });
 
@@ -107,12 +107,16 @@ export class Game extends App {
     }
 
     handleJokerClick(card) {
-        card.flip(false, false);
-        console.log(card.location);
+        if (card.location === 'joker') {
+            card.flip(false, false);
+            console.log(card.location);
+        }
     }
 
     handleCardClick(card) {
-        card.flip(false, false);
-        console.log(card.location);
+        if (card.location === 'hand') {
+            card.flip(false, false);
+            console.log(card.location);
+        }
     }
 }
