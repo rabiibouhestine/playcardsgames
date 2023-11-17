@@ -13,7 +13,9 @@ export class Cards {
         type = "pile",
         gap = 0,
         direction = "h",
-        onPointerUp = () => {}
+        onPointerUp = () => {},
+        onPointerOver = () => {},
+        onPointerOut = () => {}
     }) {
         this.name = name;
         this.position = position;
@@ -31,7 +33,9 @@ export class Cards {
                 faceUp: faceUp,
                 isInteractive: isInteractive,
                 isDraggable: isDraggable,
-                onPointerUp: onPointerUp
+                onPointerUp: onPointerUp,
+                onPointerOver: onPointerOver,
+                onPointerOut: onPointerOut
             });
             this.cards.push(card);
         }

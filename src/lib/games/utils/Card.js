@@ -10,7 +10,9 @@ export class Card {
         faceUp = false,
         isInteractive = false,
         isDraggable = false,
-        onPointerUp = () => {}
+        onPointerUp = () => {},
+        onPointerOver = () => {},
+        onPointerOut = () => {}
     }) {
         this.app = app;
         this.spritesheet = spritesheet;
@@ -36,6 +38,8 @@ export class Card {
         this.sprite
             .on('pointerover', this.onPointerOver, this)
             .on('pointerout', this.onPointerOut, this)
+            .on('pointerover', () => {onPointerOver(this)}, this)
+            .on('pointerout', () => {onPointerOut(this)}, this)
             .on('pointerup', () => {onPointerUp(this)}, this);
 
         if (isDraggable) {

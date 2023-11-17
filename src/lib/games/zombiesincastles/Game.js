@@ -67,14 +67,18 @@ export class Game extends App {
             backName: "B1",
             position: {x: 260, y: 117},
             faceUp: true,
-            onPointerUp: this.handleCardClick.bind(this)
+            onPointerUp: this.handleCardClick.bind(this),
+            onPointerOver: this.handleCardOver.bind(this),
+            onPointerOut: this.handleCardOut.bind(this)
         });
 
         this.drawPile = new Cards(this.app, this.sheet, {
             type: 'pile',
             faceNames: pileDeck,
             position: {x: 666, y: 277},
-            onPointerUp: this.handleCardClick.bind(this)
+            onPointerUp: this.handleCardClick.bind(this),
+            onPointerOver: this.handleCardOver.bind(this),
+            onPointerOut: this.handleCardOut.bind(this)
         });
 
         this.field = new Cards(this.app, this.sheet, {
@@ -82,7 +86,9 @@ export class Game extends App {
             type: 'tableau',
             gap: 10,
             position: {x: 260, y: 267},
-            onPointerUp: this.handleCardClick.bind(this)
+            onPointerUp: this.handleCardClick.bind(this),
+            onPointerOver: this.handleCardOver.bind(this),
+            onPointerOut: this.handleCardOut.bind(this)
         });
 
         this.hand = new Cards(this.app, this.sheet, {
@@ -91,7 +97,9 @@ export class Game extends App {
             gap: 8,
             position: {x: 360, y: 467},
             isInteractive: true,
-            onPointerUp: this.handleCardClick.bind(this)
+            onPointerUp: this.handleCardClick.bind(this),
+            onPointerOver: this.handleCardOver.bind(this),
+            onPointerOut: this.handleCardOut.bind(this)
         });
 
         const startingHandCards = this.drawPile.removeCards(8);
@@ -110,6 +118,14 @@ export class Game extends App {
         button.eventMode = 'static';
         button.cursor = 'pointer';
         button.on('pointerdown', this.handleConfirmButtonClick, this);
+
+        // Card Info
+        this.infoPanel = new PIXI.Graphics();
+        this.infoPanel.beginFill(0x000000, 0.25);
+        this.infoPanel.drawRoundedRect(4, 568, 200, 50, 8);
+        this.infoPanel.endFill();
+        this.infoPanel.visible = false;
+        this.app.stage.addChild(this.infoPanel);
 
         // game variables
         this.selectionNames = [];
@@ -131,6 +147,14 @@ export class Game extends App {
                 this.selectionNames.push(card.faceName);
             }
         }
+    }
+
+    handleCardOver(card) {
+        this.infoPanel.visible = true;
+    }
+
+    handleCardOut(card) {
+        this.infoPanel.visible = false;
     }
 
     handleConfirmButtonClick() {
