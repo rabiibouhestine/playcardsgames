@@ -49,7 +49,7 @@ export class Game extends App {
             faceUp: true,
             isInteractive: true,
             location: "joker",
-            onPointerdown: this.handleJokerClick
+            onPointerUp: this.handleJokerClick
         });
 
         this.jokerRight = new Card(this.app, this.sheet, {
@@ -58,7 +58,7 @@ export class Game extends App {
             faceUp: true,
             isInteractive: true,
             location: "joker",
-            onPointerdown: this.handleJokerClick
+            onPointerUp: this.handleJokerClick
         });
 
         this.royalsPile = new Cards(this.app, this.sheet, {
@@ -67,14 +67,14 @@ export class Game extends App {
             backName: "B1",
             position: {x: 260, y: 117},
             faceUp: true,
-            onPointerdown: this.handleCardClick.bind(this)
+            onPointerUp: this.handleCardClick.bind(this)
         });
 
         this.drawPile = new Cards(this.app, this.sheet, {
             type: 'pile',
             faceNames: pileDeck,
             position: {x: 666, y: 277},
-            onPointerdown: this.handleCardClick.bind(this)
+            onPointerUp: this.handleCardClick.bind(this)
         });
 
         this.field = new Cards(this.app, this.sheet, {
@@ -82,7 +82,7 @@ export class Game extends App {
             type: 'tableau',
             gap: 10,
             position: {x: 260, y: 267},
-            onPointerdown: this.handleCardClick.bind(this)
+            onPointerUp: this.handleCardClick.bind(this)
         });
 
         this.hand = new Cards(this.app, this.sheet, {
@@ -91,7 +91,7 @@ export class Game extends App {
             gap: 8,
             position: {x: 360, y: 467},
             isInteractive: true,
-            onPointerdown: this.handleCardClick.bind(this)
+            onPointerUp: this.handleCardClick.bind(this)
         });
 
         const startingHandCards = this.drawPile.removeCards(8);
