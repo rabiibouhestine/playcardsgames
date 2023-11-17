@@ -54,6 +54,12 @@ export class Cards {
         }
     }
 
+    removeSelection(selectionNames) {
+        const selection = this.cards.filter(card => selectionNames.includes(card.name));
+        this.cards = this.cards.filter(card => !selectionNames.includes(card.name));
+        return selection;
+    }
+
     removeCards(n, position = 'top') {
         let removedCards;
         switch (position) {
