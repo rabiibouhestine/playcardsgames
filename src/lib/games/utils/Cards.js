@@ -3,7 +3,17 @@ import { Dealer } from '$lib/games/utils/Dealer';
 
 export class Cards {
     constructor(app, spritesheet, {
-        name = null, faceNames = [], backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false, type = "pile", gap = 0, direction = "h", onPointerUp = () => {}
+        name = null,
+        faceNames = [],
+        backName = 'B1',
+        position,
+        faceUp = false,
+        isInteractive = false,
+        isDraggable = false,
+        type = "pile",
+        gap = 0,
+        direction = "h",
+        onPointerUp = () => {}
     }) {
         this.name = name;
         this.position = position;
