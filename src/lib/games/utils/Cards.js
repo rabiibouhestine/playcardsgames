@@ -10,7 +10,14 @@ export class Cards {
         this.cards = [];
 
         for (const faceName of faceNames) {
-            const card = new Card(app, spritesheet, faceName, backName, position, faceUp, isInteractive, isDraggable);
+            const card = new Card(app, spritesheet, {
+                faceName: faceName,
+                backName: backName,
+                position: position,
+                faceUp: faceUp,
+                isInteractive: isInteractive,
+                isDraggable: isDraggable
+            });
             this.cards.push(card);
         }
         this.adjustCards(true, faceUp);

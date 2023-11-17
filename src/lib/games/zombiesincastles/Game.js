@@ -39,6 +39,20 @@ export class Game extends App {
             ...dealer.shuffleCards(['JD', 'JS', 'JH', 'JC'])
         ];
 
+        this.jokerLeft = new Card(this.app, this.sheet, {
+            faceName: 'J1',
+            position: {x: 576, y: 117},
+            faceUp: true,
+            isInteractive: true
+        });
+
+        this.jokerRight = new Card(this.app, this.sheet, {
+            faceName: 'J2',
+            position: {x: 666, y: 117},
+            faceUp: true,
+            isInteractive: true
+        });
+
         this.royalsPile = new Cards(this.app, this.sheet, {
             type: 'pile',
             faceNames: royalsDeck,
