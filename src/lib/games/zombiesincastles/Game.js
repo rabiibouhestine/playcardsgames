@@ -109,12 +109,7 @@ export class Game extends App {
         this.app.stage.addChild(button);
         button.eventMode = 'static';
         button.cursor = 'pointer';
-        button.on('pointerdown', () => {
-            const selectedCards = this.hand.removeCards(3);
-            this.hand.adjustCards(false, true);
-            this.field.addCards(selectedCards);
-            this.field.adjustCards(false, true);
-        });
+        button.on('pointerdown', this.handleConfirmButtonClick, this);
     }
 
     handleJokerClick(card) {
@@ -129,5 +124,12 @@ export class Game extends App {
             card.flip(false, false);
             console.log(card.location);
         }
+    }
+
+    handleConfirmButtonClick() {
+        const selectedCards = this.hand.removeCards(3);
+        this.hand.adjustCards(false, true);
+        this.field.addCards(selectedCards);
+        this.field.adjustCards(false, true);
     }
 }
