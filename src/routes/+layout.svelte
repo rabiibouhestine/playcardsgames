@@ -26,7 +26,6 @@
 				<a href="/terms" class="link link-hover">Terms of use</a>
 				<a href="/privacy" class="link link-hover">Privacy policy</a>
 				<a href="/disclaimer" class="link link-hover">Disclaimer</a>
-				<a href="/credits" class="link link-hover">Credits</a>
 				<a href="/contact" class="link link-hover">Contact</a>
 			</nav>
 			<aside>
