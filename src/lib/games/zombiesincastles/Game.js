@@ -110,7 +110,10 @@ export class Game extends App {
         button.eventMode = 'static';
         button.cursor = 'pointer';
         button.on('pointerdown', () => {
-            // handle button click
+            const selectedCards = this.hand.removeCards(3);
+            this.hand.adjustCards(false, true);
+            this.field.addCards(selectedCards);
+            this.field.adjustCards(false, true);
         });
     }
 
