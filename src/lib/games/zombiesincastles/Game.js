@@ -150,11 +150,15 @@ export class Game extends App {
     }
 
     handleCardOver(card) {
-        this.infoPanel.visible = true;
+        if (card.location === 'hand') {
+            this.infoPanel.visible = true;
+        }
     }
 
     handleCardOut(card) {
-        this.infoPanel.visible = false;
+        if (card.location === 'hand') {
+            this.infoPanel.visible = false;
+        }
     }
 
     handleConfirmButtonClick() {
