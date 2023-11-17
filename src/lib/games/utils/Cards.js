@@ -1,4 +1,5 @@
 import { Card } from '$lib/games/utils/Card';
+import { Dealer } from '$lib/games/utils/Dealer';
 
 export class Cards {
     constructor(app, spritesheet, {faceNames, backName, position, faceUp = false, isInteractive = false, isDraggable = false, type = "pile", gap = 0, direction = "h"}) {
@@ -73,9 +74,7 @@ export class Cards {
     }
 
     shuffleCards() {
-        for (let i = this.cards.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
-        }
+        const dealer = new Dealer();
+        this.cards = dealer.shuffleCards(this.cards);
     }
 }
