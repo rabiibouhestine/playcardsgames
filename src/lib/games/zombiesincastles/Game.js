@@ -67,14 +67,14 @@ export class Game extends App {
             backName: "B1",
             position: {x: 260, y: 117},
             faceUp: true,
-            onPointerdown: this.handleCardClick
+            onPointerdown: this.handleCardClick.bind(this)
         });
 
         this.drawPile = new Cards(this.app, this.sheet, {
             type: 'pile',
             faceNames: pileDeck,
             position: {x: 666, y: 277},
-            onPointerdown: this.handleCardClick
+            onPointerdown: this.handleCardClick.bind(this)
         });
 
         this.field = new Cards(this.app, this.sheet, {
@@ -82,7 +82,7 @@ export class Game extends App {
             type: 'tableau',
             gap: 10,
             position: {x: 260, y: 267},
-            onPointerdown: this.handleCardClick
+            onPointerdown: this.handleCardClick.bind(this)
         });
 
         this.hand = new Cards(this.app, this.sheet, {
@@ -91,7 +91,7 @@ export class Game extends App {
             gap: 8,
             position: {x: 360, y: 467},
             isInteractive: true,
-            onPointerdown: this.handleCardClick
+            onPointerdown: this.handleCardClick.bind(this)
         });
 
         const startingHandCards = this.drawPile.removeCards(8);
@@ -101,7 +101,7 @@ export class Game extends App {
 
 
 
-        // Add button
+        // Confirm Button
         const button = new PIXI.Graphics();
         button.beginFill(0x000000, 0.25);
         button.drawRoundedRect(260, 568, 200, 50, 8);
@@ -110,24 +110,34 @@ export class Game extends App {
         button.eventMode = 'static';
         button.cursor = 'pointer';
         button.on('pointerdown', this.handleConfirmButtonClick, this);
+
+        // game variables
+        this.selectionNames = [];
     }
 
-    handleJokerClick(card) {
-        if (card.location === 'joker') {
-            card.flip(false, false);
-            console.log(card.location);
+    handleJokerClick() {
+        if (this.location === 'joker') {
+            this.flip(false, false);
+            console.log(this.location);
         }
     }
 
     handleCardClick(card) {
-        if (card.location === 'hand') {
-            card.flip(false, false);
-            console.log(card.location);
-        }
+        console.log(card.faceName)
+        console.log(this.hand.cards)
+        // if (card.location === 'hand') {
+        //     if (game.selectionNames.includes(card.faceName)) {
+        //         game.selectionNames = game.selectionNames.filter(name => name !== card.faceName);
+        //     } else {
+        //         game.selectionNames.push(card.faceName);
+        //     }
+        //     console.log(game.selectionNames)
+        // }
     }
 
     handleConfirmButtonClick() {
-        const selectedCards = this.hand.removeCards(3);
+        const selectedCards = this.hand.removeSelection(this.selectionNames);
+        console.log(selectedCards);
         this.hand.adjustCards(false, true);
         this.field.addCards(selectedCards);
         this.field.adjustCards(false, true);
