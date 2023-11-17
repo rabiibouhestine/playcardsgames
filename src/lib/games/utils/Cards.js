@@ -3,7 +3,7 @@ import { Dealer } from '$lib/games/utils/Dealer';
 
 export class Cards {
     constructor(app, spritesheet, {
-        name = null,
+        name = '',
         faceNames = [],
         backName = 'B1',
         position,

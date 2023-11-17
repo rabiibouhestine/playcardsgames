@@ -6,7 +6,7 @@ export class Card {
         faceName,
         backName = 'B1',
         position,
-        location = null,
+        location = '',
         faceUp = false,
         isInteractive = false,
         isDraggable = false,
