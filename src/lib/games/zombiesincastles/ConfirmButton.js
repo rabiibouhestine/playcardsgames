@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 
 export class ConfirmButton {
     constructor(app) {
-        // Attack
+        // Attack (0)
         // Discard {20} (0)
         // Resolving
     }
