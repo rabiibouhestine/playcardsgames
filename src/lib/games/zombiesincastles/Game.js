@@ -54,7 +54,7 @@ export class Game extends App {
         // Add button
         const castleZone = new PIXI.Graphics();
         castleZone.beginFill(0x000000, 0.25);
-        castleZone.drawRoundedRect(260, 508, 200, 50, 8);
+        castleZone.drawRoundedRect(260, 568, 200, 50, 8);
         castleZone.endFill();
         this.app.stage.addChild(castleZone);
         castleZone.eventMode = 'static';
