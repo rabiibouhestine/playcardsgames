@@ -47,14 +47,16 @@ export class Game extends App {
             faceName: 'J1',
             position: {x: 576, y: 117},
             faceUp: true,
-            isInteractive: true
+            isInteractive: true,
+            onPointerdown: this.handleJokerClick
         });
 
         this.jokerRight = new Card(this.app, this.sheet, {
             faceName: 'J2',
             position: {x: 666, y: 117},
             faceUp: true,
-            isInteractive: true
+            isInteractive: true,
+            onPointerdown: this.handleJokerClick
         });
 
         this.royalsPile = new Cards(this.app, this.sheet, {
@@ -62,13 +64,15 @@ export class Game extends App {
             faceNames: royalsDeck,
             backName: "B1",
             position: {x: 260, y: 117},
-            faceUp: true
+            faceUp: true,
+            onPointerdown: this.handleHandClick
         });
 
         this.drawPile = new Cards(this.app, this.sheet, {
             type: 'pile',
             faceNames: drawDeck,
-            position: {x: 666, y: 277}
+            position: {x: 666, y: 277},
+            onPointerdown: this.handleHandClick
         });
 
         this.hand = new Cards(this.app, this.sheet, {
@@ -96,5 +100,13 @@ export class Game extends App {
         button.on('pointerdown', () => {
             // handle button click
         });
+    }
+
+    handleJokerClick(card) {
+        card.flip(false, false);
+    }
+
+    handleHandClick(card) {
+        card.flip(false, false);
     }
 }

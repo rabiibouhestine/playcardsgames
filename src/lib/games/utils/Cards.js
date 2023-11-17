@@ -2,7 +2,9 @@ import { Card } from '$lib/games/utils/Card';
 import { Dealer } from '$lib/games/utils/Dealer';
 
 export class Cards {
-    constructor(app, spritesheet, {faceNames = [], backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false, type = "pile", gap = 0, direction = "h"}) {
+    constructor(app, spritesheet, {
+        faceNames = [], backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false, type = "pile", gap = 0, direction = "h", onPointerdown = () => {}
+    }) {
         this.position = position;
         this.type = type;
         this.gap = gap;
@@ -17,7 +19,8 @@ export class Cards {
                 position: position,
                 faceUp: faceUp,
                 isInteractive: isInteractive,
-                isDraggable: isDraggable
+                isDraggable: isDraggable,
+                onPointerdown: onPointerdown
             });
             this.cards.push(card);
         }
@@ -28,8 +31,8 @@ export class Cards {
 
         if (this.type === "pile") {
             for (let index = 0; index < this.cards.length; index++) {
-                this.cards[index].flip(faceUp, immediate);
                 this.cards[index].setInteractive(this.isInteractive);
+                this.cards[index].flip(faceUp, immediate);
                 this.cards[index].moveTo(this.position.x, this.position.y, immediate);
             }
         } else {
@@ -41,8 +44,8 @@ export class Cards {
                     x: startX + (index * (80 + this.gap)),
                     y: startY
                 };
-                this.cards[index].flip(faceUp, immediate);
                 this.cards[index].setInteractive(this.isInteractive);
+                this.cards[index].flip(faceUp, immediate);
                 this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
             }
         }

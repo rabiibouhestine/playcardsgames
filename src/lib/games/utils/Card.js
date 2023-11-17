@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class Card {
-    constructor(app, spritesheet, {faceName, backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false}) {
+    constructor(app, spritesheet, {faceName, backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false, onPointerdown = () => {}}) {
         this.app = app;
         this.spritesheet = spritesheet;
         this.faceName = faceName;
@@ -11,6 +11,7 @@ export class Card {
         this.width = 80;
         this.height = 110;
         this.isDragged = false;
+        this.isInteractive = isInteractive;
 
         this.sprite = new PIXI.Sprite(spritesheet.textures[faceUp? this.faceName : this.backName]);
         this.sprite.anchor.set(0.5);
@@ -23,7 +24,8 @@ export class Card {
 
         this.sprite
             .on('pointerover', this.onPointerOver, this)
-            .on('pointerout', this.onPointerOut, this);
+            .on('pointerout', this.onPointerOut, this)
+            .on('pointerdown', () => {onPointerdown(this)}, this);
 
         if (isDraggable) {
             this.sprite.on('pointerdown', this.onDragStart, this);
@@ -63,6 +65,7 @@ export class Card {
     }
 
     setInteractive(isInteractive) {
+        this.isInteractive = isInteractive;
         this.sprite.eventMode = isInteractive? 'static' : 'none';
         this.sprite.cursor = isInteractive? 'pointer' : 'default';
     }
@@ -75,6 +78,8 @@ export class Card {
         if (immediate) {
             this.sprite.texture = this.spritesheet.textures[faceUp? this.faceName : this.backName];
         } else {
+            const isInteractive = this.isInteractive;
+            this.setInteractive(false);
             const propreties = {
                 width: this.sprite.width,
                 height: this.sprite.height
@@ -101,6 +106,9 @@ export class Card {
                 .onUpdate(() => {
                     this.sprite.width = propreties.width;
                     this.sprite.height = propreties.height;
+                })
+                .onComplete(() => {
+                    this.setInteractive(isInteractive);
                 });
     
             const updateFlip = (delta) => {
