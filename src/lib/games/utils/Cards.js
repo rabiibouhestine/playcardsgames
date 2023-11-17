@@ -6,6 +6,7 @@ export class Cards {
         this.position = position;
         this.type = type;
         this.gap = gap;
+        this.isInteractive = isInteractive;
         
         this.cards = [];
 
@@ -28,6 +29,7 @@ export class Cards {
         if (this.type === "pile") {
             for (let index = 0; index < this.cards.length; index++) {
                 this.cards[index].flip(faceUp, immediate);
+                this.cards[index].setInteractive(this.isInteractive);
                 this.cards[index].moveTo(this.position.x, this.position.y, immediate);
             }
         } else {
@@ -40,6 +42,7 @@ export class Cards {
                     y: startY
                 };
                 this.cards[index].flip(faceUp, immediate);
+                this.cards[index].setInteractive(this.isInteractive);
                 this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
             }
         }

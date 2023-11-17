@@ -70,7 +70,8 @@ export class Game extends App {
         this.hand = new Cards(this.app, this.sheet, {
             type: 'tableau',
             gap: 8,
-            position: {x: 360, y: 467}
+            position: {x: 360, y: 467},
+            isInteractive: true
         });
 
         const startingHandCards = this.drawPile.removeCards(8);
