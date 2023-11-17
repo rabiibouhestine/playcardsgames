@@ -7,6 +7,7 @@ export class Card {
         this.spritesheet = spritesheet;
         this.faceName = faceName;
         this.backName = backName;
+        this.position = position;
         this.location = location;
         this.faceUp = faceUp;
         this.width = 80;
@@ -125,6 +126,7 @@ export class Card {
     }
 
     moveTo(x, y, immediate = false) {
+        this.position = {x:x, y:y};
         if (immediate) {
             this.sprite.x = x;
             this.sprite.y = y;

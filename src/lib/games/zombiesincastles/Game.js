@@ -124,8 +124,10 @@ export class Game extends App {
     handleCardClick(card) {
         if (card.location === 'hand') {
             if (this.selectionNames.includes(card.faceName)) {
+                card.sprite.y = card.position.y;
                 this.selectionNames = this.selectionNames.filter(name => name !== card.faceName);
             } else {
+                card.sprite.y = card.position.y - 20;
                 this.selectionNames.push(card.faceName);
             }
         }
