@@ -115,10 +115,9 @@ export class Game extends App {
         this.selectionNames = [];
     }
 
-    handleJokerClick() {
-        if (this.location === 'joker') {
-            this.flip(false, false);
-            console.log(this.location);
+    handleJokerClick(card) {
+        if (card.location === 'joker') {
+            card.flip(false, false);
         }
     }
 
