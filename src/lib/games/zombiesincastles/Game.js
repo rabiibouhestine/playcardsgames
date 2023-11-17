@@ -125,19 +125,20 @@ export class Game extends App {
     handleCardClick(card) {
         console.log(card.faceName)
         console.log(this.hand.cards)
-        // if (card.location === 'hand') {
-        //     if (game.selectionNames.includes(card.faceName)) {
-        //         game.selectionNames = game.selectionNames.filter(name => name !== card.faceName);
-        //     } else {
-        //         game.selectionNames.push(card.faceName);
-        //     }
-        //     console.log(game.selectionNames)
-        // }
+
+        if (card.location === 'hand') {
+            if (this.selectionNames.includes(card.faceName)) {
+                this.selectionNames = this.selectionNames.filter(name => name !== card.faceName);
+            } else {
+                this.selectionNames.push(card.faceName);
+            }
+            console.log(this.selectionNames)
+        }
     }
 
     handleConfirmButtonClick() {
+        console.log(this.selectionNames);
         const selectedCards = this.hand.removeSelection(this.selectionNames);
-        console.log(selectedCards);
         this.hand.adjustCards(false, true);
         this.field.addCards(selectedCards);
         this.field.adjustCards(false, true);
