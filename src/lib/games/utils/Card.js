@@ -21,6 +21,10 @@ export class Card {
         this.sprite.eventMode = isInteractive? 'static' : 'none';
         this.sprite.cursor = isInteractive? 'pointer' : 'default';
 
+        this.sprite
+            .on('pointerover', this.onPointerOver, this)
+            .on('pointerout', this.onPointerOut, this);
+
         if (isDraggable) {
             this.sprite.on('pointerdown', this.onDragStart, this);
             this.sprite.on('pointerup', this.onDragEnd, this);
@@ -30,6 +34,16 @@ export class Card {
         }
 
         app.stage.addChild(this.sprite);
+    }
+
+    onPointerOver() {
+        this.sprite.width = 1.1 * this.width;
+        this.sprite.height = 1.1 * this.height;
+    }
+
+    onPointerOut() {
+        this.sprite.width = this.width;
+        this.sprite.height = this.height;
     }
 
     setDraggable(isDraggable) {
