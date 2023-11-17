@@ -2,7 +2,7 @@ import { Card } from '$lib/games/utils/Card';
 import { Dealer } from '$lib/games/utils/Dealer';
 
 export class Cards {
-    constructor(app, spritesheet, {faceNames, backName, position, faceUp = false, isInteractive = false, isDraggable = false, type = "pile", gap = 0, direction = "h"}) {
+    constructor(app, spritesheet, {faceNames = [], backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false, type = "pile", gap = 0, direction = "h"}) {
         this.position = position;
         this.type = type;
         this.gap = gap;
@@ -16,10 +16,11 @@ export class Cards {
         this.adjustCards(true);
     }
 
-    adjustCards(immediate = false) {
+    adjustCards(immediate = false, faceUp = false) {
 
         if (this.type === "pile") {
             for (let index = 0; index < this.cards.length; index++) {
+                this.cards[index].flip(faceUp, immediate);
                 this.cards[index].moveTo(this.position.x, this.position.y, immediate);
             }
         } else {
@@ -31,6 +32,7 @@ export class Cards {
                     x: startX + (index * (80 + this.gap)),
                     y: startY
                 };
+                this.cards[index].flip(faceUp, immediate);
                 this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
             }
         }
@@ -52,7 +54,6 @@ export class Cards {
                 removedCards = [];
                 break;
         }
-        this.adjustCards();
         return removedCards;
     }
 
@@ -70,7 +71,6 @@ export class Cards {
             default:
                 break;
         }
-        this.adjustCards();
     }
 
     shuffleCards() {

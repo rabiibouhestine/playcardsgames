@@ -39,17 +39,28 @@ export class Game extends App {
             ...dealer.shuffleCards(['JD', 'JS', 'JH', 'JC'])
         ];
 
+        this.royalsPile = new Cards(this.app, this.sheet, {
+            type: 'pile',
+            faceNames: royalsDeck,
+            backName: "B1",
+            position: {x: 260, y: 117},
+            faceUp: true
+        });
+
         this.drawPile = new Cards(this.app, this.sheet, {
             type: 'pile',
             faceNames: drawDeck,
-            backName: "B1",
-            position: {x: 666, y: 277},
-            faceUp: false
+            position: {x: 666, y: 277}
         });
 
+        this.hand = new Cards(this.app, this.sheet, {
+            type: 'tableau',
+            position: {x: 360, y: 467}
+        });
 
-
-
+        const startingHandCards = this.drawPile.removeCards(8);
+        this.hand.addCards(startingHandCards);
+        this.hand.adjustCards(false, true);
 
 
 
