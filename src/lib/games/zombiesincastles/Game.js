@@ -49,7 +49,7 @@ export class Game extends App {
             faceUp: true,
             isInteractive: true,
             location: "Joker",
-            onPointerdown: this.handleCardClick
+            onPointerdown: this.handleJokerClick
         });
 
         this.jokerRight = new Card(this.app, this.sheet, {
@@ -58,7 +58,7 @@ export class Game extends App {
             faceUp: true,
             isInteractive: true,
             location: "Joker",
-            onPointerdown: this.handleCardClick
+            onPointerdown: this.handleJokerClick
         });
 
         this.royalsPile = new Cards(this.app, this.sheet, {
@@ -104,6 +104,11 @@ export class Game extends App {
         button.on('pointerdown', () => {
             // handle button click
         });
+    }
+
+    handleJokerClick(card) {
+        card.flip(false, false);
+        console.log(card.location);
     }
 
     handleCardClick(card) {
