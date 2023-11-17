@@ -2,11 +2,12 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class Card {
-    constructor(app, spritesheet, {faceName, backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false, onPointerdown = () => {}}) {
+    constructor(app, spritesheet, {faceName, backName = 'B1', position, location = null, faceUp = false, isInteractive = false, isDraggable = false, onPointerdown = () => {}}) {
         this.app = app;
         this.spritesheet = spritesheet;
         this.faceName = faceName;
         this.backName = backName;
+        this.location = location;
         this.faceUp = faceUp;
         this.width = 80;
         this.height = 110;

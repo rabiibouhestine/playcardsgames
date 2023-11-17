@@ -3,8 +3,9 @@ import { Dealer } from '$lib/games/utils/Dealer';
 
 export class Cards {
     constructor(app, spritesheet, {
-        faceNames = [], backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false, type = "pile", gap = 0, direction = "h", onPointerdown = () => {}
+        name = null, faceNames = [], backName = 'B1', position, faceUp = false, isInteractive = false, isDraggable = false, type = "pile", gap = 0, direction = "h", onPointerdown = () => {}
     }) {
+        this.name = name;
         this.position = position;
         this.type = type;
         this.gap = gap;
@@ -31,6 +32,7 @@ export class Cards {
 
         if (this.type === "pile") {
             for (let index = 0; index < this.cards.length; index++) {
+                this.cards[index].location = this.name;
                 this.cards[index].setInteractive(this.isInteractive);
                 this.cards[index].flip(faceUp, immediate);
                 this.cards[index].moveTo(this.position.x, this.position.y, immediate);
@@ -44,6 +46,7 @@ export class Cards {
                     x: startX + (index * (80 + this.gap)),
                     y: startY
                 };
+                this.cards[index].location = this.name;
                 this.cards[index].setInteractive(this.isInteractive);
                 this.cards[index].flip(faceUp, immediate);
                 this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);

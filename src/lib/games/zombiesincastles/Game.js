@@ -48,7 +48,8 @@ export class Game extends App {
             position: {x: 576, y: 117},
             faceUp: true,
             isInteractive: true,
-            onPointerdown: this.handleJokerClick
+            location: "Joker",
+            onPointerdown: this.handleCardClick
         });
 
         this.jokerRight = new Card(this.app, this.sheet, {
@@ -56,7 +57,8 @@ export class Game extends App {
             position: {x: 666, y: 117},
             faceUp: true,
             isInteractive: true,
-            onPointerdown: this.handleJokerClick
+            location: "Joker",
+            onPointerdown: this.handleCardClick
         });
 
         this.royalsPile = new Cards(this.app, this.sheet, {
@@ -65,17 +67,18 @@ export class Game extends App {
             backName: "B1",
             position: {x: 260, y: 117},
             faceUp: true,
-            onPointerdown: this.handleHandClick
+            onPointerdown: this.handleCardClick
         });
 
         this.drawPile = new Cards(this.app, this.sheet, {
             type: 'pile',
             faceNames: drawDeck,
             position: {x: 666, y: 277},
-            onPointerdown: this.handleHandClick
+            onPointerdown: this.handleCardClick
         });
 
         this.hand = new Cards(this.app, this.sheet, {
+            name: 'hand',
             type: 'tableau',
             gap: 8,
             position: {x: 360, y: 467},
@@ -102,11 +105,8 @@ export class Game extends App {
         });
     }
 
-    handleJokerClick(card) {
+    handleCardClick(card) {
         card.flip(false, false);
-    }
-
-    handleHandClick(card) {
-        card.flip(false, false);
+        console.log(card.location);
     }
 }
