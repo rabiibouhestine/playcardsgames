@@ -170,14 +170,14 @@ export class Game extends App {
 
     handleConfirmButtonClick() {
         if (this.phase === 'attack') {
-            const selectionCheck = this.checkSelection('attack');
+            const selectionCheck = this.checkAttackSelection();
             if (selectionCheck === 'valid') {
                 this.handleAttack();
             } else {
                 this.infoPanel.setValue(selectionCheck, 'error');
             }
         } else {
-            const selectionCheck = this.checkSelection('discard');
+            const selectionCheck = this.checkDiscardSelection();
             if (selectionCheck === 'valid') {
                 this.handleDiscard();
             } else {
@@ -277,24 +277,23 @@ export class Game extends App {
         this.confirmButton.setState('attack');
     }
 
-    checkSelection(phase){
-        if (phase === 'attack') {
-            if (this.selectionNames.length <=2) {
-                return 'valid'
-            } else {
-                return 'You cannot attack with more than 2 cards!';
-            }
+    checkAttackSelection(){
+        if (this.selectionNames.length <=2) {
+            return 'valid'
+        } else {
+            return 'You cannot attack with more than 2 cards!';
         }
-        if (phase === 'discard') {
-            const selectionValue = this.getSelectionValue();
-            const royalAttack = this.royalAttack.getValue();
-            if (!this.selectionNames.length) {
-                return 'Select cards to discard'
-            } else if (selectionValue < royalAttack) {
-                return 'Selected cards value must be at least ' + this.royalAttack.getValue();
-            } else {
-                return 'valid'
-            }
+    }
+
+    checkDiscardSelection(){
+        const selectionValue = this.getSelectionValue();
+        const royalAttack = this.royalAttack.getValue();
+        if (!this.selectionNames.length) {
+            return 'Select cards to discard'
+        } else if (selectionValue < royalAttack) {
+            return 'Selected cards value must be at least ' + this.royalAttack.getValue();
+        } else {
+            return 'valid'
         }
     }
 
