@@ -247,11 +247,15 @@ export class Game extends App {
             const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
             this.royalHealth.setValue(newRoyalStats.health);
             this.royalAttack.setValue(newRoyalStats.attack);
+
+            // reset selection
+            this.selectionNames = [];
+        } else {
+            // set phase
+            this.phase = 'discard';
+            this.selectionNames = [];
         }
 
-        // set phase
-        this.phase = 'discard';
-        this.selectionNames = [];
     }
 
     handleDiscard() {
