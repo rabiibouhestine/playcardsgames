@@ -133,6 +133,7 @@ export class Game extends App {
         });
 
         // Game Variables
+        this.phase = 'attack';
         this.selectionNames = [];
     }
 
@@ -167,6 +168,10 @@ export class Game extends App {
     }
 
     handleConfirmButtonClick() {
+        this.handleAttack();
+    }
+
+    handleAttack() {
         // selection value
         const selectionValue = this.selectionNames.reduce((accumulator, cardName) => {
             return accumulator + paramsAtlas[cardName].value;
@@ -198,7 +203,8 @@ export class Game extends App {
 
         // resolve spades
         if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "S")) {
-            this.royalAttack.setValue(this.royalAttack.getValue() - selectionValue);
+            const newRoyalAttack = Math.max(0, this.royalAttack.getValue() - selectionValue);
+            this.royalAttack.setValue(newRoyalAttack);
         }
 
         // resolve clubs
@@ -207,7 +213,7 @@ export class Game extends App {
         }
 
         // deal damage
-        this.royalHealth.setValue(this.royalHealth.getValue() - damage);
-
+        const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
+        this.royalHealth.setValue(newRoyalHealth);
     }
 }
