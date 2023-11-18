@@ -175,7 +175,7 @@ export class Game extends App {
             } else {
                 this.hand.adjustCards(true, true);
                 this.selectionNames = [];
-                this.infoPanel.setValue(selectionCheck);
+                this.infoPanel.setValue(selectionCheck, 'error');
             }
         } else {
             this.handleDiscard();

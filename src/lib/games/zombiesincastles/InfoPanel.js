@@ -17,7 +17,12 @@ export class InfoPanel {
         app.stage.addChild(this.text);
     }
 
-    setValue(value) {
+    setValue(value, type) {
+        if (type === 'error') {
+            this.text.style.fill = 0xffab91;
+        } else {
+            this.text.style.fill = 0xFFFFFF;
+        }
         this.text.text = value;
     }
 
