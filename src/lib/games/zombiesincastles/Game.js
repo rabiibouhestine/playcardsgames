@@ -255,7 +255,6 @@ export class Game extends App {
             this.phase = 'discard';
             this.selectionNames = [];
         }
-
     }
 
     handleDiscard() {
