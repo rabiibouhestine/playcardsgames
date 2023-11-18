@@ -168,7 +168,15 @@ export class Game extends App {
     }
 
     handleConfirmButtonClick() {
-        this.handleAttack();
+        if (this.phase === 'attack') {
+            this.handleAttack();
+            this.phase = 'discard';
+            this.selectionNames = [];
+        } else {
+            this.handleDiscard();
+            this.phase = 'attack';
+            this.selectionNames = [];
+        }
     }
 
     handleAttack() {
@@ -183,7 +191,7 @@ export class Game extends App {
         // selection damage
         let damage = selectionValue;
 
-        // move cards to field
+        // move selected cards to field
         const selectedCards = this.hand.removeSelection(this.selectionNames);
         this.hand.adjustCards(false, true);
         this.field.addCards(selectedCards);
@@ -191,6 +199,7 @@ export class Game extends App {
 
         // resolve hearts
         if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H" && royalSuit !== "H")) {
+            this.discardPile.shuffleCards();
             const cards = this.discardPile.removeCards(selectionValue);
             this.drawPile.addCards(cards);
             this.drawPile.adjustCards(false, false);
@@ -220,5 +229,13 @@ export class Game extends App {
         // deal damage
         const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
         this.royalHealth.setValue(newRoyalHealth);
+    }
+
+    handleDiscard() {
+        // move selected cards to discardPile
+        const selectedCards = this.hand.removeSelection(this.selectionNames);
+        this.hand.adjustCards(false, true);
+        this.discardPile.addCards(selectedCards);
+        this.discardPile.adjustCards(false, false);
     }
 }
