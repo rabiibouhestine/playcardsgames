@@ -237,7 +237,7 @@ export class Game extends App {
         const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
         this.royalHealth.setValue(newRoyalHealth);
 
-        // if royal dead
+        // resolve state
         if (this.royalHealth.getValue() === 0) {
             // move field cards to discard pile
             const fieldCards = this.field.removeCards(this.field.length);
