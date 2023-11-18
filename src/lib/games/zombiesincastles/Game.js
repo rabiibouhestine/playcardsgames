@@ -131,6 +131,7 @@ export class Game extends App {
         this.confirmButton = new ConfirmButton(this.app, {
             onPointerDown: this.handleConfirmButtonClick.bind(this)
         });
+        this.confirmButton.setState('attack');
 
         // Game Variables
         this.phase = 'attack';
@@ -254,6 +255,7 @@ export class Game extends App {
             // set phase
             this.phase = 'discard';
             this.selectionNames = [];
+            this.confirmButton.setState('discard');
         }
     }
 
@@ -267,6 +269,7 @@ export class Game extends App {
         // update phase
         this.phase = 'attack';
         this.selectionNames = [];
+        this.confirmButton.setState('attack');
     }
 
     checkSelection(phase){

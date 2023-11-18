@@ -35,4 +35,26 @@ export class ConfirmButton {
         this.container.addChild(this.label);
         this.app.stage.addChild(this.container);
     }
+
+    setState(state) {
+        switch (state) {
+            case 'attack':
+                this.label.text = "Attack";
+                this.container.eventMode = 'static';
+                this.container.cursor = 'pointer';
+                break;
+            case 'discard':
+                this.label.text = "Discard";
+                this.container.eventMode = 'static';
+                this.container.cursor = 'pointer';
+                break;
+            case 'resolving':
+                this.label.text = "Resolving";
+                this.container.eventMode = 'none';
+                this.container.cursor = 'default';
+                break;
+            default:
+                break;
+        }
+    }
 }
