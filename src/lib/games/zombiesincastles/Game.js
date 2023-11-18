@@ -179,6 +179,8 @@ export class Game extends App {
         const selectionValue = this.selectionNames.reduce((accumulator, cardName) => {
             return accumulator + paramsAtlas[cardName].value;
         }, 0);
+
+        // selection damage
         let damage = selectionValue;
 
         // move cards to field
