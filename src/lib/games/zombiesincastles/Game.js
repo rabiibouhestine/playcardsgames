@@ -255,7 +255,7 @@ export class Game extends App {
             if (this.selectionNames.length <=2) {
                 return 'valid'
             } else {
-                return 'selection has more than 2 cards';
+                return 'You cannot attack with more than 2 cards!';
             }
         }
         if (phase === 'discard') {
