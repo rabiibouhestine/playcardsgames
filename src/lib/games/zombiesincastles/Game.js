@@ -231,6 +231,24 @@ export class Game extends App {
         const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
         this.royalHealth.setValue(newRoyalHealth);
 
+        // if royal dead
+        if (newRoyalHealth === 0) {
+            // move field cards to discard pile
+            const fieldCards = this.field.removeCards(this.field.length);
+            this.discardPile.addCards(fieldCards);
+            this.discardPile.adjustCards(false, false);
+
+            // move royal to discardPile
+            const deadRoyal = this.royalsPile.removeCards(1);
+            this.discardPile.addCards(deadRoyal);
+            this.discardPile.adjustCards(false, false);
+
+            // reset royal stats
+            const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
+            this.royalHealth.setValue(newRoyalStats.health);
+            this.royalAttack.setValue(newRoyalStats.attack);
+        }
+
         // set phase
         this.phase = 'discard';
         this.selectionNames = [];
