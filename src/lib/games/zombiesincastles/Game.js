@@ -278,10 +278,12 @@ export class Game extends App {
     }
 
     checkAttackSelection(){
-        if (this.selectionNames.length <=2) {
-            return 'valid'
-        } else {
+        if (!this.selectionNames.length) {
+            return 'Select cards to attack with'
+        } else if (this.selectionNames.length > 2) {
             return 'You cannot attack with more than 2 cards!';
+        } else {
+            return 'valid'
         }
     }
 
