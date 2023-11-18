@@ -277,11 +277,43 @@ export class Game extends App {
         this.confirmButton.setState('attack');
     }
 
-    checkAttackSelection(){
+    checkAttackSelection(){    
+        // Count the number of cards with values 1 to 5 in the updated selection
+        const valueCounts = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+        };
+    
+        for (const selectedCard of this.selectionNames) {
+            valueCounts[paramsAtlas[selectedCard].value]++;
+        }
+    
+        // Check if the updated selection satisfies only one of the specified conditions
+        const singleCard = this.selectionNames.length === 1;
+        const cardAndOne = this.selectionNames.length === 2 && valueCounts[1] === 1;
+        const maxFourOnes = this.selectionNames.length === valueCounts[1] && valueCounts[1] <= 4;
+        const maxFourTwos = this.selectionNames.length === valueCounts[2] && valueCounts[2] <= 4;
+        const maxThreeThrees = this.selectionNames.length === valueCounts[3] && valueCounts[3] <= 3;
+        const maxTwoFours = this.selectionNames.length === valueCounts[4] && valueCounts[4] <= 2;
+        const maxTwoFives = this.selectionNames.length === valueCounts[5] && valueCounts[5] <= 2;
+    
+        const conditionsMet = (
+            singleCard ||
+            cardAndOne ||
+            maxFourOnes ||
+            maxFourTwos ||
+            maxThreeThrees ||
+            maxTwoFours ||
+            maxTwoFives
+        );
+
         if (!this.selectionNames.length) {
             return 'Select cards to attack with'
-        } else if (this.selectionNames.length > 2) {
-            return 'You cannot attack with more than 2 cards!';
+        } else if (!conditionsMet) {
+            return 'Invalid selection';
         } else {
             return 'valid'
         }
