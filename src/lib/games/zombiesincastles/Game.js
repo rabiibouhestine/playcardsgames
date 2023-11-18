@@ -177,7 +177,12 @@ export class Game extends App {
                 this.infoPanel.setValue(selectionCheck, 'error');
             }
         } else {
-            this.handleDiscard();
+            const selectionCheck = this.checkSelection('discard');
+            if (selectionCheck === 'valid') {
+                this.handleDiscard();
+            } else {
+                this.infoPanel.setValue(selectionCheck, 'error');
+            }
         }
     }
 
@@ -281,7 +286,21 @@ export class Game extends App {
             }
         }
         if (phase === 'discard') {
-            return 'valid'
+            const selectionValue = this.getSelectionValue();
+            const royalAttack = this.royalAttack.getValue();
+            if (!this.selectionNames.length) {
+                return 'Select cards to discard'
+            } else if (selectionValue < royalAttack) {
+                return 'Selected cards value must be at least ' + this.royalAttack.getValue();
+            } else {
+                return 'valid'
+            }
         }
+    }
+
+    getSelectionValue() {
+        return this.selectionNames.reduce((accumulator, cardName) => {
+            return accumulator + paramsAtlas[cardName].value;
+        }, 0);
     }
 }
