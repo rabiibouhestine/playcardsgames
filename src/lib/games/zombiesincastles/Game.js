@@ -172,8 +172,6 @@ export class Game extends App {
             const selectionCheck = this.checkSelection('attack');
             if (selectionCheck === 'valid') {
                 this.handleAttack();
-                this.phase = 'discard';
-                this.selectionNames = [];
             } else {
                 this.hand.adjustCards(true, true);
                 this.selectionNames = [];
@@ -181,8 +179,6 @@ export class Game extends App {
             }
         } else {
             this.handleDiscard();
-            this.phase = 'attack';
-            this.selectionNames = [];
         }
     }
 
@@ -236,6 +232,10 @@ export class Game extends App {
         // deal damage
         const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
         this.royalHealth.setValue(newRoyalHealth);
+
+        // set phase
+        this.phase = 'discard';
+        this.selectionNames = [];
     }
 
     handleDiscard() {
@@ -244,6 +244,10 @@ export class Game extends App {
         this.hand.adjustCards(false, true);
         this.discardPile.addCards(selectedCards);
         this.discardPile.adjustCards(false, false);
+
+        // update phase
+        this.phase = 'attack';
+        this.selectionNames = [];
     }
 
     checkSelection(phase){
