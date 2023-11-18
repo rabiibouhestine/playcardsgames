@@ -9,7 +9,7 @@ export class CardInfoPanel {
         this.helperGraphic.drawRoundedRect(-20, -20, 40, 40, 4);
         this.helperGraphic.endFill();
 
-        this.helperText = new PIXI.Text("40", {
+        this.helperText = new PIXI.Text("", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 24,
@@ -25,7 +25,7 @@ export class CardInfoPanel {
         this.helperContainer.addChild(this.helperText);
         this.helperContainer.x = 200;
         this.helperContainer.y = 200;
-        this.helperContainer.visible = true;
+        this.helperContainer.visible = false;
 
         this.app.stage.addChild(this.helperContainer);
     }
