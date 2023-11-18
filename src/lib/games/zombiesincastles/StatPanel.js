@@ -2,6 +2,8 @@ import * as PIXI from "pixi.js";
 
 export class StatPanel {
     constructor(app, position, value) {
+        this.value = value;
+
         this.valueText = new PIXI.Text(value, {
             fontFamily: 'Arial',
             fontWeight: 'bold',
@@ -17,10 +19,11 @@ export class StatPanel {
     }
 
     getValue() {
-        return this.valueText.text;
+        return this.value;
     }
 
     setValue(value) {
+        this.value = value;
         this.valueText.text = value;
     }
 }
