@@ -10,6 +10,8 @@ import { Cards } from '$lib/games/utils/Cards';
 import { Dealer } from '$lib/games/utils/Dealer';
 
 import { Layout } from "./Layout";
+import { ConfirmButton } from "./ConfirmButton";
+import { CardInfoPanel } from "./CardInfoPanel";
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -111,22 +113,12 @@ export class Game extends App {
 
 
         // Confirm Button
-        const button = new PIXI.Graphics();
-        button.beginFill(0x000000, 0.25);
-        button.drawRoundedRect(260, 568, 200, 50, 8);
-        button.endFill();
-        this.app.stage.addChild(button);
-        button.eventMode = 'static';
-        button.cursor = 'pointer';
-        button.on('pointerdown', this.handleConfirmButtonClick, this);
+        this.confirmButton = new ConfirmButton(this.app, {
+            onPointerDown: this.handleConfirmButtonClick.bind(this)
+        });
 
         // Card Info
-        this.infoPanel = new PIXI.Graphics();
-        this.infoPanel.beginFill(0x000000, 0.25);
-        this.infoPanel.drawRoundedRect(4, 568, 200, 50, 8);
-        this.infoPanel.endFill();
-        this.infoPanel.visible = false;
-        this.app.stage.addChild(this.infoPanel);
+        this.cardInfo = new CardInfoPanel(this.app);
 
         // game variables
         this.selectionNames = [];
@@ -152,13 +144,18 @@ export class Game extends App {
 
     handleCardOver(card) {
         if (card.location === 'hand') {
-            this.infoPanel.visible = true;
+            this.cardInfo.setValue(card.params.value);
+            this.cardInfo.setPosition({
+                x: card.position.x,
+                y: card.position.y - 85
+            });
+            this.cardInfo.setVisible(true);
         }
     }
 
     handleCardOut(card) {
         if (card.location === 'hand') {
-            this.infoPanel.visible = false;
+            this.cardInfo.setVisible(false);
         }
     }
 
