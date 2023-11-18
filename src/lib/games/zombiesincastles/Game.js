@@ -85,6 +85,15 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
+        this.discardPile = new Cards(this.app, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: [],
+            position: {x: 576, y: 277},
+            onPointerUp: this.handleCardClick.bind(this),
+            onPointerOver: this.handleCardOver.bind(this),
+            onPointerOut: this.handleCardOut.bind(this)
+        });
+
         this.field = new Cards(this.app, this.spritesheet, paramsAtlas, {
             name: 'field',
             type: 'tableau',
@@ -123,7 +132,7 @@ export class Game extends App {
             onPointerDown: this.handleConfirmButtonClick.bind(this)
         });
 
-        // game variables
+        // Game Variables
         this.selectionNames = [];
     }
 
@@ -158,9 +167,22 @@ export class Game extends App {
     }
 
     handleConfirmButtonClick() {
+        // selection value
+        const selectionValue = this.selectionNames.reduce((accumulator, cardName) => {
+            return accumulator + paramsAtlas[cardName].value;
+        }, 0);
+
+        // move cards to field
         const selectedCards = this.hand.removeSelection(this.selectionNames);
         this.hand.adjustCards(false, true);
         this.field.addCards(selectedCards);
         this.field.adjustCards(false, true);
+
+        // resolve hearts
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H")) {
+            const cards = this.discardPile.removeCards(selectionValue);
+            this.drawPile.addCards(cards);
+            this.drawPile.adjustCards(false, false);
+        }
     }
 }

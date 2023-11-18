@@ -51,9 +51,7 @@ export class Card {
             app.stage.on('pointermove', this.onDragMove, this);
         }
 
-        this.container = new PIXI.Container();
-        this.container.addChild(this.sprite);
-        app.stage.addChild(this.container);
+        app.stage.addChild(this.sprite);
     }
 
     onPointerOver() {
