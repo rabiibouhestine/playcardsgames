@@ -169,9 +169,16 @@ export class Game extends App {
 
     handleConfirmButtonClick() {
         if (this.phase === 'attack') {
-            this.handleAttack();
-            this.phase = 'discard';
-            this.selectionNames = [];
+            const selectionCheck = this.checkSelection('attack');
+            if (selectionCheck === 'valid') {
+                this.handleAttack();
+                this.phase = 'discard';
+                this.selectionNames = [];
+            } else {
+                this.hand.adjustCards(true, true);
+                this.selectionNames = [];
+                this.infoPanel.setValue(selectionCheck);
+            }
         } else {
             this.handleDiscard();
             this.phase = 'attack';
@@ -237,5 +244,18 @@ export class Game extends App {
         this.hand.adjustCards(false, true);
         this.discardPile.addCards(selectedCards);
         this.discardPile.adjustCards(false, false);
+    }
+
+    checkSelection(phase){
+        if (phase === 'attack') {
+            if (this.selectionNames.length <=2) {
+                return 'valid'
+            } else {
+                return 'selection has more than 2 cards';
+            }
+        }
+        if (phase === 'discard') {
+            return 'valid'
+        }
     }
 }
