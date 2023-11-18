@@ -12,6 +12,7 @@ import { Dealer } from '$lib/games/utils/Dealer';
 import { Layout } from "./Layout";
 import { ConfirmButton } from "./ConfirmButton";
 import { CardInfoPanel } from "./CardInfoPanel";
+import { StatPanel } from "./StatPanel";
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -110,6 +111,9 @@ export class Game extends App {
         this.hand.adjustCards(false, true);
 
 
+        // Royal Attack
+        this.royalHealth = new StatPanel(this.app, {x:100, y: 100});
+        this.royalAttack = new StatPanel(this.app, {x:350, y: 100});
 
 
         // Confirm Button

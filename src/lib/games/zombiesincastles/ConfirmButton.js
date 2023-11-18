@@ -12,10 +12,11 @@ export class ConfirmButton {
         this.graphic.beginFill(0x000000, 0.25);
         this.graphic.drawRoundedRect(260, 568, 200, 50, 8);
         this.graphic.endFill();
-        this.app.stage.addChild(this.graphic);
-
+        
         this.graphic.eventMode = 'static';
         this.graphic.cursor = 'pointer';
         this.graphic.on('pointerdown', onPointerDown);
+
+        this.app.stage.addChild(this.graphic);
     }
 }
