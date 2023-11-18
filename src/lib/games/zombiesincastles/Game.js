@@ -173,8 +173,6 @@ export class Game extends App {
             if (selectionCheck === 'valid') {
                 this.handleAttack();
             } else {
-                this.hand.adjustCards(true, true);
-                this.selectionNames = [];
                 this.infoPanel.setValue(selectionCheck, 'error');
             }
         } else {
