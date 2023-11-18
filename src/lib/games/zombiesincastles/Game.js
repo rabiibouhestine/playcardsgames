@@ -140,14 +140,18 @@ export class Game extends App {
                 this.selectionNames.push(card.faceName);
             }
         }
+        this.cardInfo.setPosition({
+            x: card.sprite.x,
+            y: card.sprite.y - 85
+        });
     }
 
     handleCardOver(card) {
         if (card.location === 'hand') {
             this.cardInfo.setValue(card.params.value);
             this.cardInfo.setPosition({
-                x: card.position.x,
-                y: card.position.y - 85
+                x: card.sprite.x,
+                y: card.sprite.y - 85
             });
             this.cardInfo.setVisible(true);
         }
