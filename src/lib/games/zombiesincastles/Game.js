@@ -121,8 +121,8 @@ export class Game extends App {
 
 
         // Royal Stats
-        this.royalHealth = new StatPanel(this.app, {x:100, y: 100});
-        this.royalAttack = new StatPanel(this.app, {x:350, y: 100});
+        this.royalHealth = new StatPanel(this.app, {x:100, y: 100}, 20);
+        this.royalAttack = new StatPanel(this.app, {x:350, y: 100}, 10);
 
         // Info Panel
         this.infoPanel = new InfoPanel(this.app, {x: 350, y: 370});
@@ -171,6 +171,7 @@ export class Game extends App {
         const selectionValue = this.selectionNames.reduce((accumulator, cardName) => {
             return accumulator + paramsAtlas[cardName].value;
         }, 0);
+        let damage = selectionValue;
 
         // move cards to field
         const selectedCards = this.hand.removeSelection(this.selectionNames);
@@ -184,5 +185,29 @@ export class Game extends App {
             this.drawPile.addCards(cards);
             this.drawPile.adjustCards(false, false);
         }
+
+        // resolve diamonds
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "D")) {
+            const nbMissing = 8 -  this.hand.cards.length;
+            const nbDraw = Math.min(nbMissing, selectionValue);
+
+            const cards = this.drawPile.removeCards(nbDraw);
+            this.hand.addCards(cards);
+            this.hand.adjustCards(false, true);
+        }
+
+        // resolve spades
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "S")) {
+            this.royalAttack.setValue(this.royalAttack.getValue() - selectionValue);
+        }
+
+        // resolve clubs
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "C")) {
+            damage = selectionValue * 2
+        }
+
+        // deal damage
+        this.royalHealth.setValue(this.royalHealth.getValue() - damage);
+
     }
 }
