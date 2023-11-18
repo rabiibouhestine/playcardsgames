@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class Card {
-    constructor(app, spritesheet, {
+    constructor(app, spritesheet, parameters, {
         faceName,
         backName = 'B1',
         position,
@@ -16,6 +16,7 @@ export class Card {
     }) {
         this.app = app;
         this.spritesheet = spritesheet;
+        this.params = parameters[faceName];
         this.faceName = faceName;
         this.backName = backName;
         this.position = position;

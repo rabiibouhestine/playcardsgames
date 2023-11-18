@@ -2,7 +2,7 @@ import { Card } from '$lib/games/utils/Card';
 import { Dealer } from '$lib/games/utils/Dealer';
 
 export class Cards {
-    constructor(app, spritesheet, {
+    constructor(app, spritesheet, parameters, {
         name = '',
         faceNames = [],
         backName = 'B1',
@@ -26,7 +26,7 @@ export class Cards {
         this.cards = [];
 
         for (const faceName of faceNames) {
-            const card = new Card(app, spritesheet, {
+            const card = new Card(app, spritesheet, parameters, {
                 faceName: faceName,
                 backName: backName,
                 position: position,

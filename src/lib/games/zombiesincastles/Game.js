@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 
 import cardsSpritesheetImage from '$lib/games/assets/images/cardsSpritesheet.png';
 import cardsSpritesheetAtlas from '$lib/games/assets/json/cardsSpritesheet.json';
+import paramsAtlas from '$lib/games/assets/json/zombiesInCastles.json';
 
 import { App } from '$lib/games/utils/App';
 import { Card } from '$lib/games/utils/Card';
@@ -17,11 +18,11 @@ export class Game extends App {
     }
 
     async init() {
-        this.sheet = new PIXI.Spritesheet(
+        this.spritesheet = new PIXI.Spritesheet(
             PIXI.BaseTexture.from(cardsSpritesheetImage),
             cardsSpritesheetAtlas
         );
-        await this.sheet.parse();
+        await this.spritesheet.parse();
 
         this.layout = new Layout(this.app);
 
@@ -43,7 +44,7 @@ export class Game extends App {
             ...dealer.shuffleCards(['JD', 'JS', 'JH', 'JC'])
         ];
 
-        this.jokerLeft = new Card(this.app, this.sheet, {
+        this.jokerLeft = new Card(this.app, this.spritesheet, paramsAtlas, {
             faceName: 'J1',
             position: {x: 576, y: 117},
             faceUp: true,
@@ -52,7 +53,7 @@ export class Game extends App {
             onPointerUp: this.handleJokerClick
         });
 
-        this.jokerRight = new Card(this.app, this.sheet, {
+        this.jokerRight = new Card(this.app, this.spritesheet, paramsAtlas, {
             faceName: 'J2',
             position: {x: 666, y: 117},
             faceUp: true,
@@ -61,7 +62,7 @@ export class Game extends App {
             onPointerUp: this.handleJokerClick
         });
 
-        this.royalsPile = new Cards(this.app, this.sheet, {
+        this.royalsPile = new Cards(this.app, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: royalsDeck,
             backName: "B1",
@@ -72,7 +73,7 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        this.drawPile = new Cards(this.app, this.sheet, {
+        this.drawPile = new Cards(this.app, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: pileDeck,
             position: {x: 666, y: 277},
@@ -81,7 +82,7 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        this.field = new Cards(this.app, this.sheet, {
+        this.field = new Cards(this.app, this.spritesheet, paramsAtlas, {
             name: 'field',
             type: 'tableau',
             gap: 10,
@@ -91,7 +92,7 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        this.hand = new Cards(this.app, this.sheet, {
+        this.hand = new Cards(this.app, this.spritesheet, paramsAtlas, {
             name: 'hand',
             type: 'tableau',
             gap: 8,
