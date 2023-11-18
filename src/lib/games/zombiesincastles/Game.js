@@ -11,7 +11,7 @@ import { Dealer } from '$lib/games/utils/Dealer';
 
 import { Layout } from "./Layout";
 import { ConfirmButton } from "./ConfirmButton";
-import { CardInfoPanel } from "./CardInfoPanel";
+import { InfoPanel } from "./InfoPanel";
 import { StatPanel } from "./StatPanel";
 
 export class Game extends App {
@@ -111,18 +111,17 @@ export class Game extends App {
         this.hand.adjustCards(false, true);
 
 
-        // Royal Attack
+        // Royal Stats
         this.royalHealth = new StatPanel(this.app, {x:100, y: 100});
         this.royalAttack = new StatPanel(this.app, {x:350, y: 100});
 
+        // Info Panel
+        this.infoPanel = new InfoPanel(this.app, {x: 350, y: 370});
 
         // Confirm Button
         this.confirmButton = new ConfirmButton(this.app, {
             onPointerDown: this.handleConfirmButtonClick.bind(this)
         });
-
-        // Card Info
-        this.cardInfo = new CardInfoPanel(this.app);
 
         // game variables
         this.selectionNames = [];
@@ -148,18 +147,13 @@ export class Game extends App {
 
     handleCardOver(card) {
         if (card.location === 'hand') {
-            this.cardInfo.setValue(card.params.value);
-            this.cardInfo.setPosition({
-                x: card.position.x,
-                y: card.position.y + 85
-            });
-            this.cardInfo.setVisible(true);
+            this.infoPanel.setValue(card.params.value);
         }
     }
 
     handleCardOut(card) {
         if (card.location === 'hand') {
-            this.cardInfo.setVisible(false);
+            this.infoPanel.clear();
         }
     }
 
