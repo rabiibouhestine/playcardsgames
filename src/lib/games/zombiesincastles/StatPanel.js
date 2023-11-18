@@ -1,9 +1,8 @@
 import * as PIXI from "pixi.js";
+import * as TWEEN from '@tweenjs/tween.js';
 
 export class StatPanel {
     constructor(app, position, value) {
-        this.value = value;
-
         this.valueText = new PIXI.Text(value, {
             fontFamily: 'Arial',
             fontWeight: 'bold',
@@ -19,11 +18,34 @@ export class StatPanel {
     }
 
     getValue() {
-        return this.value;
+        return parseInt(this.valueText.text);
     }
 
-    setValue(value) {
-        this.value = value;
-        this.valueText.text = value;
+    setValue(value, immediate = false) {
+        if (immediate) {
+            this.valueText.text = value;
+        } else {
+            const propreties = {
+                value: parseInt(this.valueText.text)
+            };
+    
+            const tween = new TWEEN.Tween(propreties, false)
+                .to({
+                    value: value
+                }, 600)
+                .onUpdate(() => {
+                    this.valueText.text = Math.floor(propreties.value);
+                })
+                .start()
+    
+            const updateValue = (delta) => {
+                if (!tween.isPlaying()) return;
+                tween.update(delta);
+                requestAnimationFrame(updateValue);
+            };
+        
+            requestAnimationFrame(updateValue);
+        }
+
     }
 }
