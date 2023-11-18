@@ -113,4 +113,8 @@ export class Cards {
         const dealer = new Dealer();
         this.cards = dealer.shuffleCards(this.cards);
     }
+
+    getTopCard() {
+        return this.cards[this.cards.length - 1];
+    }
 }

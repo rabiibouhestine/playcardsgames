@@ -172,6 +172,9 @@ export class Game extends App {
     }
 
     handleAttack() {
+        // royal suit
+        const royalSuit = paramsAtlas[this.royalsPile.getTopCard().faceName].suit;
+
         // selection value
         const selectionValue = this.selectionNames.reduce((accumulator, cardName) => {
             return accumulator + paramsAtlas[cardName].value;
@@ -185,14 +188,14 @@ export class Game extends App {
         this.field.adjustCards(false, true);
 
         // resolve hearts
-        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H")) {
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H" && royalSuit !== "H")) {
             const cards = this.discardPile.removeCards(selectionValue);
             this.drawPile.addCards(cards);
             this.drawPile.adjustCards(false, false);
         }
 
         // resolve diamonds
-        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "D")) {
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "D" && royalSuit !== "D")) {
             const nbMissing = 8 -  this.hand.cards.length;
             const nbDraw = Math.min(nbMissing, selectionValue);
 
@@ -202,13 +205,13 @@ export class Game extends App {
         }
 
         // resolve spades
-        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "S")) {
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "S" && royalSuit !== "S")) {
             const newRoyalAttack = Math.max(0, this.royalAttack.getValue() - selectionValue);
             this.royalAttack.setValue(newRoyalAttack);
         }
 
         // resolve clubs
-        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "C")) {
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "C" && royalSuit !== "C")) {
             damage = selectionValue * 2
         }
 
