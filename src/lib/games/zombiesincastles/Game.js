@@ -144,10 +144,6 @@ export class Game extends App {
                 this.selectionNames.push(card.faceName);
             }
         }
-        this.cardInfo.setPosition({
-            x: card.sprite.x,
-            y: card.sprite.y - 85
-        });
     }
 
     handleCardOver(card) {
