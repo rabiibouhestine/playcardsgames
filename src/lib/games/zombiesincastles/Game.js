@@ -238,7 +238,7 @@ export class Game extends App {
         this.royalHealth.setValue(newRoyalHealth);
 
         // if royal dead
-        if (newRoyalHealth === 0) {
+        if (this.royalHealth.getValue() === 0) {
             // move field cards to discard pile
             const fieldCards = this.field.removeCards(this.field.length);
             this.discardPile.addCards(fieldCards);
@@ -256,11 +256,16 @@ export class Game extends App {
 
             // reset selection
             this.selectionNames = [];
+            this.confirmButton.setState('attack');
+        } else if (this.royalAttack.getValue() === 0) {
+            // reset selection
+            this.selectionNames = [];
+            this.confirmButton.setState('attack');
         } else {
             // set phase
-            this.phase = 'discard';
             this.selectionNames = [];
             this.confirmButton.setState('discard');
+            this.phase = 'discard';
         }
     }
 

@@ -3,6 +3,8 @@ import * as TWEEN from '@tweenjs/tween.js';
 
 export class StatPanel {
     constructor(app, position, value) {
+        this.value = value;
+
         this.valueText = new PIXI.Text(value, {
             fontFamily: 'Arial',
             fontWeight: 'bold',
@@ -18,10 +20,12 @@ export class StatPanel {
     }
 
     getValue() {
-        return parseInt(this.valueText.text);
+        return this.value;
     }
 
     setValue(value, immediate = false) {
+        this.value = value;
+
         if (immediate) {
             this.valueText.text = value;
         } else {
