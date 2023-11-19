@@ -18,7 +18,7 @@ export class ConfirmButton {
         this.label = new PIXI.Text("test", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 26,
             fill: 0xFFFFFF,
             align: 'center'
         });
