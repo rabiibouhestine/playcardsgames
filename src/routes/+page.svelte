@@ -21,7 +21,7 @@
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 5',
+			name: 'Card Capture',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
