@@ -85,10 +85,14 @@
 				class="card overflow-hidden w-80 sm:w-60 bg-base-200 shadow-xl ease-in-out duration-300 group-hover:scale-105"
 			>
 				<figure>
-					<img src={game.src} alt="Shoes" class="ease-in-out duration-300 group-hover:scale-110" />
+					<img
+						src={game.src}
+						alt={game.name}
+						class="ease-in-out duration-300 group-hover:scale-110"
+					/>
 				</figure>
 				<div class="card-body items-center text-center">
-					<h2 class="card-title">{game.name}</h2>
+					<h1 class="card-title">{game.name}</h1>
 				</div>
 				<div
 					class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-base-200 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-25"
