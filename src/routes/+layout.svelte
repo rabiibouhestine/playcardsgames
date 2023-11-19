@@ -29,7 +29,7 @@
 				<a href="/contact" class="link link-hover">Contact</a>
 			</nav>
 			<aside>
-				<p>Copyright © 2023 - All right reserved by playcards.games</p>
+				<p>Copyright © 2023 - All rights reserved by playcards.games</p>
 			</aside>
 		</footer>
 	</div>
