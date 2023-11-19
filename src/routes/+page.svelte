@@ -25,43 +25,43 @@
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 6',
+			name: 'Skyway',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 7',
+			name: 'Sandwich Guy',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 8',
+			name: 'Area 52',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 9',
+			name: 'Dead Center',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 10',
+			name: 'Boba Tea Shop',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 6',
+			name: 'Foursquare',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 7',
+			name: 'Loot The Loop',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 8',
+			name: 'Syndicate',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 9',
+			name: 'Hide and Seek',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 10',
+			name: 'The Emissary',
 			src: 'https://placehold.co/400x400/grey/white'
 		}
 	];
