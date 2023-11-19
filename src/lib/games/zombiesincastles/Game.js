@@ -209,7 +209,7 @@ export class Game extends App {
         if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H" && royalSuit !== "H")) {
             this.discardPile.shuffleCards();
             const cards = this.discardPile.removeCards(selectionValue);
-            this.drawPile.addCards(cards);
+            this.drawPile.addCards(cards, 'bottom');
             this.drawPile.adjustCards(false, false);
         }
 
