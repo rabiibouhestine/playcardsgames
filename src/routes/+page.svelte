@@ -9,15 +9,15 @@
 			src: zombiesInCastlesCover
 		},
 		{
-			name: 'Scoundrel',
-			src: 'https://placehold.co/400x400/grey/white'
-		},
-		{
 			name: 'Clear the Dungeon',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
-			name: 'name 4',
+			name: 'Scoundrel',
+			src: 'https://placehold.co/400x400/grey/white'
+		},
+		{
+			name: 'Merchant Solitaire',
 			src: 'https://placehold.co/400x400/grey/white'
 		},
 		{
