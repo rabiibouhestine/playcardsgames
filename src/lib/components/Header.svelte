@@ -7,14 +7,14 @@
 
 	function toggleTheme() {
 		if (theme === 'dracula') {
-			theme = 'nord';
+			theme = 'autumn';
 		} else {
 			theme = 'dracula';
 		}
 	}
 </script>
 
-<div class="bg-base-200 sticky top-0 z-10">
+<div class="bg-base-200 border-b border-base-300 sticky top-0 z-10">
 	<div class="navbar max-w-screen-xl mx-auto">
 		<div class="navbar-start">
 			<a href="/">
