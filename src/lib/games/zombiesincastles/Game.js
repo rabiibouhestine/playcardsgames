@@ -153,6 +153,7 @@ export class Game extends App {
                 card.sprite.y = card.position.y - 20;
                 this.selectionNames.push(card.faceName);
             }
+            this.confirmButton.update(this.phase, this.getSelectionValue());
         }
     }
 
