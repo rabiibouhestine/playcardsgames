@@ -2,10 +2,6 @@ import * as PIXI from "pixi.js";
 
 export class ConfirmButton {
     constructor(app, {onPointerDown}) {
-        // Attack (0)
-        // Discard {20} (0)
-        // Resolving
-
         this.app = app;
 
         // Define button graphic
@@ -18,7 +14,7 @@ export class ConfirmButton {
         this.label = new PIXI.Text("test", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 26,
+            fontSize: 24,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -36,15 +32,15 @@ export class ConfirmButton {
         this.app.stage.addChild(this.container);
     }
 
-    setState(state) {
-        switch (state) {
+    update(phase, selectionValue) {
+        switch (phase) {
             case 'attack':
-                this.label.text = "Attack";
+                this.label.text = "Attack " + "(" + selectionValue + ")";
                 this.container.eventMode = 'static';
                 this.container.cursor = 'pointer';
                 break;
             case 'discard':
-                this.label.text = "Discard";
+                this.label.text = "Discard " + "(" + selectionValue + ")";
                 this.container.eventMode = 'static';
                 this.container.cursor = 'pointer';
                 break;

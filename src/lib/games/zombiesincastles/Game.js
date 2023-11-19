@@ -131,11 +131,11 @@ export class Game extends App {
         this.confirmButton = new ConfirmButton(this.app, {
             onPointerDown: this.handleConfirmButtonClick.bind(this)
         });
-        this.confirmButton.setState('attack');
-
+        
         // Game Variables
         this.phase = 'attack';
         this.selectionNames = [];
+        this.confirmButton.update(this.phase, this.getSelectionValue());
     }
 
     handleJokerClick(card) {
@@ -256,16 +256,16 @@ export class Game extends App {
 
             // reset selection
             this.selectionNames = [];
-            this.confirmButton.setState('attack');
+            this.confirmButton.update(this.phase, this.getSelectionValue());
         } else if (this.royalAttack.getValue() === 0) {
             // reset selection
             this.selectionNames = [];
-            this.confirmButton.setState('attack');
+            this.confirmButton.update(this.phase, this.getSelectionValue());
         } else {
             // set phase
             this.selectionNames = [];
-            this.confirmButton.setState('discard');
             this.phase = 'discard';
+            this.confirmButton.update(this.phase, this.getSelectionValue());
         }
     }
 
@@ -279,7 +279,7 @@ export class Game extends App {
         // update phase
         this.phase = 'attack';
         this.selectionNames = [];
-        this.confirmButton.setState('attack');
+        this.confirmButton.update(this.phase, this.getSelectionValue());
     }
 
     checkAttackSelection(){    
