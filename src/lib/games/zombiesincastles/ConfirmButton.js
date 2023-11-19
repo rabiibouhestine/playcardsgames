@@ -35,12 +35,12 @@ export class ConfirmButton {
     update(phase, selectionValue) {
         switch (phase) {
             case 'attack':
-                this.label.text = "Attack " + "(" + selectionValue + ")";
+                this.label.text = "Attack " + "( " + selectionValue + " )";
                 this.container.eventMode = 'static';
                 this.container.cursor = 'pointer';
                 break;
             case 'discard':
-                this.label.text = "Discard " + "(" + selectionValue + ")";
+                this.label.text = "Discard " + "( " + selectionValue + " )";
                 this.container.eventMode = 'static';
                 this.container.cursor = 'pointer';
                 break;
