@@ -53,8 +53,8 @@
 </div>
 <dialog bind:this={gameOverModal} class="modal">
 	<div class="modal-box">
-		<h3 class="font-bold text-lg">Hello!</h3>
-		<p class="py-4">Press ESC key or click the button below to close</p>
+		<h3 class="font-bold text-lg">GameOver</h3>
+		<p class="py-4">Press Restart to restart the game</p>
 		<div class="modal-action">
 			<form method="dialog">
 				<!-- if there is a button in form, it will close the modal -->
