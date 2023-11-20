@@ -24,12 +24,65 @@ export class Layout {
         baseZone.endFill();
         app.stage.addChild(baseZone);
 
+        // Add discard pile background to mattress
+        const discardPileBackground = new PIXI.Graphics();
+        discardPileBackground.beginFill(0x000000, 0.25);
+        discardPileBackground.drawRoundedRect(536, 222, 80, 110, 8);
+        discardPileBackground.endFill();
+        app.stage.addChild(discardPileBackground);
+
+        // Add draw pile background to mattress
+        const drawPileBackground = new PIXI.Graphics();
+        drawPileBackground.beginFill(0x000000, 0.25);
+        drawPileBackground.drawRoundedRect(626, 222, 80, 110, 8);
+        drawPileBackground.endFill();
+        app.stage.addChild(drawPileBackground);
+
+        // Add discard pile label
+        const discardPileLabel = new PIXI.Text("Fallen", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 16,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        discardPileLabel.anchor.set(0.5);
+        discardPileLabel.x = 576;
+        discardPileLabel.y = 207;
+        app.stage.addChild(discardPileLabel);
+
+        // Add draw pile label
+        const drawPileLabel = new PIXI.Text("Horde", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 16,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        drawPileLabel.anchor.set(0.5);
+        drawPileLabel.x = 666;
+        drawPileLabel.y = 207;
+        app.stage.addChild(drawPileLabel);
+
         // Add jokers zone to mattress
         const jokersZone = new PIXI.Graphics();
         jokersZone.beginFill(0x000000, 0.25);
         jokersZone.drawRoundedRect(526, 32, 190, 150, 8);
         jokersZone.endFill();
         app.stage.addChild(jokersZone);
+
+        // Add jokers labels
+        const jokersLabel = new PIXI.Text("Battle Wails", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 16,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        jokersLabel.anchor.set(0.5);
+        jokersLabel.x = 621;
+        jokersLabel.y = 47;
+        app.stage.addChild(jokersLabel);
 
         // Add castle zone to mattress
         const castleZone = new PIXI.Graphics();
