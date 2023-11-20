@@ -3,6 +3,8 @@ import * as TWEEN from '@tweenjs/tween.js';
 
 export class Number {
     constructor(app, position, value, {
+        z = 999,
+        visible = true,
         fontFamily = 'Arial',
         fontWeight = 'bold',
         fontSize = 64,
@@ -22,6 +24,8 @@ export class Number {
         this.valueText.x = position.x;
         this.valueText.y = position.y;
         this.valueText.anchor.set(0.5);
+        this.valueText.visible = visible;
+        this.valueText.z = z;
         app.stage.addChild(this.valueText);
     }
 

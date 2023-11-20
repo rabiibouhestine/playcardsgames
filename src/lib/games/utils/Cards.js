@@ -1,5 +1,6 @@
 import { Card } from '$lib/games/utils/Card';
 import { Dealer } from '$lib/games/utils/Dealer';
+import { Number } from '$lib/games/utils/Number';
 
 export class Cards {
     constructor(app, spritesheet, parameters, {
@@ -13,6 +14,7 @@ export class Cards {
         type = "pile",
         gap = 0,
         direction = "h",
+        counter = false,
         onPointerUp = () => {},
         onPointerOver = () => {},
         onPointerOut = () => {}
@@ -40,6 +42,8 @@ export class Cards {
             this.cards.push(card);
         }
         this.adjustCards(true, faceUp);
+
+        this.counter = new Number(app, position, this.cards.length, { visible: counter, fontSize: 24 });
     }
 
     adjustCards(immediate = false, faceUp = false) {
@@ -71,6 +75,7 @@ export class Cards {
     removeSelection(selectionNames) {
         const selection = this.cards.filter(card => selectionNames.includes(card.faceName));
         this.cards = this.cards.filter(card => !selectionNames.includes(card.faceName));
+        this.counter.setValue(this.cards.length, true);
         return selection;
     }
 
@@ -90,6 +95,7 @@ export class Cards {
                 removedCards = [];
                 break;
         }
+        this.counter.setValue(this.cards.length, true);
         return removedCards;
     }
 
@@ -107,6 +113,7 @@ export class Cards {
             default:
                 break;
         }
+        this.counter.setValue(this.cards.length, true);
     }
 
     shuffleCards() {

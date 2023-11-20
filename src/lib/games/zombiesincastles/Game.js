@@ -80,6 +80,7 @@ export class Game extends App {
             type: 'pile',
             faceNames: pileDeck,
             position: {x: 666, y: 277},
+            counter: true,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
             onPointerOut: this.handleCardOut.bind(this)
@@ -89,6 +90,7 @@ export class Game extends App {
             type: 'pile',
             faceNames: [],
             position: {x: 576, y: 277},
+            counter: true,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
             onPointerOut: this.handleCardOut.bind(this)
