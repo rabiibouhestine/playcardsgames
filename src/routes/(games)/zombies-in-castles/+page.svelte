@@ -9,11 +9,17 @@
 
 	onMount(() => {
 		game = new Game(canvas);
+		window.addEventListener('gameOver', handleGameOver);
 
 		return () => {
 			game.end();
+			window.removeEventListener('gameOver', handleGameOver);
 		};
 	});
+
+	function handleGameOver() {
+		console.log('Game Over');
+	}
 </script>
 
 <div class="flex flex-col h-screen relative bg-emerald-600">

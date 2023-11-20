@@ -138,6 +138,7 @@ export class Game extends App {
         this.phase = 'attack';
         this.selectionNames = [];
         this.confirmButton.update(this.phase, this.getSelectionValue());
+        this.gameOverEvent = new Event("gameOver", { bubbles: true, cancelable: false });
     }
 
     handleJoker(card) {
@@ -399,6 +400,6 @@ export class Game extends App {
     }
 
     handleGameOver() {
-        console.log("Game Over");
+        window.dispatchEvent(this.gameOverEvent);
     }
 }
