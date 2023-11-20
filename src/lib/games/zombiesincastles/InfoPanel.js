@@ -5,7 +5,7 @@ export class InfoPanel {
         this.text = new PIXI.Text("", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 24,
+            fontSize: 18,
             fill: 0xFFFFFF,
             align: 'center'
         });

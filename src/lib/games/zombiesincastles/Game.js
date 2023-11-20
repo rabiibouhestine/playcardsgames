@@ -125,7 +125,7 @@ export class Game extends App {
         this.royalAttack = new StatPanel(this.app, {x:350, y: 100}, 10);
 
         // Info Panel
-        this.infoPanel = new InfoPanel(this.app, {x: 350, y: 370});
+        this.infoPanel = new InfoPanel(this.app, {x: 350, y: 368});
 
         // Confirm Button
         this.confirmButton = new ConfirmButton(this.app, {
