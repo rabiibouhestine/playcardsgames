@@ -228,9 +228,12 @@ export class Game extends App {
                 this.infoPanel.setValue(selectionCheck, 'error');
             }
         }
-        if (!this.hand.cards.length) {
+        const handValue = this.hand.cards.reduce((accumulator, card) => {
+            return accumulator + paramsAtlas[card.faceName].value;
+        }, 0);
+        if (!this.hand.cards.length || (this.phase === 'discard' && handValue < this.royalAttack.value)) {
             if (!this.jokerLeftAlive && !this.jokerRightAlive) {
-                // game over
+                this.handleGameOver();
             } else if (this.jokerLeftAlive) {
                 this.handleJoker(this.jokerLeft);
             } else {
@@ -393,5 +396,9 @@ export class Game extends App {
         return this.selectionNames.reduce((accumulator, cardName) => {
             return accumulator + paramsAtlas[cardName].value;
         }, 0);
+    }
+
+    handleGameOver() {
+        console.log("Game Over");
     }
 }
