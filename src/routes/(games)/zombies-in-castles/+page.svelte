@@ -6,6 +6,7 @@
 
 	let game;
 	let canvas;
+	let gameOverModal;
 
 	onMount(() => {
 		game = new Game(canvas);
@@ -18,7 +19,12 @@
 	});
 
 	function handleGameOver() {
-		console.log('Game Over');
+		gameOverModal.showModal();
+	}
+
+	function restartGame() {
+		game.end();
+		game = new Game(canvas);
 	}
 </script>
 
@@ -45,3 +51,15 @@
 		<h1 class="text-5xl font-bold">Rage Inside Game</h1>
 	</article>
 </div>
+<dialog bind:this={gameOverModal} class="modal">
+	<div class="modal-box">
+		<h3 class="font-bold text-lg">Hello!</h3>
+		<p class="py-4">Press ESC key or click the button below to close</p>
+		<div class="modal-action">
+			<form method="dialog">
+				<!-- if there is a button in form, it will close the modal -->
+				<button class="btn" on:click={restartGame}>Restart</button>
+			</form>
+		</div>
+	</div>
+</dialog>
