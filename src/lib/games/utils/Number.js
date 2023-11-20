@@ -1,21 +1,27 @@
 import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
-export class StatPanel {
-    constructor(app, position, value) {
+export class Number {
+    constructor(app, position, value, {
+        fontFamily = 'Arial',
+        fontWeight = 'bold',
+        fontSize = 64,
+        fill = 0xFFFFFF,
+        align = 'center'
+    }) {
         this.value = value;
 
         this.valueText = new PIXI.Text(value, {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
-            fontSize: 48,
-            fill: 0xFFFFFF,
-            align: 'center'
+            fontFamily: fontFamily,
+            fontWeight: fontWeight,
+            fontSize: fontSize,
+            fill: fill,
+            align: align
         });
 
         this.valueText.x = position.x;
         this.valueText.y = position.y;
-
+        this.valueText.anchor.set(0.5);
         app.stage.addChild(this.valueText);
     }
 

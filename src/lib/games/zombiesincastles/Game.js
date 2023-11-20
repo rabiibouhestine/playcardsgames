@@ -8,11 +8,11 @@ import { App } from '$lib/games/utils/App';
 import { Card } from '$lib/games/utils/Card';
 import { Cards } from '$lib/games/utils/Cards';
 import { Dealer } from '$lib/games/utils/Dealer';
+import { Number } from "$lib/games/utils/Number";
 
 import { Layout } from "./Layout";
 import { ConfirmButton } from "./ConfirmButton";
 import { InfoPanel } from "./InfoPanel";
-import { StatPanel } from "./StatPanel";
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -121,8 +121,8 @@ export class Game extends App {
 
 
         // Royal Stats
-        this.royalHealth = new StatPanel(this.app, {x:100, y: 100}, 20);
-        this.royalAttack = new StatPanel(this.app, {x:350, y: 100}, 10);
+        this.royalHealth = new Number(this.app, {x:135, y: 112}, 20, {});
+        this.royalAttack = new Number(this.app, {x:385, y: 112}, 10, {});
 
         // Info Panel
         this.infoPanel = new InfoPanel(this.app, {x: 350, y: 368});
