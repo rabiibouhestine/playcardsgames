@@ -53,7 +53,7 @@ export class Game extends App {
             faceUp: true,
             isInteractive: true,
             location: "joker",
-            onPointerUp: this.handleJokerClick.bind(this)
+            onPointerUp: this.handleJoker.bind(this)
         });
 
         this.jokerRight = new Card(this.app, this.spritesheet, paramsAtlas, {
@@ -62,7 +62,7 @@ export class Game extends App {
             faceUp: true,
             isInteractive: true,
             location: "joker",
-            onPointerUp: this.handleJokerClick.bind(this)
+            onPointerUp: this.handleJoker.bind(this)
         });
 
         this.royalsPile = new Cards(this.app, this.spritesheet, paramsAtlas, {
@@ -138,21 +138,19 @@ export class Game extends App {
         this.confirmButton.update(this.phase, this.getSelectionValue());
     }
 
-    handleJokerClick(card) {
-        if (card.location === 'joker') {
-            // flip joker card
-            card.flip(false, false);
+    handleJoker(card) {
+        // flip joker card
+        card.flip(false, false);
 
-            // discard hand
-            const handCards = this.hand.removeCards(this.hand.cards.length);
-            this.discardPile.addCards(handCards);
-            this.discardPile.adjustCards(false, false);
+        // discard hand
+        const handCards = this.hand.removeCards(this.hand.cards.length);
+        this.discardPile.addCards(handCards);
+        this.discardPile.adjustCards(false, false);
 
-            // draw 8 cards
-            const cards = this.drawPile.removeCards(8);
-            this.hand.addCards(cards);
-            this.hand.adjustCards(false, true);
-        }
+        // draw 8 cards
+        const cards = this.drawPile.removeCards(8);
+        this.hand.addCards(cards);
+        this.hand.adjustCards(false, true);
     }
 
     handleCardClick(card) {
