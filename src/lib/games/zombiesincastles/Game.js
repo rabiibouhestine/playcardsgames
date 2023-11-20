@@ -159,7 +159,29 @@ export class Game extends App {
 
     handleCardOver(card) {
         if (card.location === 'hand') {
-            this.infoPanel.setValue(card.params.value);
+            let effect;
+            switch (card.params.suit) {
+                case 'H':
+                    effect = "♥ Revives cards";
+                    break;
+                case 'D':
+                    effect = "♦ Draws cards";
+                    break;
+                case 'S':
+                    effect = "♠ Reduces target's attack";
+                    break;
+                case 'C':
+                    effect = "♣ Doubles damage";
+                    break;
+                default:
+                    break;
+            }
+            const royalSuit = paramsAtlas[this.royalsPile.getTopCard().faceName].suit;
+            if (card.params.suit === royalSuit) {
+                effect = "Current target is immune to effect"
+            }
+            const infoText = "Value: " + card.params.value + " ( " + effect + " )";
+            this.infoPanel.setValue(infoText);
         }
     }
 
