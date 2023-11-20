@@ -52,7 +52,7 @@ export class Game extends App {
             position: {x: 576, y: 117},
             faceUp: true,
             isInteractive: true,
-            location: "joker",
+            location: "jokerLeft",
             onPointerUp: this.handleJoker.bind(this)
         });
 
@@ -61,7 +61,7 @@ export class Game extends App {
             position: {x: 666, y: 117},
             faceUp: true,
             isInteractive: true,
-            location: "joker",
+            location: "jokerRight",
             onPointerUp: this.handleJoker.bind(this)
         });
 
@@ -133,12 +133,24 @@ export class Game extends App {
         });
         
         // Game Variables
+        this.jokerLeftAlive = true;
+        this.jokerRightAlive = true;
         this.phase = 'attack';
         this.selectionNames = [];
         this.confirmButton.update(this.phase, this.getSelectionValue());
     }
 
     handleJoker(card) {
+        // disable joker
+        card.setInteractive(false);
+
+        // set joker dead
+        if (card.location === 'jokerLeft') {
+            this.jokerLeftAlive = false;
+        } else {
+            this.jokerRightAlive = false;
+        }
+
         // flip joker card
         card.flip(false, false);
 
@@ -214,6 +226,15 @@ export class Game extends App {
                 this.handleDiscard();
             } else {
                 this.infoPanel.setValue(selectionCheck, 'error');
+            }
+        }
+        if (!this.hand.cards.length) {
+            if (!this.jokerLeftAlive && !this.jokerRightAlive) {
+                // game over
+            } else if (this.jokerLeftAlive) {
+                this.handleJoker(this.jokerLeft);
+            } else {
+                this.handleJoker(this.jokerRight);
             }
         }
     }
