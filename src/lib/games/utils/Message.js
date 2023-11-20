@@ -1,11 +1,11 @@
 import * as PIXI from "pixi.js";
 
 export class Message {
-    constructor(app, position) {
+    constructor(app, position, fontSize = 18) {
         this.text = new PIXI.Text("", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 18,
+            fontSize: fontSize,
             fill: 0xFFFFFF,
             align: 'center'
         });
