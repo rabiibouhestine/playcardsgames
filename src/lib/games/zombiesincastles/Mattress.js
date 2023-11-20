@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-export class Layout {
+export class Mattress {
     constructor(app) {
 
         // Add hand zone to mattress

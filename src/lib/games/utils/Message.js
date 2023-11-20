@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-export class InfoPanel {
+export class Message {
     constructor(app, position) {
         this.text = new PIXI.Text("", {
             fontFamily: 'Arial',

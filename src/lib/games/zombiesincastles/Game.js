@@ -9,10 +9,10 @@ import { Card } from '$lib/games/utils/Card';
 import { Cards } from '$lib/games/utils/Cards';
 import { Dealer } from '$lib/games/utils/Dealer';
 import { Number } from "$lib/games/utils/Number";
+import { Message } from "$lib/games/utils/Message";
 
-import { Layout } from "./Layout";
+import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";
-import { InfoPanel } from "./InfoPanel";
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -27,7 +27,7 @@ export class Game extends App {
         );
         await this.spritesheet.parse();
 
-        this.layout = new Layout(this.app);
+        this.Mattress = new Mattress(this.app);
 
         const dealer = new Dealer();
 
@@ -125,7 +125,7 @@ export class Game extends App {
         this.royalAttack = new Number(this.app, {x:385, y: 112}, 10, {});
 
         // Info Panel
-        this.infoPanel = new InfoPanel(this.app, {x: 350, y: 368});
+        this.Message = new Message(this.app, {x: 350, y: 368});
 
         // Confirm Button
         this.confirmButton = new ConfirmButton(this.app, {
@@ -203,13 +203,13 @@ export class Game extends App {
                 effect = "Current target is immune to effect"
             }
             const infoText = "Value: " + card.params.value + " ( " + effect + " )";
-            this.infoPanel.setValue(infoText);
+            this.Message.setValue(infoText);
         }
     }
 
     handleCardOut(card) {
         if (card.location === 'hand') {
-            this.infoPanel.clear();
+            this.Message.clear();
         }
     }
 
@@ -219,14 +219,14 @@ export class Game extends App {
             if (selectionCheck === 'valid') {
                 this.handleAttack();
             } else {
-                this.infoPanel.setValue(selectionCheck, 'error');
+                this.Message.setValue(selectionCheck, 'error');
             }
         } else {
             const selectionCheck = this.checkDiscardSelection();
             if (selectionCheck === 'valid') {
                 this.handleDiscard();
             } else {
-                this.infoPanel.setValue(selectionCheck, 'error');
+                this.Message.setValue(selectionCheck, 'error');
             }
         }
         const handValue = this.hand.cards.reduce((accumulator, card) => {
