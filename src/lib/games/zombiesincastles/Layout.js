@@ -90,5 +90,32 @@ export class Layout {
         castleZone.drawRoundedRect(210, 32, 100, 150, 8);
         castleZone.endFill();
         app.stage.addChild(castleZone);
+
+        // Add royal attack label
+        const royalAttackLabel = new PIXI.Text("Attack", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 32,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        royalAttackLabel.anchor.set(0.5);
+        royalAttackLabel.x = 385;
+        royalAttackLabel.y = 57;
+        app.stage.addChild(royalAttackLabel);
+
+        // Add royal health label
+        const royalHealthLabel = new PIXI.Text("Health", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 32,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        royalHealthLabel.anchor.set(0.5);
+        royalHealthLabel.x = 135;
+        royalHealthLabel.y = 57;
+        app.stage.addChild(royalHealthLabel);
+
     }
 }
