@@ -27,14 +27,14 @@ export class Layout {
         // Add discard pile background to mattress
         const discardPileBackground = new PIXI.Graphics();
         discardPileBackground.beginFill(0x000000, 0.25);
-        discardPileBackground.drawRoundedRect(536, 222, 80, 110, 8);
+        discardPileBackground.drawRoundedRect(536, 222, 80, 110, 6);
         discardPileBackground.endFill();
         app.stage.addChild(discardPileBackground);
 
         // Add draw pile background to mattress
         const drawPileBackground = new PIXI.Graphics();
         drawPileBackground.beginFill(0x000000, 0.25);
-        drawPileBackground.drawRoundedRect(626, 222, 80, 110, 8);
+        drawPileBackground.drawRoundedRect(626, 222, 80, 110, 6);
         drawPileBackground.endFill();
         app.stage.addChild(drawPileBackground);
 
