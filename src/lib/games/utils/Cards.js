@@ -76,7 +76,7 @@ export class Cards {
     removeSelection(selectionNames) {
         const selection = this.cards.filter(card => selectionNames.includes(card.faceName));
         this.cards = this.cards.filter(card => !selectionNames.includes(card.faceName));
-        this.counter.setValue(this.cards.length, false);
+        this.counter.setValue(this.cards.length, true);
         return selection;
     }
 
@@ -96,7 +96,7 @@ export class Cards {
                 removedCards = [];
                 break;
         }
-        this.counter.setValue(this.cards.length, false);
+        this.counter.setValue(this.cards.length, true);
         return removedCards;
     }
 
@@ -114,7 +114,7 @@ export class Cards {
             default:
                 break;
         }
-        this.counter.setValue(this.cards.length, false);
+        this.counter.setValue(this.cards.length, true);
     }
 
     shuffleCards() {
