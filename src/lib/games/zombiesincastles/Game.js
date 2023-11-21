@@ -178,8 +178,7 @@ export class Game extends App {
             destination: this.discardPile,
             positionSource: 'top',
             positionDestination: 'top',
-            faceUpSource: true,
-            faceUpDestination: false
+            inSequence: false
         });
 
         // draw 8 cards
@@ -188,9 +187,7 @@ export class Game extends App {
             source: this.drawPile ,
             destination: this.hand,
             positionSource: 'top',
-            positionDestination: 'top',
-            faceUpSource: false,
-            faceUpDestination: true
+            positionDestination: 'top'
         });
     }
 
