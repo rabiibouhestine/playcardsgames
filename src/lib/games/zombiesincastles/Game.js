@@ -29,12 +29,12 @@ export class Game extends App {
 
         this.Mattress = new Mattress(this.app);
 
-        const dealer = new Dealer();
+        this.dealer = new Dealer();
 
 
         // GAME SETUP
 
-        const pileDeck = dealer.shuffleCards([
+        const pileDeck = this.dealer.shuffleCards([
             'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS',
             'AC', '2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', 'TC',
             'AH', '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', 'TH',
@@ -42,9 +42,9 @@ export class Game extends App {
         ]);
 
         const royalsDeck = [
-            ...dealer.shuffleCards(['KD', 'KS', 'KH', 'KC']),
-            ...dealer.shuffleCards(['QD', 'QS', 'QH', 'QC']),
-            ...dealer.shuffleCards(['JD', 'JS', 'JH', 'JC'])
+            ...this.dealer.shuffleCards(['KD', 'KS', 'KH', 'KC']),
+            ...this.dealer.shuffleCards(['QD', 'QS', 'QH', 'QC']),
+            ...this.dealer.shuffleCards(['JD', 'JS', 'JH', 'JC'])
         ];
 
         this.jokerLeft = new Card(this.app, this.spritesheet, paramsAtlas, {
@@ -245,7 +245,7 @@ export class Game extends App {
         }
     }
 
-    handleAttack() {
+    async handleAttack() {
         // royal suit
         const royalSuit = paramsAtlas[this.royalsPile.getTopCard().faceName].suit;
 
@@ -262,29 +262,33 @@ export class Game extends App {
         this.hand.adjustCards(false, true);
         this.field.addCards(selectedCards);
         this.field.adjustCards(false, true);
+        await this.dealer.delay(600);
 
         // resolve hearts
-        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H" && royalSuit !== "H")) {
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H" && royalSuit !== "H") && this.discardPile.cards.length) {
             this.discardPile.shuffleCards();
             const cards = this.discardPile.removeCards(selectionValue);
             this.drawPile.addCards(cards, 'bottom');
             this.drawPile.adjustCards(false, false);
+            await this.dealer.delay(600);
         }
 
         // resolve diamonds
-        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "D" && royalSuit !== "D")) {
+        if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "D" && royalSuit !== "D") && this.drawPile.cards.length) {
             const nbMissing = 8 -  this.hand.cards.length;
             const nbDraw = Math.min(nbMissing, selectionValue);
 
             const cards = this.drawPile.removeCards(nbDraw);
             this.hand.addCards(cards);
             this.hand.adjustCards(false, true);
+            await this.dealer.delay(600);
         }
 
         // resolve spades
         if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "S" && royalSuit !== "S")) {
             const newRoyalAttack = Math.max(0, this.royalAttack.getValue() - selectionValue);
             this.royalAttack.setValue(newRoyalAttack);
+            await this.dealer.delay(600);
         }
 
         // resolve clubs
@@ -295,6 +299,7 @@ export class Game extends App {
         // deal damage
         const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
         this.royalHealth.setValue(newRoyalHealth);
+        await this.dealer.delay(800);
 
         // resolve state
         if (this.royalHealth.getValue() === 0) {
@@ -302,6 +307,7 @@ export class Game extends App {
             const fieldCards = this.field.removeCards(this.field.length);
             this.discardPile.addCards(fieldCards);
             this.discardPile.adjustCards(false, false);
+            await this.dealer.delay(600);
 
             // move royal to discardPile
             const deadRoyal = this.royalsPile.removeCards(1);

@@ -13,4 +13,12 @@ export class Dealer {
         return shuffled;
     }
 
+    delay(ms) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(); // Resolve the Promise after the specified time (ms)
+          }, ms);
+        });
+    }
+
 }
