@@ -246,6 +246,10 @@ export class Game extends App {
     }
 
     async handleAttack() {
+        // update phase
+        this.phase = 'resolving';
+        this.confirmButton.update(this.phase);
+
         // royal suit
         const royalSuit = paramsAtlas[this.royalsPile.getTopCard().faceName].suit;
 
@@ -335,6 +339,10 @@ export class Game extends App {
     }
 
     handleDiscard() {
+        // update phase
+        this.phase = 'resolving';
+        this.confirmButton.update(this.phase);
+
         // move selected cards to discardPile
         const selectedCards = this.hand.removeSelection(this.selectionNames);
         this.hand.adjustCards(false, true);

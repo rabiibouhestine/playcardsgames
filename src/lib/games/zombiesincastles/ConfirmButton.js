@@ -32,7 +32,7 @@ export class ConfirmButton {
         this.app.stage.addChild(this.container);
     }
 
-    update(phase, selectionValue) {
+    update(phase, selectionValue = 0) {
         switch (phase) {
             case 'attack':
                 this.label.text = "Attack " + "( " + selectionValue + " )";
