@@ -317,15 +317,21 @@ export class Game extends App {
                 faceUpDestination: false
             });
 
-            // move royal to discardPile
-            const deadRoyal = this.royalsPile.removeCards(1);
-            this.discardPile.addCards(deadRoyal);
-            this.discardPile.adjustCards({immediate: false, faceUp: false});
-
             // reset royal stats
             const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
             this.royalHealth.setValue(newRoyalStats.health);
             this.royalAttack.setValue(newRoyalStats.value);
+
+            // move royal to discardPile
+            await this.dealer.moveCards({
+                nbCards: 1,
+                source: this.royalsPile ,
+                destination: this.discardPile,
+                positionSource: 'top',
+                positionDestination: 'top',
+                faceUpSource: true,
+                faceUpDestination: false
+            });
 
             // reset selection
             this.selectionNames = [];
