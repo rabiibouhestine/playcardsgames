@@ -70,7 +70,7 @@ export class Game extends App {
             faceNames: royalsDeck,
             backName: "B1",
             position: {x: 260, y: 117},
-            faceUp: true,
+            faceUp: false,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
             onPointerOut: this.handleCardOut.bind(this)
@@ -121,10 +121,15 @@ export class Game extends App {
         this.hand.addCards(startingHandCards);
         this.hand.adjustCards({immediate: false, faceUp: true});
 
+        // flip top royal
+        this.royalsPile.getTopCard().flip(true);
 
         // Royal Stats
-        this.royalHealth = new Number(this.app, {x:135, y: 112}, 20, {});
-        this.royalAttack = new Number(this.app, {x:385, y: 112}, 10, {});
+        this.royalHealth = new Number(this.app, {x:135, y: 112}, 0, {});
+        this.royalAttack = new Number(this.app, {x:385, y: 112}, 0, {});
+
+        this.royalHealth.setValue(20);
+        this.royalAttack.setValue(10);
 
         // Info Panel
         this.Message = new Message(this.app, {x: 350, y: 368});
@@ -319,13 +324,8 @@ export class Game extends App {
                 faceUpDestination: false
             });
 
-            // reset royal stats
-            const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
-            this.royalHealth.setValue(newRoyalStats.health);
-            this.royalAttack.setValue(newRoyalStats.value);
-
             // move royal to discardPile
-            await this.dealer.moveCards({
+            this.dealer.moveCards({
                 nbCards: 1,
                 source: this.royalsPile ,
                 destination: this.discardPile,
@@ -334,6 +334,14 @@ export class Game extends App {
                 faceUpSource: true,
                 faceUpDestination: false
             });
+
+            // flip top royal
+            this.royalsPile.getTopCard().flip(true);
+
+            // reset royal stats
+            const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
+            this.royalHealth.setValue(newRoyalStats.health);
+            await this.royalAttack.setValue(newRoyalStats.value);
 
             // reset selection
             this.selectionNames = [];
