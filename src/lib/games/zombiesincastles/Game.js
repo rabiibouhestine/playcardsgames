@@ -117,9 +117,16 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        const startingHandCards = this.drawPile.removeCards(8);
-        this.hand.addCards(startingHandCards);
-        this.hand.adjustCards({immediate: false, faceUp: true});
+        // draw 8 cards
+        this.dealer.moveCards({
+            nbCards: 8,
+            source: this.drawPile ,
+            destination: this.hand,
+            positionSource: 'top',
+            positionDestination: 'top',
+            faceUpSource: false,
+            faceUpDestination: true
+        });
 
         // flip top royal
         this.royalsPile.getTopCard().flip(true);
@@ -148,7 +155,7 @@ export class Game extends App {
         this.gameOverEvent = new Event("gameOver", { bubbles: true, cancelable: false });
     }
 
-    handleJoker(card) {
+    async handleJoker(card) {
         // disable joker
         card.setInteractive(false);
 
@@ -163,14 +170,26 @@ export class Game extends App {
         card.flip(false, false);
 
         // discard hand
-        const handCards = this.hand.removeCards(this.hand.cards.length);
-        this.discardPile.addCards(handCards);
-        this.discardPile.adjustCards({immediate: false, faceUp: false});
+        await this.dealer.moveCards({
+            nbCards: this.hand.cards.length,
+            source: this.hand ,
+            destination: this.discardPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            faceUpSource: true,
+            faceUpDestination: false
+        });
 
         // draw 8 cards
-        const cards = this.drawPile.removeCards(8);
-        this.hand.addCards(cards);
-        this.hand.adjustCards({immediate: false, faceUp: true});
+        this.dealer.moveCards({
+            nbCards: 8,
+            source: this.drawPile ,
+            destination: this.hand,
+            positionSource: 'top',
+            positionDestination: 'top',
+            faceUpSource: false,
+            faceUpDestination: true
+        });
     }
 
     handleCardClick(card) {
