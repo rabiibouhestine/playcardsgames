@@ -307,10 +307,15 @@ export class Game extends App {
         // resolve state
         if (this.royalHealth.getValue() === 0) {
             // move field cards to discard pile
-            const fieldCards = this.field.removeCards(this.field.length);
-            this.discardPile.addCards(fieldCards);
-            this.discardPile.adjustCards({immediate: false, faceUp: false});
-            await this.dealer.delay(600);
+            await this.dealer.moveCards({
+                nbCards: this.field.cards.length,
+                source: this.field ,
+                destination: this.discardPile,
+                positionSource: 'top',
+                positionDestination: 'top',
+                faceUpSource: true,
+                faceUpDestination: false
+            });
 
             // move royal to discardPile
             const deadRoyal = this.royalsPile.removeCards(1);
