@@ -231,18 +231,6 @@ export class Game extends App {
                 this.Message.setValue(selectionCheck, 'error');
             }
         }
-        const handValue = this.hand.cards.reduce((accumulator, card) => {
-            return accumulator + paramsAtlas[card.faceName].value;
-        }, 0);
-        if (!this.hand.cards.length || (this.phase === 'discard' && handValue < this.royalAttack.value)) {
-            if (!this.jokerLeftAlive && !this.jokerRightAlive) {
-                this.handleGameOver();
-            } else if (this.jokerLeftAlive) {
-                this.handleJoker(this.jokerLeft);
-            } else {
-                this.handleJoker(this.jokerRight);
-            }
-        }
     }
 
     async handleAttack() {
@@ -325,10 +313,12 @@ export class Game extends App {
 
             // reset selection
             this.selectionNames = [];
+            this.phase = 'attack';
             this.confirmButton.update(this.phase, this.getSelectionValue());
         } else if (this.royalAttack.getValue() === 0) {
             // reset selection
             this.selectionNames = [];
+            this.phase = 'attack';
             this.confirmButton.update(this.phase, this.getSelectionValue());
         } else {
             // set phase
@@ -336,9 +326,12 @@ export class Game extends App {
             this.phase = 'discard';
             this.confirmButton.update(this.phase, this.getSelectionValue());
         }
+
+        // check game over
+        this.checkGameOver();
     }
 
-    handleDiscard() {
+    async handleDiscard() {
         // update phase
         this.phase = 'resolving';
         this.confirmButton.update(this.phase);
@@ -348,11 +341,15 @@ export class Game extends App {
         this.hand.adjustCards(false, true);
         this.discardPile.addCards(selectedCards);
         this.discardPile.adjustCards(false, false);
+        await this.dealer.delay(600);
 
         // update phase
         this.phase = 'attack';
         this.selectionNames = [];
         this.confirmButton.update(this.phase, this.getSelectionValue());
+
+        // check game over
+        this.checkGameOver();
     }
 
     checkAttackSelection(){    
@@ -413,6 +410,28 @@ export class Game extends App {
         return this.selectionNames.reduce((accumulator, cardName) => {
             return accumulator + paramsAtlas[cardName].value;
         }, 0);
+    }
+
+    checkGameOver() {
+        const handValue = this.hand.cards.reduce((accumulator, card) => {
+            return accumulator + paramsAtlas[card.faceName].value;
+        }, 0);
+        if (!this.hand.cards.length || (this.phase === 'discard' && handValue < this.royalAttack.value)) {
+            if (!this.jokerLeftAlive && !this.jokerRightAlive) {
+                this.handleGameOver();
+            } else {
+                // reset selection
+                this.selectionNames = [];
+                this.phase = 'attack';
+                this.confirmButton.update(this.phase, this.getSelectionValue());
+                // flip joker
+                if (this.jokerLeftAlive) {
+                    this.handleJoker(this.jokerLeft);
+                } else {
+                    this.handleJoker(this.jokerRight);
+                }
+            }
+        }
     }
 
     handleGameOver() {
