@@ -7,7 +7,7 @@ export class ConfirmButton {
         // Define button graphic
         this.graphic = new PIXI.Graphics();
         this.graphic.beginFill(0x000000, 0.25);
-        this.graphic.drawRoundedRect(-100, -25, 200, 50, 8);
+        this.graphic.drawRoundedRect(-125, -25, 250, 50, 8);
         this.graphic.endFill();
         
         // Define button label
@@ -35,17 +35,17 @@ export class ConfirmButton {
     update(phase, selectionValue = 0) {
         switch (phase) {
             case 'attack':
-                this.label.text = "Attack " + "( " + selectionValue + " )";
+                this.label.text = "Deal " + selectionValue + " damage";
                 this.container.eventMode = 'static';
                 this.container.cursor = 'pointer';
                 break;
             case 'discard':
-                this.label.text = "Discard " + "( " + selectionValue + " )";
+                this.label.text = "Take " + selectionValue + " damage";
                 this.container.eventMode = 'static';
                 this.container.cursor = 'pointer';
                 break;
             case 'resolving':
-                this.label.text = "Resolving";
+                this.label.text = "Resolving effects";
                 this.container.eventMode = 'none';
                 this.container.cursor = 'default';
                 break;

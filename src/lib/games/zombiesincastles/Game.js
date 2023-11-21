@@ -200,7 +200,18 @@ export class Game extends App {
                 card.sprite.y = card.position.y - 20;
                 this.selectionNames.push(card.faceName);
             }
-            this.confirmButton.update(this.phase, this.getSelectionValue());
+
+            if (this.phase === 'attack') {
+                let damage = this.getSelectionValue();
+                const royalSuit = paramsAtlas[this.royalsPile.getTopCard().faceName].suit;
+                if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "C" && royalSuit !== "C")) {
+                    damage = damage * 2
+                }
+                this.confirmButton.update(this.phase, damage);
+            }
+            if (this.phase === 'discard') {
+                this.confirmButton.update(this.phase, this.getSelectionValue());
+            }
         }
     }
 
