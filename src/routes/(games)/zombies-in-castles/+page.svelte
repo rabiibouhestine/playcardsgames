@@ -33,10 +33,6 @@
 	<div class="h-full">
 		<div bind:this={canvas} class="h-full" />
 	</div>
-	<div class="w-full grid justify-items-center absolute bottom-0 select-none text-white">
-		<h1 class="text-md font-bold">ABOUT THE GAME</h1>
-		<ArrowDownIcon />
-	</div>
 </div>
 <div class="bg-base-100">
 	<article class="max-w-screen-md mx-auto py-10">
