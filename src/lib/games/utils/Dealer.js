@@ -58,7 +58,6 @@ export class Dealer {
         selectionNames,
         source,
         destination,
-        positionSource = 'top',
         positionDestination = 'top',
         faceUpSource = false,
         faceUpDestination = true,
