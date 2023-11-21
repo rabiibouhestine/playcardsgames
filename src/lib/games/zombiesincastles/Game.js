@@ -119,7 +119,7 @@ export class Game extends App {
 
         const startingHandCards = this.drawPile.removeCards(8);
         this.hand.addCards(startingHandCards);
-        this.hand.adjustCards(false, true);
+        this.hand.adjustCards({immediate: false, faceUp: true});
 
 
         // Royal Stats
@@ -160,12 +160,12 @@ export class Game extends App {
         // discard hand
         const handCards = this.hand.removeCards(this.hand.cards.length);
         this.discardPile.addCards(handCards);
-        this.discardPile.adjustCards(false, false);
+        this.discardPile.adjustCards({immediate: false, faceUp: false});
 
         // draw 8 cards
         const cards = this.drawPile.removeCards(8);
         this.hand.addCards(cards);
-        this.hand.adjustCards(false, true);
+        this.hand.adjustCards({immediate: false, faceUp: true});
     }
 
     handleCardClick(card) {
@@ -251,9 +251,9 @@ export class Game extends App {
 
         // move selected cards to field
         const selectedCards = this.hand.removeSelection(this.selectionNames);
-        this.hand.adjustCards(false, true);
+        this.hand.adjustCards({immediate: false, faceUp: true});
         this.field.addCards(selectedCards);
-        this.field.adjustCards(false, true);
+        this.field.adjustCards({immediate: false, faceUp: true});
         await this.dealer.delay(600);
 
         // resolve hearts
@@ -261,7 +261,7 @@ export class Game extends App {
             this.discardPile.shuffleCards();
             const cards = this.discardPile.removeCards(selectionValue);
             this.drawPile.addCards(cards, 'bottom');
-            this.drawPile.adjustCards(false, false);
+            this.drawPile.adjustCards({immediate: false, faceUp: false});
             await this.dealer.delay(600);
         }
 
@@ -270,12 +270,11 @@ export class Game extends App {
             const nbMissing = 8 -  this.hand.cards.length;
             const nbDraw = Math.min(nbMissing, selectionValue);
 
-            for (let i=1; i <= nbDraw; i++) {
-                const cards = this.drawPile.removeCards(1);
-                this.hand.addCards(cards);
-                this.hand.adjustCards(false, true);
-                await this.dealer.delay(i == nbDraw ? 600 : 100);
-            }
+            await this.dealer.moveCards({
+                nbCards: nbDraw,
+                source: this.drawPile ,
+                destination: this.hand
+            });
         }
 
         // resolve spades
@@ -300,13 +299,13 @@ export class Game extends App {
             // move field cards to discard pile
             const fieldCards = this.field.removeCards(this.field.length);
             this.discardPile.addCards(fieldCards);
-            this.discardPile.adjustCards(false, false);
+            this.discardPile.adjustCards({immediate: false, faceUp: false});
             await this.dealer.delay(600);
 
             // move royal to discardPile
             const deadRoyal = this.royalsPile.removeCards(1);
             this.discardPile.addCards(deadRoyal);
-            this.discardPile.adjustCards(false, false);
+            this.discardPile.adjustCards({immediate: false, faceUp: false});
 
             // reset royal stats
             const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
@@ -340,9 +339,9 @@ export class Game extends App {
 
         // move selected cards to discardPile
         const selectedCards = this.hand.removeSelection(this.selectionNames);
-        this.hand.adjustCards(false, true);
+        this.hand.adjustCards({immediate: false, faceUp: true});
         this.discardPile.addCards(selectedCards);
-        this.discardPile.adjustCards(false, false);
+        this.discardPile.adjustCards({immediate: false, faceUp: false});
         await this.dealer.delay(600);
 
         // update phase

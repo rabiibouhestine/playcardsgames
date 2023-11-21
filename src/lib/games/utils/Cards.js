@@ -41,12 +41,12 @@ export class Cards {
             });
             this.cards.push(card);
         }
-        this.adjustCards(true, faceUp);
+        this.adjustCards({immediate: true, faceUp: faceUp});
 
         this.counter = new Number(app, position, this.cards.length, { visible: counter, fontSize: 24 });
     }
 
-    adjustCards(immediate = false, faceUp = false) {
+    adjustCards({immediate = false, faceUp = false}) {
 
         if (this.type === "pile") {
             for (let index = 0; index < this.cards.length; index++) {

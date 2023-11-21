@@ -21,4 +21,17 @@ export class Dealer {
         });
     }
 
+    async moveCards({nbCards, source, positionSource = 'top', destination, positionDestination = 'top'}) {
+        for (let i=1; i <= nbCards; i++) {
+            const cards = source.removeCards(1, positionSource);
+            source.adjustCards({immediate: false, faceUp: false});
+            destination.addCards(cards, positionDestination);
+            destination.adjustCards({immediate: false, faceUp: true});
+            await this.delay(i == nbCards ? 600 : 100);
+        }
+        return new Promise((resolve) => {
+            resolve();
+        });
+    }
+
 }
