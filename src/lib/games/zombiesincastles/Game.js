@@ -270,10 +270,12 @@ export class Game extends App {
             const nbMissing = 8 -  this.hand.cards.length;
             const nbDraw = Math.min(nbMissing, selectionValue);
 
-            const cards = this.drawPile.removeCards(nbDraw);
-            this.hand.addCards(cards);
-            this.hand.adjustCards(false, true);
-            await this.dealer.delay(600);
+            for (let i=1; i <= nbDraw; i++) {
+                const cards = this.drawPile.removeCards(1);
+                this.hand.addCards(cards);
+                this.hand.adjustCards(false, true);
+                await this.dealer.delay(i == nbDraw ? 600 : 100);
+            }
         }
 
         // resolve spades
