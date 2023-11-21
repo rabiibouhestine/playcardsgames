@@ -250,11 +250,16 @@ export class Game extends App {
         let damage = selectionValue;
 
         // move selected cards to field
-        const selectedCards = this.hand.removeSelection(this.selectionNames);
-        this.hand.adjustCards({immediate: false, faceUp: true});
-        this.field.addCards(selectedCards);
-        this.field.adjustCards({immediate: false, faceUp: true});
-        await this.dealer.delay(600);
+        await this.dealer.moveSelection({
+            selectionNames: this.selectionNames,
+            source: this.hand ,
+            destination: this.field,
+            positionSource: 'top',
+            positionDestination: 'top',
+            faceUpSource: true,
+            faceUpDestination: true,
+            inSequence: false
+        });
 
         // resolve hearts
         if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H" && royalSuit !== "H") && this.discardPile.cards.length) {

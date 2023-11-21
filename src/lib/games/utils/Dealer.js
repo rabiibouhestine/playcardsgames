@@ -41,9 +41,9 @@ export class Dealer {
                 await this.delay(i == nbCards ? 600 : 100);
             }
         } else {
-            const card = source.removeCards(nbCards, positionSource);
+            const cards = source.removeCards(nbCards, positionSource);
             source.adjustCards({immediate: immediate, faceUp: faceUpSource});
-            destination.addCards(card, positionDestination);
+            destination.addCards(cards, positionDestination);
             destination.adjustCards({immediate: immediate, faceUp: faceUpDestination});
             if (!immediate) {
                 await this.delay(600);
@@ -53,5 +53,40 @@ export class Dealer {
             resolve();
         });
     }
+
+    async moveSelection({
+        selectionNames,
+        source,
+        destination,
+        positionSource = 'top',
+        positionDestination = 'top',
+        faceUpSource = false,
+        faceUpDestination = true,
+        immediate = false,
+        inSequence = true
+    }) {
+        if (inSequence) {
+            for (const index in selectionNames) {
+                const name = selectionNames[index];
+                const card = source.removeSelection(name);
+                source.adjustCards({immediate: false, faceUp: faceUpSource});
+                destination.addCards(card, positionDestination);
+                destination.adjustCards({immediate: false, faceUp: faceUpDestination});
+                await this.delay(index == selectionNames.length - 1 ? 600 : 100);
+            }
+        } else {
+            const cards = source.removeSelection(selectionNames);
+            source.adjustCards({immediate: immediate, faceUp: faceUpSource});
+            destination.addCards(cards, positionDestination);
+            destination.adjustCards({immediate: immediate, faceUp: faceUpDestination});
+            if (!immediate) {
+                await this.delay(600);
+            }
+        }
+        return new Promise((resolve) => {
+            resolve();
+        });
+    }
+
 
 }
