@@ -21,6 +21,7 @@ export class Cards {
     }) {
         this.name = name;
         this.position = position;
+        this.faceUp = faceUp;
         this.type = type;
         this.gap = gap;
         this.isInteractive = isInteractive;
@@ -46,13 +47,13 @@ export class Cards {
         this.counter = new Number(app, position, this.cards.length, { visible: counter, fontSize: 24 });
     }
 
-    adjustCards({immediate = false, faceUp = false}) {
+    adjustCards({immediate = false}) {
 
         if (this.type === "pile") {
             for (let index = 0; index < this.cards.length; index++) {
                 this.cards[index].location = this.name;
                 this.cards[index].setInteractive(this.isInteractive);
-                this.cards[index].flip(faceUp, immediate);
+                this.cards[index].flip(this.faceUp, immediate);
                 this.cards[index].moveTo(this.position.x, this.position.y, immediate);
             }
         } else {
@@ -66,7 +67,7 @@ export class Cards {
                 };
                 this.cards[index].location = this.name;
                 this.cards[index].setInteractive(this.isInteractive);
-                this.cards[index].flip(faceUp, immediate);
+                this.cards[index].flip(this.faceUp, immediate);
                 this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
             }
         }

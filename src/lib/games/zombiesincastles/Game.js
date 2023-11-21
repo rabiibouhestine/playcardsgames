@@ -80,6 +80,7 @@ export class Game extends App {
             type: 'pile',
             faceNames: pileDeck,
             position: {x: 666, y: 277},
+            faceUp: false,
             counter: true,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
@@ -90,6 +91,7 @@ export class Game extends App {
             type: 'pile',
             faceNames: [],
             position: {x: 576, y: 277},
+            faceUp: false,
             counter: true,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
@@ -101,6 +103,7 @@ export class Game extends App {
             type: 'tableau',
             gap: 10,
             position: {x: 260, y: 267},
+            faceUp: true,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
             onPointerOut: this.handleCardOut.bind(this)
@@ -111,6 +114,7 @@ export class Game extends App {
             type: 'tableau',
             gap: 8,
             position: {x: 360, y: 467},
+            faceUp: true,
             isInteractive: true,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
@@ -123,9 +127,7 @@ export class Game extends App {
             source: this.drawPile ,
             destination: this.hand,
             positionSource: 'top',
-            positionDestination: 'top',
-            faceUpSource: false,
-            faceUpDestination: true
+            positionDestination: 'top'
         });
 
         // flip top royal

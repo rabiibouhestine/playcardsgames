@@ -27,24 +27,22 @@ export class Dealer {
         destination,
         positionSource = 'top',
         positionDestination = 'top',
-        faceUpSource = false,
-        faceUpDestination = true,
         immediate = false,
         inSequence = true
     }) {
         if (inSequence) {
             for (let i=1; i <= nbCards; i++) {
                 const card = source.removeCards(1, positionSource);
-                source.adjustCards({immediate: false, faceUp: faceUpSource});
+                source.adjustCards({immediate: false});
                 destination.addCards(card, positionDestination);
-                destination.adjustCards({immediate: false, faceUp: faceUpDestination});
+                destination.adjustCards({immediate: false});
                 await this.delay(i == nbCards ? 600 : 100);
             }
         } else {
             const cards = source.removeCards(nbCards, positionSource);
-            source.adjustCards({immediate: immediate, faceUp: faceUpSource});
+            source.adjustCards({immediate: immediate});
             destination.addCards(cards, positionDestination);
-            destination.adjustCards({immediate: immediate, faceUp: faceUpDestination});
+            destination.adjustCards({immediate: immediate});
             if (!immediate) {
                 await this.delay(600);
             }
@@ -59,8 +57,6 @@ export class Dealer {
         source,
         destination,
         positionDestination = 'top',
-        faceUpSource = false,
-        faceUpDestination = true,
         immediate = false,
         inSequence = true
     }) {
@@ -68,16 +64,16 @@ export class Dealer {
             for (const index in selectionNames) {
                 const name = selectionNames[index];
                 const card = source.removeSelection(name);
-                source.adjustCards({immediate: false, faceUp: faceUpSource});
+                source.adjustCards({immediate: false});
                 destination.addCards(card, positionDestination);
-                destination.adjustCards({immediate: false, faceUp: faceUpDestination});
+                destination.adjustCards({immediate: false});
                 await this.delay(index == selectionNames.length - 1 ? 600 : 100);
             }
         } else {
             const cards = source.removeSelection(selectionNames);
-            source.adjustCards({immediate: immediate, faceUp: faceUpSource});
+            source.adjustCards({immediate: immediate});
             destination.addCards(cards, positionDestination);
-            destination.adjustCards({immediate: immediate, faceUp: faceUpDestination});
+            destination.adjustCards({immediate: immediate});
             if (!immediate) {
                 await this.delay(600);
             }
