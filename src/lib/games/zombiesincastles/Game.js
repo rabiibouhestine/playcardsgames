@@ -279,7 +279,11 @@ export class Game extends App {
             await this.dealer.moveCards({
                 nbCards: nbDraw,
                 source: this.drawPile ,
-                destination: this.hand
+                destination: this.hand,
+                positionSource: 'top',
+                positionDestination: 'top',
+                faceUpSource: false,
+                faceUpDestination: true
             });
         }
 
