@@ -341,7 +341,7 @@ export class Game extends App {
             // reset royal stats
             const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
             this.royalHealth.setValue(newRoyalStats.health);
-            await this.royalAttack.setValue(newRoyalStats.value);
+            this.royalAttack.setValue(newRoyalStats.value);
 
             // reset selection
             this.selectionNames = [];
