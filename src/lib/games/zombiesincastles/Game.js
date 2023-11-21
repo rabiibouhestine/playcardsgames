@@ -364,11 +364,16 @@ export class Game extends App {
         this.confirmButton.update(this.phase);
 
         // move selected cards to discardPile
-        const selectedCards = this.hand.removeSelection(this.selectionNames);
-        this.hand.adjustCards({immediate: false, faceUp: true});
-        this.discardPile.addCards(selectedCards);
-        this.discardPile.adjustCards({immediate: false, faceUp: false});
-        await this.dealer.delay(600);
+        await this.dealer.moveSelection({
+            selectionNames: this.selectionNames,
+            source: this.hand ,
+            destination: this.discardPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            faceUpSource: true,
+            faceUpDestination: false,
+            inSequence: false
+        });
 
         // update phase
         this.phase = 'attack';
