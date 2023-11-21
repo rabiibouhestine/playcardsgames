@@ -21,13 +21,33 @@ export class Dealer {
         });
     }
 
-    async moveCards({nbCards, source, positionSource = 'top', destination, positionDestination = 'top'}) {
-        for (let i=1; i <= nbCards; i++) {
-            const cards = source.removeCards(1, positionSource);
-            source.adjustCards({immediate: false, faceUp: false});
-            destination.addCards(cards, positionDestination);
-            destination.adjustCards({immediate: false, faceUp: true});
-            await this.delay(i == nbCards ? 600 : 100);
+    async moveCards({
+        nbCards,
+        source,
+        destination,
+        positionSource = 'top',
+        positionDestination = 'top',
+        faceUpSource = false,
+        faceUpDestination = true,
+        immediate = false,
+        inSequence = true
+    }) {
+        if (inSequence) {
+            for (let i=1; i <= nbCards; i++) {
+                const card = source.removeCards(1, positionSource);
+                source.adjustCards({immediate: false, faceUp: faceUpSource});
+                destination.addCards(card, positionDestination);
+                destination.adjustCards({immediate: false, faceUp: faceUpDestination});
+                await this.delay(i == nbCards ? 600 : 100);
+            }
+        } else {
+            const card = source.removeCards(nbCards, positionSource);
+            source.adjustCards({immediate: immediate, faceUp: faceUpSource});
+            destination.addCards(card, positionDestination);
+            destination.adjustCards({immediate: immediate, faceUp: faceUpDestination});
+            if (!immediate) {
+                await this.delay(600);
+            }
         }
         return new Promise((resolve) => {
             resolve();
