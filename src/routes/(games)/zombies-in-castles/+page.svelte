@@ -1,7 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
 	import Header from '$lib/components/Header.svelte';
-	import ArrowDownIcon from '$lib/components/ArrowDownIcon.svelte';
 	import { Game } from '$lib/games/zombiesincastles/Game.js';
 
 	let game;
