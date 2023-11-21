@@ -294,8 +294,7 @@ export class Game extends App {
         // resolve spades
         if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "S" && royalSuit !== "S")) {
             const newRoyalAttack = Math.max(0, this.royalAttack.getValue() - selectionValue);
-            this.royalAttack.setValue(newRoyalAttack);
-            await this.dealer.delay(600);
+            await this.royalAttack.setValue(newRoyalAttack);
         }
 
         // resolve clubs
@@ -305,8 +304,7 @@ export class Game extends App {
 
         // deal damage
         const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
-        this.royalHealth.setValue(newRoyalHealth);
-        await this.dealer.delay(800);
+        await this.royalHealth.setValue(newRoyalHealth);
 
         // resolve state
         if (this.royalHealth.getValue() === 0) {

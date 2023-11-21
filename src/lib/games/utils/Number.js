@@ -36,30 +36,36 @@ export class Number {
     setValue(value, immediate = false) {
         this.value = value;
 
-        if (immediate) {
-            this.valueText.text = value;
-        } else {
-            const propreties = {
-                value: parseInt(this.valueText.text)
-            };
-    
-            const tween = new TWEEN.Tween(propreties, false)
-                .to({
-                    value: value
-                }, 600)
-                .onUpdate(() => {
-                    this.valueText.text = Math.floor(propreties.value);
-                })
-                .start()
-    
-            const updateValue = (delta) => {
-                if (!tween.isPlaying()) return;
-                tween.update(delta);
-                requestAnimationFrame(updateValue);
-            };
+        return new Promise((resolve) => {
+            if (immediate) {
+                this.valueText.text = value;
+                resolve();
+            } else {
+                const propreties = {
+                    value: parseInt(this.valueText.text)
+                };
         
-            requestAnimationFrame(updateValue);
-        }
-
+                const tween = new TWEEN.Tween(propreties, false)
+                    .to({
+                        value: value
+                    }, 600)
+                    .onUpdate(() => {
+                        this.valueText.text = Math.floor(propreties.value);
+                    })
+                    .onComplete(() => {
+                        resolve();
+                    })
+                    .start()
+        
+                const updateValue = (delta) => {
+                    if (!tween.isPlaying()) return;
+                    tween.update(delta);
+                    requestAnimationFrame(updateValue);
+                };
+            
+                requestAnimationFrame(updateValue);
+            }
+        });
     }
+
 }
