@@ -259,10 +259,16 @@ export class Game extends App {
         // resolve hearts
         if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "H" && royalSuit !== "H") && this.discardPile.cards.length) {
             this.discardPile.shuffleCards();
-            const cards = this.discardPile.removeCards(selectionValue);
-            this.drawPile.addCards(cards, 'bottom');
-            this.drawPile.adjustCards({immediate: false, faceUp: false});
-            await this.dealer.delay(600);
+
+            await this.dealer.moveCards({
+                nbCards: selectionValue,
+                source: this.discardPile ,
+                destination: this.drawPile,
+                positionSource: 'top',
+                positionDestination: 'bottom',
+                faceUpSource: false,
+                faceUpDestination: false
+            });
         }
 
         // resolve diamonds
