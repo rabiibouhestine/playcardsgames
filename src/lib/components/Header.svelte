@@ -3,13 +3,13 @@
 
 	export let title = '';
 
-	let theme = 'dracula';
+	let theme = 'sunset';
 
 	function toggleTheme() {
-		if (theme === 'dracula') {
+		if (theme === 'sunset') {
 			theme = 'autumn';
 		} else {
-			theme = 'dracula';
+			theme = 'sunset';
 		}
 	}
 </script>
