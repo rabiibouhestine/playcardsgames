@@ -167,6 +167,7 @@ export class Game extends App {
         this.selectionNames = [];
         this.phase = 'resolving';
         this.confirmButton.update(this.phase, this.getSelectionValue());
+        this.app.stage.eventMode = 'none';
 
         this.jokerLeftAlive = true;
         this.jokerRightAlive = true;
@@ -251,6 +252,7 @@ export class Game extends App {
         this.selectionNames = [];
         this.phase = 'attack';
         this.confirmButton.update(this.phase, this.getSelectionValue());
+        this.app.stage.eventMode = 'static';
     }
 
     async handleJoker(card) {
