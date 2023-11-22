@@ -28,7 +28,7 @@ export class Game extends App {
         );
         await this.spritesheet.parse();
 
-        this.Mattress = new Mattress(this.gameContainer);
+        this.Mattress = new Mattress(this.mattressContainer);
 
         this.dealer = new Dealer();
 

@@ -17,6 +17,9 @@ export class App {
         window.addEventListener('resize', () => {this.resize()});
         this.canvasRef.appendChild(this.app.view);
 
+        this.mattressContainer = new PIXI.Container();
+        this.app.stage.addChild(this.mattressContainer);
+
         this.gameContainer = new PIXI.Container();
         this.app.stage.addChild(this.gameContainer);
 
