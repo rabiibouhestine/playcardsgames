@@ -20,8 +20,8 @@ export class App {
         this.gameContainer = new PIXI.Container();
         this.app.stage.addChild(this.gameContainer);
 
-        this.gameOverContainer = new PIXI.Container();
-        this.app.stage.addChild(this.gameOverContainer);
+        this.modalContainer = new PIXI.Container();
+        this.app.stage.addChild(this.modalContainer);
     }
 
     resize() {
