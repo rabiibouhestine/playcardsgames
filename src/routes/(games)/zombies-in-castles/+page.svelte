@@ -29,8 +29,8 @@
 
 <div class="flex flex-col h-screen relative bg-emerald-600">
 	<Header title="Zombies in Castles" />
-	<div class="h-full">
-		<div bind:this={canvas} class="h-full" />
+	<div class="flex flex-col h-full">
+		<div bind:this={canvas} class="grow" />
 	</div>
 </div>
 <div class="bg-base-100">
