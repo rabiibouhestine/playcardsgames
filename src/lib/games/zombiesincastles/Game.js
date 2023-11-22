@@ -28,7 +28,7 @@ export class Game extends App {
         );
         await this.spritesheet.parse();
 
-        this.Mattress = new Mattress(this.app);
+        this.Mattress = new Mattress(this.gameContainer);
 
         this.dealer = new Dealer();
 
@@ -48,7 +48,7 @@ export class Game extends App {
             ...this.dealer.shuffleCards(['JD', 'JS', 'JH', 'JC'])
         ];
 
-        this.jokerLeft = new Card(this.app, this.spritesheet, paramsAtlas, {
+        this.jokerLeft = new Card(this.gameContainer, this.spritesheet, paramsAtlas, {
             faceName: 'J1',
             position: {x: 576, y: 117},
             faceUp: true,
@@ -57,7 +57,7 @@ export class Game extends App {
             onPointerUp: this.handleJoker.bind(this)
         });
 
-        this.jokerRight = new Card(this.app, this.spritesheet, paramsAtlas, {
+        this.jokerRight = new Card(this.gameContainer, this.spritesheet, paramsAtlas, {
             faceName: 'J2',
             position: {x: 666, y: 117},
             faceUp: true,
@@ -66,7 +66,7 @@ export class Game extends App {
             onPointerUp: this.handleJoker.bind(this)
         });
 
-        this.royalsPile = new Cards(this.app, this.spritesheet, paramsAtlas, {
+        this.royalsPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: royalsDeck,
             backName: "B1",
@@ -77,7 +77,7 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        this.drawPile = new Cards(this.app, this.spritesheet, paramsAtlas, {
+        this.drawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: pileDeck,
             position: {x: 666, y: 277},
@@ -88,7 +88,7 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        this.discardPile = new Cards(this.app, this.spritesheet, paramsAtlas, {
+        this.discardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
             position: {x: 576, y: 277},
@@ -99,7 +99,7 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        this.field = new Cards(this.app, this.spritesheet, paramsAtlas, {
+        this.field = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             name: 'field',
             type: 'tableau',
             gap: 10,
@@ -110,7 +110,7 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        this.hand = new Cards(this.app, this.spritesheet, paramsAtlas, {
+        this.hand = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             name: 'hand',
             type: 'tableau',
             gap: 8,
@@ -135,22 +135,22 @@ export class Game extends App {
         this.royalsPile.getTopCard().flip(true);
 
         // Royal Stats
-        this.royalHealth = new Number(this.app, {x:135, y: 112}, 0, {});
-        this.royalAttack = new Number(this.app, {x:385, y: 112}, 0, {});
+        this.royalHealth = new Number(this.gameContainer, {x:135, y: 112}, 0, {});
+        this.royalAttack = new Number(this.gameContainer, {x:385, y: 112}, 0, {});
 
         this.royalHealth.setValue(20);
         this.royalAttack.setValue(10);
 
         // Info Panel
-        this.Message = new Message(this.app, {x: 350, y: 368});
+        this.Message = new Message(this.gameContainer, {x: 350, y: 368});
 
         // Confirm Button
-        this.confirmButton = new ConfirmButton(this.app, {
+        this.confirmButton = new ConfirmButton(this.gameContainer, {
             onPointerDown: this.handleConfirm.bind(this)
         });
         
         // Reset Button
-        this.resetButton = new ResetButton(this.app, {
+        this.resetButton = new ResetButton(this.gameContainer, {
             onPointerDown: this.handleReset.bind(this)
         });
 
@@ -167,7 +167,7 @@ export class Game extends App {
         this.selectionNames = [];
         this.phase = 'resolving';
         this.confirmButton.update(this.phase, this.getSelectionValue());
-        this.app.stage.eventMode = 'none';
+        this.gameContainer.eventMode = 'none';
 
         this.jokerLeftAlive = true;
         this.jokerRightAlive = true;
@@ -252,7 +252,7 @@ export class Game extends App {
         this.selectionNames = [];
         this.phase = 'attack';
         this.confirmButton.update(this.phase, this.getSelectionValue());
-        this.app.stage.eventMode = 'static';
+        this.gameContainer.eventMode = 'static';
     }
 
     async handleJoker(card) {

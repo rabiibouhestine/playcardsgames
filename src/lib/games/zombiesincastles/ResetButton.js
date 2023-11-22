@@ -1,8 +1,8 @@
 import * as PIXI from "pixi.js";
 
 export class ResetButton {
-    constructor(app, {onPointerDown}) {
-        this.app = app;
+    constructor(gameContainer, {onPointerDown}) {
+        this.gameContainer = gameContainer;
 
         // Define button graphic
         this.graphic = new PIXI.Graphics();
@@ -29,7 +29,7 @@ export class ResetButton {
         this.container.y = 585;
         this.container.addChild(this.graphic);
         this.container.addChild(this.label);
-        this.app.stage.addChild(this.container);
+        this.gameContainer.addChild(this.container);
 
         this.container
             .on('pointerover', () => {this.graphic.alpha = 0.75})

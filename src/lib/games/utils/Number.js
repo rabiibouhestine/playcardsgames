@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class Number {
-    constructor(app, position, value, {
+    constructor(gameContainer, position, value, {
         z = 999,
         visible = true,
         fontFamily = 'Arial',
@@ -26,7 +26,7 @@ export class Number {
         this.valueText.anchor.set(0.5);
         this.valueText.visible = visible;
         this.valueText.z = z;
-        app.stage.addChild(this.valueText);
+        gameContainer.addChild(this.valueText);
     }
 
     getValue() {

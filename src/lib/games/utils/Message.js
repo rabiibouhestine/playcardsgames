@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 
 export class Message {
-    constructor(app, position, fontSize = 18) {
+    constructor(gameContainer, position, fontSize = 18) {
         this.text = new PIXI.Text("", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
@@ -14,7 +14,7 @@ export class Message {
         this.text.x = position.x;
         this.text.y = position.y;
 
-        app.stage.addChild(this.text);
+        gameContainer.addChild(this.text);
     }
 
     setValue(value, type) {

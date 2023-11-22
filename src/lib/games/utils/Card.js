@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class Card {
-    constructor(app, spritesheet, parameters, {
+    constructor(gameContainer, spritesheet, parameters, {
         faceName,
         backName = 'B1',
         position,
@@ -14,7 +14,7 @@ export class Card {
         onPointerOver = () => {},
         onPointerOut = () => {}
     }) {
-        this.app = app;
+        this.gameContainer = gameContainer;
         this.spritesheet = spritesheet;
         this.params = parameters[faceName];
         this.faceName = faceName;
@@ -47,11 +47,11 @@ export class Card {
             this.sprite.on('pointerdown', this.onDragStart, this);
             this.sprite.on('pointerup', this.onDragEnd, this);
             this.sprite.on('pointerupoutside', this.onDragEnd, this);
-            app.stage.eventMode = 'static';
-            app.stage.on('pointermove', this.onDragMove, this);
+            gameContainer.eventMode = 'static';
+            gameContainer.on('pointermove', this.onDragMove, this);
         }
 
-        app.stage.addChild(this.sprite);
+        gameContainer.addChild(this.sprite);
     }
 
     onPointerOver() {
@@ -69,14 +69,14 @@ export class Card {
             this.sprite.on('pointerdown', this.onDragStart, this);
             this.sprite.on('pointerup', this.onDragEnd, this);
             this.sprite.on('pointerupoutside', this.onDragEnd, this);
-            app.stage.eventMode = 'static';
-            app.stage.on('pointermove', this.onDragMove, this);
+            gameContainer.eventMode = 'static';
+            gameContainer.on('pointermove', this.onDragMove, this);
         } else {
             this.sprite.off('pointerdown', this.onDragStart, this);
             this.sprite.off('pointerup', this.onDragEnd, this);
             this.sprite.off('pointerupoutside', this.onDragEnd, this);
-            app.stage.eventMode = 'none';
-            app.stage.off('pointermove', this.onDragMove, this);
+            gameContainer.eventMode = 'none';
+            gameContainer.off('pointermove', this.onDragMove, this);
         }
     }
 

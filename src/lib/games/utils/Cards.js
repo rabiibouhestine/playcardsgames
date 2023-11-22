@@ -3,7 +3,7 @@ import { Dealer } from '$lib/games/utils/Dealer';
 import { Number } from '$lib/games/utils/Number';
 
 export class Cards {
-    constructor(app, spritesheet, parameters, {
+    constructor(gameContainer, spritesheet, parameters, {
         name = '',
         faceNames = [],
         backName = 'B1',
@@ -29,7 +29,7 @@ export class Cards {
         this.cards = [];
 
         for (const faceName of faceNames) {
-            const card = new Card(app, spritesheet, parameters, {
+            const card = new Card(gameContainer, spritesheet, parameters, {
                 faceName: faceName,
                 backName: backName,
                 position: position,
@@ -44,7 +44,7 @@ export class Cards {
         }
         this.adjustCards({immediate: true, faceUp: faceUp});
 
-        this.counter = new Number(app, position, this.cards.length, { visible: counter, fontSize: 24 });
+        this.counter = new Number(gameContainer, position, this.cards.length, { visible: counter, fontSize: 24 });
     }
 
     adjustCards({immediate = false}) {
