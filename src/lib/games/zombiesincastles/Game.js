@@ -300,6 +300,11 @@ export class Game extends App {
             positionDestination: 'top'
         });
 
+        // reset selection
+        this.selectionNames = [];
+        this.phase = 'attack';
+        this.confirmButton.update(this.phase, this.getSelectionValue());
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
     }
