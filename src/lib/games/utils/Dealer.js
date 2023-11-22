@@ -28,7 +28,8 @@ export class Dealer {
         positionSource = 'top',
         positionDestination = 'top',
         immediate = false,
-        inSequence = true
+        inSequence = true,
+        shuffle = false
     }) {
         if (inSequence) {
             for (let i=1; i <= nbCards; i++) {
@@ -39,8 +40,11 @@ export class Dealer {
                 await this.delay(i == nbCards ? 600 : 100);
             }
         } else {
-            const cards = source.removeCards(nbCards, positionSource);
+            let cards = source.removeCards(nbCards, positionSource);
             source.adjustCards({immediate: immediate});
+            if (shuffle) {
+                cards = this.shuffleCards(cards);
+            }
             destination.addCards(cards, positionDestination);
             destination.adjustCards({immediate: immediate});
             if (!immediate) {
@@ -58,7 +62,8 @@ export class Dealer {
         destination,
         positionDestination = 'top',
         immediate = false,
-        inSequence = true
+        inSequence = true,
+        shuffle = false
     }) {
         if (inSequence) {
             for (const index in selectionNames) {
@@ -70,8 +75,11 @@ export class Dealer {
                 await this.delay(index == selectionNames.length - 1 ? 600 : 100);
             }
         } else {
-            const cards = source.removeSelection(selectionNames);
+            let cards = source.removeSelection(selectionNames);
             source.adjustCards({immediate: immediate});
+            if (shuffle) {
+                cards = this.shuffleCards(cards);
+            }
             destination.addCards(cards, positionDestination);
             destination.adjustCards({immediate: immediate});
             if (!immediate) {
