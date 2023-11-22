@@ -164,10 +164,12 @@ export class Game extends App {
     }
 
     async handleReset() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         this.selectionNames = [];
         this.phase = 'resolving';
         this.confirmButton.update(this.phase, this.getSelectionValue());
-        this.gameContainer.eventMode = 'none';
 
         this.jokerLeftAlive = true;
         this.jokerRightAlive = true;
@@ -252,10 +254,15 @@ export class Game extends App {
         this.selectionNames = [];
         this.phase = 'attack';
         this.confirmButton.update(this.phase, this.getSelectionValue());
+
+        // enable interactions
         this.gameContainer.eventMode = 'static';
     }
 
     async handleJoker(card) {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         // disable joker
         card.setInteractive(false);
 
@@ -280,13 +287,16 @@ export class Game extends App {
         });
 
         // draw 8 cards
-        this.dealer.moveCards({
+        await this.dealer.moveCards({
             nbCards: 8,
             source: this.drawPile ,
             destination: this.hand,
             positionSource: 'top',
             positionDestination: 'top'
         });
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     handleCardClick(card) {
@@ -366,6 +376,9 @@ export class Game extends App {
     }
 
     async handleAttack() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         // update phase
         this.phase = 'resolving';
         this.confirmButton.update(this.phase);
@@ -476,11 +489,17 @@ export class Game extends App {
             this.confirmButton.update(this.phase, this.getSelectionValue());
         }
 
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
+
         // check game over
         this.checkGameOver();
     }
 
     async handleDiscard() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         // update phase
         this.phase = 'resolving';
         this.confirmButton.update(this.phase);
@@ -498,6 +517,9 @@ export class Game extends App {
         this.phase = 'attack';
         this.selectionNames = [];
         this.confirmButton.update(this.phase, this.getSelectionValue());
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
 
         // check game over
         this.checkGameOver();
