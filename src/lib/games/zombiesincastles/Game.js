@@ -173,7 +173,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         this.selectionNames = [];
-        this.phase = 'resolving';
+        this.phase = 'reset';
         this.confirmButton.update(this.phase, this.getSelectionValue());
 
         this.jokerLeftAlive = true;

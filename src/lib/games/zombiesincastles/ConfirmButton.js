@@ -53,6 +53,13 @@ export class ConfirmButton {
                 this.graphic.tint = 0x8d6e63;
                 this.graphic.alpha = 1;
                 break;
+            case 'reset':
+                this.label.text = "Restting game";
+                this.container.eventMode = 'none';
+                this.container.cursor = 'default';
+                this.graphic.tint = 0x000000;
+                this.graphic.alpha = 0.25;
+                break;
             case 'resolving':
                 this.label.text = "Resolving effects";
                 this.container.eventMode = 'none';
