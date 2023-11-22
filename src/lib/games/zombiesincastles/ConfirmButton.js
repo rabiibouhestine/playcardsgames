@@ -6,8 +6,7 @@ export class ConfirmButton {
 
         // Define button graphic
         this.graphic = new PIXI.Graphics();
-        this.graphic.lineStyle(2, 0x000000, 0.25);
-        this.graphic.beginFill(0xFFFFFF);
+        this.graphic.beginFill(0xFFFFFF, 1);
         this.graphic.drawRoundedRect(-125, -25, 250, 50, 8);
         this.graphic.endFill();
         
@@ -34,7 +33,7 @@ export class ConfirmButton {
 
         this.container
             .on('pointerover', () => {this.graphic.alpha = 0.75})
-            .on('pointerout', () => {this.graphic.alpha = 1})
+            .on('pointerout', () => {this.graphic.alpha = 0.50})
     }
 
     update(phase, selectionValue = 0) {
@@ -43,15 +42,15 @@ export class ConfirmButton {
                 this.label.text = "Deal " + selectionValue + " damage";
                 this.container.eventMode = 'static';
                 this.container.cursor = 'pointer';
-                this.graphic.tint = 0x42a5f5;
-                this.graphic.alpha = 1;
+                this.graphic.tint = 0x0d47a1;
+                this.graphic.alpha = 0.5;
                 break;
             case 'discard':
                 this.label.text = "Take " + selectionValue + " damage";
                 this.container.eventMode = 'static';
                 this.container.cursor = 'pointer';
-                this.graphic.tint = 0x8d6e63;
-                this.graphic.alpha = 1;
+                this.graphic.tint = 0xbf360c;
+                this.graphic.alpha = 0.5;
                 break;
             case 'reset':
                 this.label.text = "Restting game";
