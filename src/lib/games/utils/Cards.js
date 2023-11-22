@@ -19,6 +19,7 @@ export class Cards {
         onPointerOver = () => {},
         onPointerOut = () => {}
     }) {
+        this.gameContainer = gameContainer;
         this.name = name;
         this.position = position;
         this.faceUp = faceUp;
@@ -55,6 +56,7 @@ export class Cards {
                 this.cards[index].setInteractive(this.isInteractive);
                 this.cards[index].flip(this.faceUp, immediate);
                 this.cards[index].moveTo(this.position.x, this.position.y, immediate);
+                this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
             }
         } else {
             const startX = this.position.x - ((80 + this.gap)/2) * (this.cards.length - 1);
@@ -69,6 +71,7 @@ export class Cards {
                 this.cards[index].setInteractive(this.isInteractive);
                 this.cards[index].flip(this.faceUp, immediate);
                 this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
+                this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
             }
         }
     }
