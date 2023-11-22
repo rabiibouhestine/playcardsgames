@@ -163,14 +163,86 @@ export class Game extends App {
         this.gameOverEvent = new Event("gameOver", { bubbles: true, cancelable: false });
     }
 
-    handleReset() {
+    async handleReset() {
+        this.selectionNames = [];
+        this.phase = 'resolving';
+        this.confirmButton.update(this.phase, this.getSelectionValue());
+
         this.dealer.moveCards({
             nbCards: this.hand.cards.length,
             source: this.hand ,
             destination: this.drawPile,
+            inSequence: false
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.field.cards.length,
+            source: this.field ,
+            destination: this.drawPile,
+            inSequence: false
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.royalsPile.cards.length,
+            source: this.royalsPile ,
+            destination: this.drawPile,
+            inSequence: false
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.discardPile.cards.length,
+            source: this.discardPile ,
+            destination: this.drawPile,
+            inSequence: false
+        });
+
+        this.royalHealth.setValue(0);
+        this.royalAttack.setValue(0);
+
+        await this.dealer.delay(800);
+
+        this.dealer.moveSelection({
+            selectionNames: ['KD', 'KS', 'KH', 'KC'],
+            source: this.drawPile ,
+            destination: this.royalsPile,
+            inSequence: false,
+            shuffle: true
+        });
+
+        this.dealer.moveSelection({
+            selectionNames: ['QD', 'QS', 'QH', 'QC'],
+            source: this.drawPile ,
+            destination: this.royalsPile,
+            inSequence: false,
+            shuffle: true
+        });
+
+        this.dealer.moveSelection({
+            selectionNames: ['JD', 'JS', 'JH', 'JC'],
+            source: this.drawPile ,
+            destination: this.royalsPile,
+            inSequence: false,
+            shuffle: true
+        });
+
+        await this.dealer.delay(600);
+
+        this.royalsPile.getTopCard().flip(true);
+        this.royalHealth.setValue(20);
+        this.royalAttack.setValue(10);
+
+        this.drawPile.shuffleCards();
+        await this.dealer.moveCards({
+            nbCards: 8,
+            source: this.drawPile ,
+            destination: this.hand,
             positionSource: 'top',
             positionDestination: 'top'
         });
+
+        this.selectionNames = [];
+        this.phase = 'attack';
+        this.confirmButton.update(this.phase, this.getSelectionValue());
     }
 
     async handleJoker(card) {
