@@ -168,6 +168,11 @@ export class Game extends App {
         this.phase = 'resolving';
         this.confirmButton.update(this.phase, this.getSelectionValue());
 
+        this.jokerLeftAlive = true;
+        this.jokerRightAlive = true;
+        this.jokerLeft.flip(true);
+        this.jokerRight.flip(true);
+
         this.dealer.moveCards({
             nbCards: this.hand.cards.length,
             source: this.hand ,
@@ -239,6 +244,9 @@ export class Game extends App {
             positionSource: 'top',
             positionDestination: 'top'
         });
+
+        this.jokerLeft.setInteractive(true);
+        this.jokerRight.setInteractive(true);
 
         this.selectionNames = [];
         this.phase = 'attack';
