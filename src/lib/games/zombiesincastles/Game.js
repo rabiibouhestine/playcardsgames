@@ -32,6 +32,8 @@ export class Game extends App {
 
         this.dealer = new Dealer();
 
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
 
         // GAME SETUP
 
@@ -122,25 +124,6 @@ export class Game extends App {
             onPointerOut: this.handleCardOut.bind(this)
         });
 
-        // draw 8 cards
-        this.dealer.moveCards({
-            nbCards: 8,
-            source: this.drawPile ,
-            destination: this.hand,
-            positionSource: 'top',
-            positionDestination: 'top'
-        });
-
-        // flip top royal
-        this.royalsPile.getTopCard().flip(true);
-
-        // Royal Stats
-        this.royalHealth = new Number(this.gameContainer, {x:135, y: 112}, 0, {});
-        this.royalAttack = new Number(this.gameContainer, {x:385, y: 112}, 0, {});
-
-        this.royalHealth.setValue(20);
-        this.royalAttack.setValue(10);
-
         // Info Panel
         this.Message = new Message(this.gameContainer, {x: 350, y: 368});
 
@@ -161,6 +144,28 @@ export class Game extends App {
         this.selectionNames = [];
         this.confirmButton.update(this.phase, this.getSelectionValue());
         this.gameOverEvent = new Event("gameOver", { bubbles: true, cancelable: false });
+
+        // flip top royal
+        this.royalsPile.getTopCard().flip(true);
+
+        // Royal Stats
+        this.royalHealth = new Number(this.gameContainer, {x:135, y: 112}, 0, {});
+        this.royalAttack = new Number(this.gameContainer, {x:385, y: 112}, 0, {});
+
+        this.royalHealth.setValue(20);
+        this.royalAttack.setValue(10);
+
+        // draw 8 cards
+        await this.dealer.moveCards({
+            nbCards: 8,
+            source: this.drawPile ,
+            destination: this.hand,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     async handleReset() {
