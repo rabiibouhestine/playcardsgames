@@ -7,7 +7,7 @@
 
 	function toggleTheme() {
 		if (theme === 'night') {
-			theme = 'autumn';
+			theme = 'aqua';
 		} else {
 			theme = 'night';
 		}
