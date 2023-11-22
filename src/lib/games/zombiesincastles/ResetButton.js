@@ -6,9 +6,10 @@ export class ResetButton {
 
         // Define button graphic
         this.graphic = new PIXI.Graphics();
-        this.graphic.beginFill(0x000000, 0.25);
+        this.graphic.beginFill(0x000000, 1);
         this.graphic.drawRoundedRect(-50, -25, 100, 50, 8);
         this.graphic.endFill();
+        this.graphic.alpha = 0.25;
 
         // Define button label
         this.label = new PIXI.Text("Reset", {
@@ -32,7 +33,7 @@ export class ResetButton {
         this.gameContainer.addChild(this.container);
 
         this.container
-            .on('pointerover', () => {this.graphic.alpha = 0.75})
-            .on('pointerout', () => {this.graphic.alpha = 1})
+            .on('pointerover', () => {this.graphic.alpha = 0.50})
+            .on('pointerout', () => {this.graphic.alpha = 0.25})
     }
 }
