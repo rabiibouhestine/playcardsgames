@@ -164,7 +164,13 @@ export class Game extends App {
     }
 
     handleReset() {
-
+        this.dealer.moveCards({
+            nbCards: this.hand.cards.length,
+            source: this.hand ,
+            destination: this.drawPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
     }
 
     async handleJoker(card) {
@@ -299,8 +305,6 @@ export class Game extends App {
             source: this.hand ,
             destination: this.field,
             positionDestination: 'top',
-            faceUpSource: true,
-            faceUpDestination: true,
             inSequence: false
         });
 
@@ -313,9 +317,7 @@ export class Game extends App {
                 source: this.discardPile ,
                 destination: this.drawPile,
                 positionSource: 'top',
-                positionDestination: 'bottom',
-                faceUpSource: false,
-                faceUpDestination: false
+                positionDestination: 'bottom'
             });
         }
 
@@ -329,9 +331,7 @@ export class Game extends App {
                 source: this.drawPile ,
                 destination: this.hand,
                 positionSource: 'top',
-                positionDestination: 'top',
-                faceUpSource: false,
-                faceUpDestination: true
+                positionDestination: 'top'
             });
         }
 
@@ -358,9 +358,7 @@ export class Game extends App {
                 source: this.field ,
                 destination: this.discardPile,
                 positionSource: 'top',
-                positionDestination: 'top',
-                faceUpSource: true,
-                faceUpDestination: false
+                positionDestination: 'top'
             });
 
             // move royal to discardPile
@@ -369,9 +367,7 @@ export class Game extends App {
                 source: this.royalsPile ,
                 destination: this.discardPile,
                 positionSource: 'top',
-                positionDestination: 'top',
-                faceUpSource: true,
-                faceUpDestination: false
+                positionDestination: 'top'
             });
 
             // flip top royal
@@ -413,8 +409,6 @@ export class Game extends App {
             source: this.hand ,
             destination: this.discardPile,
             positionDestination: 'top',
-            faceUpSource: true,
-            faceUpDestination: false,
             inSequence: false
         });
 
