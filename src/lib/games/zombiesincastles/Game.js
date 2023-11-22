@@ -13,6 +13,7 @@ import { Message } from "$lib/games/utils/Message";
 
 import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";
+import { ResetButton } from "./ResetButton";
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -145,9 +146,14 @@ export class Game extends App {
 
         // Confirm Button
         this.confirmButton = new ConfirmButton(this.app, {
-            onPointerDown: this.handleConfirmButtonClick.bind(this)
+            onPointerDown: this.handleConfirm.bind(this)
         });
         
+        // Reset Button
+        this.resetButton = new ResetButton(this.app, {
+            onPointerDown: this.handleReset.bind(this)
+        });
+
         // Game Variables
         this.jokerLeftAlive = true;
         this.jokerRightAlive = true;
@@ -155,6 +161,10 @@ export class Game extends App {
         this.selectionNames = [];
         this.confirmButton.update(this.phase, this.getSelectionValue());
         this.gameOverEvent = new Event("gameOver", { bubbles: true, cancelable: false });
+    }
+
+    handleReset() {
+
     }
 
     async handleJoker(card) {
@@ -249,7 +259,7 @@ export class Game extends App {
         }
     }
 
-    handleConfirmButtonClick() {
+    handleConfirm() {
         if (this.phase === 'attack') {
             const selectionCheck = this.checkAttackSelection();
             if (selectionCheck === 'valid') {
