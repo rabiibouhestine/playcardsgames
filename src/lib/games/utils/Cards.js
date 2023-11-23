@@ -13,7 +13,6 @@ export class Cards {
         isDraggable = false,
         type = "pile",
         gap = 0,
-        direction = "h",
         counter = false,
         onPointerUp = () => {},
         onPointerOver = () => {},
@@ -50,30 +49,50 @@ export class Cards {
     }
 
     adjustCards({immediate = false}) {
-
-        if (this.type === "pile") {
-            for (let index = 0; index < this.cards.length; index++) {
-                this.cards[index].location = this.name;
-                this.cards[index].setInteractive(this.isInteractive);
-                this.cards[index].flip(this.faceUp, immediate);
-                this.cards[index].moveTo(this.position.x, this.position.y, immediate);
-                this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
-            }
-        } else {
-            const startX = this.position.x - ((80 + this.gap)/2) * (this.cards.length - 1);
-            const startY = this.position.y;
-    
-            for (let index = 0; index < this.cards.length; index++) {
-                const newPosition = {
-                    x: startX + (index * (80 + this.gap)),
-                    y: startY
-                };
-                this.cards[index].location = this.name;
-                this.cards[index].setInteractive(this.isInteractive);
-                this.cards[index].flip(this.faceUp, immediate);
-                this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
-                this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
-            }
+        switch (this.type) {
+            case 'pile':
+                for (let index = 0; index < this.cards.length; index++) {
+                    this.cards[index].location = this.name;
+                    this.cards[index].setInteractive(this.isInteractive);
+                    this.cards[index].flip(this.faceUp, immediate);
+                    this.cards[index].moveTo(this.position.x, this.position.y, immediate);
+                    this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
+                }
+                break;
+            case 'tableau':
+                const startX = this.position.x - ((80 + this.gap)/2) * (this.cards.length - 1);
+                const startY = this.position.y;
+        
+                for (let index = 0; index < this.cards.length; index++) {
+                    const newPosition = {
+                        x: startX + (index * (80 + this.gap)),
+                        y: startY
+                    };
+                    this.cards[index].location = this.name;
+                    this.cards[index].setInteractive(this.isInteractive);
+                    this.cards[index].flip(this.faceUp, immediate);
+                    this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
+                    this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
+                }
+                break;
+            case 'stackH':
+                const stackHStartX = this.position.x - (this.gap/2) * (this.cards.length - 1);
+                const stackHStartY = this.position.y;
+        
+                for (let index = 0; index < this.cards.length; index++) {
+                    const newPosition = {
+                        x: stackHStartX + (index * this.gap),
+                        y: stackHStartY
+                    };
+                    this.cards[index].location = this.name;
+                    this.cards[index].setInteractive(this.isInteractive);
+                    this.cards[index].flip(this.faceUp, immediate);
+                    this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
+                    this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
+                }
+                break;
+            default:
+                break;
         }
     }
 
