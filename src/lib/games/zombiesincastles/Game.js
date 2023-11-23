@@ -520,23 +520,27 @@ export class Game extends App {
                 });
             }
 
-            // flip top royal
-            this.royalsPile.getTopCard().flip(true);
+            if (this.royalsPile.cards.length) {
+                // flip top royal
+                this.royalsPile.getTopCard().flip(true);
 
-            // if new class of royals, turn on all suits icons
-            if (this.royalsPile.cards.length === 8 || this.royalsPile.cards.length === 4) {
-                this.royalSuits.setAllSuits(true);
+                // if new class of royals, turn on all suits icons
+                if (this.royalsPile.cards.length === 8 || this.royalsPile.cards.length === 4) {
+                    this.royalSuits.setAllSuits(true);
+                }
+
+                // reset royal stats
+                const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
+                this.royalHealth.setValue(newRoyalStats.health);
+                await this.royalAttack.setValue(newRoyalStats.value);
+
+                // reset selection
+                this.selectionNames = [];
+                this.phase = 'attack';
+                this.confirmButton.update(this.phase, this.getSelectionValue());
+            } else {
+                this.handleGameOver();
             }
-
-            // reset royal stats
-            const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
-            this.royalHealth.setValue(newRoyalStats.health);
-            await this.royalAttack.setValue(newRoyalStats.value);
-
-            // reset selection
-            this.selectionNames = [];
-            this.phase = 'attack';
-            this.confirmButton.update(this.phase, this.getSelectionValue());
         } else if (this.royalAttack.getValue() === 0) {
             // reset selection
             this.selectionNames = [];
