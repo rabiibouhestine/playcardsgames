@@ -185,6 +185,8 @@ export class Game extends App {
         this.jokerLeft.flip(true);
         this.jokerRight.flip(true);
 
+        this.royalSuits.setAllSuits(false);
+
         this.dealer.moveCards({
             nbCards: this.hand.cards.length,
             source: this.hand ,
@@ -243,6 +245,8 @@ export class Game extends App {
         });
 
         await this.dealer.delay(600);
+
+        this.royalSuits.setAllSuits(true);
 
         this.royalsPile.getTopCard().flip(true);
         this.royalHealth.setValue(20);
@@ -461,6 +465,9 @@ export class Game extends App {
 
         // resolve state
         if (this.royalHealth.getValue() === 0) {
+            // turn off dead royal suit icon
+            this.royalSuits.setSuit(royalSuit, false);
+
             // move field cards to discard pile
             await this.dealer.moveCards({
                 nbCards: this.field.cards.length,
@@ -481,6 +488,11 @@ export class Game extends App {
 
             // flip top royal
             this.royalsPile.getTopCard().flip(true);
+
+            // if new class of royals, turn on all suits icons
+            if (this.royalsPile.cards.length === 8 || this.royalsPile.cards.length === 4) {
+                this.royalSuits.setAllSuits(true);
+            }
 
             // reset royal stats
             const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
