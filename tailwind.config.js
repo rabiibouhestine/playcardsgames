@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				'cards': "url('/src/lib/assets/cards.jpg')"
+				'cards': "url('/src/lib/assets/bgCards.webp')"
 			}
 		}
 	},
