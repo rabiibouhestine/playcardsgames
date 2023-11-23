@@ -2,67 +2,83 @@
 	import Header from '$lib/components/Header.svelte';
 	import CardsIcon from '$lib/components/CardsIcon.svelte';
 	import zombiesInCastlesCover from '$lib/assets/zombiesInCastlesCover.jpg';
+	import clearTheDungeonCover from '$lib/assets/clearTheDungeonCover.webp';
 
 	const games = [
 		{
 			name: 'Zombies in Castles',
-			src: zombiesInCastlesCover
+			src: zombiesInCastlesCover,
+			href: '/zombies-in-castles'
 		},
 		{
 			name: 'Clear the Dungeon',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: clearTheDungeonCover,
+			href: '/clear-the-dungeon'
 		},
 		{
 			name: 'Scoundrel',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Merchant Solitaire',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Card Capture',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Skyway',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Sandwich Guy',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Area 52',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Dead Center',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Boba Tea Shop',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Foursquare',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Loot The Loop',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Syndicate',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Hide and Seek',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'The Emissary',
-			src: 'https://placehold.co/400x400/grey/white'
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		}
 	];
 </script>
@@ -80,7 +96,7 @@
 </div>
 <div class="my-20 flex flex-wrap justify-center gap-10 sm:gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
-		<a href="/zombies-in-castles" class="group">
+		<a href={game.href} class="group">
 			<div
 				class="card overflow-hidden w-80 sm:w-60 bg-base-100 shadow-xl ease-in-out duration-300 group-hover:scale-105"
 			>
