@@ -10,11 +10,12 @@ import { Cards } from '$lib/games/utils/Cards';
 import { Dealer } from '$lib/games/utils/Dealer';
 import { Number } from "$lib/games/utils/Number";
 import { Message } from "$lib/games/utils/Message";
+import { Button } from "$lib/games/utils/Button";
 
 import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";
-import { ResetButton } from "./ResetButton";
 import { RoyalSuits } from "./RoyalSuits";
+import { GameOverPanel } from "./GameOverPanel";
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -134,7 +135,7 @@ export class Game extends App {
         });
         
         // Reset Button
-        this.resetButton = new ResetButton(this.gameContainer, {
+        this.resetButton = new Button(this.gameContainer, {
             onPointerDown: this.handleReset.bind(this)
         });
 
@@ -170,9 +171,19 @@ export class Game extends App {
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
+
+        // game over panel
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleReset.bind(this));
     }
 
     async handleReset() {
+        // hide game over panel
+        this.gameOverPanel.setVisible(false);
+
+        // remove blur
+        this.gameContainer.filters = [];
+        this.mattressContainer.filters = [];
+
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
@@ -659,6 +670,15 @@ export class Game extends App {
     }
 
     handleGameOver() {
-        window.dispatchEvent(this.gameOverEvent);
+        // blur screen
+        const blurFilter = new PIXI.BlurFilter();
+        this.gameContainer.filters = [blurFilter];
+        this.mattressContainer.filters = [blurFilter];
+
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        // show game over panel
+        this.gameOverPanel.setVisible(true);
     }
 }
