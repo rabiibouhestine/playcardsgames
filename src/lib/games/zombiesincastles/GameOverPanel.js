@@ -7,7 +7,7 @@ export class GameOverPanel {
 
         // Add Panel
         this.panelGraphic = new PIXI.Graphics();
-        this.panelGraphic.beginFill(0x000000);
+        this.panelGraphic.beginFill(0x1e88e5);
         this.panelGraphic.drawRoundedRect(-150, -140, 300, 280, 10);
         this.panelGraphic.endFill();
 
@@ -59,7 +59,7 @@ export class GameOverPanel {
         this.resetButton = new Button(this.panelContainer, {
             width: 150,
             height: 50,
-            color: 0xFF0000,
+            color: 0x000000,
             text: "Play Again",
             textSize: 24,
             textColor: 0xFFFFFF,
