@@ -12,6 +12,7 @@ export class Cards {
         isInteractive = false,
         isDraggable = false,
         type = "pile",
+        centered = true,
         gap = 0,
         counter = false,
         onPointerUp = () => {},
