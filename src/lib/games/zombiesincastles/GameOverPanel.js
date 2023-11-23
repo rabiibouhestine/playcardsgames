@@ -84,7 +84,7 @@ export class GameOverPanel {
         };
 
         const tween = new TWEEN.Tween(propreties, false)
-            .to({ alpha: alpha }, 1600)
+            .to({ alpha: alpha }, 1200)
             .easing(TWEEN.Easing.Exponential.Out)
             .onUpdate(() => {
                 this.panelContainer.alpha = propreties.alpha;
