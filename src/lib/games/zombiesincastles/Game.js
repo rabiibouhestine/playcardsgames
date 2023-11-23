@@ -14,6 +14,7 @@ import { Message } from "$lib/games/utils/Message";
 import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";
 import { ResetButton } from "./ResetButton";
+import { RoyalSuits } from "./RoyalSuits";
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -154,6 +155,9 @@ export class Game extends App {
 
         this.royalHealth.setValue(20);
         this.royalAttack.setValue(10);
+
+        // royalSuits
+        this.royalSuits = new RoyalSuits(this.gameContainer);
 
         // draw 8 cards
         await this.dealer.moveCards({
