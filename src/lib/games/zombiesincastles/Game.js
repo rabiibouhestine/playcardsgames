@@ -146,6 +146,7 @@ export class Game extends App {
         this.selectionNames = [];
         this.confirmButton.update(this.phase, this.getSelectionValue());
         this.gameOverEvent = new Event("gameOver", { bubbles: true, cancelable: false });
+        this.royalsDefeated = 0;
 
         // flip top royal
         this.royalsPile.getTopCard().flip(true);
@@ -187,10 +188,15 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
+        // reset royals defeated
+        this.royalsDefeated = 0;
+
+        // set phase to reset
         this.selectionNames = [];
         this.phase = 'reset';
         this.confirmButton.update(this.phase, this.getSelectionValue());
 
+        // reset jokers
         this.jokerLeftAlive = true;
         this.jokerRightAlive = true;
         this.jokerLeft.flip(true);
@@ -479,6 +485,9 @@ export class Game extends App {
 
         // resolve state
         if (this.royalHealth.getValue() === 0) {
+            // update royals defeated number
+            this.royalsDefeated++;
+
             // turn off dead royal suit icon
             this.royalSuits.setSuit(royalSuit, false);
 
@@ -679,6 +688,6 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true);
+        this.gameOverPanel.setVisible(true, this.royalsDefeated);
     }
 }

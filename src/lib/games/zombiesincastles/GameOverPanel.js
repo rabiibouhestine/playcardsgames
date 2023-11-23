@@ -34,7 +34,7 @@ export class GameOverPanel {
         this.royalsDefeatedText.y = -20;
 
         // Add royals defeated numbers text
-        this.royalsDefeatedNumberText = new PIXI.Text("8 / 12", {
+        this.royalsDefeatedNumberText = new PIXI.Text("0 / 12", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 24,
@@ -72,9 +72,10 @@ export class GameOverPanel {
         modalContainer.addChild(this.panelContainer);
     }
 
-    setVisible(isVisible) {
-        this.tweenOpacity(isVisible ? 1 : 0);
+    setVisible(isVisible, nb = 0) {
+        this.royalsDefeatedNumberText.text = nb + " / 12";
         this.panelContainer.eventMode = isVisible ? 'static' : 'none';
+        this.tweenOpacity(isVisible ? 1 : 0);
     }
 
     tweenOpacity(alpha) {
