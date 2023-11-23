@@ -18,8 +18,7 @@
 	<div class="navbar max-w-screen-xl mx-auto">
 		<div class="navbar-start">
 			<a href="/">
-				<!-- svelte-ignore a11y-missing-attribute -->
-				<img src={logo} />
+				<img src={logo} alt="logo" />
 			</a>
 		</div>
 		<div class="navbar-center lg:flex">
