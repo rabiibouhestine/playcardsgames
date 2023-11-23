@@ -1,58 +1,96 @@
 import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
-import clubIcon from '$lib/games/assets/images/club.png';
-import diamondIcon from '$lib/games/assets/images/diamond.png';
-import heartIcon from '$lib/games/assets/images/heart.png';
-import spadeIcon from '$lib/games/assets/images/spade.png';
+import clubsIcon from '$lib/games/assets/images/club.png';
+import diamondsIcon from '$lib/games/assets/images/diamond.png';
+import heartsIcon from '$lib/games/assets/images/heart.png';
+import spadesIcon from '$lib/games/assets/images/spade.png';
 
 export class RoyalSuits {
     constructor(gameContainer) {
         this.gameContainer = gameContainer;
 
-        this.heartSprite = new PIXI.Sprite(PIXI.Texture.from(heartIcon));
-        this.heartSprite.width = 15;
-        this.heartSprite.height = 15;
-        this.heartSprite.anchor.set(0.5);
-        this.heartSprite.x = 230;
-        this.heartSprite.y = 46;
+        this.heartsSprite = new PIXI.Sprite(PIXI.Texture.from(heartsIcon));
+        this.heartsSprite.width = 15;
+        this.heartsSprite.height = 15;
+        this.heartsSprite.anchor.set(0.5);
+        this.heartsSprite.x = 230;
+        this.heartsSprite.y = 46;
 
-        this.clubSprite = new PIXI.Sprite(PIXI.Texture.from(clubIcon));
-        this.clubSprite.width = 15;
-        this.clubSprite.height = 15;
-        this.clubSprite.anchor.set(0.5);
-        this.clubSprite.x = 250;
-        this.clubSprite.y = 46;
+        this.clubsSprite = new PIXI.Sprite(PIXI.Texture.from(clubsIcon));
+        this.clubsSprite.width = 15;
+        this.clubsSprite.height = 15;
+        this.clubsSprite.anchor.set(0.5);
+        this.clubsSprite.x = 250;
+        this.clubsSprite.y = 46;
 
-        this.diamondSprite = new PIXI.Sprite(PIXI.Texture.from(diamondIcon));
-        this.diamondSprite.width = 15;
-        this.diamondSprite.height = 15;
-        this.diamondSprite.anchor.set(0.5);
-        this.diamondSprite.x = 270;
-        this.diamondSprite.y = 46;
+        this.diamondsSprite = new PIXI.Sprite(PIXI.Texture.from(diamondsIcon));
+        this.diamondsSprite.width = 15;
+        this.diamondsSprite.height = 15;
+        this.diamondsSprite.anchor.set(0.5);
+        this.diamondsSprite.x = 270;
+        this.diamondsSprite.y = 46;
 
-        this.spadeSprite = new PIXI.Sprite(PIXI.Texture.from(spadeIcon));
-        this.spadeSprite.width = 15;
-        this.spadeSprite.height = 15;
-        this.spadeSprite.anchor.set(0.5);
-        this.spadeSprite.x = 290;
-        this.spadeSprite.y = 46;
+        this.spadesSprite = new PIXI.Sprite(PIXI.Texture.from(spadesIcon));
+        this.spadesSprite.width = 15;
+        this.spadesSprite.height = 15;
+        this.spadesSprite.anchor.set(0.5);
+        this.spadesSprite.x = 290;
+        this.spadesSprite.y = 46;
 
-        this.gameContainer.addChild(this.heartSprite);
-        this.gameContainer.addChild(this.clubSprite);
-        this.gameContainer.addChild(this.diamondSprite);
-        this.gameContainer.addChild(this.spadeSprite);
+        this.gameContainer.addChild(this.heartsSprite);
+        this.gameContainer.addChild(this.clubsSprite);
+        this.gameContainer.addChild(this.diamondsSprite);
+        this.gameContainer.addChild(this.spadesSprite);
     }
 
     setSuit(suit, isOn) {
-
+        const alpha = isOn ? 1 : 0.25;
+        switch (suit) {
+            case 'hearts':
+                this.tweenOpacity(this.heartsSprite, alpha);
+                break;
+            case 'clubs':
+                this.tweenOpacity(this.clubsSprite, alpha);
+                break;
+            case 'diamonds':
+                this.tweenOpacity(this.diamondsSprite, alpha);
+                break;
+            case 'spades':
+                this.tweenOpacity(this.spadesSprite, alpha);
+                break;
+            default:
+                break;
+        }
     }
 
     setAllSuits(isOn) {
-
+        const alpha = isOn ? 1 : 0.25;
+        this.tweenOpacity(this.heartsSprite, alpha);
+        this.tweenOpacity(this.clubsSprite, alpha);
+        this.tweenOpacity(this.diamondsSprite, alpha);
+        this.tweenOpacity(this.spadesSprite, alpha);
     }
 
-    tweenOpacity(opacity) {
+    tweenOpacity(sprite, alpha) {
+        const propreties = {
+            alpha: sprite.alpha
+        };
 
+        const tween = new TWEEN.Tween(propreties, false)
+            .to({ alpha: alpha }, 300)
+            .easing(TWEEN.Easing.Exponential.Out)
+            .onUpdate(() => {
+                sprite.alpha = propreties.alpha;
+            })
+            .start()
+
+        const updateAlpha = (delta) => {
+            if (!tween.isPlaying()) return;
+            tween.update(delta);
+            requestAnimationFrame(updateAlpha);
+        };
+    
+        requestAnimationFrame(updateAlpha);
     }
 }
