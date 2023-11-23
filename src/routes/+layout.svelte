@@ -18,7 +18,7 @@
 
 	onMount(() => {
 		document.addEventListener('mouseleave', () => {
-			exitModal.showModal();
+			// exitModal.showModal();
 		});
 	});
 </script>
