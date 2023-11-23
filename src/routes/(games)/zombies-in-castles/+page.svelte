@@ -1,30 +1,18 @@
 <script>
 	import { onMount } from 'svelte';
-	import Header from '$lib/components/Header.svelte';
 	import { Game } from '$lib/games/zombiesincastles/Game.js';
+	import Header from '$lib/components/Header.svelte';
 
 	let game;
 	let canvas;
-	let gameOverModal;
 
 	onMount(() => {
 		game = new Game(canvas);
-		window.addEventListener('gameOver', handleGameOver);
 
 		return () => {
 			game.end();
-			window.removeEventListener('gameOver', handleGameOver);
 		};
 	});
-
-	function handleGameOver() {
-		gameOverModal.showModal();
-	}
-
-	function restartGame() {
-		game.end();
-		game = new Game(canvas);
-	}
 </script>
 
 <div class="flex flex-col h-screen relative bg-emerald-600">
@@ -39,15 +27,3 @@
 		<p>yada yada yada</p>
 	</article>
 </div>
-<dialog bind:this={gameOverModal} class="modal">
-	<div class="modal-box">
-		<h3 class="font-bold text-lg">GameOver</h3>
-		<p class="py-4">Press Restart to restart the game</p>
-		<div class="modal-action">
-			<form method="dialog">
-				<!-- if there is a button in form, it will close the modal -->
-				<button class="btn" on:click={restartGame}>Restart</button>
-			</form>
-		</div>
-	</div>
-</dialog>
