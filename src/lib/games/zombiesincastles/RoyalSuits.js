@@ -47,16 +47,16 @@ export class RoyalSuits {
     setSuit(suit, isOn) {
         const alpha = isOn ? 1 : 0.25;
         switch (suit) {
-            case 'hearts':
+            case 'H':
                 this.tweenOpacity(this.heartsSprite, alpha);
                 break;
-            case 'clubs':
+            case 'C':
                 this.tweenOpacity(this.clubsSprite, alpha);
                 break;
-            case 'diamonds':
+            case 'D':
                 this.tweenOpacity(this.diamondsSprite, alpha);
                 break;
-            case 'spades':
+            case 'S':
                 this.tweenOpacity(this.spadesSprite, alpha);
                 break;
             default:
