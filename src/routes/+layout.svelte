@@ -1,9 +1,6 @@
 <script>
 	import '../app.css';
 	import { onNavigate } from '$app/navigation';
-	import { onMount } from 'svelte';
-
-	let exitModal;
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -13,12 +10,6 @@
 				resolve();
 				await navigation.complete;
 			});
-		});
-	});
-
-	onMount(() => {
-		document.addEventListener('mouseleave', () => {
-			// exitModal.showModal();
 		});
 	});
 </script>
@@ -43,32 +34,3 @@
 		</footer>
 	</div>
 </div>
-
-<dialog bind:this={exitModal} class="modal">
-	<div class="modal-box">
-		<form method="dialog">
-			<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-		</form>
-		<div class="flex flex-col justify-center items-center text-center">
-			<h1 class="text-5xl font-bold">Be the first to play new games</h1>
-			<p class="py-6">
-				We would love for you to play our games as soon as they release, get notified whenever we
-				release a new game.
-			</p>
-			<form class="card-body">
-				<div class="form-control">
-					<input
-						id="email"
-						type="email"
-						placeholder="email"
-						class="input input-bordered"
-						required
-					/>
-				</div>
-				<div class="form-control mt-6">
-					<button class="btn btn-primary">Subscribe</button>
-				</div>
-			</form>
-		</div>
-	</div>
-</dialog>
