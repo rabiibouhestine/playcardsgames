@@ -459,6 +459,9 @@ export class Game extends App {
             damage = selectionValue * 2
         }
 
+        // check if damage is exactly equal to royal health
+        const isBullsEye = this.royalHealth.getValue() === damage;
+
         // deal damage
         const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
         await this.royalHealth.setValue(newRoyalHealth);
@@ -477,14 +480,25 @@ export class Game extends App {
                 positionDestination: 'top'
             });
 
-            // move royal to discardPile
-            this.dealer.moveCards({
-                nbCards: 1,
-                source: this.royalsPile ,
-                destination: this.discardPile,
-                positionSource: 'top',
-                positionDestination: 'top'
-            });
+            if (isBullsEye) {
+                // move royal to drawPile
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.royalsPile ,
+                    destination: this.drawPile,
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+            } else {
+                // move royal to discardPile
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.royalsPile ,
+                    destination: this.discardPile,
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+            }
 
             // flip top royal
             this.royalsPile.getTopCard().flip(true);
