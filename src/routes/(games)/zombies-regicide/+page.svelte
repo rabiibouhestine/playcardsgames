@@ -16,14 +16,14 @@
 </script>
 
 <div class="flex flex-col h-screen relative bg-emerald-600">
-	<Header title="Zombies in Castles" />
+	<Header title="Zombies Regicide" />
 	<div class="flex flex-col h-full">
 		<div bind:this={canvas} class="grow" />
 	</div>
 </div>
 <div class="bg-base-100">
 	<article class="max-w-screen-md mx-auto py-10">
-		<h1 class="text-5xl font-bold">Zombies in Castles</h1>
+		<h1 class="text-5xl font-bold">Zombies Regicide</h1>
 		<p>yada yada yada</p>
 	</article>
 </div>

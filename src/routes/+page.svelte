@@ -6,9 +6,9 @@
 
 	const games = [
 		{
-			name: 'Zombies in Castles',
+			name: 'Zombies Regicide',
 			src: zombiesInCastlesCover,
-			href: '/zombies-in-castles'
+			href: '/zombies-regicide'
 		},
 		{
 			name: 'Clear the Dungeon',
