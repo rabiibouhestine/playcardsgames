@@ -364,13 +364,13 @@ export class Game extends App {
             let effect;
             switch (card.params.suit) {
                 case 'H':
-                    effect = "♥ Revives cards";
+                    effect = "♥ Recovers discard";
                     break;
                 case 'D':
                     effect = "♦ Draws cards";
                     break;
                 case 'S':
-                    effect = "♠ Reduces target's attack";
+                    effect = "♠ Reduces enemy attack";
                     break;
                 case 'C':
                     effect = "♣ Doubles damage";
