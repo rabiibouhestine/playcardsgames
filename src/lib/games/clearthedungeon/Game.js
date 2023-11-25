@@ -9,6 +9,7 @@ import { Cards } from '../utils/Cards';
 import { Dealer } from '../utils/Dealer';
 import { Message } from "../utils/Message";
 import { Number } from "../utils/Number";
+import { Button } from "../utils/Button";
 
 import { Mattress } from "./Mattress";
 
@@ -35,6 +36,17 @@ export class Game extends App {
 
         // add message
         this.message = new Message(this.gameContainer, {x: 360, y: 471});
+
+        // add restart button
+        this.restartButton = new Button(this.gameContainer, {
+            width: 110,
+            height: 50,
+            textSize: 20,
+            text: "Restart",
+            x: 652,
+            y: 40,
+            onPointerDown: this.handleRestart.bind(this)
+        });
 
         // disable interactions
         this.gameContainer.eventMode = 'none';
@@ -521,6 +533,10 @@ export class Game extends App {
         }
 
         return 'valid';
+    }
+
+    handleRestart() {
+
     }
 
 }
