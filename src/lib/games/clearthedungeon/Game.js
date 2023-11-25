@@ -149,6 +149,7 @@ export class Game extends App {
         // add hand
         this.hand = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'tableau',
+            name: 'hand',
             gap: 15,
             faceNames: [],
             position: {x: 360, y: 565},
@@ -160,10 +161,12 @@ export class Game extends App {
         // add reserve pile
         this.reservePile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
+            name: 'reserve',
             faceNames: [],
             position: {x: 653, y: 565},
             faceUp: true,
-            counter: false
+            isInteractive: true,
+            isDraggable: true
         });
 
         // fill Left Monster Stack
@@ -242,7 +245,16 @@ export class Game extends App {
             card.onPointerOut();
 
             if (!isMouseOverLeftAttackZone && !isMouseOverCenterAttackZone && !isMouseOverRightAttackZone && !isMouseOverReserveZone) {
-                this.hand.adjustCards({ immediate: false });
+                switch (card.location) {
+                    case 'hand':
+                        this.hand.adjustCards({ immediate: false });
+                        break;
+                    case 'reserve':
+                        this.reservePile.adjustCards({ immediate: false });
+                        break;
+                    default:
+                        break;
+                }
                 return;
             }
 
@@ -273,7 +285,16 @@ export class Game extends App {
                     }
                 }
             } else {
-                this.hand.adjustCards({ immediate: false });
+                switch (card.location) {
+                    case 'hand':
+                        this.hand.adjustCards({ immediate: false });
+                        break;
+                    case 'reserve':
+                        this.reservePile.adjustCards({ immediate: false });
+                        break;
+                    default:
+                        break;
+                }
             }
 
             if (isMouseOverCenterAttackZone && this.checkAttack(this.centerMonsterStack, this.centerAttackStack, card)) {
@@ -303,7 +324,16 @@ export class Game extends App {
                     }
                 }
             } else {
-                this.hand.adjustCards({ immediate: false });
+                switch (card.location) {
+                    case 'hand':
+                        this.hand.adjustCards({ immediate: false });
+                        break;
+                    case 'reserve':
+                        this.reservePile.adjustCards({ immediate: false });
+                        break;
+                    default:
+                        break;
+                }
             }
 
             if (isMouseOverRightAttackZone && this.checkAttack(this.rightMonsterStack, this.rightAttackStack, card)) {
@@ -333,7 +363,16 @@ export class Game extends App {
                     }
                 }
             } else {
-                this.hand.adjustCards({ immediate: false });
+                switch (card.location) {
+                    case 'hand':
+                        this.hand.adjustCards({ immediate: false });
+                        break;
+                    case 'reserve':
+                        this.reservePile.adjustCards({ immediate: false });
+                        break;
+                    default:
+                        break;
+                }
             }
 
             if (isMouseOverReserveZone) {
