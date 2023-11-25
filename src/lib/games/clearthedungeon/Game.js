@@ -636,25 +636,14 @@ export class Game extends App {
 
         await this.dealer.delay(1000);
 
-        // set left monster health
         this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
-
-        // set center monster health
         this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
-
-        // set right monster health
         this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
 
-        // flip left monster stack top card
         this.leftMonsterStack.getTopCard().flip(true);
-
-        // flip center monster stack top card
         this.centerMonsterStack.getTopCard().flip(true);
-
-        // flip right monster stack top card
         this.rightMonsterStack.getTopCard().flip(true);
 
-        // draw 3 cards
         await this.dealer.moveCards({
             nbCards: 3,
             source: this.drawPile ,
