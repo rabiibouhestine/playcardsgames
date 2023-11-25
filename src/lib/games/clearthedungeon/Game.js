@@ -1,8 +1,8 @@
 import * as PIXI from "pixi.js";
 
-import cardsSpritesheetImage from '$lib/games/assets/images/cardsSpritesheet.png';
-import cardsSpritesheetAtlas from '$lib/games/assets/json/cardsSpritesheet.json';
-import paramsAtlas from '$lib/games/assets/json/zombiesInCastles.json';
+import cardsSpritesheetImage from '../assets/images/cardsSpritesheet.png';
+import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
+import paramsAtlas from '../assets/json/clearTheDungeon.json';
 
 import { App } from '../utils/App';
 import { Card } from '../utils/Card';
