@@ -663,9 +663,6 @@ export class Game extends App {
             positionDestination: 'bottom'
         });
 
-        // selected card
-        this.selectedCard = null;
-
         // enable interactions
         this.gameContainer.eventMode = 'static';
     }
