@@ -268,30 +268,70 @@ export class Game extends App {
                         positionSource: 'top',
                         positionDestination: 'top'
                     });
-                    this.leftMonsterStack.getTopCard().flip(true);
+                    if ( this.leftMonsterStack.cards.length) {
+                        this.leftMonsterStack.getTopCard().flip(true);
+                    }
                 }
             } else {
                 this.hand.adjustCards({ immediate: false });
             }
 
             if (isMouseOverCenterAttackZone && this.checkAttack(this.centerMonsterStack, this.centerAttackStack, card)) {
-                this.dealer.moveSelection({
+                await this.dealer.moveSelection({
                     selectionNames: [card.faceName],
                     source: this.hand,
                     destination: this.centerAttackStack,
                     positionDestination: 'top'
                 });
+                if (this.centerAttackStack.cards.length === 3) {
+                    await this.dealer.moveCards({
+                        nbCards: 3,
+                        source: this.centerAttackStack,
+                        destination: this.attackDiscardPile,
+                        positionSource: 'top',
+                        positionDestination: 'top'
+                    });
+                    this.dealer.moveCards({
+                        nbCards: 1,
+                        source: this.centerMonsterStack,
+                        destination: this.monsterDiscardPile,
+                        positionSource: 'top',
+                        positionDestination: 'top'
+                    });
+                    if (this.centerMonsterStack.cards.length) {
+                        this.centerMonsterStack.getTopCard().flip(true);
+                    }
+                }
             } else {
                 this.hand.adjustCards({ immediate: false });
             }
 
             if (isMouseOverRightAttackZone && this.checkAttack(this.rightMonsterStack, this.rightAttackStack, card)) {
-                this.dealer.moveSelection({
+                await this.dealer.moveSelection({
                     selectionNames: [card.faceName],
                     source: this.hand,
                     destination: this.rightAttackStack,
                     positionDestination: 'top'
                 });
+                if (this.rightAttackStack.cards.length === 3) {
+                    await this.dealer.moveCards({
+                        nbCards: 3,
+                        source: this.rightAttackStack,
+                        destination: this.attackDiscardPile,
+                        positionSource: 'top',
+                        positionDestination: 'top'
+                    });
+                    this.dealer.moveCards({
+                        nbCards: 1,
+                        source: this.rightMonsterStack,
+                        destination: this.monsterDiscardPile,
+                        positionSource: 'top',
+                        positionDestination: 'top'
+                    });
+                    if (this.rightMonsterStack.cards.length) {
+                        this.rightMonsterStack.getTopCard().flip(true);
+                    }
+                }
             } else {
                 this.hand.adjustCards({ immediate: false });
             }
