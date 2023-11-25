@@ -246,35 +246,37 @@ export class Game extends App {
                 return;
             }
 
-            if (isMouseOverLeftAttackZone) {
-                if (this.checkAttack(this.leftMonsterStack, this.leftAttackStack, card)) {
-                    this.dealer.moveSelection({
-                        selectionNames: [card.faceName],
-                        source: this.hand,
-                        destination: this.leftAttackStack,
-                        positionDestination: 'top'
-                    });
-                } else {
-                    this.hand.adjustCards({ immediate: false });
-                }
+            if (isMouseOverLeftAttackZone && this.checkAttack(this.leftMonsterStack, this.leftAttackStack, card)) {
+                this.dealer.moveSelection({
+                    selectionNames: [card.faceName],
+                    source: this.hand,
+                    destination: this.leftAttackStack,
+                    positionDestination: 'top'
+                });
+            } else {
+                this.hand.adjustCards({ immediate: false });
             }
 
-            if (isMouseOverCenterAttackZone) {
+            if (isMouseOverCenterAttackZone && this.checkAttack(this.centerMonsterStack, this.centerAttackStack, card)) {
                 this.dealer.moveSelection({
                     selectionNames: [card.faceName],
                     source: this.hand,
                     destination: this.centerAttackStack,
                     positionDestination: 'top'
                 });
+            } else {
+                this.hand.adjustCards({ immediate: false });
             }
 
-            if (isMouseOverRightAttackZone) {
+            if (isMouseOverRightAttackZone && this.checkAttack(this.rightMonsterStack, this.rightAttackStack, card)) {
                 this.dealer.moveSelection({
                     selectionNames: [card.faceName],
                     source: this.hand,
                     destination: this.rightAttackStack,
                     positionDestination: 'top'
                 });
+            } else {
+                this.hand.adjustCards({ immediate: false });
             }
 
             if (isMouseOverReserveZone) {
