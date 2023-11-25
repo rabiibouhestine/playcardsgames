@@ -91,5 +91,12 @@ export class Dealer {
         });
     }
 
+    checkMouseOver(mouseCoords, object) {
+        const objectBounds = object.getBounds();
 
+        return mouseCoords.x < objectBounds.x + objectBounds.width
+            && mouseCoords.x > objectBounds.x
+            && mouseCoords.y < objectBounds.y + objectBounds.height
+            && mouseCoords.y > objectBounds.y;
+    }
 }

@@ -231,10 +231,10 @@ export class Game extends App {
     onCardPointerUp(card) {
         if (card.faceName === this.selectedCard) {
 
-            const isMouseOverLeftAttackZone = this.checkMouseOver(this.mattress.leftAttackZone);
-            const isMouseOverCenterAttackZone = this.checkMouseOver(this.mattress.centerAttackZone);
-            const isMouseOverRightAttackZone = this.checkMouseOver(this.mattress.rightAttackZone);
-            const isMouseOverReserveZone = this.checkMouseOver(this.mattress.reserveZone);
+            const isMouseOverLeftAttackZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.leftAttackZone);
+            const isMouseOverCenterAttackZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.centerAttackZone);
+            const isMouseOverRightAttackZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.rightAttackZone);
+            const isMouseOverReserveZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.reserveZone);
 
             if (!isMouseOverLeftAttackZone && !isMouseOverCenterAttackZone && !isMouseOverRightAttackZone && !isMouseOverReserveZone) {
                 this.hand.adjustCards({ immediate: false });
@@ -261,15 +261,6 @@ export class Game extends App {
                 });
             }
         }
-    }
-
-    checkMouseOver(object) {
-        const objectBounds = object.getBounds();
-
-        return this.mouseCoords.x < objectBounds.x + objectBounds.width
-            && this.mouseCoords.x > objectBounds.x
-            && this.mouseCoords.y < objectBounds.y + objectBounds.height
-            && this.mouseCoords.y > objectBounds.y;
     }
 
 }
