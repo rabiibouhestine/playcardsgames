@@ -247,12 +247,16 @@ export class Game extends App {
             }
 
             if (isMouseOverLeftAttackZone) {
-                this.dealer.moveSelection({
-                    selectionNames: [card.faceName],
-                    source: this.hand,
-                    destination: this.leftAttackStack,
-                    positionDestination: 'top'
-                });
+                if (this.checkAttack(this.leftMonsterStack, this.leftAttackStack, card)) {
+                    this.dealer.moveSelection({
+                        selectionNames: [card.faceName],
+                        source: this.hand,
+                        destination: this.leftAttackStack,
+                        positionDestination: 'top'
+                    });
+                } else {
+                    this.hand.adjustCards({ immediate: false });
+                }
             }
 
             if (isMouseOverCenterAttackZone) {
@@ -295,9 +299,9 @@ export class Game extends App {
         }
     }
 
-    checkAttack(monstersStack, attackStack, card) {
-        const monsterValue = monstersStack.getTopCard().params.value;
-        const monsterSuit = monstersStack.getTopCard().params.suit;
+    checkAttack(monsterStack, attackStack, card) {
+        const monsterValue = monsterStack.getTopCard().params.value;
+        const monsterSuit = monsterStack.getTopCard().params.suit;
         const newAttackStackCards = [...attackStack.cards, card];
         const newAttackStackValue = newAttackStackCards.reduce((accumulator, card) => {
             return accumulator + card.params.value;

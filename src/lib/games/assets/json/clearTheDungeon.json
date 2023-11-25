@@ -1,7 +1,7 @@
 {
     "J1":
     {
-        "value": 0,
+        "value": 10,
         "suit": "J"
     },
     "AS":
@@ -56,22 +56,22 @@
     },
     "JS":
     {
-        "value": 10,
+        "value": 11,
         "suit": "S"
     },
     "QS":
     {
-        "value": 15,
+        "value": 12,
         "suit": "S"
     },
     "KS":
     {
-        "value": 20,
+        "value": 13,
         "suit": "S"
     },
     "J2":
     {
-        "value": 0,
+        "value": 10,
         "suit": "J"
     },
     "AH":
@@ -126,17 +126,17 @@
     },
     "JH":
     {
-        "value": 10,
+        "value": 11,
         "suit": "H"
     },
     "QH":
     {
-        "value": 15,
+        "value": 12,
         "suit": "H"
     },
     "KH":
     {
-        "value": 20,
+        "value": 13,
         "suit": "H"
     },
     "B1":
@@ -196,17 +196,17 @@
     },
     "JC":
     {
-        "value": 10,
+        "value": 11,
         "suit": "C"
     },
     "QC":
     {
-        "value": 15,
+        "value": 12,
         "suit": "C"
     },
     "KC":
     {
-        "value": 20,
+        "value": 13,
         "suit": "C"
     },
     "B2":
@@ -266,17 +266,17 @@
     },
     "JD":
     {
-        "value": 10,
+        "value": 11,
         "suit": "D"
     },
     "QD":
     {
-        "value": 15,
+        "value": 12,
         "suit": "D"
     },
     "KD":
     {
-        "value": 20,
+        "value": 13,
         "suit": "D"
     }
 }
