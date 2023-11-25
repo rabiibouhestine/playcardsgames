@@ -295,4 +295,18 @@ export class Game extends App {
         }
     }
 
+    checkAttack(monstersStack, attackStack, card) {
+        const monsterValue = monstersStack.getTopCard().params.value;
+        const monsterSuit = monstersStack.getTopCard().params.suit;
+        const newAttackStackCards = [...attackStack.cards, card];
+        const newAttackStackValue = newAttackStackCards.reduce((accumulator, card) => {
+            return accumulator + card.params.value;
+        }, 0);
+        const isEmpty = attackStack.cards.length === 0;
+        const isDamageEnough = attackStack.cards.length === 1 && newAttackStackValue >= monsterValue;
+        const isSuitCorrect = attackStack.cards.length === 2 && card.params.suit === monsterSuit;
+
+        return isEmpty || isDamageEnough || isSuitCorrect;
+    }
+
 }
