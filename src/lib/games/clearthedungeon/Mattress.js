@@ -1,111 +1,112 @@
 import * as PIXI from "pixi.js";
 
 export class Mattress {
-    constructor(gameContainer) {
+    constructor(mattressContainer) {
+        this.hoveredLocation = null;
 
         // Left Monsters Zone
-        const leftMonstersZone = new PIXI.Graphics();
-        leftMonstersZone.beginFill(0x000000, 0.25);
-        leftMonstersZone.drawRoundedRect(159, 15, 110, 220, 8);
-        leftMonstersZone.endFill();
-        gameContainer.addChild(leftMonstersZone);
+        this.leftMonstersZone = new PIXI.Graphics();
+        this.leftMonstersZone.beginFill(0x000000, 0.25);
+        this.leftMonstersZone.drawRoundedRect(159, 15, 110, 220, 8);
+        this.leftMonstersZone.endFill();
+        mattressContainer.addChild(this.leftMonstersZone);
 
         // Center Monsters Zone
-        const centerMonstersZone = new PIXI.Graphics();
-        centerMonstersZone.beginFill(0x000000, 0.25);
-        centerMonstersZone.drawRoundedRect(305, 15, 110, 220, 8);
-        centerMonstersZone.endFill();
-        gameContainer.addChild(centerMonstersZone);
+        this.centerMonstersZone = new PIXI.Graphics();
+        this.centerMonstersZone.beginFill(0x000000, 0.25);
+        this.centerMonstersZone.drawRoundedRect(305, 15, 110, 220, 8);
+        this.centerMonstersZone.endFill();
+        mattressContainer.addChild(this.centerMonstersZone);
 
         // Right Monsters Zone
-        const rightMonstersZone = new PIXI.Graphics();
-        rightMonstersZone.beginFill(0x000000, 0.25);
-        rightMonstersZone.drawRoundedRect(451, 15, 110, 220, 8);
-        rightMonstersZone.endFill();
-        gameContainer.addChild(rightMonstersZone);
+        this.rightMonstersZone = new PIXI.Graphics();
+        this.rightMonstersZone.beginFill(0x000000, 0.25);
+        this.rightMonstersZone.drawRoundedRect(451, 15, 110, 220, 8);
+        this.rightMonstersZone.endFill();
+        mattressContainer.addChild(this.rightMonstersZone);
 
         // Left Attack Zone
-        const leftAttackZone = new PIXI.Graphics();
-        leftAttackZone.beginFill(0x000000, 0.25);
-        leftAttackZone.drawRoundedRect(159, 252, 110, 194, 8);
-        leftAttackZone.endFill();
-        gameContainer.addChild(leftAttackZone);
+        this.leftAttackZone = new PIXI.Graphics();
+        this.leftAttackZone.beginFill(0x000000, 0.25);
+        this.leftAttackZone.drawRoundedRect(159, 252, 110, 194, 8);
+        this.leftAttackZone.endFill();
+        mattressContainer.addChild(this.leftAttackZone);
 
         // Center Attack Zone
-        const centerAttackZone = new PIXI.Graphics();
-        centerAttackZone.beginFill(0x000000, 0.25);
-        centerAttackZone.drawRoundedRect(305, 252, 110, 194, 8);
-        centerAttackZone.endFill();
-        gameContainer.addChild(centerAttackZone);
+        this.centerAttackZone = new PIXI.Graphics();
+        this.centerAttackZone.beginFill(0x000000, 0.25);
+        this.centerAttackZone.drawRoundedRect(305, 252, 110, 194, 8);
+        this.centerAttackZone.endFill();
+        mattressContainer.addChild(this.centerAttackZone);
 
         // Right Attack Zone
-        const rightAttackZone = new PIXI.Graphics();
-        rightAttackZone.beginFill(0x000000, 0.25);
-        rightAttackZone.drawRoundedRect(451, 252, 110, 194, 8);
-        rightAttackZone.endFill();
-        gameContainer.addChild(rightAttackZone);
+        this.rightAttackZone = new PIXI.Graphics();
+        this.rightAttackZone.beginFill(0x000000, 0.25);
+        this.rightAttackZone.drawRoundedRect(451, 252, 110, 194, 8);
+        this.rightAttackZone.endFill();
+        mattressContainer.addChild(this.rightAttackZone);
 
         // Monster Discard Zone
-        const monsterDiscardZone = new PIXI.Graphics();
-        monsterDiscardZone.beginFill(0x000000, 0.25);
-        monsterDiscardZone.drawRoundedRect(597, 77, 110, 140, 8);
-        monsterDiscardZone.endFill();
-        gameContainer.addChild(monsterDiscardZone);
+        this.monsterDiscardZone = new PIXI.Graphics();
+        this.monsterDiscardZone.beginFill(0x000000, 0.25);
+        this.monsterDiscardZone.drawRoundedRect(597, 77, 110, 140, 8);
+        this.monsterDiscardZone.endFill();
+        mattressContainer.addChild(this.monsterDiscardZone);
 
         // Monster Discard Zone Background
-        const monsterDiscardZoneBg = new PIXI.Graphics();
-        monsterDiscardZoneBg.beginFill(0x000000, 0.25);
-        monsterDiscardZoneBg.drawRoundedRect(612, 92, 80, 110, 6);
-        monsterDiscardZoneBg.endFill();
-        gameContainer.addChild(monsterDiscardZoneBg);
+        this.monsterDiscardZoneBg = new PIXI.Graphics();
+        this.monsterDiscardZoneBg.beginFill(0x000000, 0.25);
+        this.monsterDiscardZoneBg.drawRoundedRect(612, 92, 80, 110, 6);
+        this.monsterDiscardZoneBg.endFill();
+        mattressContainer.addChild(this.monsterDiscardZoneBg);
 
         // Attack Discard Zone
-        const attackDiscardZone = new PIXI.Graphics();
-        attackDiscardZone.beginFill(0x000000, 0.25);
-        attackDiscardZone.drawRoundedRect(597, 257, 110, 140, 8);
-        attackDiscardZone.endFill();
-        gameContainer.addChild(attackDiscardZone);
+        this.attackDiscardZone = new PIXI.Graphics();
+        this.attackDiscardZone.beginFill(0x000000, 0.25);
+        this.attackDiscardZone.drawRoundedRect(597, 257, 110, 140, 8);
+        this.attackDiscardZone.endFill();
+        mattressContainer.addChild(this.attackDiscardZone);
 
         // Attack Discard Zone Background
-        const attackDiscardZoneBg = new PIXI.Graphics();
-        attackDiscardZoneBg.beginFill(0x000000, 0.25);
-        attackDiscardZoneBg.drawRoundedRect(612, 272, 80, 110, 6);
-        attackDiscardZoneBg.endFill();
-        gameContainer.addChild(attackDiscardZoneBg);
+        this.attackDiscardZoneBg = new PIXI.Graphics();
+        this.attackDiscardZoneBg.beginFill(0x000000, 0.25);
+        this.attackDiscardZoneBg.drawRoundedRect(612, 272, 80, 110, 6);
+        this.attackDiscardZoneBg.endFill();
+        mattressContainer.addChild(this.attackDiscardZoneBg);
 
         // Draw Pile Zone
-        const drawPileZone = new PIXI.Graphics();
-        drawPileZone.beginFill(0x000000, 0.25);
-        drawPileZone.drawRoundedRect(12, 495, 110, 160, 8);
-        drawPileZone.endFill();
-        gameContainer.addChild(drawPileZone);
+        this.drawPileZone = new PIXI.Graphics();
+        this.drawPileZone.beginFill(0x000000, 0.25);
+        this.drawPileZone.drawRoundedRect(12, 495, 110, 160, 8);
+        this.drawPileZone.endFill();
+        mattressContainer.addChild(this.drawPileZone);
 
         // Draw Pile Zone Background
-        const drawPileZoneBg = new PIXI.Graphics();
-        drawPileZoneBg.beginFill(0x000000, 0.25);
-        drawPileZoneBg.drawRoundedRect(27, 510, 80, 110, 6);
-        drawPileZoneBg.endFill();
-        gameContainer.addChild(drawPileZoneBg);
+        this.drawPileZoneBg = new PIXI.Graphics();
+        this.drawPileZoneBg.beginFill(0x000000, 0.25);
+        this.drawPileZoneBg.drawRoundedRect(27, 510, 80, 110, 6);
+        this.drawPileZoneBg.endFill();
+        mattressContainer.addChild(this.drawPileZoneBg);
 
         // Hand Zone
-        const handZone = new PIXI.Graphics();
-        handZone.beginFill(0x000000, 0.25);
-        handZone.drawRoundedRect(210, 495, 300, 160, 8);
-        handZone.endFill();
-        gameContainer.addChild(handZone);
+        this.handZone = new PIXI.Graphics();
+        this.handZone.beginFill(0x000000, 0.25);
+        this.handZone.drawRoundedRect(210, 495, 300, 160, 8);
+        this.handZone.endFill();
+        mattressContainer.addChild(this.handZone);
 
         // Reserve Zone
-        const reserveZone = new PIXI.Graphics();
-        reserveZone.beginFill(0x000000, 0.25);
-        reserveZone.drawRoundedRect(598, 495, 110, 160, 8);
-        reserveZone.endFill();
-        gameContainer.addChild(reserveZone);
+        this.reserveZone = new PIXI.Graphics();
+        this.reserveZone.beginFill(0x000000, 0.25);
+        this.reserveZone.drawRoundedRect(598, 495, 110, 160, 8);
+        this.reserveZone.endFill();
+        mattressContainer.addChild(this.reserveZone);
 
         // Reserve Zone Background
-        const reserveZoneBg = new PIXI.Graphics();
-        reserveZoneBg.beginFill(0x000000, 0.25);
-        reserveZoneBg.drawRoundedRect(613, 510, 80, 110, 6);
-        reserveZoneBg.endFill();
-        gameContainer.addChild(reserveZoneBg);
+        this.reserveZoneBg = new PIXI.Graphics();
+        this.reserveZoneBg.beginFill(0x000000, 0.25);
+        this.reserveZoneBg.drawRoundedRect(613, 510, 80, 110, 6);
+        this.reserveZoneBg.endFill();
+        mattressContainer.addChild(this.reserveZoneBg);
     }
 }

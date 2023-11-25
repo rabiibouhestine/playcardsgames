@@ -17,6 +17,8 @@ export class App {
         window.addEventListener('resize', () => {this.resize()});
         this.canvasRef.appendChild(this.app.view);
 
+        this.mouseCoords = { x: 0, y: 0 };
+
         this.mattressContainer = new PIXI.Container();
         this.app.stage.addChild(this.mattressContainer);
 
@@ -24,6 +26,11 @@ export class App {
         this.gameContainer.sortableChildren = true;
         this.gameContainer.eventMode = 'static';
         this.gameContainer.hitArea = this.app.screen;
+        this.gameContainer.on('mousemove', (event) =>
+        {
+            this.mouseCoords.x = event.global.x;
+            this.mouseCoords.y = event.global.y;
+        });
         this.app.stage.addChild(this.gameContainer);
 
         this.modalContainer = new PIXI.Container();

@@ -29,7 +29,7 @@ export class Game extends App {
         this.dealer = new Dealer();
 
         // add mattress
-        this.Mattress = new Mattress(this.mattressContainer);
+        this.mattress = new Mattress(this.mattressContainer);
 
         // disable interactions
         // this.gameContainer.eventMode = 'none';
@@ -219,6 +219,9 @@ export class Game extends App {
 
         // selected card
         this.selectedCard = null;
+
+        // hovered location
+        this.hoveredLocation = null;
     }
 
     onCardPointerDown(card) {
@@ -237,7 +240,8 @@ export class Game extends App {
                 positionDestination: 'top'
             });
 
-
+            console.log(this.testMouseOver(this.mattress.leftAttackZone));
+            console.log(this.testMouseOver(this.mattress.centerAttackZone));
 
             if (!this.hand.cards.length) {
                 // draw 3 cards
@@ -250,6 +254,15 @@ export class Game extends App {
                 });
             }
         }
+    }
+
+    testMouseOver(object) {
+        const objectBounds = object.getBounds();
+
+        return this.mouseCoords.x < objectBounds.x + objectBounds.width
+            && this.mouseCoords.x > objectBounds.x
+            && this.mouseCoords.y < objectBounds.y + objectBounds.height
+            && this.mouseCoords.y > objectBounds.y;
     }
 
 }
