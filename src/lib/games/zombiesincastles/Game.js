@@ -1,16 +1,16 @@
 import * as PIXI from "pixi.js";
 
-import cardsSpritesheetImage from '$lib/games/assets/images/cardsSpritesheet.png';
-import cardsSpritesheetAtlas from '$lib/games/assets/json/cardsSpritesheet.json';
-import paramsAtlas from '$lib/games/assets/json/zombiesInCastles.json';
+import cardsSpritesheetImage from '../assets/images/cardsSpritesheet.png';
+import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
+import paramsAtlas from '../assets/json/zombiesInCastles.json';
 
-import { App } from '$lib/games/utils/App';
-import { Card } from '$lib/games/utils/Card';
-import { Cards } from '$lib/games/utils/Cards';
-import { Dealer } from '$lib/games/utils/Dealer';
-import { Number } from "$lib/games/utils/Number";
-import { Message } from "$lib/games/utils/Message";
-import { Button } from "$lib/games/utils/Button";
+import { App } from '../utils/App';
+import { Card } from '../utils/Card';
+import { Cards } from '../utils/Cards';
+import { Dealer } from '../utils/Dealer';
+import { Number } from "../utils/Number";
+import { Message } from "../utils/Message";
+import { Button } from "../utils/Button";
 
 import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";
