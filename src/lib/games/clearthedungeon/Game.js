@@ -462,7 +462,6 @@ export class Game extends App {
                     default:
                         break;
                 }
-                return;
             }
 
             if (!this.hand.cards.length) {
