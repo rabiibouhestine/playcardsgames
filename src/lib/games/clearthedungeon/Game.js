@@ -236,19 +236,41 @@ export class Game extends App {
             const isMouseOverRightAttackZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.rightAttackZone);
             const isMouseOverReserveZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.reserveZone);
 
+            card.setInteractive(false);
+            card.onPointerOut();
+
             if (!isMouseOverLeftAttackZone && !isMouseOverCenterAttackZone && !isMouseOverRightAttackZone && !isMouseOverReserveZone) {
                 this.hand.adjustCards({ immediate: false });
                 return;
             }
 
-            card.setInteractive(false);
-            card.onPointerOut();
-            this.dealer.moveSelection({
-                selectionNames: [card.faceName],
-                source: this.hand,
-                destination: this.leftAttackStack,
-                positionDestination: 'top'
-            });
+            if (isMouseOverLeftAttackZone) {
+                this.dealer.moveSelection({
+                    selectionNames: [card.faceName],
+                    source: this.hand,
+                    destination: this.leftAttackStack,
+                    positionDestination: 'top'
+                });
+            }
+
+            if (isMouseOverCenterAttackZone) {
+                this.dealer.moveSelection({
+                    selectionNames: [card.faceName],
+                    source: this.hand,
+                    destination: this.centerAttackStack,
+                    positionDestination: 'top'
+                });
+            }
+
+            if (isMouseOverRightAttackZone) {
+                this.dealer.moveSelection({
+                    selectionNames: [card.faceName],
+                    source: this.hand,
+                    destination: this.rightAttackStack,
+                    positionDestination: 'top'
+                });
+            }
+
 
             if (!this.hand.cards.length) {
                 // draw 3 cards
