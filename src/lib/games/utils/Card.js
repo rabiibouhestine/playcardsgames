@@ -10,6 +10,7 @@ export class Card {
         faceUp = false,
         isInteractive = false,
         isDraggable = false,
+        onPointerDown = () => {},
         onPointerUp = () => {},
         onPointerOver = () => {},
         onPointerOut = () => {}
@@ -41,7 +42,9 @@ export class Card {
             .on('pointerout', this.onPointerOut, this)
             .on('pointerover', () => {onPointerOver(this)}, this)
             .on('pointerout', () => {onPointerOut(this)}, this)
-            .on('pointerup', () => {onPointerUp(this)}, this);
+            .on('pointerdown', () => {onPointerDown(this)}, this)
+            .on('pointerup', () => {onPointerUp(this)}, this)
+            .on('pointerupoutside', () => {onPointerUp(this)}, this);
 
         if (isDraggable) {
             this.sprite.on('pointerdown', this.onDragStart, this);
@@ -69,14 +72,14 @@ export class Card {
             this.sprite.on('pointerdown', this.onDragStart, this);
             this.sprite.on('pointerup', this.onDragEnd, this);
             this.sprite.on('pointerupoutside', this.onDragEnd, this);
-            gameContainer.eventMode = 'static';
-            gameContainer.on('pointermove', this.onDragMove, this);
+            this.gameContainer.eventMode = 'static';
+            this.gameContainer.on('pointermove', this.onDragMove, this);
         } else {
             this.sprite.off('pointerdown', this.onDragStart, this);
             this.sprite.off('pointerup', this.onDragEnd, this);
             this.sprite.off('pointerupoutside', this.onDragEnd, this);
-            gameContainer.eventMode = 'none';
-            gameContainer.off('pointermove', this.onDragMove, this);
+            this.gameContainer.eventMode = 'none';
+            this.gameContainer.off('pointermove', this.onDragMove, this);
         }
     }
 

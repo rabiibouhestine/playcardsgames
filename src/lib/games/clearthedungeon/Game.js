@@ -151,7 +151,8 @@ export class Game extends App {
             faceNames: [],
             position: {x: 360, y: 565},
             faceUp: true,
-            isInteractive: true
+            isInteractive: true,
+            isDraggable: true
         });
 
         // add reserve pile

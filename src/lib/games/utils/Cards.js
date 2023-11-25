@@ -15,6 +15,7 @@ export class Cards {
         centered = true,
         gap = 0,
         counter = false,
+        onPointerDown = () => {},
         onPointerUp = () => {},
         onPointerOver = () => {},
         onPointerOut = () => {}
@@ -27,6 +28,7 @@ export class Cards {
         this.gap = gap;
         this.centered = centered;
         this.isInteractive = isInteractive;
+        this.isDraggable = isDraggable;
         
         this.cards = [];
 
@@ -38,6 +40,7 @@ export class Cards {
                 faceUp: faceUp,
                 isInteractive: isInteractive,
                 isDraggable: isDraggable,
+                onPointerDown: onPointerDown,
                 onPointerUp: onPointerUp,
                 onPointerOver: onPointerOver,
                 onPointerOut: onPointerOut
@@ -56,6 +59,7 @@ export class Cards {
                 for (let index = 0; index < this.cards.length; index++) {
                     this.cards[index].location = this.name;
                     this.cards[index].setInteractive(this.isInteractive);
+                    this.cards[index].setDraggable(this.isDraggable);
                     this.cards[index].flip(this.faceUp, immediate);
                     this.cards[index].moveTo(this.position.x, this.position.y, immediate);
                     this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
@@ -72,6 +76,7 @@ export class Cards {
                     };
                     this.cards[index].location = this.name;
                     this.cards[index].setInteractive(this.isInteractive);
+                    this.cards[index].setDraggable(this.isDraggable);
                     this.cards[index].flip(this.faceUp, immediate);
                     this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
                     this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
@@ -88,6 +93,7 @@ export class Cards {
                     };
                     this.cards[index].location = this.name;
                     this.cards[index].setInteractive(this.isInteractive);
+                    this.cards[index].setDraggable(this.isDraggable);
                     this.cards[index].flip(this.faceUp, immediate);
                     this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
                     this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
@@ -104,6 +110,7 @@ export class Cards {
                     };
                     this.cards[index].location = this.name;
                     this.cards[index].setInteractive(this.isInteractive);
+                    this.cards[index].setDraggable(this.isDraggable);
                     this.cards[index].flip(this.faceUp, immediate);
                     this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
                     this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
