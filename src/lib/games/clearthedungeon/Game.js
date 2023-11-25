@@ -230,7 +230,17 @@ export class Game extends App {
 
     onCardPointerUp(card) {
         if (card.faceName === this.selectedCard) {
-            // this.hand.adjustCards({ immediate: false });
+
+            const isMouseOverLeftAttackZone = this.checkMouseOver(this.mattress.leftAttackZone);
+            const isMouseOverCenterAttackZone = this.checkMouseOver(this.mattress.centerAttackZone);
+            const isMouseOverRightAttackZone = this.checkMouseOver(this.mattress.rightAttackZone);
+            const isMouseOverReserveZone = this.checkMouseOver(this.mattress.reserveZone);
+
+            if (!isMouseOverLeftAttackZone && !isMouseOverCenterAttackZone && !isMouseOverRightAttackZone && !isMouseOverReserveZone) {
+                this.hand.adjustCards({ immediate: false });
+                return;
+            }
+
             card.setInteractive(false);
             card.onPointerOut();
             this.dealer.moveSelection({
@@ -239,9 +249,6 @@ export class Game extends App {
                 destination: this.leftAttackStack,
                 positionDestination: 'top'
             });
-
-            console.log(this.checkMouseOver(this.mattress.leftAttackZone));
-            console.log(this.checkMouseOver(this.mattress.centerAttackZone));
 
             if (!this.hand.cards.length) {
                 // draw 3 cards
