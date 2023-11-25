@@ -16,7 +16,7 @@
 </script>
 
 <Header title="Clear the Dungeon" />
-<div class="flex flex-col h-[92vh] relative bg-emerald-600">
+<div class="flex flex-col h-[calc(100vh-4rem)] relative bg-emerald-600">
 	<div class="flex flex-col h-full">
 		<div bind:this={canvas} class="grow" />
 	</div>
