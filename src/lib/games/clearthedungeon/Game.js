@@ -260,6 +260,9 @@ export class Game extends App {
 
     async onCardPointerUp(card) {
         if (card.faceName === this.selectedCard) {
+            // disable interactions
+            this.gameContainer.eventMode = 'none';
+
             this.mattress.setHighlighted(false);
 
             let validMove = false;
@@ -464,7 +467,7 @@ export class Game extends App {
 
             if (!this.hand.cards.length) {
                 // draw 3 cards
-                this.dealer.moveCards({
+                await this.dealer.moveCards({
                     nbCards: 3,
                     source: this.drawPile ,
                     destination: this.hand,
@@ -472,6 +475,9 @@ export class Game extends App {
                     positionDestination: 'bottom'
                 });
             }
+
+            // enable interactions
+            this.gameContainer.eventMode = 'static';
         }
     }
 
