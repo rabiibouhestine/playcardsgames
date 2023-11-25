@@ -36,7 +36,7 @@ export class Game extends App {
         this.message = new Message(this.gameContainer, {x: 360, y: 471});
 
         // disable interactions
-        // this.gameContainer.eventMode = 'none';
+        this.gameContainer.eventMode = 'none';
 
         // make dra pile deck
         const drawPileDeck = this.dealer.shuffleCards([
@@ -216,7 +216,7 @@ export class Game extends App {
         this.rightMonsterStack.getTopCard().flip(true);
 
         // draw 3 cards
-        this.dealer.moveCards({
+        await this.dealer.moveCards({
             nbCards: 3,
             source: this.drawPile ,
             destination: this.hand,
@@ -229,6 +229,9 @@ export class Game extends App {
 
         // hovered location
         this.hoveredLocation = null;
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     onCardPointerDown(card) {
