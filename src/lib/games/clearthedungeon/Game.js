@@ -30,9 +30,8 @@ export class Game extends App {
         this.dealer = new Dealer();
 
         // disable interactions
-        this.gameContainer.eventMode = 'none';
+        // this.gameContainer.eventMode = 'none';
 
-        // GAME SETUP
 
         const drawPileDeck = this.dealer.shuffleCards([
             'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS',
@@ -120,12 +119,13 @@ export class Game extends App {
             counter: true
         });
 
-        this.handTableau = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+        this.hand = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'tableau',
+            gap: 15,
             faceNames: [],
             position: {x: 360, y: 565},
             faceUp: true,
-            counter: false
+            isInteractive: true
         });
 
         this.reservePile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
@@ -134,6 +134,15 @@ export class Game extends App {
             position: {x: 653, y: 565},
             faceUp: true,
             counter: false
+        });
+
+        // draw 3 cards
+        this.dealer.moveCards({
+            nbCards: 3,
+            source: this.drawPile ,
+            destination: this.hand,
+            positionSource: 'top',
+            positionDestination: 'bottom'
         });
     }
 
