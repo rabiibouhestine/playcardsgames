@@ -8,6 +8,7 @@ import { App } from '../utils/App';
 import { Cards } from '../utils/Cards';
 import { Dealer } from '../utils/Dealer';
 import { Message } from "../utils/Message";
+import { Number } from "../utils/Number";
 
 import { Mattress } from "./Mattress";
 
@@ -62,6 +63,15 @@ export class Game extends App {
             faceUp: false,
             counter: true
         });
+
+        // add left monsters health counter
+        this.leftMonstersHealth = new Number(this.gameContainer, { x: 214, y: 30 }, 0, { fontSize: 20 });
+
+        // add center monsters health counter
+        this.centerMonstersHealth = new Number(this.gameContainer, { x: 360, y: 30 }, 0, { fontSize: 20 });
+        
+        // add right monsters health counter
+        this.rightMonstersHealth = new Number(this.gameContainer, { x: 506, y: 30 }, 0, { fontSize: 20 });
 
         // add left monsters stack
         this.leftMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
