@@ -25,6 +25,7 @@ export class Cards {
         this.faceUp = faceUp;
         this.type = type;
         this.gap = gap;
+        this.centered = centered;
         this.isInteractive = isInteractive;
         
         this.cards = [];
@@ -77,13 +78,29 @@ export class Cards {
                 }
                 break;
             case 'stackH':
-                const stackHStartX = this.position.x - (this.gap/2) * (this.cards.length - 1);
+                const stackHStartX = this.centered ? this.position.x - (this.gap/2) * (this.cards.length - 1) : this.position.x;
                 const stackHStartY = this.position.y;
         
                 for (let index = 0; index < this.cards.length; index++) {
                     const newPosition = {
                         x: stackHStartX + (index * this.gap),
                         y: stackHStartY
+                    };
+                    this.cards[index].location = this.name;
+                    this.cards[index].setInteractive(this.isInteractive);
+                    this.cards[index].flip(this.faceUp, immediate);
+                    this.cards[index].moveTo(newPosition.x, newPosition.y, immediate);
+                    this.cards[index].sprite.zIndex = this.gameContainer.zIndex + index;
+                }
+                break;
+            case 'stackV':
+                const stackVStartX = this.position.x;
+                const stackVStartY = this.centered ? this.position.y - (this.gap/2) * (this.cards.length - 1) : this.position.y;
+        
+                for (let index = 0; index < this.cards.length; index++) {
+                    const newPosition = {
+                        x: stackVStartX,
+                        y: stackVStartY + (index * this.gap)
                     };
                     this.cards[index].location = this.name;
                     this.cards[index].setInteractive(this.isInteractive);

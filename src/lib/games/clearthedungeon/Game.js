@@ -57,6 +57,8 @@ export class Game extends App {
 
         this.leftMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
+            gap: 26,
+            centered: false,
             faceNames: [],
             position: {x: 214, y: 86},
             faceUp: false,
@@ -65,6 +67,8 @@ export class Game extends App {
 
         this.centerMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
+            gap: 26,
+            centered: false,
             faceNames: [],
             position: {x: 360, y: 86},
             faceUp: false,
@@ -73,6 +77,8 @@ export class Game extends App {
 
         this.rightMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
+            gap: 26,
+            centered: false,
             faceNames: [],
             position: {x: 506, y: 86},
             faceUp: false,
@@ -89,6 +95,8 @@ export class Game extends App {
 
         this.leftAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
+            gap: 26,
+            centered: false,
             faceNames: [],
             position: {x: 214, y: 323},
             faceUp: true,
@@ -97,6 +105,8 @@ export class Game extends App {
 
         this.centerAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
+            gap: 26,
+            centered: false,
             faceNames: [],
             position: {x: 360, y: 323},
             faceUp: true,
@@ -105,6 +115,8 @@ export class Game extends App {
 
         this.rightAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
+            gap: 26,
+            centered: false,
             faceNames: [],
             position: {x: 506, y: 323},
             faceUp: true,
@@ -135,6 +147,48 @@ export class Game extends App {
             faceUp: true,
             counter: false
         });
+
+        // fill Left Monster Stack
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.monsterDiscardPile ,
+            destination: this.leftMonsterStack,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false,
+            immediate: true
+        });
+
+        // fill Center Monster Stack
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.monsterDiscardPile ,
+            destination: this.centerMonsterStack,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false,
+            immediate: true
+        });
+
+        // fill Right Monster Stack
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.monsterDiscardPile ,
+            destination: this.rightMonsterStack,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false,
+            immediate: true
+        });
+
+        // flip left monster stack top card
+        this.leftMonsterStack.getTopCard().flip(true);
+
+        // flip center monster stack top card
+        this.centerMonsterStack.getTopCard().flip(true);
+
+        // flip right monster stack top card
+        this.rightMonsterStack.getTopCard().flip(true);
 
         // draw 3 cards
         this.dealer.moveCards({
