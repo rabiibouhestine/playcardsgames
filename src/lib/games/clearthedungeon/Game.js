@@ -271,7 +271,6 @@ export class Game extends App {
                 });
             }
 
-
             if (!this.hand.cards.length) {
                 // draw 3 cards
                 this.dealer.moveCards({
