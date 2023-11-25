@@ -5,7 +5,6 @@ import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
 import paramsAtlas from '../assets/json/clearTheDungeon.json';
 
 import { App } from '../utils/App';
-import { Card } from '../utils/Card';
 import { Cards } from '../utils/Cards';
 import { Dealer } from '../utils/Dealer';
 
@@ -18,21 +17,24 @@ export class Game extends App {
     }
 
     async init() {
+        // load spritesheet
         const cardsSpritesheetTexture = await PIXI.Assets.load(cardsSpritesheetImage);
         this.spritesheet = new PIXI.Spritesheet(
             cardsSpritesheetTexture,
             cardsSpritesheetAtlas
         );
         await this.spritesheet.parse();
-
-        this.Mattress = new Mattress(this.mattressContainer);
-
+   
+        // add dealer
         this.dealer = new Dealer();
+
+        // add mattress
+        this.Mattress = new Mattress(this.mattressContainer);
 
         // disable interactions
         // this.gameContainer.eventMode = 'none';
 
-
+        // make dra pile deck
         const drawPileDeck = this.dealer.shuffleCards([
             'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS',
             'AC', '2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', 'TC',
@@ -41,12 +43,14 @@ export class Game extends App {
             'J1', 'J2'
         ]);
 
+        // make monster deck
         const monstersDeck = this.dealer.shuffleCards([
             'KD', 'KS', 'KH', 'KC',
             'QD', 'QS', 'QH', 'QC',
             'JD', 'JS', 'JH', 'JC'
         ]);
 
+        // add monster discard pile
         this.monsterDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: monstersDeck,
@@ -55,6 +59,7 @@ export class Game extends App {
             counter: true
         });
 
+        // add let monsters stack
         this.leftMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
             gap: 26,
@@ -65,6 +70,7 @@ export class Game extends App {
             counter: false
         });
 
+        // add center mosters stack
         this.centerMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
             gap: 26,
@@ -75,6 +81,7 @@ export class Game extends App {
             counter: false
         });
 
+        // add right monsters stack
         this.rightMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
             gap: 26,
@@ -85,6 +92,8 @@ export class Game extends App {
             counter: false
         });
 
+
+        // add attack discard pile
         this.attackDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
@@ -93,6 +102,7 @@ export class Game extends App {
             counter: true
         });
 
+        // add left attack stak
         this.leftAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
             gap: 26,
@@ -103,6 +113,7 @@ export class Game extends App {
             counter: false
         });
 
+        // add center attack stack
         this.centerAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
             gap: 26,
@@ -113,6 +124,7 @@ export class Game extends App {
             counter: false
         });
 
+        // add right attack stack
         this.rightAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
             gap: 26,
@@ -123,6 +135,7 @@ export class Game extends App {
             counter: false
         });
 
+        // add draw pile
         this.drawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: drawPileDeck,
@@ -131,6 +144,7 @@ export class Game extends App {
             counter: true
         });
 
+        // add hand
         this.hand = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'tableau',
             gap: 15,
@@ -140,6 +154,7 @@ export class Game extends App {
             isInteractive: true
         });
 
+        // add reserve pile
         this.reservePile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
