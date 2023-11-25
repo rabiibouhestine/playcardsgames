@@ -215,6 +215,15 @@ export class Game extends App {
             immediate: true
         });
 
+        // set left monster health
+        this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
+
+        // set center monster health
+        this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
+
+        // set right monster health
+        this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
+
         // flip left monster stack top card
         this.leftMonsterStack.getTopCard().flip(true);
 
