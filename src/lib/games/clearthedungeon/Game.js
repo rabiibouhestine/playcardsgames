@@ -535,8 +535,151 @@ export class Game extends App {
         return 'valid';
     }
 
-    handleRestart() {
+    async handleRestart() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
 
+        this.rightMonstersHealth.setValue(0);
+        this.centerMonstersHealth.setValue(0);
+        this.leftMonstersHealth.setValue(0);
+
+        this.dealer.moveCards({
+            nbCards: this.rightMonsterStack.cards.length,
+            source: this.rightMonsterStack ,
+            destination: this.monsterDiscardPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.centerMonsterStack.cards.length,
+            source: this.centerMonsterStack ,
+            destination: this.monsterDiscardPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.leftMonsterStack.cards.length,
+            source: this.leftMonsterStack ,
+            destination: this.monsterDiscardPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.leftAttackStack.cards.length,
+            source: this.leftAttackStack ,
+            destination: this.drawPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.centerAttackStack.cards.length,
+            source: this.centerAttackStack ,
+            destination: this.drawPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.rightAttackStack.cards.length,
+            source: this.rightAttackStack ,
+            destination: this.drawPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.hand.cards.length,
+            source: this.hand ,
+            destination: this.drawPile,
+            positionSource: 'bottom',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.attackDiscardPile.cards.length,
+            source: this.attackDiscardPile ,
+            destination: this.drawPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: this.reservePile.cards.length,
+            source: this.reservePile ,
+            destination: this.drawPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        await this.dealer.delay(1000);
+
+        this.monsterDiscardPile.shuffleCards();
+
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.monsterDiscardPile ,
+            destination: this.leftMonsterStack,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.monsterDiscardPile ,
+            destination: this.centerMonsterStack,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.monsterDiscardPile ,
+            destination: this.rightMonsterStack,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        await this.dealer.delay(1000);
+
+        // set left monster health
+        this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
+
+        // set center monster health
+        this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
+
+        // set right monster health
+        this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
+
+        // flip left monster stack top card
+        this.leftMonsterStack.getTopCard().flip(true);
+
+        // flip center monster stack top card
+        this.centerMonsterStack.getTopCard().flip(true);
+
+        // flip right monster stack top card
+        this.rightMonsterStack.getTopCard().flip(true);
+
+        // draw 3 cards
+        await this.dealer.moveCards({
+            nbCards: 3,
+            source: this.drawPile ,
+            destination: this.hand,
+            positionSource: 'top',
+            positionDestination: 'bottom'
+        });
+
+        // selected card
+        this.selectedCard = null;
+
+        // hovered location
+        this.hoveredLocation = null;
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
 }
