@@ -316,7 +316,10 @@ export class Game extends App {
                             positionDestination: 'top'
                         });
                         if ( this.leftMonsterStack.cards.length) {
+                            // flip top card
                             this.leftMonsterStack.getTopCard().flip(true);
+                            // set health
+                            this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
                         }
                     }
                 } else {
@@ -364,7 +367,10 @@ export class Game extends App {
                             positionDestination: 'top'
                         });
                         if (this.centerMonsterStack.cards.length) {
+                            // flip top card
                             this.centerMonsterStack.getTopCard().flip(true);
+                            // set health
+                            this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
                         }
                     }
                 } else {
@@ -412,7 +418,10 @@ export class Game extends App {
                             positionDestination: 'top'
                         });
                         if (this.rightMonsterStack.cards.length) {
+                            // flip top card
                             this.rightMonsterStack.getTopCard().flip(true);
+                            // set health
+                            this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
                         }
                     }
                 } else {
