@@ -141,7 +141,9 @@ export class Game extends App {
             faceNames: drawPileDeck,
             position: {x: 67, y: 565},
             faceUp: false,
-            counter: true
+            counter: true,
+            onPointerDown: this.onCardPointerDown.bind(this),
+            onPointerUp: this.onCardPointerUp.bind(this)
         });
 
         // add hand
@@ -214,6 +216,19 @@ export class Game extends App {
             positionSource: 'top',
             positionDestination: 'bottom'
         });
+
+        // selected card
+        this.selectedCard = null;
+    }
+
+    onCardPointerDown(card) {
+        this.selectedCard = card;
+    }
+
+    onCardPointerUp(card) {
+        if (card === this.selectedCard) {
+            this.hand.adjustCards({ immediate: false });
+        }
     }
 
 }

@@ -22,6 +22,8 @@ export class App {
 
         this.gameContainer = new PIXI.Container();
         this.gameContainer.sortableChildren = true;
+        this.gameContainer.eventMode = 'static';
+        this.gameContainer.hitArea = this.app.screen;
         this.app.stage.addChild(this.gameContainer);
 
         this.modalContainer = new PIXI.Container();

@@ -50,7 +50,6 @@ export class Card {
             this.sprite.on('pointerdown', this.onDragStart, this);
             this.sprite.on('pointerup', this.onDragEnd, this);
             this.sprite.on('pointerupoutside', this.onDragEnd, this);
-            gameContainer.eventMode = 'static';
             gameContainer.on('pointermove', this.onDragMove, this);
         }
 
@@ -72,13 +71,11 @@ export class Card {
             this.sprite.on('pointerdown', this.onDragStart, this);
             this.sprite.on('pointerup', this.onDragEnd, this);
             this.sprite.on('pointerupoutside', this.onDragEnd, this);
-            this.gameContainer.eventMode = 'static';
             this.gameContainer.on('pointermove', this.onDragMove, this);
         } else {
             this.sprite.off('pointerdown', this.onDragStart, this);
             this.sprite.off('pointerup', this.onDragEnd, this);
             this.sprite.off('pointerupoutside', this.onDragEnd, this);
-            this.gameContainer.eventMode = 'none';
             this.gameContainer.off('pointermove', this.onDragMove, this);
         }
     }
@@ -176,6 +173,7 @@ export class Card {
     }
 
     onDragStart() {
+        this.sprite.zIndex = 99;
         this.isDragged = true;
     }
 
