@@ -222,12 +222,33 @@ export class Game extends App {
     }
 
     onCardPointerDown(card) {
-        this.selectedCard = card;
+        this.selectedCard = card.faceName;
     }
 
     onCardPointerUp(card) {
-        if (card === this.selectedCard) {
-            this.hand.adjustCards({ immediate: false });
+        if (card.faceName === this.selectedCard) {
+            // this.hand.adjustCards({ immediate: false });
+            card.setInteractive(false);
+            card.onPointerOut();
+            this.dealer.moveSelection({
+                selectionNames: [card.faceName],
+                source: this.hand,
+                destination: this.leftAttackStack,
+                positionDestination: 'top'
+            });
+
+
+
+            if (!this.hand.cards.length) {
+                // draw 3 cards
+                this.dealer.moveCards({
+                    nbCards: 3,
+                    source: this.drawPile ,
+                    destination: this.hand,
+                    positionSource: 'top',
+                    positionDestination: 'bottom'
+                });
+            }
         }
     }
 
