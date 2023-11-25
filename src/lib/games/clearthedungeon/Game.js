@@ -262,12 +262,26 @@ export class Game extends App {
 
             if (isMouseOverLeftAttackZone && this.checkAttack(this.leftMonsterStack, this.leftAttackStack, card)) {
                 validMove = true;
-                await this.dealer.moveSelection({
-                    selectionNames: [card.faceName],
-                    source: this.hand,
-                    destination: this.leftAttackStack,
-                    positionDestination: 'top'
-                });
+                switch (card.location) {
+                    case 'hand':
+                        await this.dealer.moveSelection({
+                            selectionNames: [card.faceName],
+                            source: this.hand,
+                            destination: this.leftAttackStack,
+                            positionDestination: 'top'
+                        });
+                        break;
+                    case 'reserve':
+                        await this.dealer.moveSelection({
+                            selectionNames: [card.faceName],
+                            source: this.reservePile,
+                            destination: this.leftAttackStack,
+                            positionDestination: 'top'
+                        });
+                        break;
+                    default:
+                        break;
+                }
                 if (this.leftAttackStack.cards.length === 3) {
                     await this.dealer.moveCards({
                         nbCards: 3,
@@ -291,12 +305,26 @@ export class Game extends App {
 
             if (isMouseOverCenterAttackZone && this.checkAttack(this.centerMonsterStack, this.centerAttackStack, card)) {
                 validMove = true;
-                await this.dealer.moveSelection({
-                    selectionNames: [card.faceName],
-                    source: this.hand,
-                    destination: this.centerAttackStack,
-                    positionDestination: 'top'
-                });
+                switch (card.location) {
+                    case 'hand':
+                        await this.dealer.moveSelection({
+                            selectionNames: [card.faceName],
+                            source: this.hand,
+                            destination: this.centerAttackStack,
+                            positionDestination: 'top'
+                        });
+                        break;
+                    case 'reserve':
+                        await this.dealer.moveSelection({
+                            selectionNames: [card.faceName],
+                            source: this.reservePile,
+                            destination: this.centerAttackStack,
+                            positionDestination: 'top'
+                        });
+                        break;
+                    default:
+                        break;
+                }
                 if (this.centerAttackStack.cards.length === 3) {
                     await this.dealer.moveCards({
                         nbCards: 3,
@@ -320,12 +348,26 @@ export class Game extends App {
 
             if (isMouseOverRightAttackZone && this.checkAttack(this.rightMonsterStack, this.rightAttackStack, card)) {
                 validMove = true;
-                await this.dealer.moveSelection({
-                    selectionNames: [card.faceName],
-                    source: this.hand,
-                    destination: this.rightAttackStack,
-                    positionDestination: 'top'
-                });
+                switch (card.location) {
+                    case 'hand':
+                        await this.dealer.moveSelection({
+                            selectionNames: [card.faceName],
+                            source: this.hand,
+                            destination: this.rightAttackStack,
+                            positionDestination: 'top'
+                        });
+                        break;
+                    case 'reserve':
+                        await this.dealer.moveSelection({
+                            selectionNames: [card.faceName],
+                            source: this.reservePile,
+                            destination: this.rightAttackStack,
+                            positionDestination: 'top'
+                        });
+                        break;
+                    default:
+                        break;
+                }
                 if (this.rightAttackStack.cards.length === 3) {
                     await this.dealer.moveCards({
                         nbCards: 3,
@@ -349,12 +391,21 @@ export class Game extends App {
 
             if (isMouseOverReserveZone) {
                 validMove = true;
-                this.dealer.moveSelection({
-                    selectionNames: [card.faceName],
-                    source: this.hand,
-                    destination: this.reservePile,
-                    positionDestination: 'top'
-                });
+                switch (card.location) {
+                    case 'hand':
+                        this.dealer.moveSelection({
+                            selectionNames: [card.faceName],
+                            source: this.hand,
+                            destination: this.reservePile,
+                            positionDestination: 'top'
+                        });
+                        break;
+                    case 'reserve':
+                        this.reservePile.adjustCards({ immediate: false });
+                        break;
+                    default:
+                        break;
+                }
             }
 
             if (!validMove) {
