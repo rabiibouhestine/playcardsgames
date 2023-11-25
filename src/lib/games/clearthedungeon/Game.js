@@ -229,7 +229,7 @@ export class Game extends App {
         this.mattress.setHighlighted(true);
     }
 
-    onCardPointerUp(card) {
+    async onCardPointerUp(card) {
         this.mattress.setHighlighted(false);
         if (card.faceName === this.selectedCard) {
 
