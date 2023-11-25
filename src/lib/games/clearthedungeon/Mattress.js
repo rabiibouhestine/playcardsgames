@@ -104,7 +104,7 @@ export class Mattress {
         // Reserve Zone Background
         const reserveZoneBg = new PIXI.Graphics();
         reserveZoneBg.beginFill(0x000000, 0.25);
-        reserveZoneBg.drawRoundedRect(27, 510, 80, 110, 6);
+        reserveZoneBg.drawRoundedRect(613, 510, 80, 110, 6);
         reserveZoneBg.endFill();
         gameContainer.addChild(reserveZoneBg);
     }
