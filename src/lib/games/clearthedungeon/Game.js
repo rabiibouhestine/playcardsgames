@@ -7,6 +7,7 @@ import paramsAtlas from '../assets/json/clearTheDungeon.json';
 import { App } from '../utils/App';
 import { Cards } from '../utils/Cards';
 import { Dealer } from '../utils/Dealer';
+import { Message } from "../utils/Message";
 
 import { Mattress } from "./Mattress";
 
@@ -30,6 +31,9 @@ export class Game extends App {
 
         // add mattress
         this.mattress = new Mattress(this.mattressContainer);
+
+        // add message
+        this.message = new Message(this.gameContainer, {x: 360, y: 471});
 
         // disable interactions
         // this.gameContainer.eventMode = 'none';
