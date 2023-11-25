@@ -107,7 +107,7 @@
 	</div>
 </div>
 
-<dialog bind:this={exitModal} class="modal">
+<dialog bind:this={exitModal} class="modal backdrop-blur-md">
 	<div class="modal-box">
 		<form method="dialog">
 			<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
