@@ -240,8 +240,8 @@ export class Game extends App {
                 positionDestination: 'top'
             });
 
-            console.log(this.testMouseOver(this.mattress.leftAttackZone));
-            console.log(this.testMouseOver(this.mattress.centerAttackZone));
+            console.log(this.checkMouseOver(this.mattress.leftAttackZone));
+            console.log(this.checkMouseOver(this.mattress.centerAttackZone));
 
             if (!this.hand.cards.length) {
                 // draw 3 cards
@@ -256,7 +256,7 @@ export class Game extends App {
         }
     }
 
-    testMouseOver(object) {
+    checkMouseOver(object) {
         const objectBounds = object.getBounds();
 
         return this.mouseCoords.x < objectBounds.x + objectBounds.width
