@@ -442,11 +442,13 @@ export class Game extends App {
         const newAttackStackValue = newAttackStackCards.reduce((accumulator, card) => {
             return accumulator + card.params.value;
         }, 0);
-        const isEmpty = attackStack.cards.length === 0;
+        const isEmpty = attackStack.cards.length === 0 && card.params.value !== 1 && card.params.value !== 2;
+        const isAceEnough = attackStack.cards.length === 0 && card.params.value === 1 && monsterValue <= 11;
+        const isTwoEnough = attackStack.cards.length === 0 && card.params.value === 2 && monsterValue <= 12;
         const isDamageEnough = attackStack.cards.length === 1 && newAttackStackValue >= monsterValue;
         const isSuitCorrect = attackStack.cards.length === 2 && card.params.suit === monsterSuit;
 
-        return isEmpty || isDamageEnough || isSuitCorrect;
+        return isEmpty || isAceEnough || isTwoEnough || isDamageEnough || isSuitCorrect;
     }
 
 }
