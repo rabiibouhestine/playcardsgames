@@ -226,9 +226,11 @@ export class Game extends App {
 
     onCardPointerDown(card) {
         this.selectedCard = card.faceName;
+        this.mattress.setHighlighted(true);
     }
 
     onCardPointerUp(card) {
+        this.mattress.setHighlighted(false);
         if (card.faceName === this.selectedCard) {
 
             const isMouseOverLeftAttackZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.leftAttackZone);

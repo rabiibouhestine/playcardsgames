@@ -3,6 +3,7 @@ import * as PIXI from "pixi.js";
 export class Mattress {
     constructor(mattressContainer) {
         this.hoveredLocation = null;
+        this.highlightColor = 0x0000FF;
 
         // Left Monsters Zone
         this.leftMonstersZone = new PIXI.Graphics();
@@ -32,6 +33,14 @@ export class Mattress {
         this.leftAttackZone.endFill();
         mattressContainer.addChild(this.leftAttackZone);
 
+        // Left Attack Zone Highlight
+        this.leftAttackZoneHighlight = new PIXI.Graphics();
+        this.leftAttackZoneHighlight.beginFill(this.highlightColor);
+        this.leftAttackZoneHighlight.drawRoundedRect(159, 252, 110, 194, 8);
+        this.leftAttackZoneHighlight.endFill();
+        this.leftAttackZoneHighlight.alpha = 0;
+        mattressContainer.addChild(this.leftAttackZoneHighlight);
+
         // Center Attack Zone
         this.centerAttackZone = new PIXI.Graphics();
         this.centerAttackZone.beginFill(0x000000, 0.25);
@@ -39,12 +48,28 @@ export class Mattress {
         this.centerAttackZone.endFill();
         mattressContainer.addChild(this.centerAttackZone);
 
+        // Center Attack Zone Highlight
+        this.centerAttackZoneHighlight = new PIXI.Graphics();
+        this.centerAttackZoneHighlight.beginFill(this.highlightColor);
+        this.centerAttackZoneHighlight.drawRoundedRect(305, 252, 110, 194, 8);
+        this.centerAttackZoneHighlight.endFill();
+        this.centerAttackZoneHighlight.alpha = 0;
+        mattressContainer.addChild(this.centerAttackZoneHighlight);
+
         // Right Attack Zone
         this.rightAttackZone = new PIXI.Graphics();
         this.rightAttackZone.beginFill(0x000000, 0.25);
         this.rightAttackZone.drawRoundedRect(451, 252, 110, 194, 8);
         this.rightAttackZone.endFill();
         mattressContainer.addChild(this.rightAttackZone);
+
+        // Right Attack Zone Highlight
+        this.rightAttackZoneHighlight = new PIXI.Graphics();
+        this.rightAttackZoneHighlight.beginFill(this.highlightColor);
+        this.rightAttackZoneHighlight.drawRoundedRect(451, 252, 110, 194, 8);
+        this.rightAttackZoneHighlight.endFill();
+        this.rightAttackZoneHighlight.alpha = 0;
+        mattressContainer.addChild(this.rightAttackZoneHighlight);
 
         // Monster Discard Zone
         this.monsterDiscardZone = new PIXI.Graphics();
@@ -102,11 +127,27 @@ export class Mattress {
         this.reserveZone.endFill();
         mattressContainer.addChild(this.reserveZone);
 
+        // Reserve Zone Highlight
+        this.reserveZoneHighlight = new PIXI.Graphics();
+        this.reserveZoneHighlight.beginFill(this.highlightColor);
+        this.reserveZoneHighlight.drawRoundedRect(598, 495, 110, 160, 8);
+        this.reserveZoneHighlight.endFill();
+        this.reserveZoneHighlight.alpha = 0;
+        mattressContainer.addChild(this.reserveZoneHighlight);
+
         // Reserve Zone Background
         this.reserveZoneBg = new PIXI.Graphics();
         this.reserveZoneBg.beginFill(0x000000, 0.25);
         this.reserveZoneBg.drawRoundedRect(613, 510, 80, 110, 6);
         this.reserveZoneBg.endFill();
         mattressContainer.addChild(this.reserveZoneBg);
+    }
+
+    setHighlighted(isHighlighted) {
+        const alpha = 0.15;
+        this.leftAttackZoneHighlight.alpha = isHighlighted ? alpha : 0;
+        this.centerAttackZoneHighlight.alpha = isHighlighted ? alpha : 0;
+        this.rightAttackZoneHighlight.alpha = isHighlighted ? alpha : 0;
+        this.reserveZoneHighlight.alpha = isHighlighted ? alpha : 0;
     }
 }
