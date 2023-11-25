@@ -63,13 +63,13 @@ export class Game extends App {
             counter: true
         });
 
-        // add let monsters stack
+        // add left monsters stack
         this.leftMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 214, y: 86},
+            position: {x: 214, y: 99},
             faceUp: false,
             counter: false
         });
@@ -80,7 +80,7 @@ export class Game extends App {
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 360, y: 86},
+            position: {x: 360, y: 99},
             faceUp: false,
             counter: false
         });
@@ -91,7 +91,7 @@ export class Game extends App {
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 506, y: 86},
+            position: {x: 506, y: 99},
             faceUp: false,
             counter: false
         });

@@ -8,21 +8,21 @@ export class Mattress {
         // Left Monsters Zone
         this.leftMonstersZone = new PIXI.Graphics();
         this.leftMonstersZone.beginFill(0x000000, 0.25);
-        this.leftMonstersZone.drawRoundedRect(159, 15, 110, 220, 8);
+        this.leftMonstersZone.drawRoundedRect(159, 15, 110, 233, 8);
         this.leftMonstersZone.endFill();
         mattressContainer.addChild(this.leftMonstersZone);
 
         // Center Monsters Zone
         this.centerMonstersZone = new PIXI.Graphics();
         this.centerMonstersZone.beginFill(0x000000, 0.25);
-        this.centerMonstersZone.drawRoundedRect(305, 15, 110, 220, 8);
+        this.centerMonstersZone.drawRoundedRect(305, 15, 110, 233, 8);
         this.centerMonstersZone.endFill();
         mattressContainer.addChild(this.centerMonstersZone);
 
         // Right Monsters Zone
         this.rightMonstersZone = new PIXI.Graphics();
         this.rightMonstersZone.beginFill(0x000000, 0.25);
-        this.rightMonstersZone.drawRoundedRect(451, 15, 110, 220, 8);
+        this.rightMonstersZone.drawRoundedRect(451, 15, 110, 233, 8);
         this.rightMonstersZone.endFill();
         mattressContainer.addChild(this.rightMonstersZone);
 
