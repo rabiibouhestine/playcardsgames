@@ -237,6 +237,7 @@ export class Game extends App {
     onCardPointerDown(card) {
         this.selectedCard = card.faceName;
         this.mattress.setHighlighted(true);
+        this.message.clear();
     }
 
     async onCardPointerUp(card) {
@@ -254,145 +255,150 @@ export class Game extends App {
             card.onPointerOut();
 
             if (!isMouseOverLeftAttackZone && !isMouseOverCenterAttackZone && !isMouseOverRightAttackZone && !isMouseOverReserveZone) {
-                switch (card.location) {
-                    case 'hand':
-                        this.hand.adjustCards({ immediate: false });
-                        break;
-                    case 'reserve':
-                        this.reservePile.adjustCards({ immediate: false });
-                        break;
-                    default:
-                        break;
-                }
-                return;
+                this.message.setValue('place the card in one of the highlighted zones');
             }
 
-            if (isMouseOverLeftAttackZone && this.checkAttack(this.leftMonsterStack, this.leftAttackStack, card)) {
-                validMove = true;
-                switch (card.location) {
-                    case 'hand':
-                        await this.dealer.moveSelection({
-                            selectionNames: [card.faceName],
-                            source: this.hand,
-                            destination: this.leftAttackStack,
-                            positionDestination: 'top'
-                        });
-                        break;
-                    case 'reserve':
-                        await this.dealer.moveSelection({
-                            selectionNames: [card.faceName],
-                            source: this.reservePile,
-                            destination: this.leftAttackStack,
-                            positionDestination: 'top'
-                        });
-                        break;
-                    default:
-                        break;
-                }
-                if (this.leftAttackStack.cards.length === 3) {
-                    await this.dealer.moveCards({
-                        nbCards: 3,
-                        source: this.leftAttackStack,
-                        destination: this.attackDiscardPile,
-                        positionSource: 'top',
-                        positionDestination: 'top'
-                    });
-                    this.dealer.moveCards({
-                        nbCards: 1,
-                        source: this.leftMonsterStack,
-                        destination: this.monsterDiscardPile,
-                        positionSource: 'top',
-                        positionDestination: 'top'
-                    });
-                    if ( this.leftMonsterStack.cards.length) {
-                        this.leftMonsterStack.getTopCard().flip(true);
+            if (isMouseOverLeftAttackZone) {
+                const attackCheckResponse = this.attackCheck(this.leftMonsterStack, this.leftAttackStack, card);
+                if (attackCheckResponse === 'valid') {
+                    validMove = true;
+                    switch (card.location) {
+                        case 'hand':
+                            await this.dealer.moveSelection({
+                                selectionNames: [card.faceName],
+                                source: this.hand,
+                                destination: this.leftAttackStack,
+                                positionDestination: 'top'
+                            });
+                            break;
+                        case 'reserve':
+                            await this.dealer.moveSelection({
+                                selectionNames: [card.faceName],
+                                source: this.reservePile,
+                                destination: this.leftAttackStack,
+                                positionDestination: 'top'
+                            });
+                            break;
+                        default:
+                            break;
                     }
+                    if (this.leftAttackStack.cards.length === 3) {
+                        await this.dealer.moveCards({
+                            nbCards: 3,
+                            source: this.leftAttackStack,
+                            destination: this.attackDiscardPile,
+                            positionSource: 'top',
+                            positionDestination: 'top'
+                        });
+                        this.dealer.moveCards({
+                            nbCards: 1,
+                            source: this.leftMonsterStack,
+                            destination: this.monsterDiscardPile,
+                            positionSource: 'top',
+                            positionDestination: 'top'
+                        });
+                        if ( this.leftMonsterStack.cards.length) {
+                            this.leftMonsterStack.getTopCard().flip(true);
+                        }
+                    }
+                } else {
+                    this.message.setValue(attackCheckResponse);
                 }
             }
 
-            if (isMouseOverCenterAttackZone && this.checkAttack(this.centerMonsterStack, this.centerAttackStack, card)) {
-                validMove = true;
-                switch (card.location) {
-                    case 'hand':
-                        await this.dealer.moveSelection({
-                            selectionNames: [card.faceName],
-                            source: this.hand,
-                            destination: this.centerAttackStack,
-                            positionDestination: 'top'
-                        });
-                        break;
-                    case 'reserve':
-                        await this.dealer.moveSelection({
-                            selectionNames: [card.faceName],
-                            source: this.reservePile,
-                            destination: this.centerAttackStack,
-                            positionDestination: 'top'
-                        });
-                        break;
-                    default:
-                        break;
-                }
-                if (this.centerAttackStack.cards.length === 3) {
-                    await this.dealer.moveCards({
-                        nbCards: 3,
-                        source: this.centerAttackStack,
-                        destination: this.attackDiscardPile,
-                        positionSource: 'top',
-                        positionDestination: 'top'
-                    });
-                    this.dealer.moveCards({
-                        nbCards: 1,
-                        source: this.centerMonsterStack,
-                        destination: this.monsterDiscardPile,
-                        positionSource: 'top',
-                        positionDestination: 'top'
-                    });
-                    if (this.centerMonsterStack.cards.length) {
-                        this.centerMonsterStack.getTopCard().flip(true);
+            if (isMouseOverCenterAttackZone) {
+                const attackCheckResponse = this.attackCheck(this.centerMonsterStack, this.centerAttackStack, card);
+                if (attackCheckResponse === 'valid') {
+                    validMove = true;
+                    switch (card.location) {
+                        case 'hand':
+                            await this.dealer.moveSelection({
+                                selectionNames: [card.faceName],
+                                source: this.hand,
+                                destination: this.centerAttackStack,
+                                positionDestination: 'top'
+                            });
+                            break;
+                        case 'reserve':
+                            await this.dealer.moveSelection({
+                                selectionNames: [card.faceName],
+                                source: this.reservePile,
+                                destination: this.centerAttackStack,
+                                positionDestination: 'top'
+                            });
+                            break;
+                        default:
+                            break;
                     }
+                    if (this.centerAttackStack.cards.length === 3) {
+                        await this.dealer.moveCards({
+                            nbCards: 3,
+                            source: this.centerAttackStack,
+                            destination: this.attackDiscardPile,
+                            positionSource: 'top',
+                            positionDestination: 'top'
+                        });
+                        this.dealer.moveCards({
+                            nbCards: 1,
+                            source: this.centerMonsterStack,
+                            destination: this.monsterDiscardPile,
+                            positionSource: 'top',
+                            positionDestination: 'top'
+                        });
+                        if (this.centerMonsterStack.cards.length) {
+                            this.centerMonsterStack.getTopCard().flip(true);
+                        }
+                    }
+                } else {
+                    this.message.setValue(attackCheckResponse);
                 }
             }
 
-            if (isMouseOverRightAttackZone && this.checkAttack(this.rightMonsterStack, this.rightAttackStack, card)) {
-                validMove = true;
-                switch (card.location) {
-                    case 'hand':
-                        await this.dealer.moveSelection({
-                            selectionNames: [card.faceName],
-                            source: this.hand,
-                            destination: this.rightAttackStack,
-                            positionDestination: 'top'
-                        });
-                        break;
-                    case 'reserve':
-                        await this.dealer.moveSelection({
-                            selectionNames: [card.faceName],
-                            source: this.reservePile,
-                            destination: this.rightAttackStack,
-                            positionDestination: 'top'
-                        });
-                        break;
-                    default:
-                        break;
-                }
-                if (this.rightAttackStack.cards.length === 3) {
-                    await this.dealer.moveCards({
-                        nbCards: 3,
-                        source: this.rightAttackStack,
-                        destination: this.attackDiscardPile,
-                        positionSource: 'top',
-                        positionDestination: 'top'
-                    });
-                    this.dealer.moveCards({
-                        nbCards: 1,
-                        source: this.rightMonsterStack,
-                        destination: this.monsterDiscardPile,
-                        positionSource: 'top',
-                        positionDestination: 'top'
-                    });
-                    if (this.rightMonsterStack.cards.length) {
-                        this.rightMonsterStack.getTopCard().flip(true);
+            if (isMouseOverRightAttackZone) {
+                const attackCheckResponse = this.attackCheck(this.rightMonsterStack, this.rightAttackStack, card);
+                if (attackCheckResponse === 'valid') {
+                    validMove = true;
+                    switch (card.location) {
+                        case 'hand':
+                            await this.dealer.moveSelection({
+                                selectionNames: [card.faceName],
+                                source: this.hand,
+                                destination: this.rightAttackStack,
+                                positionDestination: 'top'
+                            });
+                            break;
+                        case 'reserve':
+                            await this.dealer.moveSelection({
+                                selectionNames: [card.faceName],
+                                source: this.reservePile,
+                                destination: this.rightAttackStack,
+                                positionDestination: 'top'
+                            });
+                            break;
+                        default:
+                            break;
                     }
+                    if (this.rightAttackStack.cards.length === 3) {
+                        await this.dealer.moveCards({
+                            nbCards: 3,
+                            source: this.rightAttackStack,
+                            destination: this.attackDiscardPile,
+                            positionSource: 'top',
+                            positionDestination: 'top'
+                        });
+                        this.dealer.moveCards({
+                            nbCards: 1,
+                            source: this.rightMonsterStack,
+                            destination: this.monsterDiscardPile,
+                            positionSource: 'top',
+                            positionDestination: 'top'
+                        });
+                        if (this.rightMonsterStack.cards.length) {
+                            this.rightMonsterStack.getTopCard().flip(true);
+                        }
+                    }
+                } else {
+                    this.message.setValue(attackCheckResponse);
                 }
             }
 
@@ -456,6 +462,33 @@ export class Game extends App {
         const isSuitCorrect = attackStack.cards.length === 2 && card.params.suit === monsterSuit;
 
         return isEmpty || isAceEnough || isTwoEnough || isDamageEnough || isSuitCorrect;
+    }
+
+    attackCheck(monsterStack, attackStack, card) {
+        const monsterValue = monsterStack.getTopCard().params.value;
+        const monsterSuit = monsterStack.getTopCard().params.suit;
+        const newAttackStackCards = [...attackStack.cards, card];
+        const newAttackStackValue = newAttackStackCards.reduce((accumulator, card) => {
+            return accumulator + card.params.value;
+        }, 0);
+
+        if (newAttackStackCards.length === 3 && card.params.suit !== monsterSuit) {
+            return 'Third card needs to have the same suit as the monster';
+        }
+
+        if (newAttackStackCards.length === 2 && newAttackStackValue < monsterValue) {
+            return newAttackStackCards[0].params.value + ' + ' + newAttackStackCards[1].params.value + ' < ' + monsterValue;
+        }
+
+        if (newAttackStackCards.length === 1 && card.params.value === 1 && monsterValue > 11) {
+            return 'An Ace with any other card will be less than ' + monsterValue;
+        }
+
+        if (newAttackStackCards.length === 1 && card.params.value === 2 && monsterValue > 12) {
+            return 'A 2 with any other card will be less than ' + monsterValue;
+        }
+
+        return 'valid';
     }
 
 }
