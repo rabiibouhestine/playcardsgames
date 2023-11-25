@@ -96,7 +96,6 @@ export class Game extends App {
             counter: false
         });
 
-
         // add attack discard pile
         this.attackDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
