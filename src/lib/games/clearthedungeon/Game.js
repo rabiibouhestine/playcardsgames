@@ -247,12 +247,29 @@ export class Game extends App {
             }
 
             if (isMouseOverLeftAttackZone && this.checkAttack(this.leftMonsterStack, this.leftAttackStack, card)) {
-                this.dealer.moveSelection({
+                await this.dealer.moveSelection({
                     selectionNames: [card.faceName],
                     source: this.hand,
                     destination: this.leftAttackStack,
                     positionDestination: 'top'
                 });
+                if (this.leftAttackStack.cards.length === 3) {
+                    await this.dealer.moveCards({
+                        nbCards: 3,
+                        source: this.leftAttackStack,
+                        destination: this.attackDiscardPile,
+                        positionSource: 'top',
+                        positionDestination: 'top'
+                    });
+                    this.dealer.moveCards({
+                        nbCards: 1,
+                        source: this.leftMonsterStack,
+                        destination: this.monsterDiscardPile,
+                        positionSource: 'top',
+                        positionDestination: 'top'
+                    });
+                    this.leftMonsterStack.getTopCard().flip(true);
+                }
             } else {
                 this.hand.adjustCards({ immediate: false });
             }
