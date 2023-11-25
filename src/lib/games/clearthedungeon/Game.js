@@ -233,8 +233,10 @@ export class Game extends App {
     }
 
     async onCardPointerUp(card) {
-        this.mattress.setHighlighted(false);
         if (card.faceName === this.selectedCard) {
+            this.mattress.setHighlighted(false);
+
+            let validMove = false;
 
             const isMouseOverLeftAttackZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.leftAttackZone);
             const isMouseOverCenterAttackZone = this.dealer.checkMouseOver(this.mouseCoords, this.mattress.centerAttackZone);
@@ -259,6 +261,7 @@ export class Game extends App {
             }
 
             if (isMouseOverLeftAttackZone && this.checkAttack(this.leftMonsterStack, this.leftAttackStack, card)) {
+                validMove = true;
                 await this.dealer.moveSelection({
                     selectionNames: [card.faceName],
                     source: this.hand,
@@ -284,20 +287,10 @@ export class Game extends App {
                         this.leftMonsterStack.getTopCard().flip(true);
                     }
                 }
-            } else {
-                switch (card.location) {
-                    case 'hand':
-                        this.hand.adjustCards({ immediate: false });
-                        break;
-                    case 'reserve':
-                        this.reservePile.adjustCards({ immediate: false });
-                        break;
-                    default:
-                        break;
-                }
             }
 
             if (isMouseOverCenterAttackZone && this.checkAttack(this.centerMonsterStack, this.centerAttackStack, card)) {
+                validMove = true;
                 await this.dealer.moveSelection({
                     selectionNames: [card.faceName],
                     source: this.hand,
@@ -323,20 +316,10 @@ export class Game extends App {
                         this.centerMonsterStack.getTopCard().flip(true);
                     }
                 }
-            } else {
-                switch (card.location) {
-                    case 'hand':
-                        this.hand.adjustCards({ immediate: false });
-                        break;
-                    case 'reserve':
-                        this.reservePile.adjustCards({ immediate: false });
-                        break;
-                    default:
-                        break;
-                }
             }
 
             if (isMouseOverRightAttackZone && this.checkAttack(this.rightMonsterStack, this.rightAttackStack, card)) {
+                validMove = true;
                 await this.dealer.moveSelection({
                     selectionNames: [card.faceName],
                     source: this.hand,
@@ -362,7 +345,19 @@ export class Game extends App {
                         this.rightMonsterStack.getTopCard().flip(true);
                     }
                 }
-            } else {
+            }
+
+            if (isMouseOverReserveZone) {
+                validMove = true;
+                this.dealer.moveSelection({
+                    selectionNames: [card.faceName],
+                    source: this.hand,
+                    destination: this.reservePile,
+                    positionDestination: 'top'
+                });
+            }
+
+            if (!validMove) {
                 switch (card.location) {
                     case 'hand':
                         this.hand.adjustCards({ immediate: false });
@@ -373,15 +368,7 @@ export class Game extends App {
                     default:
                         break;
                 }
-            }
-
-            if (isMouseOverReserveZone) {
-                this.dealer.moveSelection({
-                    selectionNames: [card.faceName],
-                    source: this.hand,
-                    destination: this.reservePile,
-                    positionDestination: 'top'
-                });
+                return;
             }
 
             if (!this.hand.cards.length) {
