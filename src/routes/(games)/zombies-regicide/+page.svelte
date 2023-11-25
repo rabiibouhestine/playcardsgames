@@ -15,8 +15,8 @@
 	});
 </script>
 
-<div class="flex flex-col h-screen relative bg-emerald-600">
-	<Header title="Zombies Regicide" />
+<Header title="Zombies Regicide" />
+<div class="flex flex-col h-[92vh] relative bg-emerald-600">
 	<div class="flex flex-col h-full">
 		<div bind:this={canvas} class="grow" />
 	</div>
