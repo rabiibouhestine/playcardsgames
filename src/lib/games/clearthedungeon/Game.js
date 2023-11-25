@@ -481,11 +481,11 @@ export class Game extends App {
         }
 
         if (newAttackStackCards.length === 1 && card.params.value === 1 && monsterValue > 11) {
-            return 'An Ace with any other card will be less than ' + monsterValue;
+            return 'Ace with any other card will be less than ' + monsterValue;
         }
 
         if (newAttackStackCards.length === 1 && card.params.value === 2 && monsterValue > 12) {
-            return 'A 2 with any other card will be less than ' + monsterValue;
+            return '2 with any other card will be less than ' + monsterValue;
         }
 
         return 'valid';
