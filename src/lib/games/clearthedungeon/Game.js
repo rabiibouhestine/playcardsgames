@@ -271,6 +271,15 @@ export class Game extends App {
                 });
             }
 
+            if (isMouseOverReserveZone) {
+                this.dealer.moveSelection({
+                    selectionNames: [card.faceName],
+                    source: this.hand,
+                    destination: this.reservePile,
+                    positionDestination: 'top'
+                });
+            }
+
             if (!this.hand.cards.length) {
                 // draw 3 cards
                 this.dealer.moveCards({
