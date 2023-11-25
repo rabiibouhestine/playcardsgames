@@ -399,14 +399,14 @@ export class Game extends App {
             if (selectionCheck === 'valid') {
                 this.handleAttack();
             } else {
-                this.Message.setValue(selectionCheck, 'error');
+                this.Message.setValue(selectionCheck);
             }
         } else {
             const selectionCheck = this.checkDiscardSelection();
             if (selectionCheck === 'valid') {
                 this.handleDiscard();
             } else {
-                this.Message.setValue(selectionCheck, 'error');
+                this.Message.setValue(selectionCheck);
             }
         }
     }

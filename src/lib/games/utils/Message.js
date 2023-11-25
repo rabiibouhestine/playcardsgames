@@ -17,12 +17,7 @@ export class Message {
         gameContainer.addChild(this.text);
     }
 
-    setValue(value, type) {
-        if (type === 'error') {
-            this.text.style.fill = 0xffab91;
-        } else {
-            this.text.style.fill = 0xFFFFFF;
-        }
+    setValue(value) {
         this.text.text = value;
     }
 
