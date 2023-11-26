@@ -31,6 +31,11 @@ export class App {
             this.mouseCoords.x = event.global.x;
             this.mouseCoords.y = event.global.y;
         });
+        this.gameContainer.on('touchmove', (event) =>
+        {
+            this.mouseCoords.x = event.global.x;
+            this.mouseCoords.y = event.global.y;
+        });
         this.app.stage.addChild(this.gameContainer);
 
         this.modalContainer = new PIXI.Container();
