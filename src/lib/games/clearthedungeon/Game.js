@@ -602,7 +602,8 @@ export class Game extends App {
             source: this.attackDiscardPile ,
             destination: this.drawPile,
             positionSource: 'top',
-            positionDestination: 'top'
+            positionDestination: 'top',
+            inSequence: false
         });
 
         this.drawPile.shuffleCards();
