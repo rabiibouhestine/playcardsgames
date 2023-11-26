@@ -589,15 +589,7 @@ export class Game extends App {
             positionDestination: 'top'
         });
 
-        this.dealer.moveCards({
-            nbCards: this.attackDiscardPile.cards.length,
-            source: this.attackDiscardPile ,
-            destination: this.drawPile,
-            positionSource: 'top',
-            positionDestination: 'top'
-        });
-
-        this.dealer.moveCards({
+        await this.dealer.moveCards({
             nbCards: this.reservePile.cards.length,
             source: this.reservePile ,
             destination: this.drawPile,
@@ -605,9 +597,15 @@ export class Game extends App {
             positionDestination: 'top'
         });
 
-        this.drawPile.shuffleCards();
+        await this.dealer.moveCards({
+            nbCards: this.attackDiscardPile.cards.length,
+            source: this.attackDiscardPile ,
+            destination: this.drawPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
 
-        await this.dealer.delay(1000);
+        this.drawPile.shuffleCards();
 
         this.monsterDiscardPile.shuffleCards();
 
