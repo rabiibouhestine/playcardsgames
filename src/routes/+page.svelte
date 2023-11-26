@@ -1,8 +1,10 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 	import CardsIcon from '$lib/components/CardsIcon.svelte';
+
 	import zombiesInCastlesCover from '$lib/assets/zombiesRegicide.svg';
 	import clearTheDungeonCover from '$lib/assets/clearTheDungeon.svg';
+	import scoundrelCover from '$lib/assets/scoundrel.svg';
 
 	const games = [
 		{
@@ -17,7 +19,7 @@
 		},
 		{
 			name: 'Scoundrel',
-			src: 'https://placehold.co/400x400/grey/white',
+			src: scoundrelCover,
 			href: '/'
 		},
 		{
