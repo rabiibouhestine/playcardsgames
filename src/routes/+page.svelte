@@ -1,8 +1,8 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 	import CardsIcon from '$lib/components/CardsIcon.svelte';
-	import zombiesInCastlesCover from '$lib/assets/zombiesInCastlesCover.webp';
-	import clearTheDungeonCover from '$lib/assets/clearTheDungeonCover.webp';
+	import zombiesInCastlesCover from '$lib/assets/zombiesRegicide.svg';
+	import clearTheDungeonCover from '$lib/assets/clearTheDungeon.svg';
 
 	const games = [
 		{
