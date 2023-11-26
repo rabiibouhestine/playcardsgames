@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-import cardsSpritesheetImage from '../assets/images/cardsSpritesheet.png';
+import cardsSpritesheetImage from '../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
 import paramsAtlas from '../assets/json/clearTheDungeon.json';
 
