@@ -594,7 +594,8 @@ export class Game extends App {
             source: this.reservePile ,
             destination: this.drawPile,
             positionSource: 'top',
-            positionDestination: 'top'
+            positionDestination: 'top',
+            inSequence: false
         });
 
         await this.dealer.moveCards({
