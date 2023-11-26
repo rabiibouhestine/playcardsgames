@@ -606,6 +606,8 @@ export class Game extends App {
             positionDestination: 'top'
         });
 
+        this.drawPile.shuffleCards();
+
         await this.dealer.delay(1000);
 
         this.monsterDiscardPile.shuffleCards();
