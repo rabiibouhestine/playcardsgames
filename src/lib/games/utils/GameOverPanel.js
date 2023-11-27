@@ -3,7 +3,7 @@ import * as TWEEN from '@tweenjs/tween.js';
 import { Button } from "../utils/Button";
 
 export class GameOverPanel {
-    constructor(modalContainer, onPointerDown) {
+    constructor(modalContainer, onPointerDown, scoreText) {
 
         // Add Panel
         this.panelGraphic = new PIXI.Graphics();
@@ -23,7 +23,7 @@ export class GameOverPanel {
         this.gameOverText.y = -100;
 
         // Add 'Royals Defated' text
-        this.royalsDefeatedText = new PIXI.Text("Monsters Defeated:", {
+        this.royalsDefeatedText = new PIXI.Text(scoreText, {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 24,
@@ -34,7 +34,7 @@ export class GameOverPanel {
         this.royalsDefeatedText.y = -20;
 
         // Add royals defeated numbers text
-        this.royalsDefeatedNumberText = new PIXI.Text("0 / 12", {
+        this.royalsDefeatedNumberText = new PIXI.Text("", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 24,
@@ -72,8 +72,8 @@ export class GameOverPanel {
         modalContainer.addChild(this.panelContainer);
     }
 
-    setVisible(isVisible, nb = 0) {
-        this.royalsDefeatedNumberText.text = nb + " / 12";
+    setVisible(isVisible, score = 0) {
+        this.royalsDefeatedNumberText.text = score;
         this.panelContainer.eventMode = isVisible ? 'static' : 'none';
         this.tweenOpacity(isVisible ? 1 : 0);
     }

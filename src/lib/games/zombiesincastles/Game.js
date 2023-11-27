@@ -11,11 +11,11 @@ import { Dealer } from '../utils/Dealer';
 import { Number } from "../utils/Number";
 import { Message } from "../utils/Message";
 import { Button } from "../utils/Button";
+import { GameOverPanel } from "../utils/GameOverPanel";
 
 import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";
 import { RoyalSuits } from "./RoyalSuits";
-import { GameOverPanel } from "./GameOverPanel";
 
 export class Game extends App {
     constructor(canvasRef) {
@@ -175,7 +175,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
 
         // game over panel
-        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleReset.bind(this));
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleReset.bind(this), "Royals defeated:");
     }
 
     async handleReset() {
@@ -693,6 +693,6 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true, this.royalsDefeated);
+        this.gameOverPanel.setVisible(true, this.royalsDefeated + " / 12");
     }
 }
