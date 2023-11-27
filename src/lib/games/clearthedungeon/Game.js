@@ -326,6 +326,9 @@ export class Game extends App {
                         this.leftMonsterStack.getTopCard().flip(true);
                         // set health
                         this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
+                    } else {
+                        // set health
+                        this.leftMonstersHealth.setValue(0);
                     }
                 }
             } else {
@@ -377,6 +380,9 @@ export class Game extends App {
                         this.centerMonsterStack.getTopCard().flip(true);
                         // set health
                         this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
+                    } else {
+                        // set health
+                        this.centerMonstersHealth.setValue(0);
                     }
                 }
             } else {
@@ -428,6 +434,9 @@ export class Game extends App {
                         this.rightMonsterStack.getTopCard().flip(true);
                         // set health
                         this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
+                    } else {
+                        // set health
+                        this.rightMonstersHealth.setValue(0);
                     }
                 }
             } else {
