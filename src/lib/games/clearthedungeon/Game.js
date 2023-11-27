@@ -499,6 +499,10 @@ export class Game extends App {
     }
 
     attackCheck(monsterStack, attackStack, card) {
+        if (monsterStack.cards.length === 0) {
+            return 'No monsters left there';
+        }
+
         const monsterValue = monsterStack.getTopCard().params.value;
         const monsterSuit = monsterStack.getTopCard().params.suit;
         const newAttackStackCards = [...attackStack.cards, card];
