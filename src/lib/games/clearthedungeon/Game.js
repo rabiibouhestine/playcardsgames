@@ -253,6 +253,9 @@ export class Game extends App {
             positionDestination: 'bottom'
         });
 
+        // number of monsters killed
+        this.nbMonstersKilled = 0;
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
     }
@@ -307,6 +310,7 @@ export class Game extends App {
                         break;
                 }
                 if (this.leftAttackStack.cards.length === 3) {
+                    this.nbMonstersKilled++;
                     await this.dealer.moveCards({
                         nbCards: 3,
                         source: this.leftAttackStack,
@@ -361,6 +365,7 @@ export class Game extends App {
                         break;
                 }
                 if (this.centerAttackStack.cards.length === 3) {
+                    this.nbMonstersKilled++;
                     await this.dealer.moveCards({
                         nbCards: 3,
                         source: this.centerAttackStack,
@@ -415,6 +420,7 @@ export class Game extends App {
                         break;
                 }
                 if (this.rightAttackStack.cards.length === 3) {
+                    this.nbMonstersKilled++;
                     await this.dealer.moveCards({
                         nbCards: 3,
                         source: this.rightAttackStack,
