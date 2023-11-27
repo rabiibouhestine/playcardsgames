@@ -92,7 +92,7 @@
 		<p class="px-6 text-center">
 			Enjoy an amazing collection of modern thematic solitaire card games
 		</p>
-		<p class="px-6 text-center">All games can be played with a standard deck of playing cards</p>
+		<p class="px-6 text-center">All games can be played with standard playing cards</p>
 	</div>
 	<a href="/contact" class="btn btn-outline border-slate-200 text-slate-200">
 		<CardsIcon /> REQUEST A GAME
