@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { Game } from '$lib/games/zombiesincastles/Game.js';
-	import Header from '$lib/components/Header.svelte';
+	import GamePage from '$lib/components/GamePage.svelte';
 
 	let game;
 	let canvas;
@@ -15,15 +15,8 @@
 	});
 </script>
 
-<Header title="Zombies Regicide" />
-<div class="flex flex-col h-[calc(100vh-4rem)] relative bg-emerald-600">
-	<div class="flex flex-col h-full">
-		<div bind:this={canvas} class="grow" />
-	</div>
-</div>
-<div class="bg-base-100">
-	<article class="max-w-screen-md mx-auto py-10">
-		<h1 class="text-5xl font-bold">Zombies Regicide</h1>
-		<p>yada yada yada</p>
-	</article>
-</div>
+<GamePage title="Zombies Regicide">
+	<div bind:this={canvas} class="grow" slot="gameSection" />
+	<h1 class="text-5xl font-bold">Zombies Regicide</h1>
+	<p>yada yada yada</p>
+</GamePage>
