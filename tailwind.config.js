@@ -11,7 +11,22 @@ export default {
 	plugins: [require('daisyui')],
 	// daisyUI config (optional - here are the default values)
 	daisyui: {
-		themes: ["night", "aqua"], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
+		themes: [
+			"night",
+			"aqua",
+			// {
+			// 	night: {
+			// 	  ...require("daisyui/src/theming/themes")["night"],
+			// 	  "base-content": "#e2e8f0"
+			// 	},
+			// },
+			// {
+			// 	aqua: {
+			// 	  ...require("daisyui/src/theming/themes")["aqua"],
+			// 	  "base-content": "#e2e8f0"
+			// 	},
+			// }
+		], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
 		darkTheme: "night", // name of one of the included themes for dark mode
 		base: true, // applies background color and foreground color for root element by default
 		styled: true, // include daisyUI colors and design decisions for all components

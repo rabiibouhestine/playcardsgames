@@ -86,7 +86,7 @@
 </script>
 
 <Header />
-<div class="grid justify-items-center space-y-6 mt-10 text-slate-200">
+<div class="grid justify-items-center space-y-6 mt-10">
 	<h1 class="text-4xl md:text-5xl font-bold">Play Cards Games</h1>
 	<div>
 		<p class="px-6 text-center">
@@ -94,7 +94,7 @@
 		</p>
 		<p class="px-6 text-center">All games can be played with a standard deck of playing cards</p>
 	</div>
-	<a href="/contact" class="btn btn-outline text-slate-200 border-slate-200">
+	<a href="/contact" class="btn btn-outline">
 		<CardsIcon /> REQUEST A GAME
 	</a>
 </div>
