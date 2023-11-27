@@ -23,7 +23,7 @@ export class GameOverPanel {
         this.gameOverText.y = -100;
 
         // Add 'Royals Defated' text
-        this.royalsDefeatedText = new PIXI.Text("Royals Defeated:", {
+        this.royalsDefeatedText = new PIXI.Text("Monsters Defeated:", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 24,
