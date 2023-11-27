@@ -482,11 +482,11 @@ export class Game extends App {
             }
         }
 
-        if (!this.hand.cards.length) {
+        if (!this.hand.cards.length && this.drawPile.cards.length) {
             // draw 3 cards
             await this.dealer.moveCards({
                 nbCards: 3,
-                source: this.drawPile ,
+                source: this.drawPile,
                 destination: this.hand,
                 positionSource: 'top',
                 positionDestination: 'bottom'
@@ -495,6 +495,11 @@ export class Game extends App {
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
+
+        // check game over
+        if (this.nbMonstersKilled === 12 || !this.hand.cards.length) {
+            this.handleGameOver();
+        }
     }
 
     checkAttack(monsterStack, attackStack, card) {
@@ -676,4 +681,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
+    handleGameOver() {
+        console.log("Game Over");
+    }
 }
