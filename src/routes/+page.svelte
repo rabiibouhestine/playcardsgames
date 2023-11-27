@@ -94,7 +94,7 @@
 		</p>
 		<p class="px-6 text-center">All games can be played with a standard deck of playing cards</p>
 	</div>
-	<a href="/contact" class="btn btn-outline">
+	<a href="/contact" class="btn btn-outline border-slate-200 text-slate-200">
 		<CardsIcon /> REQUEST A GAME
 	</a>
 </div>
