@@ -90,7 +90,7 @@
 	<h1 class="text-4xl md:text-5xl font-bold">Play Cards Games</h1>
 	<div>
 		<p class="px-6 text-center">
-			Enjoy an amazing collection of modern solitaire card games right from your browser
+			Enjoy an amazing collection of modern thematic solitaire card games
 		</p>
 		<p class="px-6 text-center">All games can be played with a standard deck of playing cards</p>
 	</div>
