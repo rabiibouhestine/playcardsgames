@@ -22,34 +22,34 @@ export class GameOverPanel {
         this.gameOverText.anchor.set(0.5);
         this.gameOverText.y = -100;
 
-        // Add 'Royals Defated' text
-        this.royalsDefeatedText = new PIXI.Text(scoreText, {
+        // Add score label text
+        this.scoreLabelText = new PIXI.Text(scoreText, {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 24,
             fill: 0xFFFFFF,
             align: 'center'
         });
-        this.royalsDefeatedText.anchor.set(0.5);
-        this.royalsDefeatedText.y = -20;
+        this.scoreLabelText.anchor.set(0.5);
+        this.scoreLabelText.y = -20;
 
-        // Add royals defeated numbers text
-        this.royalsDefeatedNumberText = new PIXI.Text("", {
+        // Add score value text
+        this.scoreValueText = new PIXI.Text("", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 24,
             fill: 0xFFFFFF,
             align: 'center'
         });
-        this.royalsDefeatedNumberText.anchor.set(0.5);
-        this.royalsDefeatedNumberText.y = 20;
+        this.scoreValueText.anchor.set(0.5);
+        this.scoreValueText.y = 20;
 
         // Make Panel Container
         this.panelContainer = new PIXI.Container();
         this.panelContainer.addChild(this.panelGraphic);
         this.panelContainer.addChild(this.gameOverText);
-        this.panelContainer.addChild(this.royalsDefeatedText);
-        this.panelContainer.addChild(this.royalsDefeatedNumberText);
+        this.panelContainer.addChild(this.scoreLabelText);
+        this.panelContainer.addChild(this.scoreValueText);
         this.panelContainer.alpha = 0;
         this.panelContainer.eventMode = 'none';
         this.panelContainer.x = 350;
@@ -73,7 +73,7 @@ export class GameOverPanel {
     }
 
     setVisible(isVisible, score = 0) {
-        this.royalsDefeatedNumberText.text = score;
+        this.scoreValueText.text = score;
         this.panelContainer.eventMode = isVisible ? 'static' : 'none';
         this.tweenOpacity(isVisible ? 1 : 0);
     }
