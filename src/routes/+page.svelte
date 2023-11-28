@@ -94,9 +94,11 @@
 		</p>
 		<p class="px-6 text-center">All games can be played with standard playing cards</p>
 	</div>
-	<a href="/contact" class="btn btn-outline border-slate-200 text-slate-200">
-		<CardsIcon /> REQUEST A GAME
-	</a>
+	<nav class="flex flex-wrap justify-center gap-4">
+		<a href="#about" class="link link-hover">About Us</a>
+		<a href="#faq" class="link link-hover">Frequently Asked Questions</a>
+		<a href="/contact" class="link link-hover">Contact</a>
+	</nav>
 </div>
 <div class="my-20 flex flex-wrap justify-center gap-10 sm:gap-5 max-w-screen-xl mx-auto">
 	{#each games as game}
@@ -122,18 +124,14 @@
 	{/each}
 </div>
 <div class="grid justify-items-center space-y-6 my-10 text-slate-200">
-	<h2 class="text-4xl md:text-5xl font-bold">About Us</h2>
-	<div>
-		<p class="px-6 text-center">
-			Enjoy an amazing collection of modern thematic solitaire card games
-		</p>
-		<p class="px-6 text-center">All games can be played with standard playing cards</p>
+	<div id="about" class="px-6 text-center">
+		<h2 class="text-4xl md:text-5xl font-bold mb-4">About Us</h2>
+		<p>Enjoy an amazing collection of modern thematic solitaire card games</p>
+		<p>All games can be played with standard playing cards</p>
 	</div>
-	<h2 class="text-4xl md:text-5xl font-bold">Frequently Asked Questions</h2>
-	<div>
-		<p class="px-6 text-center">
-			Enjoy an amazing collection of modern thematic solitaire card games
-		</p>
-		<p class="px-6 text-center">All games can be played with standard playing cards</p>
+	<div id="faq" class="px-6 text-center">
+		<h2 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
+		<p>Enjoy an amazing collection of modern thematic solitaire card games</p>
+		<p>All games can be played with standard playing cards</p>
 	</div>
 </div>
