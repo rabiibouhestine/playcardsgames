@@ -156,8 +156,8 @@ export class Game extends App {
         this.royalHealth = new Number(this.gameContainer, {x:135, y: 112}, 0, {});
         this.royalAttack = new Number(this.gameContainer, {x:385, y: 112}, 0, {});
 
-        this.royalHealth.setValue(20, false, true);
-        this.royalAttack.setValue(10, false, true);
+        this.royalHealth.setValue(20);
+        this.royalAttack.setValue(10);
 
         // royalSuits
         this.royalSuits = new RoyalSuits(this.gameContainer);
@@ -233,8 +233,8 @@ export class Game extends App {
             inSequence: false
         });
 
-        this.royalHealth.setValue(0, false, true);
-        this.royalAttack.setValue(0, false, true);
+        this.royalHealth.setValue(0);
+        this.royalAttack.setValue(0);
 
         await this.dealer.delay(800);
 
@@ -267,8 +267,8 @@ export class Game extends App {
         this.royalSuits.setAllSuits(true);
 
         this.royalsPile.getTopCard().flip(true, false, true);
-        this.royalHealth.setValue(20, false, true);
-        this.royalAttack.setValue(10, false, true);
+        this.royalHealth.setValue(20);
+        this.royalAttack.setValue(10);
 
         this.drawPile.shuffleCards();
         await this.dealer.moveCards({
