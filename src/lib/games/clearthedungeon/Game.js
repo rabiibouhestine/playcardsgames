@@ -42,7 +42,6 @@ export class Game extends App {
         this.restartButton = new Button(this.gameContainer, {
             width: 110,
             height: 50,
-            textSize: 20,
             text: "Restart",
             x: 652,
             y: 40,

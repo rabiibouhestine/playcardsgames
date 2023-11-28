@@ -6,7 +6,7 @@ export class Button {
         height = 50,
         color = 0x000000,
         text = "Restart",
-        textSize = 24,
+        textSize = 20,
         textColor = 0xFFFFFF,
         x = 666,
         y = 585,
