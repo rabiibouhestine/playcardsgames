@@ -87,7 +87,7 @@
 
 <Header />
 <div class="grid justify-items-center space-y-6 mt-10 text-slate-200">
-	<h1 class="text-4xl md:text-5xl font-bold">Play Cards Games</h1>
+	<h1 class="text-4xl md:text-5xl font-bold">Play Card Games</h1>
 	<div>
 		<p class="px-6 text-center">
 			Enjoy an amazing collection of modern thematic solitaire card games
