@@ -564,6 +564,9 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
+        // number of monsters killed
+        this.nbMonstersKilled = 0;
+
         this.rightMonstersHealth.setValue(0);
         this.centerMonstersHealth.setValue(0);
         this.leftMonstersHealth.setValue(0);
