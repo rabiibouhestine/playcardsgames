@@ -444,7 +444,7 @@ export class Game extends App {
             this.discardPile.shuffleCards();
 
             await this.dealer.moveCards({
-                nbCards: selectionValue,
+                nbCards: Math.min(selectionValue, this.discardPile.cards.length),
                 source: this.discardPile ,
                 destination: this.drawPile,
                 positionSource: 'top',
@@ -458,7 +458,7 @@ export class Game extends App {
             const nbDraw = Math.min(nbMissing, selectionValue);
 
             await this.dealer.moveCards({
-                nbCards: nbDraw,
+                nbCards: Math.min(nbDraw, this.drawPile.cards.length),
                 source: this.drawPile ,
                 destination: this.hand,
                 positionSource: 'top',
