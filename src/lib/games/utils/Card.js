@@ -3,7 +3,7 @@ import * as TWEEN from '@tweenjs/tween.js';
 import {Howl} from 'howler';
 
 import sfxFlip from '../assets/audio/cardSlide7.ogg';
-import sfxSelect from '../assets/audio/cardSlide5.ogg';
+import sfxSelect from '../assets/audio/contact.wav';
 
 export class Card {
     constructor(gameContainer, spritesheet, parameters, {
