@@ -94,7 +94,7 @@
 		</p>
 		<p class="px-6 text-center">All games can be played with standard playing cards</p>
 	</div>
-	<nav class="flex flex-wrap justify-center gap-4">
+	<nav class="flex flex-wrap justify-center gap-4 font-semibold">
 		<a href="#about" class="link link-hover">About Us</a>
 		<a href="#faq" class="link link-hover">Frequently Asked Questions</a>
 		<a href="/contact" class="link link-hover">Contact</a>
