@@ -86,7 +86,7 @@
 </script>
 
 <Header />
-<div class="grid justify-items-center space-y-6 mt-10 text-slate-200">
+<div class="grid justify-items-center space-y-6 mt-10">
 	<h1 class="text-4xl md:text-5xl font-bold">PlayCardGames.io</h1>
 	<div>
 		<p class="px-6 text-center">
@@ -123,7 +123,7 @@
 		</a>
 	{/each}
 </div>
-<div class="grid justify-items-center space-y-6 my-10 text-slate-200">
+<div class="grid justify-items-center space-y-6 my-10">
 	<div id="about" class="px-6 text-center">
 		<h2 class="text-4xl md:text-5xl font-bold mb-4">About Us</h2>
 		<p>Enjoy an amazing collection of modern thematic solitaire card games</p>
