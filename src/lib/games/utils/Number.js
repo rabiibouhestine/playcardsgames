@@ -48,7 +48,7 @@ export class Number {
                 const tween = new TWEEN.Tween(propreties, false)
                     .to({
                         value: value
-                    }, 600)
+                    }, Math.abs( 50 * (value - propreties.value) ))
                     .onUpdate(() => {
                         this.valueText.text = Math.floor(propreties.value);
                     })
