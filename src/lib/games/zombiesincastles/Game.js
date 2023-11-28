@@ -156,8 +156,8 @@ export class Game extends App {
         this.royalHealth = new Number(this.gameContainer, {x:135, y: 112}, 0, {});
         this.royalAttack = new Number(this.gameContainer, {x:385, y: 112}, 0, {});
 
-        this.royalHealth.setValue(20);
-        this.royalAttack.setValue(10);
+        this.royalHealth.setValue(20, false, true);
+        this.royalAttack.setValue(10, false, true);
 
         // royalSuits
         this.royalSuits = new RoyalSuits(this.gameContainer);
@@ -233,8 +233,8 @@ export class Game extends App {
             inSequence: false
         });
 
-        this.royalHealth.setValue(0);
-        this.royalAttack.setValue(0);
+        this.royalHealth.setValue(0, false, true);
+        this.royalAttack.setValue(0, false, true);
 
         await this.dealer.delay(800);
 
@@ -267,8 +267,8 @@ export class Game extends App {
         this.royalSuits.setAllSuits(true);
 
         this.royalsPile.getTopCard().flip(true, false, true);
-        this.royalHealth.setValue(20);
-        this.royalAttack.setValue(10);
+        this.royalHealth.setValue(20, false, true);
+        this.royalAttack.setValue(10, false, true);
 
         this.drawPile.shuffleCards();
         await this.dealer.moveCards({
@@ -469,7 +469,7 @@ export class Game extends App {
         // resolve spades
         if (this.selectionNames.some(cardName => paramsAtlas[cardName].suit === "S" && royalSuit !== "S")) {
             const newRoyalAttack = Math.max(0, this.royalAttack.getValue() - selectionValue);
-            await this.royalAttack.setValue(newRoyalAttack);
+            await this.royalAttack.setValue(newRoyalAttack, false, true);
         }
 
         // resolve clubs
@@ -482,7 +482,7 @@ export class Game extends App {
 
         // deal damage
         const newRoyalHealth = Math.max(0, this.royalHealth.getValue() - damage);
-        await this.royalHealth.setValue(newRoyalHealth);
+        await this.royalHealth.setValue(newRoyalHealth, false, true);
 
         // resolve state
         if (this.royalHealth.getValue() === 0) {
@@ -532,8 +532,8 @@ export class Game extends App {
 
                 // reset royal stats
                 const newRoyalStats = paramsAtlas[this.royalsPile.getTopCard().faceName];
-                this.royalHealth.setValue(newRoyalStats.health);
-                await this.royalAttack.setValue(newRoyalStats.value);
+                this.royalHealth.setValue(newRoyalStats.health, false, true);
+                await this.royalAttack.setValue(newRoyalStats.value, false, true);
 
                 // reset selection
                 this.selectionNames = [];

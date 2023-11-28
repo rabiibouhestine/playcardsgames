@@ -1,5 +1,7 @@
 import * as PIXI from "pixi.js";
-import * as TWEEN from '@tweenjs/tween.js';
+import {Howl} from 'howler';
+
+import sfxChange from '../assets/audio/click_002.ogg';
 
 export class Number {
     constructor(gameContainer, position, value, {
@@ -26,46 +28,50 @@ export class Number {
         this.valueText.anchor.set(0.5);
         this.valueText.visible = visible;
         this.valueText.z = z;
+
         gameContainer.addChild(this.valueText);
+
+        this.sfxChangeHowl = new Howl({
+            src: [sfxChange]
+        });
     }
 
     getValue() {
         return this.value;
     }
 
-    setValue(value, immediate = false) {
-        this.value = value;
-
+    delay(ms) {
         return new Promise((resolve) => {
-            if (immediate) {
-                this.valueText.text = value;
-                resolve();
-            } else {
-                const propreties = {
-                    value: parseInt(this.valueText.text)
-                };
-        
-                const tween = new TWEEN.Tween(propreties, false)
-                    .to({
-                        value: value
-                    }, Math.abs( 50 * (value - propreties.value) ))
-                    .onUpdate(() => {
-                        this.valueText.text = Math.floor(propreties.value);
-                    })
-                    .onComplete(() => {
-                        resolve();
-                    })
-                    .start()
-        
-                const updateValue = (delta) => {
-                    if (!tween.isPlaying()) return;
-                    tween.update(delta);
-                    requestAnimationFrame(updateValue);
-                };
-            
-                requestAnimationFrame(updateValue);
-            }
+          setTimeout(() => {
+            resolve(); // Resolve the Promise after the specified time (ms)
+          }, ms);
         });
+    }
+
+    async setValue(value, immediate = false, sfx = false) {
+        this.value = value;
+        if (immediate) {
+            this.valueText.text = value;
+            if (sfx) {
+                this.sfxChangeHowl.play();
+            }
+            return new Promise((resolve) => {
+                resolve();
+            });
+        } else {
+            const nbIncrements = Math.abs(this.valueText.text - value);
+            const direction = this.valueText.text < value ? 1 : -1;
+            for (let i=1; i <= nbIncrements; i++) {
+                this.valueText.text = parseInt(this.valueText.text) + direction;
+                if (sfx) {
+                    this.sfxChangeHowl.play();
+                }
+                await this.delay(50);
+            }
+            return new Promise((resolve) => {
+                resolve();
+            });
+        }
     }
 
 }
