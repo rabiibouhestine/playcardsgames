@@ -87,7 +87,7 @@
 
 <Header />
 <div class="grid justify-items-center space-y-6 mt-10 text-slate-200">
-	<h1 class="text-4xl md:text-5xl font-bold">Play Card Games</h1>
+	<h1 class="text-4xl md:text-5xl font-bold">PlayCardGames.io</h1>
 	<div>
 		<p class="px-6 text-center">
 			Enjoy an amazing collection of modern thematic solitaire card games
@@ -120,4 +120,20 @@
 			</div>
 		</a>
 	{/each}
+</div>
+<div class="grid justify-items-center space-y-6 my-10 text-slate-200">
+	<h2 class="text-4xl md:text-5xl font-bold">About Us</h2>
+	<div>
+		<p class="px-6 text-center">
+			Enjoy an amazing collection of modern thematic solitaire card games
+		</p>
+		<p class="px-6 text-center">All games can be played with standard playing cards</p>
+	</div>
+	<h2 class="text-4xl md:text-5xl font-bold">Frequently Asked Questions</h2>
+	<div>
+		<p class="px-6 text-center">
+			Enjoy an amazing collection of modern thematic solitaire card games
+		</p>
+		<p class="px-6 text-center">All games can be played with standard playing cards</p>
+	</div>
 </div>
