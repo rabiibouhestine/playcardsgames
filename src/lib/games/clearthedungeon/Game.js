@@ -1,4 +1,7 @@
 import * as PIXI from "pixi.js";
+import {Howl} from 'howler';
+
+import sfxError from '../assets/audio/error.wav';
 
 import cardsSpritesheetImage from '../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
@@ -29,6 +32,11 @@ export class Game extends App {
         );
         await this.spritesheet.parse();
    
+        // error sfx
+        this.sfxErrorHowl = new Howl({
+            src: [sfxError]
+        });
+
         // add dealer
         this.dealer = new Dealer();
 
@@ -474,6 +482,7 @@ export class Game extends App {
         }
 
         if (!validMove) {
+            this.sfxErrorHowl.play();
             switch (card.location) {
                 case 'hand':
                     this.hand.adjustCards({ immediate: false });
@@ -504,22 +513,6 @@ export class Game extends App {
         if (this.nbMonstersKilled === 12 || !this.hand.cards.length) {
             this.handleGameOver();
         }
-    }
-
-    checkAttack(monsterStack, attackStack, card) {
-        const monsterValue = monsterStack.getTopCard().params.value;
-        const monsterSuit = monsterStack.getTopCard().params.suit;
-        const newAttackStackCards = [...attackStack.cards, card];
-        const newAttackStackValue = newAttackStackCards.reduce((accumulator, card) => {
-            return accumulator + card.params.value;
-        }, 0);
-        const isEmpty = attackStack.cards.length === 0 && card.params.value !== 1 && card.params.value !== 2;
-        const isAceEnough = attackStack.cards.length === 0 && card.params.value === 1 && monsterValue <= 11;
-        const isTwoEnough = attackStack.cards.length === 0 && card.params.value === 2 && monsterValue <= 12;
-        const isDamageEnough = attackStack.cards.length === 1 && newAttackStackValue >= monsterValue;
-        const isSuitCorrect = attackStack.cards.length === 2 && card.params.suit === monsterSuit;
-
-        return isEmpty || isAceEnough || isTwoEnough || isDamageEnough || isSuitCorrect;
     }
 
     attackCheck(monsterStack, attackStack, card) {
