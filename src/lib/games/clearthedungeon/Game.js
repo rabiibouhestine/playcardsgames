@@ -1,7 +1,4 @@
 import * as PIXI from "pixi.js";
-import {Howl} from 'howler';
-
-import sfxError from '../assets/audio/error.wav';
 
 import cardsSpritesheetImage from '../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
@@ -31,11 +28,6 @@ export class Game extends App {
             cardsSpritesheetAtlas
         );
         await this.spritesheet.parse();
-   
-        // error sfx
-        this.sfxErrorHowl = new Howl({
-            src: [sfxError]
-        });
 
         // add dealer
         this.dealer = new Dealer();

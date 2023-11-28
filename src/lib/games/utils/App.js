@@ -1,4 +1,7 @@
 import * as PIXI from "pixi.js";
+import {Howl} from 'howler';
+
+import sfxError from '../assets/audio/error.wav';
 
 export class App {
     constructor(canvasRef) {
@@ -40,6 +43,11 @@ export class App {
 
         this.modalContainer = new PIXI.Container();
         this.app.stage.addChild(this.modalContainer);
+
+        // error sfx
+        this.sfxErrorHowl = new Howl({
+            src: [sfxError]
+        });
     }
 
     resize() {

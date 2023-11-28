@@ -635,8 +635,10 @@ export class Game extends App {
         );
 
         if (!this.selectionNames.length) {
+            this.sfxErrorHowl.play();
             return 'Select cards to attack with'
         } else if (!conditionsMet) {
+            this.sfxErrorHowl.play();
             return 'Invalid selection';
         } else {
             return 'valid'
@@ -647,8 +649,10 @@ export class Game extends App {
         const selectionValue = this.getSelectionValue();
         const royalAttack = this.royalAttack.getValue();
         if (!this.selectionNames.length) {
+            this.sfxErrorHowl.play();
             return 'Select cards to discard'
         } else if (selectionValue < royalAttack) {
+            this.sfxErrorHowl.play();
             return 'Selected cards value must be at least ' + this.royalAttack.getValue();
         } else {
             return 'valid'
