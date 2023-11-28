@@ -89,10 +89,10 @@
 <div class="grid justify-items-center space-y-6 mt-10">
 	<h1 class="text-4xl md:text-5xl font-bold">PlayCardGames.io</h1>
 	<div>
-		<p class="px-6 text-center">
+		<p class="px-6 text-center text-lg">
 			Enjoy an amazing collection of modern thematic solitaire card games
 		</p>
-		<p class="px-6 text-center">All games can be played with standard playing cards</p>
+		<p class="px-6 text-center text-lg">All games can be played with standard playing cards</p>
 	</div>
 	<nav class="flex flex-wrap justify-center gap-4 font-semibold">
 		<a href="#about" class="link link-hover">About Us</a>
