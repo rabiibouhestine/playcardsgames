@@ -3,6 +3,7 @@ import * as TWEEN from '@tweenjs/tween.js';
 import {Howl} from 'howler';
 
 import sfxFlip from '../assets/audio/cardSlide7.ogg';
+import sfxSelect from '../assets/audio/cardSlide5.ogg';
 
 export class Card {
     constructor(gameContainer, spritesheet, parameters, {
@@ -43,6 +44,7 @@ export class Card {
         this.sprite
             .on('pointerover', this.onPointerOver, this)
             .on('pointerout', this.onPointerOut, this)
+            .on('pointerdown', this.onPointerDown, this)
             .on('pointerover', () => {onPointerOver(this)}, this)
             .on('pointerout', () => {onPointerOut(this)}, this)
             .on('pointerdown', () => {onPointerDown(this)}, this)
@@ -60,6 +62,10 @@ export class Card {
             src: [sfxFlip]
         });
 
+        this.sfxSelectHowl = new Howl({
+            src: [sfxSelect]
+        });
+
         gameContainer.addChild(this.sprite);
     }
 
@@ -71,6 +77,10 @@ export class Card {
     onPointerOut() {
         this.sprite.width = this.width;
         this.sprite.height = this.height;
+    }
+
+    onPointerDown() {
+        this.sfxSelectHowl.play();
     }
 
     setDraggable(isDraggable) {
