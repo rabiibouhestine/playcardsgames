@@ -237,13 +237,13 @@ export class Game extends App {
         this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
 
         // flip left monster stack top card
-        this.leftMonsterStack.getTopCard().flip(true);
+        this.leftMonsterStack.getTopCard().flip(true, false, true);
 
         // flip center monster stack top card
-        this.centerMonsterStack.getTopCard().flip(true);
+        this.centerMonsterStack.getTopCard().flip(true, false, true);
 
         // flip right monster stack top card
-        this.rightMonsterStack.getTopCard().flip(true);
+        this.rightMonsterStack.getTopCard().flip(true, false, true);
 
         // draw 3 cards
         await this.dealer.moveCards({
@@ -331,7 +331,7 @@ export class Game extends App {
                     });
                     if ( this.leftMonsterStack.cards.length) {
                         // flip top card
-                        this.leftMonsterStack.getTopCard().flip(true);
+                        this.leftMonsterStack.getTopCard().flip(true, false, true);
                         // set health
                         this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
                     } else {
@@ -386,7 +386,7 @@ export class Game extends App {
                     });
                     if (this.centerMonsterStack.cards.length) {
                         // flip top card
-                        this.centerMonsterStack.getTopCard().flip(true);
+                        this.centerMonsterStack.getTopCard().flip(true, false, true);
                         // set health
                         this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
                     } else {
@@ -441,7 +441,7 @@ export class Game extends App {
                     });
                     if (this.rightMonsterStack.cards.length) {
                         // flip top card
-                        this.rightMonsterStack.getTopCard().flip(true);
+                        this.rightMonsterStack.getTopCard().flip(true, false, true);
                         // set health
                         this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
                     } else {
@@ -676,9 +676,9 @@ export class Game extends App {
         this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
         this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
 
-        this.leftMonsterStack.getTopCard().flip(true);
-        this.centerMonsterStack.getTopCard().flip(true);
-        this.rightMonsterStack.getTopCard().flip(true);
+        this.leftMonsterStack.getTopCard().flip(true, false, true);
+        this.centerMonsterStack.getTopCard().flip(true, false, true);
+        this.rightMonsterStack.getTopCard().flip(true, false, true);
 
         await this.dealer.moveCards({
             nbCards: 3,

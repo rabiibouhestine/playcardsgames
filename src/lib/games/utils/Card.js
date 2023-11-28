@@ -1,5 +1,8 @@
 import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
+import {Howl} from 'howler';
+
+import sfxFlip from '../assets/audio/cardSlide7.ogg';
 
 export class Card {
     constructor(gameContainer, spritesheet, parameters, {
@@ -53,6 +56,10 @@ export class Card {
             gameContainer.on('pointermove', this.onDragMove, this);
         }
 
+        this.sfxFlipHowl = new Howl({
+            src: [sfxFlip]
+        });
+
         gameContainer.addChild(this.sprite);
     }
 
@@ -86,7 +93,7 @@ export class Card {
         this.sprite.cursor = isInteractive? 'pointer' : 'default';
     }
 
-    flip(faceUp, immediate = false) {
+    flip(faceUp, immediate = false, sfx = false) {
         if (faceUp === this.faceUp) {
             return;
         }
@@ -94,6 +101,9 @@ export class Card {
         if (immediate) {
             this.sprite.texture = this.spritesheet.textures[faceUp? this.faceName : this.backName];
         } else {
+            if (sfx) {
+                this.sfxFlipHowl.play();
+            }
             const isInteractive = this.isInteractive;
             this.setInteractive(false);
             const propreties = {

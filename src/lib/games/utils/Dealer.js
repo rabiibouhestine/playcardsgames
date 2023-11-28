@@ -1,7 +1,12 @@
+import {Howl} from 'howler';
+
+import sfxMove from '../assets/audio/cardPlace2.ogg';
 
 export class Dealer {
     constructor() {
-
+        this.sfxMoveHowl = new Howl({
+            src: [sfxMove]
+        });
     }
 
     shuffleCards(cards) {
@@ -37,6 +42,7 @@ export class Dealer {
                 source.adjustCards({immediate: false});
                 destination.addCards(card, positionDestination);
                 destination.adjustCards({immediate: false});
+                this.sfxMoveHowl.play();
                 await this.delay(i == nbCards ? 600 : 100);
             }
         } else {
@@ -48,6 +54,7 @@ export class Dealer {
             destination.addCards(cards, positionDestination);
             destination.adjustCards({immediate: immediate});
             if (!immediate) {
+                this.sfxMoveHowl.play();
                 await this.delay(600);
             }
         }
@@ -72,6 +79,7 @@ export class Dealer {
                 source.adjustCards({immediate: false});
                 destination.addCards(card, positionDestination);
                 destination.adjustCards({immediate: false});
+                this.sfxMoveHowl.play();
                 await this.delay(index == selectionNames.length - 1 ? 600 : 100);
             }
         } else {
@@ -83,6 +91,7 @@ export class Dealer {
             destination.addCards(cards, positionDestination);
             destination.adjustCards({immediate: immediate});
             if (!immediate) {
+                this.sfxMoveHowl.play();
                 await this.delay(600);
             }
         }

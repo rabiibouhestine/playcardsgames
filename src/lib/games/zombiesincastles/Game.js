@@ -150,7 +150,7 @@ export class Game extends App {
         this.royalsDefeated = 0;
 
         // flip top royal
-        this.royalsPile.getTopCard().flip(true);
+        this.royalsPile.getTopCard().flip(true, false, true);
 
         // Royal Stats
         this.royalHealth = new Number(this.gameContainer, {x:135, y: 112}, 0, {});
@@ -200,8 +200,8 @@ export class Game extends App {
         // reset jokers
         this.jokerLeftAlive = true;
         this.jokerRightAlive = true;
-        this.jokerLeft.flip(true);
-        this.jokerRight.flip(true);
+        this.jokerLeft.flip(true, false, true);
+        this.jokerRight.flip(true, false, true);
 
         this.royalSuits.setAllSuits(false);
 
@@ -266,7 +266,7 @@ export class Game extends App {
 
         this.royalSuits.setAllSuits(true);
 
-        this.royalsPile.getTopCard().flip(true);
+        this.royalsPile.getTopCard().flip(true, false, true);
         this.royalHealth.setValue(20);
         this.royalAttack.setValue(10);
 
@@ -305,7 +305,7 @@ export class Game extends App {
         }
 
         // flip joker card
-        card.flip(false, false);
+        card.flip(false, false, true);
 
         // discard hand
         await this.dealer.moveCards({
@@ -523,7 +523,7 @@ export class Game extends App {
 
             if (this.royalsPile.cards.length) {
                 // flip top royal
-                this.royalsPile.getTopCard().flip(true);
+                this.royalsPile.getTopCard().flip(true, false, true);
 
                 // if new class of royals, turn on all suits icons
                 if (this.royalsPile.cards.length === 8 || this.royalsPile.cards.length === 4) {
