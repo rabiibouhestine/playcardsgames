@@ -97,7 +97,7 @@
 	<nav class="flex flex-wrap justify-center gap-4 font-semibold">
 		<a href="#about" class="link link-hover">About Us</a>
 		<a href="#faq" class="link link-hover">Frequently Asked Questions</a>
-		<a href="/contact" class="link link-hover">Contact</a>
+		<a href="#contact" class="link link-hover">Contact</a>
 	</nav>
 </div>
 <div class="my-20 flex flex-wrap justify-center gap-10 sm:gap-5 max-w-screen-xl mx-auto">
@@ -131,6 +131,11 @@
 	</div>
 	<div id="faq" class="px-6 text-center">
 		<h2 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
+		<p>Enjoy an amazing collection of modern thematic solitaire card games</p>
+		<p>All games can be played with standard playing cards</p>
+	</div>
+	<div id="contact" class="px-6 text-center">
+		<h2 class="text-4xl md:text-5xl font-bold mb-4">Contact</h2>
 		<p>Enjoy an amazing collection of modern thematic solitaire card games</p>
 		<p>All games can be played with standard playing cards</p>
 	</div>
