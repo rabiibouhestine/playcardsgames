@@ -110,7 +110,7 @@ export class Game extends App {
             text: "♦ Pick",
             x: 301,
             y: 304,
-            // onPointerDown: this.handleRestart.bind(this)
+            onPointerDown: this.handlePick.bind(this)
         });
 
         // add weapon button
@@ -120,7 +120,7 @@ export class Game extends App {
             text: "Weapon",
             x: 419,
             y: 304,
-            // onPointerDown: this.handleRestart.bind(this)
+            onPointerDown: this.handleWeapon.bind(this)
         });
 
         // add hand button
@@ -130,7 +130,7 @@ export class Game extends App {
             text: "Hand",
             x: 536,
             y: 304,
-            // onPointerDown: this.handleRestart.bind(this)
+            onPointerDown: this.handleHand.bind(this)
         });
 
         this.selectedCard = null;
@@ -153,6 +153,44 @@ export class Game extends App {
     }
 
     handleHeal() {
+        this.dealer.moveSelection({
+            selectionNames: this.selectedCard.faceName,
+            source: this.roomTableau,
+            destination: this.discardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+    }
+
+    async handlePick() {
+        await this.dealer.moveCards({
+            nbCards: this.weaponStack.cards.length,
+            source: this.weaponStack,
+            destination: this.discardPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: true
+        });
+        this.dealer.moveSelection({
+            selectionNames: this.selectedCard.faceName,
+            source: this.roomTableau,
+            destination: this.weaponStack,
+            positionDestination: 'top',
+            inSequence: false
+        });
+    }
+
+    handleWeapon() {
+        this.dealer.moveSelection({
+            selectionNames: this.selectedCard.faceName,
+            source: this.roomTableau,
+            destination: this.weaponStack,
+            positionDestination: 'top',
+            inSequence: false
+        });
+    }
+
+    handleHand() {
         this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
