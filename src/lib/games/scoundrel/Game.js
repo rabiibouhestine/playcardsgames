@@ -96,6 +96,46 @@ export class Game extends App {
             inSequence: true,
             immediate: false
         });
+
+        // add heal button
+        this.healButton = new Button(this.gameContainer, {
+            width: 110,
+            height: 50,
+            text: "♥ Heal",
+            x: 183,
+            y: 304,
+            // onPointerDown: this.handleRestart.bind(this)
+        });
+
+        // add pick button
+        this.pickButton = new Button(this.gameContainer, {
+            width: 110,
+            height: 50,
+            text: "♦ Pick",
+            x: 301,
+            y: 304,
+            // onPointerDown: this.handleRestart.bind(this)
+        });
+
+        // add weapon button
+        this.weaponButton = new Button(this.gameContainer, {
+            width: 110,
+            height: 50,
+            text: "Weapon",
+            x: 419,
+            y: 304,
+            // onPointerDown: this.handleRestart.bind(this)
+        });
+
+        // add hand button
+        this.handButton = new Button(this.gameContainer, {
+            width: 110,
+            height: 50,
+            text: "Hand",
+            x: 536,
+            y: 304,
+            // onPointerDown: this.handleRestart.bind(this)
+        });
     }
 
 }
