@@ -49,7 +49,8 @@ export class Game extends App {
             faceNames: dungeonPileDeck,
             position: {x: 60, y: 171},
             faceUp: false,
-            counter: true
+            counter: true,
+            onPointerDown: this.handleCardClick.bind(this)
         });
 
         // add discard pile
@@ -68,10 +69,7 @@ export class Game extends App {
             gap: 20,
             position: {x: 360, y: 171},
             faceUp: true,
-            isInteractive: true,
-            // onPointerUp: this.handleCardClick.bind(this),
-            // onPointerOver: this.handleCardOver.bind(this),
-            // onPointerOut: this.handleCardOut.bind(this)
+            isInteractive: true
         });
 
         // add weapon Stack
@@ -80,10 +78,7 @@ export class Game extends App {
             type: 'stackH',
             gap: 40,
             position: {x: 360, y: 442},
-            faceUp: true,
-            // onPointerUp: this.handleCardClick.bind(this),
-            // onPointerOver: this.handleCardOver.bind(this),
-            // onPointerOut: this.handleCardOut.bind(this)
+            faceUp: true
         });
 
         // draw first room
@@ -136,6 +131,23 @@ export class Game extends App {
             y: 304,
             // onPointerDown: this.handleRestart.bind(this)
         });
+
+        this.selectedCard = null;
     }
 
+    handleCardClick(card) {
+        if (card.location === 'room') {
+            if (this.selectedCard === null) {
+                card.sprite.y = card.position.y - 20;
+                this.selectedCard = card;
+            } else if (this.selectedCard.faceName === card.faceName) {
+                card.sprite.y = card.position.y;
+                this.selectedCard = null;
+            } else {
+                this.selectedCard.sprite.y = this.selectedCard.position.y;
+                card.sprite.y = card.position.y - 20;
+                this.selectedCard = card;
+            }
+        }
+    }
 }
