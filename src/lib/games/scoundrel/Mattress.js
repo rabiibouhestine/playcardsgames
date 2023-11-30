@@ -79,7 +79,7 @@ export class Mattress {
         // Weapon Zone
         this.weaponZone = new PIXI.Graphics();
         this.weaponZone.beginFill(0x000000, 0.25);
-        this.weaponZone.drawRoundedRect(110, 367, 500, 150, 8);
+        this.weaponZone.drawRoundedRect(0, 367, 720, 150, 8);
         this.weaponZone.endFill();
         mattressContainer.addChild(this.weaponZone);
     }
