@@ -20,7 +20,7 @@
 		{
 			name: 'Scoundrel',
 			src: scoundrelCover,
-			href: '/'
+			href: '/scoundrel'
 		},
 		{
 			name: 'Merchant Solitaire',
