@@ -155,7 +155,7 @@ export class Game extends App {
     handleHeal() {
         this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
-            source: this.roomTableau ,
+            source: this.roomTableau,
             destination: this.discardPile,
             positionDestination: 'top',
             inSequence: false
