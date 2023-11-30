@@ -59,7 +59,8 @@ export class Game extends App {
             faceNames: [],
             position: {x: 660, y: 171},
             faceUp: false,
-            counter: true
+            counter: true,
+            zIndex: 52
         });
 
         // add room tableau
@@ -99,7 +100,7 @@ export class Game extends App {
             text: "♥ Heal",
             x: 183,
             y: 304,
-            // onPointerDown: this.handleRestart.bind(this)
+            onPointerDown: this.handleHeal.bind(this)
         });
 
         // add pick button
@@ -149,5 +150,15 @@ export class Game extends App {
                 this.selectedCard = card;
             }
         }
+    }
+
+    handleHeal() {
+        this.dealer.moveSelection({
+            selectionNames: this.selectedCard.faceName,
+            source: this.roomTableau ,
+            destination: this.discardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
     }
 }
