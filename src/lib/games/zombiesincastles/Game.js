@@ -150,7 +150,7 @@ export class Game extends App {
         this.royalsDefeated = 0;
 
         // flip top royal
-        this.royalsPile.getTopCard().flip(true, false, true);
+        this.royalsPile.getTopCard().flip(true);
 
         // Royal Stats
         this.royalHealth = new Number(this.gameContainer, {x:135, y: 112}, 0, {});
