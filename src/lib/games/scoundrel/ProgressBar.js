@@ -3,18 +3,18 @@ import * as TWEEN from '@tweenjs/tween.js';
 
 import rectPNG from '../assets/images/rect.png';
 
-export class Shield {
-    constructor(app, position, health) {
+export class ProgressBar {
+    constructor(app, {x, y, width, height, value, maxValue, color = 0xdb2777}) {
 
-        this.health = health;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.value = value;
+        this.maxValue = maxValue;
+        this.color = color;
 
-        this.x = position.x;
-        this.y = position.y;
-
-        this.width = 690;
-        this.height = 20;
-
-        this.widthHealthRatio = 690/300;
+        this.widthHealthRatio = width/maxValue;
 
         this.mask = new PIXI.Graphics();
         this.mask.beginFill(0x000000);
@@ -39,7 +39,7 @@ export class Shield {
         this.healthSprite.width = this.health * this.widthHealthRatio;
         this.healthSprite.height = this.height;
         this.healthSprite.mask = this.mask;
-        this.healthSprite.tint = 0xda863e;
+        this.healthSprite.tint = this.color;
 
         this.label = new PIXI.Text(this.health, {
             fontFamily: 'Arial',
