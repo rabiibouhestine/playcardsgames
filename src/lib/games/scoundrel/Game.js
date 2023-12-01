@@ -316,6 +316,44 @@ export class Game extends App {
     }
 
     async handleRestart() {
-
+        if (this.roomTableau.cards.length) {
+            await this.dealer.moveCards({
+                nbCards: this.roomTableau.cards.length,
+                source: this.roomTableau,
+                destination: this.dungeonPile,
+                positionSource: 'bottom',
+                positionDestination: 'top',
+                inSequence: false
+            });
+        }
+        if (this.discardPile.cards.length) {
+            await this.dealer.moveCards({
+                nbCards: this.discardPile.cards.length,
+                source: this.discardPile,
+                destination: this.dungeonPile,
+                positionSource: 'top',
+                positionDestination: 'top',
+                inSequence: false
+            });
+        }
+        if (this.weaponStack.cards.length) {
+            await this.dealer.moveCards({
+                nbCards: this.weaponStack.cards.length,
+                source: this.weaponStack,
+                destination: this.dungeonPile,
+                positionSource: 'top',
+                positionDestination: 'top',
+                inSequence: false
+            });
+        }
+        this.dungeonPile.shuffleCards();
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.dungeonPile,
+            destination: this.roomTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: true
+        });
     }
 }
