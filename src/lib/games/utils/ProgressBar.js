@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
-import { Number } from "../utils/Number";
+import { Number } from "./Number";
 
 import rectPNG from '../assets/images/rect.png';
 
@@ -45,15 +45,19 @@ export class ProgressBar {
         this.coloredSprite.height = this.height;
         this.coloredSprite.mask = this.mask;
         this.coloredSprite.tint = this.color;
-
-        this.label = new Number(this.container, { x: this.width / 2, y: this.height / 2 }, this.value, { fontSize: 20 });
  
         this.container.addChild(this.mask);
         this.container.addChild(this.background);
         this.container.addChild(this.whiteSprite);
         this.container.addChild(this.coloredSprite);
 
+        this.label = new Number(this.container, { x: this.width / 2, y: this.height / 2 }, this.value, { fontSize: 20 });
+
         this.gameContainer.addChild(this.container);
+    }
+
+    getValue() {
+        return this.value;
     }
 
     setValue(value) {
@@ -72,7 +76,7 @@ export class ProgressBar {
         const whiteSpriteTween = new TWEEN.Tween(propreties, false)
         .to({
             width: value * this.widthValueRatio
-        }, 600)
+        }, 300)
         .easing(TWEEN.Easing.Exponential.In)
         .onUpdate(() => {
             this.whiteSprite.width = propreties.width;
