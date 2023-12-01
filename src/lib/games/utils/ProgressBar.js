@@ -30,7 +30,7 @@ export class ProgressBar {
 
         this.background = new PIXI.Graphics();
         this.background.beginFill(0x000000, 0.25);
-        this.background.drawRoundedRect(-7, -7, this.width + 14, this.height + 14, 12);
+        this.background.drawRoundedRect(0, 0, this.width, this.height, 8);
         this.background.endFill();
 
         this.whiteTexture = PIXI.Texture.from(rectPNG);

@@ -150,7 +150,7 @@ export class Game extends App {
         this.healthValue = new ProgressBar(this.gameContainer, {
             x: 10,
             y: 540,
-            width: 700,
+            width: 720,
             height: 30,
             value: 20,
             maxValue: 20
