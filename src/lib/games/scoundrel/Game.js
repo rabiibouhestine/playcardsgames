@@ -178,7 +178,7 @@ export class Game extends App {
             if (this.selectedCard === null) {
                 card.sprite.y = card.position.y - 20;
                 this.selectedCard = card;
-                this.showButtons(card.params.suit);
+                this.showButtons();
             } else if (this.selectedCard.faceName === card.faceName) {
                 card.sprite.y = card.position.y;
                 this.selectedCard = null;
@@ -186,7 +186,7 @@ export class Game extends App {
                 this.selectedCard.sprite.y = this.selectedCard.position.y;
                 card.sprite.y = card.position.y - 20;
                 this.selectedCard = card;
-                this.showButtons(card.params.suit);
+                this.showButtons();
             }
         }
     }
@@ -198,8 +198,8 @@ export class Game extends App {
         this.handButton.container.visible = false;
     }
 
-    showButtons(suit) {
-        switch (suit) {
+    showButtons() {
+        switch (this.selectedCard.params.suit) {
             case 'H':
                 this.healButton.container.visible = true;
                 break;
@@ -207,6 +207,15 @@ export class Game extends App {
                 this.pickButton.container.visible = true;
                 break;
             default:
+                const monsterValue = this.selectedCard.params.value;
+                const hasNewWeapon = this.weaponStack.cards.length === 1;
+                const usedWeapon = this.weaponStack.cards.length >= 2;
+                const canUseWeapon = usedWeapon && this.weaponStack.getTopCard().params.value >= monsterValue;
+                if (hasNewWeapon || canUseWeapon) {
+                    this.weaponButton.setEnabled(true);
+                } else {
+                    this.weaponButton.setEnabled(false);
+                }
                 this.weaponButton.container.visible = true;
                 this.handButton.container.visible = true;
                 break;

@@ -47,4 +47,14 @@ export class Button {
         // add button to gameContainer
         this.gameContainer.addChild(this.container);
     }
+
+    setEnabled(isEnabled) {
+        if (isEnabled) {
+            this.container.eventMode = 'static';
+            this.container.cursor = 'pointer';
+        } else {
+            this.container.eventMode = 'none';
+            this.container.cursor = 'default';
+        }
+    }
 }
