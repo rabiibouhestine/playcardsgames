@@ -33,23 +33,16 @@ export class ProgressBar {
         this.background.drawRoundedRect(0, 0, this.width, this.height, 8);
         this.background.endFill();
 
-        this.whiteTexture = PIXI.Texture.from(rectPNG);
-        this.whiteSprite = new PIXI.Sprite(this.whiteTexture);
-        this.whiteSprite.width = this.width;
-        this.whiteSprite.height = this.height;
-        this.whiteSprite.mask = this.mask;
-
-        this.coloredTexture = PIXI.Texture.from(rectPNG);
-        this.coloredSprite = new PIXI.Sprite(this.coloredTexture);
-        this.coloredSprite.width = this.width;
-        this.coloredSprite.height = this.height;
-        this.coloredSprite.mask = this.mask;
-        this.coloredSprite.tint = this.color;
+        this.texture = PIXI.Texture.from(rectPNG);
+        this.sprite = new PIXI.Sprite(this.texture);
+        this.sprite.width = this.width;
+        this.sprite.height = this.height;
+        this.sprite.mask = this.mask;
+        this.sprite.tint = this.color;
  
         this.container.addChild(this.mask);
         this.container.addChild(this.background);
-        this.container.addChild(this.whiteSprite);
-        this.container.addChild(this.coloredSprite);
+        this.container.addChild(this.sprite);
 
         this.label = new Number(this.container, { x: this.width / 2, y: this.height * 2 }, this.value, { fontSize: 26 });
 
@@ -67,19 +60,18 @@ export class ProgressBar {
 
         this.value = value;
         this.label.setValue(value);
-        this.coloredSprite.width = value * this.widthValueRatio;
 
         const propreties = {
-            width: this.whiteSprite.width
+            width: this.sprite.width
         };
 
         const whiteSpriteTween = new TWEEN.Tween(propreties, false)
         .to({
             width: value * this.widthValueRatio
         }, 300)
-        .easing(TWEEN.Easing.Exponential.In)
+        .easing(TWEEN.Easing.Exponential.Out)
         .onUpdate(() => {
-            this.whiteSprite.width = propreties.width;
+            this.sprite.width = propreties.width;
         })
         .start()
 
