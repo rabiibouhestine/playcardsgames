@@ -7,7 +7,6 @@ import paramsAtlas from '../assets/json/clearTheDungeon.json';
 import { App } from '../utils/App';
 import { Cards } from '../utils/Cards';
 import { Dealer } from '../utils/Dealer';
-import { Message } from "../utils/Message";
 import { Number } from "../utils/Number";
 import { Button } from "../utils/Button";
 import { GameOverPanel } from "../utils/GameOverPanel";
@@ -141,6 +140,9 @@ export class Game extends App {
         // set selected card
         this.selectedCard = null;
 
+        // set used heal in round
+        this.usedHeal = false;
+
         // draw first room
         await this.dealer.moveCards({
             nbCards: 4,
@@ -224,14 +226,17 @@ export class Game extends App {
 
     async handleHeal() {
         this.hideButtons();
-        this.dealer.moveSelection({
+        if (!this.usedHeal) {
+            this.healthValue.setValue(Math.min(20, this.healthValue.getValue() + this.selectedCard.params.value));
+            this.usedHeal = true;
+        }
+        await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
             destination: this.discardPile,
             positionDestination: 'top',
             inSequence: false
         });
-        await this.healthValue.setValue(Math.min(20, this.healthValue.getValue() + this.selectedCard.params.value));
         this.updateRoom();
     }
 
@@ -286,6 +291,7 @@ export class Game extends App {
 
     async updateRoom() {
         if (this.roomTableau.cards.length === 1) {
+            this.usedHeal = false;
             await this.dealer.moveCards({
                 nbCards: 3,
                 source: this.dungeonPile,
