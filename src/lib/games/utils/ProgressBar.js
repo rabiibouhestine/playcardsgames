@@ -6,7 +6,7 @@ import { Number } from "./Number";
 import rectPNG from '../assets/images/rect.png';
 
 export class ProgressBar {
-    constructor(gameContainer, {x, y, width, height, value, maxValue, color = 0xdb2777}) {
+    constructor(gameContainer, {x, y, width, height, value, maxValue, color = 0xe2e8f0}) {
         this.gameContainer = gameContainer;
 
         this.x = x;
@@ -51,7 +51,7 @@ export class ProgressBar {
         this.container.addChild(this.whiteSprite);
         this.container.addChild(this.coloredSprite);
 
-        this.label = new Number(this.container, { x: this.width / 2, y: this.height / 2 }, this.value, { fontSize: 20 });
+        this.label = new Number(this.container, { x: this.width / 2, y: this.height * 2 }, this.value, { fontSize: 30 });
 
         this.gameContainer.addChild(this.container);
     }
