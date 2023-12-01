@@ -93,6 +93,16 @@ export class Game extends App {
             immediate: false
         });
 
+        // add skip room button
+        this.skipRoomButton = new Button(this.gameContainer, {
+            width: 120,
+            height: 50,
+            text: "Skip Room",
+            x: 60,
+            y: 304,
+            onPointerDown: this.handleSkipRoom.bind(this)
+        });
+
         // add heal button
         this.healButton = new Button(this.gameContainer, {
             width: 200,
@@ -139,6 +149,25 @@ export class Game extends App {
         this.handButton.container.visible = false;
 
         this.selectedCard = null;
+    }
+
+    async handleSkipRoom() {
+        await this.dealer.moveCards({
+            nbCards: this.roomTableau.cards.length,
+            source: this.roomTableau,
+            destination: this.dungeonPile,
+            positionSource: 'bottom',
+            positionDestination: 'bottom',
+            inSequence: true
+        });
+        await this.dealer.moveCards({
+            nbCards: Math.min(this.dungeonPile.cards.length, 4),
+            source: this.dungeonPile,
+            destination: this.roomTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: true
+        });
     }
 
     handleCardClick(card) {
