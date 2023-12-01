@@ -7,7 +7,6 @@ import paramsAtlas from '../assets/json/scoundrel.json';
 import { App } from '../utils/App';
 import { Cards } from '../utils/Cards';
 import { Dealer } from '../utils/Dealer';
-import { Number } from "../utils/Number";
 import { ProgressBar } from "../utils/ProgressBar";
 import { Button } from "../utils/Button";
 import { GameOverPanel } from "../utils/GameOverPanel";
@@ -146,7 +145,6 @@ export class Game extends App {
         this.hideButtons();
 
         // add health value
-        // this.healthValue = new Number(this.gameContainer, { x: 360, y: 545 }, 20, { fontSize: 20 });
         this.healthValue = new ProgressBar(this.gameContainer, {
             x: 0,
             y: 530,
