@@ -132,14 +132,13 @@ export class Game extends App {
             onPointerDown: this.handleHand.bind(this)
         });
 
-        this.healButton.container.visible = false;
-        this.pickButton.container.visible = false;
-        this.weaponButton.container.visible = false;
-        this.handButton.container.visible = false;
+        // hide buttons
+        this.hideButtons();
 
         // add health value
         this.healthValue = new Number(this.gameContainer, { x: 360, y: 545 }, 20, { fontSize: 20 });
 
+        // set selected card
         this.selectedCard = null;
 
         // draw first room
@@ -175,14 +174,11 @@ export class Game extends App {
 
     handleCardClick(card) {
         if (card.location === 'room') {
-            this.healButton.container.visible = false;
-            this.pickButton.container.visible = false;
-            this.weaponButton.container.visible = false;
-            this.handButton.container.visible = false;
+            this.hideButtons();
             if (this.selectedCard === null) {
                 card.sprite.y = card.position.y - 20;
                 this.selectedCard = card;
-                this.getSelectedCardButtons(card.params.suit);
+                this.showButtons(card.params.suit);
             } else if (this.selectedCard.faceName === card.faceName) {
                 card.sprite.y = card.position.y;
                 this.selectedCard = null;
@@ -190,12 +186,19 @@ export class Game extends App {
                 this.selectedCard.sprite.y = this.selectedCard.position.y;
                 card.sprite.y = card.position.y - 20;
                 this.selectedCard = card;
-                this.getSelectedCardButtons(card.params.suit);
+                this.showButtons(card.params.suit);
             }
         }
     }
 
-    getSelectedCardButtons(suit) {
+    hideButtons() {
+        this.healButton.container.visible = false;
+        this.pickButton.container.visible = false;
+        this.weaponButton.container.visible = false;
+        this.handButton.container.visible = false;
+    }
+
+    showButtons(suit) {
         switch (suit) {
             case 'H':
                 this.healButton.container.visible = true;
@@ -211,6 +214,7 @@ export class Game extends App {
     }
 
     async handleHeal() {
+        this.hideButtons();
         this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
@@ -223,6 +227,7 @@ export class Game extends App {
     }
 
     async handlePick() {
+        this.hideButtons();
         await this.dealer.moveCards({
             nbCards: this.weaponStack.cards.length,
             source: this.weaponStack,
@@ -242,6 +247,11 @@ export class Game extends App {
     }
 
     async handleWeapon() {
+        this.hideButtons();
+        if (this.weaponStack.getTopCard().params.value < this.selectedCard.params.value) {
+            const damage = this.selectedCard.params.value - this.weaponStack.getTopCard().params.value;
+            this.healthValue.setValue(Math.max(0, this.healthValue.getValue() - damage));
+        }
         await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
@@ -253,6 +263,7 @@ export class Game extends App {
     }
 
     async handleHand() {
+        this.hideButtons();
         this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
