@@ -56,6 +56,7 @@ export class Button {
         } else {
             this.container.eventMode = 'none';
             this.container.cursor = 'default';
+            this.graphic.alpha = 0.25;
             this.label.alpha = 0.25;
         }
     }
