@@ -1,10 +1,13 @@
 import * as PIXI from "pixi.js";
 import * as TWEEN from '@tweenjs/tween.js';
 
+import { Number } from "../utils/Number";
+
 import rectPNG from '../assets/images/rect.png';
 
 export class ProgressBar {
-    constructor(app, {x, y, width, height, value, maxValue, color = 0xdb2777}) {
+    constructor(gameContainer, {x, y, width, height, value, maxValue, color = 0xdb2777}) {
+        this.gameContainer = gameContainer;
 
         this.x = x;
         this.y = y;
@@ -14,80 +17,71 @@ export class ProgressBar {
         this.maxValue = maxValue;
         this.color = color;
 
-        this.widthHealthRatio = width/maxValue;
+        this.widthValueRatio = width/maxValue;
+
+        this.container = new PIXI.Container();
+        this.container.x = this.x;
+        this.container.y = this.y;
 
         this.mask = new PIXI.Graphics();
         this.mask.beginFill(0x000000);
-        this.mask.drawRoundedRect(-this.width/2, -this.height/2, this.width, this.height, 8);
+        this.mask.drawRoundedRect(0, 0, this.width, this.height, 8);
         this.mask.endFill();
 
-        this.shield = new PIXI.Graphics();
-        this.shield.beginFill(0x000000, 0.25);
-        this.shield.drawRoundedRect(-this.width/2, -this.height/2, this.width, this.height, 8);
-        this.shield.endFill();
+        this.background = new PIXI.Graphics();
+        this.background.beginFill(0x000000, 0.25);
+        this.background.drawRoundedRect(0, 0, this.width, this.height, 8);
+        this.background.endFill();
 
-        this.healthBgTexture = PIXI.Texture.from(rectPNG);
-        this.healthBgSprite = new PIXI.Sprite(this.healthBgTexture);
-        this.healthBgSprite.anchor.set(0.5);
-        this.healthBgSprite.width = this.health * this.widthHealthRatio;
-        this.healthBgSprite.height = this.height;
-        this.healthBgSprite.mask = this.mask;
+        this.whiteTexture = PIXI.Texture.from(rectPNG);
+        this.whiteSprite = new PIXI.Sprite(this.whiteTexture);
+        this.whiteSprite.width = this.width;
+        this.whiteSprite.height = this.height;
+        this.whiteSprite.mask = this.mask;
 
-        this.healthTexture = PIXI.Texture.from(rectPNG);
-        this.healthSprite = new PIXI.Sprite(this.healthTexture);
-        this.healthSprite.anchor.set(0.5);
-        this.healthSprite.width = this.health * this.widthHealthRatio;
-        this.healthSprite.height = this.height;
-        this.healthSprite.mask = this.mask;
-        this.healthSprite.tint = this.color;
+        this.coloredTexture = PIXI.Texture.from(rectPNG);
+        this.coloredSprite = new PIXI.Sprite(this.coloredTexture);
+        this.coloredSprite.width = this.width;
+        this.coloredSprite.height = this.height;
+        this.coloredSprite.mask = this.mask;
+        this.coloredSprite.tint = this.color;
 
-        this.label = new PIXI.Text(this.health, {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
-            fontSize: 16,
-            fill: 0xFFFFFF,
-            align: 'center'
-        });
-        this.label.anchor.set(0.5);     
+        this.label = new Number(this.container, { x: this.width / 2, y: this.height / 2 }, this.value, { fontSize: 20 });
+ 
+        this.container.addChild(this.mask);
+        this.container.addChild(this.background);
+        this.container.addChild(this.whiteSprite);
+        this.container.addChild(this.coloredSprite);
 
-        this.shieldContainer = new PIXI.Container();
-        this.shieldContainer.x = this.x;
-        this.shieldContainer.y = this.y;
-        this.shieldContainer.addChild(this.mask);
-        this.shieldContainer.addChild(this.shield);
-        this.shieldContainer.addChild(this.healthBgSprite);
-        this.shieldContainer.addChild(this.healthSprite);
-        this.shieldContainer.addChild(this.label);
-
-        app.stage.addChild(this.shieldContainer);
+        this.gameContainer.addChild(this.container);
     }
 
     setValue(value) {
-        if (this.health === value) {
+        if (this.value === value) {
             return;
         }
 
-        this.health = value;
-        this.label.text = this.health;
-        this.healthSprite.width = this.health * this.widthHealthRatio;
+        this.value = value;
+        this.label.setValue(value);
+        this.coloredSprite.width = value * this.widthValueRatio;
 
         const propreties = {
-            width: this.healthBgSprite.width
+            width: this.whiteSprite.width
         };
 
-        const healthBgTween = new TWEEN.Tween(propreties, false)
+        const whiteSpriteTween = new TWEEN.Tween(propreties, false)
         .to({
-            width: this.health * this.widthHealthRatio
+            width: value * this.widthValueRatio
         }, 600)
         .easing(TWEEN.Easing.Exponential.In)
         .onUpdate(() => {
-            this.healthBgSprite.width = propreties.width;
+            this.whiteSprite.width = propreties.width;
         })
         .start()
 
         const updateValue = (delta) => {
-            if (!healthBgTween.isPlaying()) return;
-            healthBgTween.update(delta);
+            if (!whiteSpriteTween.isPlaying()) return;
+            whiteSpriteTween.update(delta);
             requestAnimationFrame(updateValue);
         };
 
