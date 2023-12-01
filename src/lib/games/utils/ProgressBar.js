@@ -51,7 +51,7 @@ export class ProgressBar {
         this.container.addChild(this.whiteSprite);
         this.container.addChild(this.coloredSprite);
 
-        this.label = new Number(this.container, { x: this.width / 2, y: this.height * 2 }, this.value, { fontSize: 30 });
+        this.label = new Number(this.container, { x: this.width / 2, y: this.height * 2 }, this.value, { fontSize: 26 });
 
         this.gameContainer.addChild(this.container);
     }
