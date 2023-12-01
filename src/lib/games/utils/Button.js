@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 
 export class Button {
-    constructor(buttonContainer, {
+    constructor(gameContainer, {
         width = 100,
         height = 50,
         color = 0x000000,
@@ -12,7 +12,7 @@ export class Button {
         y = 585,
         onPointerDown = () => {}
     }) {
-        this.buttonContainer = buttonContainer;
+        this.gameContainer = gameContainer;
 
         // Define graphic
         this.graphic = new PIXI.Graphics();
@@ -44,7 +44,7 @@ export class Button {
             .on('pointerover', () => {this.graphic.alpha = 0.50})
             .on('pointerout', () => {this.graphic.alpha = 0.25})
 
-        // add button to buttonContainer
-        this.buttonContainer.addChild(this.container);
+        // add button to gameContainer
+        this.gameContainer.addChild(this.container);
     }
 }

@@ -133,14 +133,24 @@ export class Game extends App {
             onPointerDown: this.handleHand.bind(this)
         });
 
+        this.healButton.container.visible = false;
+        this.pickButton.container.visible = false;
+        this.weaponButton.container.visible = false;
+        this.handButton.container.visible = false;
+
         this.selectedCard = null;
     }
 
     handleCardClick(card) {
         if (card.location === 'room') {
+            this.healButton.container.visible = false;
+            this.pickButton.container.visible = false;
+            this.weaponButton.container.visible = false;
+            this.handButton.container.visible = false;
             if (this.selectedCard === null) {
                 card.sprite.y = card.position.y - 20;
                 this.selectedCard = card;
+                this.getSelectedCardButtons(card.params.suit);
             } else if (this.selectedCard.faceName === card.faceName) {
                 card.sprite.y = card.position.y;
                 this.selectedCard = null;
@@ -148,7 +158,23 @@ export class Game extends App {
                 this.selectedCard.sprite.y = this.selectedCard.position.y;
                 card.sprite.y = card.position.y - 20;
                 this.selectedCard = card;
+                this.getSelectedCardButtons(card.params.suit);
             }
+        }
+    }
+
+    getSelectedCardButtons(suit) {
+        switch (suit) {
+            case 'H':
+                this.healButton.container.visible = true;
+                break;
+            case 'D':
+                this.pickButton.container.visible = true;
+                break;
+            default:
+                this.weaponButton.container.visible = true;
+                this.handButton.container.visible = true;
+                break;
         }
     }
 
