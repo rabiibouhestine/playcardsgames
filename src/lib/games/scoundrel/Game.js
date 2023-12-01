@@ -156,6 +156,7 @@ export class Game extends App {
     }
 
     async handleSkipRoom() {
+        this.skipRoomButton.setEnabled(false);
         await this.dealer.moveCards({
             nbCards: this.roomTableau.cards.length,
             source: this.roomTableau,
@@ -292,6 +293,7 @@ export class Game extends App {
     async updateRoom() {
         if (this.roomTableau.cards.length === 1) {
             this.usedHeal = false;
+            this.skipRoomButton.setEnabled(true);
             await this.dealer.moveCards({
                 nbCards: 3,
                 source: this.dungeonPile,
