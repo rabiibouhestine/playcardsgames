@@ -149,9 +149,9 @@ export class Game extends App {
         // this.healthValue = new Number(this.gameContainer, { x: 360, y: 545 }, 20, { fontSize: 20 });
         this.healthValue = new ProgressBar(this.gameContainer, {
             x: 0,
-            y: 540,
+            y: 530,
             width: 720,
-            height: 30,
+            height: 20,
             value: 20,
             maxValue: 20
         });
@@ -311,6 +311,9 @@ export class Game extends App {
     }
 
     async updateRoom() {
+        if (this.roomTableau.cards.length < 4) {
+            this.skipRoomButton.setEnabled(false);
+        }
         if (this.roomTableau.cards.length === 1) {
             this.usedHeal = false;
             this.skipRoomButton.setEnabled(true);
