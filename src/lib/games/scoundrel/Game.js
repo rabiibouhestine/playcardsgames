@@ -91,6 +91,16 @@ export class Game extends App {
             onPointerDown: this.handleSkipRoom.bind(this)
         });
 
+        // add restart button
+        this.restartButton = new Button(this.gameContainer, {
+            width: 120,
+            height: 50,
+            text: "Restart",
+            x: 660,
+            y: 304,
+            onPointerDown: this.handleRestart.bind(this)
+        });
+
         // add heal button
         this.healButton = new Button(this.gameContainer, {
             width: 200,
@@ -303,5 +313,9 @@ export class Game extends App {
                 inSequence: true
             });
         }
+    }
+
+    async handleRestart() {
+
     }
 }
