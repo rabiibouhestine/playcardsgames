@@ -347,7 +347,8 @@ export class Game extends App {
             });
         }
         this.dungeonPile.shuffleCards();
-        this.dealer.moveCards({
+        this.healthValue.setValue(20);
+        await this.dealer.moveCards({
             nbCards: 4,
             source: this.dungeonPile,
             destination: this.roomTableau,
