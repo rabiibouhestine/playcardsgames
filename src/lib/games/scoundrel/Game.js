@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 
 import cardsSpritesheetImage from '../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
-import paramsAtlas from '../assets/json/clearTheDungeon.json';
+import paramsAtlas from '../assets/json/scoundrel.json';
 
 import { App } from '../utils/App';
 import { Cards } from '../utils/Cards';
@@ -175,6 +175,7 @@ export class Game extends App {
     }
 
     async handleSkipRoom() {
+        this.hideButtons();
         this.skipRoomButton.setEnabled(false);
         await this.dealer.moveCards({
             nbCards: this.roomTableau.cards.length,
@@ -325,6 +326,7 @@ export class Game extends App {
     }
 
     async handleRestart() {
+        this.hideButtons();
         if (this.roomTableau.cards.length) {
             await this.dealer.moveCards({
                 nbCards: this.roomTableau.cards.length,
