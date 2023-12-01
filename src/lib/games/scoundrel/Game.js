@@ -37,10 +37,10 @@ export class Game extends App {
 
         // make dungeon pile deck
         const dungeonPileDeck = this.dealer.shuffleCards([
-            'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS', 'KD', 'KS', 'KH', 'KC',
-            'AC', '2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', 'TC', 'QD', 'QS', 'QH', 'QC',
-            'AH', '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', 'TH', 'JD', 'JS', 'JH', 'JC',
-            'AD', '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', 'TD'
+            'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS', 'JS', 'QS', 'KS',
+            'AC', '2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', 'TC', 'JC', 'QC', 'KC',
+            '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', 'TH',
+            '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', 'TD'
         ]);
 
         // add dungeon pile
@@ -80,17 +80,6 @@ export class Game extends App {
             gap: 40,
             position: {x: 360, y: 442},
             faceUp: true
-        });
-
-        // draw first room
-        this.dealer.moveCards({
-            nbCards: 4,
-            source: this.dungeonPile ,
-            destination: this.roomTableau,
-            positionSource: 'top',
-            positionDestination: 'bottom',
-            inSequence: true,
-            immediate: false
         });
 
         // add skip room button
@@ -148,7 +137,21 @@ export class Game extends App {
         this.weaponButton.container.visible = false;
         this.handButton.container.visible = false;
 
+        // add health value
+        this.healthValue = new Number(this.gameContainer, { x: 360, y: 545 }, 20, { fontSize: 20 });
+
         this.selectedCard = null;
+
+        // draw first room
+        await this.dealer.moveCards({
+            nbCards: 4,
+            source: this.dungeonPile ,
+            destination: this.roomTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: true,
+            immediate: false
+        });
     }
 
     async handleSkipRoom() {
@@ -207,7 +210,7 @@ export class Game extends App {
         }
     }
 
-    handleHeal() {
+    async handleHeal() {
         this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
@@ -215,6 +218,8 @@ export class Game extends App {
             positionDestination: 'top',
             inSequence: false
         });
+        await this.healthValue.setValue(Math.min(20, this.healthValue.getValue() + this.selectedCard.params.value));
+        this.updateRoom();
     }
 
     async handlePick() {
@@ -226,26 +231,28 @@ export class Game extends App {
             positionDestination: 'top',
             inSequence: true
         });
-        this.dealer.moveSelection({
+        await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
             destination: this.weaponStack,
             positionDestination: 'top',
             inSequence: false
         });
+        this.updateRoom();
     }
 
-    handleWeapon() {
-        this.dealer.moveSelection({
+    async handleWeapon() {
+        await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
             destination: this.weaponStack,
             positionDestination: 'top',
             inSequence: false
         });
+        this.updateRoom();
     }
 
-    handleHand() {
+    async handleHand() {
         this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
@@ -253,5 +260,20 @@ export class Game extends App {
             positionDestination: 'top',
             inSequence: false
         });
+        await this.healthValue.setValue(Math.max(0, this.healthValue.getValue() - this.selectedCard.params.value));
+        this.updateRoom();
+    }
+
+    async updateRoom() {
+        if (this.roomTableau.cards.length === 1) {
+            await this.dealer.moveCards({
+                nbCards: 3,
+                source: this.dungeonPile,
+                destination: this.roomTableau,
+                positionSource: 'top',
+                positionDestination: 'bottom',
+                inSequence: true
+            });
+        }
     }
 }
