@@ -52,9 +52,11 @@ export class Button {
         if (isEnabled) {
             this.container.eventMode = 'static';
             this.container.cursor = 'pointer';
+            this.label.alpha = 1;
         } else {
             this.container.eventMode = 'none';
             this.container.cursor = 'default';
+            this.label.alpha = 0.25;
         }
     }
 }
