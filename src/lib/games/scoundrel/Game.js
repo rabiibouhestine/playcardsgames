@@ -95,40 +95,40 @@ export class Game extends App {
 
         // add heal button
         this.healButton = new Button(this.gameContainer, {
-            width: 110,
+            width: 200,
             height: 50,
             text: "♥ Heal",
-            x: 183,
+            x: 360,
             y: 304,
             onPointerDown: this.handleHeal.bind(this)
         });
 
         // add pick button
         this.pickButton = new Button(this.gameContainer, {
-            width: 110,
+            width: 200,
             height: 50,
             text: "♦ Pick",
-            x: 301,
+            x: 360,
             y: 304,
             onPointerDown: this.handlePick.bind(this)
         });
 
         // add weapon button
         this.weaponButton = new Button(this.gameContainer, {
-            width: 110,
+            width: 200,
             height: 50,
-            text: "Weapon",
-            x: 419,
+            text: "Sword Attack",
+            x: 250,
             y: 304,
             onPointerDown: this.handleWeapon.bind(this)
         });
 
         // add hand button
         this.handButton = new Button(this.gameContainer, {
-            width: 110,
+            width: 200,
             height: 50,
-            text: "Hand",
-            x: 536,
+            text: "Hand Attack",
+            x: 472,
             y: 304,
             onPointerDown: this.handleHand.bind(this)
         });
