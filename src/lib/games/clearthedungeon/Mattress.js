@@ -74,30 +74,56 @@ export class Mattress {
         // Monster Discard Zone
         this.monsterDiscardZone = new PIXI.Graphics();
         this.monsterDiscardZone.beginFill(0x000000, 0.25);
-        this.monsterDiscardZone.drawRoundedRect(597, 77, 110, 140, 8);
+        this.monsterDiscardZone.drawRoundedRect(597, 88, 110, 160, 8);
         this.monsterDiscardZone.endFill();
         mattressContainer.addChild(this.monsterDiscardZone);
 
         // Monster Discard Zone Background
         this.monsterDiscardZoneBg = new PIXI.Graphics();
         this.monsterDiscardZoneBg.beginFill(0x000000, 0.25);
-        this.monsterDiscardZoneBg.drawRoundedRect(612, 92, 80, 110, 6);
+        this.monsterDiscardZoneBg.drawRoundedRect(612, 103, 80, 110, 6);
         this.monsterDiscardZoneBg.endFill();
         mattressContainer.addChild(this.monsterDiscardZoneBg);
+
+        // Monsters Discard Label
+        this.monstersDiscardLabel = new PIXI.Text("Defeated", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 16,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        this.monstersDiscardLabel.anchor.set(0.5);
+        this.monstersDiscardLabel.x = 653;
+        this.monstersDiscardLabel.y = 230;
+        mattressContainer.addChild(this.monstersDiscardLabel);
 
         // Attack Discard Zone
         this.attackDiscardZone = new PIXI.Graphics();
         this.attackDiscardZone.beginFill(0x000000, 0.25);
-        this.attackDiscardZone.drawRoundedRect(597, 257, 110, 140, 8);
+        this.attackDiscardZone.drawRoundedRect(597, 285, 110, 160, 8);
         this.attackDiscardZone.endFill();
         mattressContainer.addChild(this.attackDiscardZone);
 
         // Attack Discard Zone Background
         this.attackDiscardZoneBg = new PIXI.Graphics();
         this.attackDiscardZoneBg.beginFill(0x000000, 0.25);
-        this.attackDiscardZoneBg.drawRoundedRect(612, 272, 80, 110, 6);
+        this.attackDiscardZoneBg.drawRoundedRect(612, 300, 80, 110, 6);
         this.attackDiscardZoneBg.endFill();
         mattressContainer.addChild(this.attackDiscardZoneBg);
+
+        // Attack Discard Label
+        this.attackDiscardLabel = new PIXI.Text("Discarded", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 16,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        this.attackDiscardLabel.anchor.set(0.5);
+        this.attackDiscardLabel.x = 653;
+        this.attackDiscardLabel.y = 427;
+        mattressContainer.addChild(this.attackDiscardLabel);
 
         // Draw Pile Zone
         this.drawPileZone = new PIXI.Graphics();
@@ -113,10 +139,23 @@ export class Mattress {
         this.drawPileZoneBg.endFill();
         mattressContainer.addChild(this.drawPileZoneBg);
 
+        // Draw Pile Label
+        this.drawPileLabel = new PIXI.Text("Draw Pile", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 16,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        this.drawPileLabel.anchor.set(0.5);
+        this.drawPileLabel.x = 67;
+        this.drawPileLabel.y = 637;
+        mattressContainer.addChild(this.drawPileLabel);
+
         // Hand Zone
         this.handZone = new PIXI.Graphics();
         this.handZone.beginFill(0x000000, 0.25);
-        this.handZone.drawRoundedRect(210, 495, 300, 160, 8);
+        this.handZone.drawRoundedRect(210, 495, 300, 140, 8);
         this.handZone.endFill();
         mattressContainer.addChild(this.handZone);
 
@@ -141,6 +180,19 @@ export class Mattress {
         this.reserveZoneBg.drawRoundedRect(613, 510, 80, 110, 6);
         this.reserveZoneBg.endFill();
         mattressContainer.addChild(this.reserveZoneBg);
+
+        // Reserve Label
+        this.reserveLabel = new PIXI.Text("Reserve", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 16,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        this.reserveLabel.anchor.set(0.5);
+        this.reserveLabel.x = 653;
+        this.reserveLabel.y = 637;
+        mattressContainer.addChild(this.reserveLabel);
     }
 
     setHighlighted(isHighlighted) {

@@ -70,7 +70,7 @@ export class Game extends App {
         this.monsterDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: monstersDeck,
-            position: {x: 652, y: 147},
+            position: {x: 652, y: 158},
             faceUp: false,
             counter: true
         });
@@ -121,7 +121,7 @@ export class Game extends App {
         this.attackDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 652, y: 327},
+            position: {x: 652, y: 355},
             faceUp: false,
             counter: true
         });
