@@ -328,10 +328,10 @@ export class Game extends App {
             });
         }
         if (this.roomTableau.cards.length === 0 && !this.dungeonPile.cards.length && this.healthValue.getValue() > 0) {
-            this.handleGameOver();
+            this.handleGameOver(10);
         }
         if (this.healthValue.getValue() <= 0) {
-            this.handleGameOver();
+            this.handleGameOver(-99);
         }
     }
 
@@ -387,7 +387,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
-    handleGameOver() {
+    handleGameOver(score) {
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
         this.gameContainer.filters = [blurFilter];
@@ -397,6 +397,6 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true, 666);
+        this.gameOverPanel.setVisible(true, score);
     }
 }
