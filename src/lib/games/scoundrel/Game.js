@@ -372,7 +372,7 @@ export class Game extends App {
             this.handleGameOver(score);
         }
         if (this.healthValue.getValue() <= 0) {
-            this.handleGameOver(-99);
+            this.handleGameOver(-this.getMonstersValue());
         }
         this.selectedCard = null;
     }
@@ -383,8 +383,10 @@ export class Game extends App {
         // remove blur
         this.gameContainer.filters = [];
         this.mattressContainer.filters = [];
+
         this.gameOverPanel.setVisible(false);
         this.hideButtons();
+        this.selectedCard = null;
         if (this.roomTableau.cards.length) {
             await this.dealer.moveCards({
                 nbCards: this.roomTableau.cards.length,
@@ -440,5 +442,19 @@ export class Game extends App {
 
         // show game over panel
         this.gameOverPanel.setVisible(true, score);
+    }
+
+    getMonstersValue() {
+        const roomMonsters = this.roomTableau.cards.filter(card => card.params.suit === "C" || card.params.suit === "S");
+        const dungeonMonsters = this.dungeonPile.cards.filter(card => card.params.suit === "C" || card.params.suit === "S");
+
+        const roomMonstersValue = roomMonsters.reduce((accumulator, card) => {
+            return accumulator + card.params.value;
+        }, 0);
+        const dungeonMonstersValue = dungeonMonsters.reduce((accumulator, card) => {
+            return accumulator + card.params.value;
+        }, 0);
+
+        return roomMonstersValue + dungeonMonstersValue;
     }
 }
