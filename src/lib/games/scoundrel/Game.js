@@ -327,12 +327,18 @@ export class Game extends App {
                 inSequence: true
             });
         }
-        if (this.roomTableau.cards.length === 0 && !this.dungeonPile.cards.length && this.healthValue.getValue() > 0) {
-            this.handleGameOver(10);
+        if (!this.roomTableau.cards.length && !this.dungeonPile.cards.length && this.healthValue.getValue() > 0) {
+            let score = 0;
+            if (this.selectedCard !== null && this.selectedCard.params.suit === 'H') {
+                score += this.selectedCard.params.value;
+            }
+            score += this.healthValue.getValue();
+            this.handleGameOver(score);
         }
         if (this.healthValue.getValue() <= 0) {
             this.handleGameOver(-99);
         }
+        this.selectedCard = null;
     }
 
     async handleRestart() {
