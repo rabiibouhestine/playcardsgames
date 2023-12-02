@@ -351,6 +351,19 @@ export class Game extends App {
         if (this.roomTableau.cards.length < 4) {
             this.skipRoomButton.setEnabled(false);
         }
+        if (!this.roomTableau.cards.length && !this.dungeonPile.cards.length && this.healthValue.getValue() > 0) {
+            let score = 0;
+            if (this.selectedCard !== null && this.selectedCard.params.suit === 'H') {
+                score += this.selectedCard.params.value;
+            }
+            score += this.healthValue.getValue();
+            this.handleGameOver(score);
+            return;
+        }
+        if (this.healthValue.getValue() <= 0) {
+            this.handleGameOver(-this.getMonstersValue());
+            return;
+        }
         if (this.roomTableau.cards.length === 1 && this.dungeonPile.cards.length) {
             this.usedHeal = false;
             this.skipRoomButton.setEnabled(true);
@@ -362,17 +375,6 @@ export class Game extends App {
                 positionDestination: 'bottom',
                 inSequence: true
             });
-        }
-        if (!this.roomTableau.cards.length && !this.dungeonPile.cards.length && this.healthValue.getValue() > 0) {
-            let score = 0;
-            if (this.selectedCard !== null && this.selectedCard.params.suit === 'H') {
-                score += this.selectedCard.params.value;
-            }
-            score += this.healthValue.getValue();
-            this.handleGameOver(score);
-        }
-        if (this.healthValue.getValue() <= 0) {
-            this.handleGameOver(-this.getMonstersValue());
         }
         this.selectedCard = null;
     }
