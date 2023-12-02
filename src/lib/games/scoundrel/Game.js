@@ -28,6 +28,9 @@ export class Game extends App {
         );
         await this.spritesheet.parse();
 
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         // add dealer
         this.dealer = new Dealer();
 
@@ -173,9 +176,15 @@ export class Game extends App {
             inSequence: true,
             immediate: false
         });
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     async handleSkipRoom() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         this.hideButtons();
         this.skipRoomButton.setEnabled(false);
         await this.dealer.moveCards({
@@ -194,6 +203,9 @@ export class Game extends App {
             positionDestination: 'bottom',
             inSequence: true
         });
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     handleCardClick(card) {
@@ -247,6 +259,9 @@ export class Game extends App {
     }
 
     async handleHeal() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         this.hideButtons();
         if (!this.usedHeal) {
             this.healthValue.setValue(Math.min(20, this.healthValue.getValue() + this.selectedCard.params.value));
@@ -260,9 +275,15 @@ export class Game extends App {
             inSequence: false
         });
         this.updateRoom();
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     async handlePick() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         this.hideButtons();
         await this.dealer.moveCards({
             nbCards: this.weaponStack.cards.length,
@@ -280,9 +301,15 @@ export class Game extends App {
             inSequence: false
         });
         this.updateRoom();
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     async handleWeapon() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         this.hideButtons();
         if (this.weaponStack.getTopCard().params.value < this.selectedCard.params.value) {
             const damage = this.selectedCard.params.value - this.weaponStack.getTopCard().params.value;
@@ -296,9 +323,15 @@ export class Game extends App {
             inSequence: false
         });
         this.updateRoom();
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     async handleHand() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         this.hideButtons();
         this.healthValue.setValue(Math.max(0, this.healthValue.getValue() - this.selectedCard.params.value));
         await this.dealer.moveSelection({
@@ -309,6 +342,9 @@ export class Game extends App {
             inSequence: false
         });
         this.updateRoom();
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 
     async updateRoom() {
