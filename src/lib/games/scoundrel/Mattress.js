@@ -20,7 +20,7 @@ export class Mattress {
         this.dungeonZoneLabel = new PIXI.Text("Dungeon", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 20,
+            fontSize: 16,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -47,7 +47,7 @@ export class Mattress {
         this.discardZoneLabel = new PIXI.Text("Discard", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 20,
+            fontSize: 16,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -67,7 +67,7 @@ export class Mattress {
         this.roomZoneLabel = new PIXI.Text("Room", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 20,
+            fontSize: 16,
             fill: 0xFFFFFF,
             align: 'center'
         });
