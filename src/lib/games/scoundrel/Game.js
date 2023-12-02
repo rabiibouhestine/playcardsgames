@@ -160,6 +160,9 @@ export class Game extends App {
         // set used heal in round
         this.usedHeal = false;
 
+        // game over panel
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Score:");
+
         // draw first room
         await this.dealer.moveCards({
             nbCards: 4,
@@ -297,14 +300,14 @@ export class Game extends App {
 
     async handleHand() {
         this.hideButtons();
-        this.dealer.moveSelection({
+        this.healthValue.setValue(Math.max(0, this.healthValue.getValue() - this.selectedCard.params.value));
+        await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
             destination: this.discardPile,
             positionDestination: 'top',
             inSequence: false
         });
-        await this.healthValue.setValue(Math.max(0, this.healthValue.getValue() - this.selectedCard.params.value));
         this.updateRoom();
     }
 
@@ -312,11 +315,11 @@ export class Game extends App {
         if (this.roomTableau.cards.length < 4) {
             this.skipRoomButton.setEnabled(false);
         }
-        if (this.roomTableau.cards.length === 1) {
+        if (this.roomTableau.cards.length === 1 && this.dungeonPile.cards.length) {
             this.usedHeal = false;
             this.skipRoomButton.setEnabled(true);
             await this.dealer.moveCards({
-                nbCards: 3,
+                nbCards: Math.min(3, this.dungeonPile.cards.length),
                 source: this.dungeonPile,
                 destination: this.roomTableau,
                 positionSource: 'top',
@@ -324,9 +327,21 @@ export class Game extends App {
                 inSequence: true
             });
         }
+        if (this.roomTableau.cards.length === 0 && !this.dungeonPile.cards.length && this.healthValue.getValue() > 0) {
+            this.handleGameOver();
+        }
+        if (this.healthValue.getValue() <= 0) {
+            this.handleGameOver();
+        }
     }
 
     async handleRestart() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+        // remove blur
+        this.gameContainer.filters = [];
+        this.mattressContainer.filters = [];
+        this.gameOverPanel.setVisible(false);
         this.hideButtons();
         if (this.roomTableau.cards.length) {
             await this.dealer.moveCards({
@@ -368,5 +383,20 @@ export class Game extends App {
             positionDestination: 'bottom',
             inSequence: true
         });
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
+    }
+
+    handleGameOver() {
+        // blur screen
+        const blurFilter = new PIXI.BlurFilter();
+        this.gameContainer.filters = [blurFilter];
+        this.mattressContainer.filters = [blurFilter];
+
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        // show game over panel
+        this.gameOverPanel.setVisible(true, 666);
     }
 }
