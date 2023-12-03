@@ -1,10 +1,37 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
-	import CardsIcon from '$lib/components/CardsIcon.svelte';
 
 	import zombiesInCastlesCover from '$lib/assets/zombiesRegicide.svg';
 	import clearTheDungeonCover from '$lib/assets/clearTheDungeon.svg';
 	import scoundrelCover from '$lib/assets/scoundrel.svg';
+
+	const classic = [
+		{
+			name: 'Klondike',
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
+		},
+		{
+			name: 'Freecell',
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
+		},
+		{
+			name: 'Spider',
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
+		},
+		{
+			name: 'Yukon',
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
+		},
+		{
+			name: 'Scorpion',
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
+		}
+	];
 
 	const games = [
 		{
