@@ -116,7 +116,7 @@
 	<div class="bg-base-100/90 backdrop-blur-md">
 		<Header />
 		<div class="grid justify-items-center space-y-6 py-10">
-			<h1 class="text-4xl md:text-5xl font-bold">PlayCardGames.io</h1>
+			<h1 class="text-4xl md:text-5xl font-bold">Play Card Games</h1>
 			<div>
 				<p class="px-6 text-center text-lg">
 					Enjoy an amazing collection of modern thematic solitaire card games
