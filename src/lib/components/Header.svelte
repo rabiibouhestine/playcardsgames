@@ -27,7 +27,7 @@
 				<input type="button" on:click={handleNotification} />
 				<div class="indicator">
 					{#if notification}
-						<span class="indicator-item badge badge-accent">!</span>
+						<span class="indicator-item badge badge-accent">1</span>
 					{/if}
 					<svg viewBox="0 0 24 24" class="fill-current w-7 h-7" xmlns="http://www.w3.org/2000/svg"
 						><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
