@@ -114,11 +114,12 @@
 					/>
 				</figure>
 				<div class="card-body items-center text-center">
-					<h1 class="card-title text-3xl sm:text-xl">{game.name}</h1>
+					<h1
+						class="card-title text-3xl sm:text-xl transition duration-300 ease-in-out group-hover:text-primary"
+					>
+						{game.name}
+					</h1>
 				</div>
-				<div
-					class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-secondary bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-25"
-				/>
 			</div>
 		</a>
 	{/each}
