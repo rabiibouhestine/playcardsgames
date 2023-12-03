@@ -86,7 +86,7 @@
 </script>
 
 <div class="bg-cards bg-fixed bg-cover">
-	<div class="bg-base-100/90 backdrop-blur-sm">
+	<div class="bg-base-100/90 backdrop-blur-md">
 		<Header />
 		<div class="grid justify-items-center space-y-6 py-10">
 			<h1 class="text-4xl md:text-5xl font-bold">PlayCardGames.io</h1>
