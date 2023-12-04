@@ -97,8 +97,8 @@ export class Game extends App {
             type: 'pile',
             faceNames: [],
             position: {x: 576, y: 277},
-            faceUp: false,
-            counter: true,
+            faceUp: true,
+            counter: false,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
             onPointerOut: this.handleCardOut.bind(this)
