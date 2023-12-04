@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Game } from '$lib/games/zombiesincastles/Game.js';
+	import { Game } from '$lib/games/regicideSolitaire/Game.js';
 	import GamePage from '$lib/components/GamePage.svelte';
 
 	let game;
@@ -15,8 +15,8 @@
 	});
 </script>
 
-<GamePage title="Zombies Regicide">
+<GamePage title="Regicide Solitaire">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
-	<h1 class="text-5xl font-bold">Zombies Regicide</h1>
+	<h1 class="text-5xl font-bold">Regicide Solitaire</h1>
 	<p>yada yada yada</p>
 </GamePage>

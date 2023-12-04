@@ -1,7 +1,7 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 
-	import zombiesInCastlesCover from '$lib/assets/zombiesRegicide.svg';
+	import regicideSolitaireCover from '$lib/assets/regicideSolitaire.svg';
 	import clearTheDungeonCover from '$lib/assets/clearTheDungeon.svg';
 	import scoundrelCover from '$lib/assets/scoundrel.svg';
 
@@ -35,9 +35,9 @@
 
 	const games = [
 		{
-			name: 'Zombies Regicide',
-			src: zombiesInCastlesCover,
-			href: '/zombies-regicide'
+			name: 'Regicide Solitaire',
+			src: regicideSolitaireCover,
+			href: '/regicide-solitaire'
 		},
 		{
 			name: 'Clear the Dungeon',

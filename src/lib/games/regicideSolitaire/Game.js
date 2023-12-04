@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 
 import cardsSpritesheetImage from '../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
-import paramsAtlas from '../assets/json/zombiesInCastles.json';
+import paramsAtlas from '../assets/json/regicideSolitaire.json';
 
 import { App } from '../utils/App';
 import { Card } from '../utils/Card';
