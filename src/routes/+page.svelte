@@ -4,6 +4,7 @@
 	import regicideSolitaireCover from '$lib/assets/regicideSolitaire.svg';
 	import clearTheDungeonCover from '$lib/assets/clearTheDungeon.svg';
 	import scoundrelCover from '$lib/assets/scoundrel.svg';
+	import merchantSolitaireCover from '$lib/assets/merchantSolitaire.svg';
 
 	const classic = [
 		{
@@ -51,7 +52,7 @@
 		},
 		{
 			name: 'Merchant Solitaire',
-			src: 'https://placehold.co/400x400/grey/white',
+			src: merchantSolitaireCover,
 			href: '/'
 		},
 		{
