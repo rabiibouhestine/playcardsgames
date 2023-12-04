@@ -39,7 +39,7 @@ export class Mattress {
         gameContainer.addChild(drawPileBackground);
 
         // Add discard pile label
-        const discardPileLabel = new PIXI.Text("Fallen", {
+        const discardPileLabel = new PIXI.Text("Discard", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 16,
@@ -52,7 +52,7 @@ export class Mattress {
         gameContainer.addChild(discardPileLabel);
 
         // Add draw pile label
-        const drawPileLabel = new PIXI.Text("Horde", {
+        const drawPileLabel = new PIXI.Text("Draw", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 16,
@@ -72,7 +72,7 @@ export class Mattress {
         gameContainer.addChild(jokersZone);
 
         // Add jokers labels
-        const jokersLabel = new PIXI.Text("Battle Wails", {
+        const jokersLabel = new PIXI.Text("Jokers", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 16,
