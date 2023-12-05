@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import '@pixi/graphics-extras';
 
 import cardsSpritesheetImage from '../../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../../assets/json/cardsSpritesheet.json';
@@ -11,6 +12,7 @@ import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
 
 import { Mattress } from "./Mattress";
+import { Sticker } from "./Sticker";
 
 import paramsAtlas from './values.json';
 import items from './storeItems.json';
@@ -89,6 +91,9 @@ export class Game extends App {
 
         // add merchant offer
         this.merchantOffer = new Number(this.gameContainer, { x: 435, y: 65 }, 0, { fontSize: 36 });
+
+        // add on sale sticker
+        this.onSaleSticker = new Sticker(this.gameContainer);
 
         // make items deck
         const itemsDeck = this.dealer.shuffleCards([
@@ -188,13 +193,16 @@ export class Game extends App {
             if (this.selectedItems.includes(card.faceName)) {
                 this.selectedItems = this.selectedItems.filter(name => name !== card.faceName);
                 this.mattress.clearHighlight(card.location);
+                this.onSaleSticker.hide();
             } else if (this.selectedItemsOnSale.includes(card.faceName)) {
                 this.selectedItemsOnSale = this.selectedItemsOnSale.filter(name => name !== card.faceName);
                 this.selectedItems.push(card.faceName);
                 this.mattress.setHighlighted(card.location, false);
+                this.onSaleSticker.hide();
             } else {
                 this.selectedItemsOnSale.push(card.faceName);
                 this.mattress.setHighlighted(card.location, true);
+                this.onSaleSticker.setVisible(card);
             }
         }
         this.merchantOffer.setValue(this.getMerchantOffer(), true);
