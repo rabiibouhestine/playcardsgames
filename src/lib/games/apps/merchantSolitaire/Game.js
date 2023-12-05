@@ -13,6 +13,8 @@ import { GameOverPanel } from "../../utils/GameOverPanel";
 
 import { Mattress } from "./Mattress";
 
+import items from './storeItems.json';
+
 export class Game extends App {
     constructor(canvasRef) {
         super(canvasRef);
@@ -97,7 +99,7 @@ export class Game extends App {
         // add items pile
         this.itemsPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
-            faceNames: customersDeck,
+            faceNames: itemsDeck,
             position: {x: 431, y: 195},
             faceUp: false,
             counter: false
@@ -130,6 +132,22 @@ export class Game extends App {
             counter: true
         });
 
+        // add store items
+        this.storeItems = [];
+        for (let i = 0; i < 10; i++) {
+            this.storeItems[i] = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+                name: i,
+                type: 'pile',
+                faceNames: [],
+                position: items.positions[i],
+                faceUp: true,
+                counter: false,
+                isInteractive: true
+            });
+        }
+
+        this.restock();
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
 
@@ -137,6 +155,19 @@ export class Game extends App {
         this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Satisfied Customers:");
     }
 
-
+    async restock() {
+        for (let i = 0; i < 10; i++) {
+            if (!this.storeItems[i].cards.length) {
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.itemsPile ,
+                    destination: this.storeItems[i],
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+                await this.dealer.delay(100);
+            }
+        }
+    }
 
 }
