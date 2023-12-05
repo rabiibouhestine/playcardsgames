@@ -79,10 +79,20 @@ export class Game extends App {
         });
 
         // add customer offer
-        this.customerOffer = new Number(this.gameContainer, { x: 285, y: 65 }, 0, { fontSize: 48 });
+        this.customerOffer = new Number(this.gameContainer, { x: 285, y: 65 }, 0, { fontSize: 36 });
 
         // add merchant offer
-        this.merchantOffer = new Number(this.gameContainer, { x: 435, y: 65 }, 0, { fontSize: 48 });
+        this.merchantOffer = new PIXI.Text("0 / 0", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 36,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        this.merchantOffer.anchor.set(0.5);
+        this.merchantOffer.x = 435;
+        this.merchantOffer.y = 65;
+        this.gameContainer.addChild(this.merchantOffer);
 
         // make items deck
         const itemsDeck = this.dealer.shuffleCards([
@@ -200,4 +210,7 @@ export class Game extends App {
         return customerMoney + customerItemValue;
     }
 
+    getMerchantOffer() {
+
+    }
 }
