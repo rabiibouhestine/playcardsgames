@@ -178,7 +178,7 @@ export class Game extends App {
             this.mattress.clearHighlight(card.location);
         } else {
             this.selectedItems.push(card.faceName);
-            this.mattress.setHighlighted(card.location, true);
+            this.mattress.setHighlighted(card.location, false);
         }
     }
 

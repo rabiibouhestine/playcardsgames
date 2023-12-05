@@ -157,7 +157,7 @@ export class Mattress {
 
     setHighlighted(i, onSale) {
         if (onSale) {
-            this.storeItemsZones[i].tint = 0xbf360c;
+            this.storeItemsZones[i].tint = 0xc026d3;
             this.storeItemsZones[i].alpha = 0.5;
         } else {
             this.storeItemsZones[i].tint = 0x0d47a1;
