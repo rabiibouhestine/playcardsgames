@@ -82,17 +82,7 @@ export class Game extends App {
         this.customerOffer = new Number(this.gameContainer, { x: 285, y: 65 }, 0, { fontSize: 36 });
 
         // add merchant offer
-        this.merchantOffer = new PIXI.Text("0 / 0", {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
-            fontSize: 36,
-            fill: 0xFFFFFF,
-            align: 'center'
-        });
-        this.merchantOffer.anchor.set(0.5);
-        this.merchantOffer.x = 435;
-        this.merchantOffer.y = 65;
-        this.gameContainer.addChild(this.merchantOffer);
+        this.merchantOffer = new Number(this.gameContainer, { x: 435, y: 65 }, 0, { fontSize: 36 });
 
         // make items deck
         const itemsDeck = this.dealer.shuffleCards([
