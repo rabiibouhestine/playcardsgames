@@ -158,10 +158,10 @@ export class Mattress {
     setHighlighted(i, onSale) {
         if (onSale) {
             this.storeItemsZones[i].tint = 0xc026d3;
-            this.storeItemsZones[i].alpha = 0.5;
+            this.storeItemsZones[i].alpha = 0.6;
         } else {
             this.storeItemsZones[i].tint = 0x0d47a1;
-            this.storeItemsZones[i].alpha = 0.5;
+            this.storeItemsZones[i].alpha = 0.6;
         }
     }
 

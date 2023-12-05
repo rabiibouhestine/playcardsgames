@@ -2,7 +2,6 @@ import * as PIXI from "pixi.js";
 
 import cardsSpritesheetImage from '../../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../../assets/json/cardsSpritesheet.json';
-import paramsAtlas from '../../assets/json/clearTheDungeon.json';
 
 import { App } from '../../utils/App';
 import { Cards } from '../../utils/Cards';
@@ -13,6 +12,7 @@ import { GameOverPanel } from "../../utils/GameOverPanel";
 
 import { Mattress } from "./Mattress";
 
+import paramsAtlas from './values.json';
 import items from './storeItems.json';
 
 export class Game extends App {
@@ -37,7 +37,7 @@ export class Game extends App {
         this.selectedItems = [];
 
         // items on sale
-        this.itemsOnSale = [];
+        this.selectedItemsOnSale = [];
 
         // add dealer
         this.dealer = new Dealer();
@@ -173,12 +173,26 @@ export class Game extends App {
     }
 
     onCardPointerDown(card) {
-        if (this.selectedItems.includes(card.faceName)) {
-            this.selectedItems = this.selectedItems.filter(name => name !== card.faceName);
-            this.mattress.clearHighlight(card.location);
+        if (card.params.value !== 11) {
+            if (this.selectedItems.includes(card.faceName)) {
+                this.selectedItems = this.selectedItems.filter(name => name !== card.faceName);
+                this.mattress.clearHighlight(card.location);
+            } else {
+                this.selectedItems.push(card.faceName);
+                this.mattress.setHighlighted(card.location, false);
+            }
         } else {
-            this.selectedItems.push(card.faceName);
-            this.mattress.setHighlighted(card.location, false);
+            if (this.selectedItems.includes(card.faceName)) {
+                this.selectedItems = this.selectedItems.filter(name => name !== card.faceName);
+                this.mattress.clearHighlight(card.location);
+            } else if (this.selectedItemsOnSale.includes(card.faceName)) {
+                this.selectedItemsOnSale = this.selectedItemsOnSale.filter(name => name !== card.faceName);
+                this.selectedItems.push(card.faceName);
+                this.mattress.setHighlighted(card.location, false);
+            } else {
+                this.selectedItemsOnSale.push(card.faceName);
+                this.mattress.setHighlighted(card.location, true);
+            }
         }
     }
 
