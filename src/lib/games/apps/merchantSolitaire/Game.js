@@ -36,6 +36,9 @@ export class Game extends App {
         // selected items
         this.selectedItems = [];
 
+        // items on sale
+        this.itemsOnSale = [];
+
         // add dealer
         this.dealer = new Dealer();
 

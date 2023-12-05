@@ -135,9 +135,11 @@ export class Mattress {
         this.storeItemsZones = [];
         for (let i = 0; i < 10; i++) {
             this.storeItemsZones[i] = new PIXI.Graphics();
-            this.storeItemsZones[i].beginFill(0x000000, 0.25);
+            this.storeItemsZones[i].beginFill(0xFFFFFF);
             this.storeItemsZones[i].drawRoundedRect(this.positions[i].x, this.positions[i].y, 120, 150, 8);
             this.storeItemsZones[i].endFill();
+            this.storeItemsZones[i].tint = 0x000000;
+            this.storeItemsZones[i].alpha = 0.25;
             mattressContainer.addChild(this.storeItemsZones[i]);
         }
 
@@ -154,6 +156,12 @@ export class Mattress {
     }
 
     setHighlighted(i, isHighlighted) {
-        this.storeItemsZonesHighlights[i].alpha = isHighlighted ? 0.5 : 0;
+        if (isHighlighted) {
+            this.storeItemsZones[i].tint = 0x0d47a1;
+            this.storeItemsZones[i].alpha = 0.5;
+        } else {
+            this.storeItemsZones[i].tint = 0x000000;
+            this.storeItemsZones[i].alpha = 0.25;
+        }
     }
 }
