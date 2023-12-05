@@ -1,5 +1,48 @@
 import * as PIXI from "pixi.js";
 
+const positions = [
+    {
+        x: 30,
+        y: 304
+    },
+    {
+        x: 165,
+        y: 304
+    },
+    {
+        x: 300,
+        y: 304
+    },
+    {
+        x: 435,
+        y: 304
+    },
+    {
+        x: 570,
+        y: 304
+    },
+    {
+        x: 30,
+        y: 465
+    },
+    {
+        x: 165,
+        y: 465
+    },
+    {
+        x: 300,
+        y: 465
+    },
+    {
+        x: 435,
+        y: 465
+    },
+    {
+        x: 570,
+        y: 465
+    }
+]
+
 export class Mattress {
     constructor(mattressContainer) {
         this.highlightColor = 0x0000FF;
@@ -113,6 +156,27 @@ export class Mattress {
         this.tradedItemsLabel.x = 630;
         this.tradedItemsLabel.y = 115;
         mattressContainer.addChild(this.tradedItemsLabel);
+
+        // Store Items Zones
+        this.storeItemsZones = [];
+        for (let i = 0; i < 10; i++) {
+            this.storeItemsZones[i] = new PIXI.Graphics();
+            this.storeItemsZones[i].beginFill(0x000000, 0.25);
+            this.storeItemsZones[i].drawRoundedRect(positions[i].x, positions[i].y, 120, 150, 8);
+            this.storeItemsZones[i].endFill();
+            mattressContainer.addChild(this.storeItemsZones[i]);
+        }
+
+        // Store Items Zones Highlights
+        this.storeItemsZonesHighlights = [];
+        for (let i = 0; i < 10; i++) {
+            this.storeItemsZonesHighlights[i] = new PIXI.Graphics();
+            this.storeItemsZonesHighlights[i].beginFill(0x0000FF);
+            this.storeItemsZonesHighlights[i].drawRoundedRect(positions[i].x, positions[i].y, 120, 150, 8);
+            this.storeItemsZonesHighlights[i].endFill();
+            this.storeItemsZonesHighlights[i].alpha = 0;
+            mattressContainer.addChild(this.storeItemsZonesHighlights[i]);
+        }
     }
 
     setHighlighted(isHighlighted) {
