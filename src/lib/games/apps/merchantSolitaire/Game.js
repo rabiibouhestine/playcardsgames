@@ -33,6 +33,9 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
+        // selected items
+        this.selectedItems = [];
+
         // add dealer
         this.dealer = new Dealer();
 
