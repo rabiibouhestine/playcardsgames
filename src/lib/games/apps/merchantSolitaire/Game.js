@@ -146,7 +146,14 @@ export class Game extends App {
             });
         }
 
-        this.restock();
+        // initialise store stock
+        await this.restock();
+
+        // reveal next customer
+        this.customersPile.getTopCard().flip(true);
+
+        // reveal next item
+        this.itemsPile.getTopCard().flip(true);
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
