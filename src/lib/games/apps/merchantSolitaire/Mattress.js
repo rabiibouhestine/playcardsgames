@@ -80,6 +80,13 @@ export class Mattress {
         this.satisfiedCustomersZone.endFill();
         mattressContainer.addChild(this.satisfiedCustomersZone);
 
+        // Satisfied Customers BG
+        this.satisfiedCustomersBG = new PIXI.Graphics();
+        this.satisfiedCustomersBG.beginFill(0x000000, 0.25);
+        this.satisfiedCustomersBG.drawRoundedRect(50, 140, 80, 110, 8);
+        this.satisfiedCustomersBG.endFill();
+        mattressContainer.addChild(this.satisfiedCustomersBG);
+
         // Satisfied Customers Label
         this.satisfiedCustomersLabel = new PIXI.Text("Satisfied Customers", {
             fontFamily: 'Arial',
@@ -141,6 +148,13 @@ export class Mattress {
         this.tradedItemsZone.drawRoundedRect(570, 90, 120, 180, 8);
         this.tradedItemsZone.endFill();
         mattressContainer.addChild(this.tradedItemsZone);
+
+        // Traded Items BG
+        this.tradedItemsBG = new PIXI.Graphics();
+        this.tradedItemsBG.beginFill(0x000000, 0.25);
+        this.tradedItemsBG.drawRoundedRect(590, 140, 80, 110, 8);
+        this.tradedItemsBG.endFill();
+        mattressContainer.addChild(this.tradedItemsBG);
 
         // Traded Items Label
         this.tradedItemsLabel = new PIXI.Text("Traded Items", {
