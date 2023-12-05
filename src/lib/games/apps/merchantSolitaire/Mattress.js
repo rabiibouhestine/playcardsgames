@@ -1,9 +1,11 @@
 import * as PIXI from "pixi.js";
 
 import zones from './storeItemsZones.json';
+import items from './storeItems.json';
+import { Sticker } from "./Sticker";
 
 export class Mattress {
-    constructor(mattressContainer) {
+    constructor(mattressContainer, gameContainer) {
         this.highlightColor = 0x0000FF;
         this.positions = zones.positions;
 
@@ -143,15 +145,10 @@ export class Mattress {
             mattressContainer.addChild(this.storeItemsZones[i]);
         }
 
-        // Store Items Zones Highlights
-        this.storeItemsZonesHighlights = [];
+        // Store Items Stickers
+        this.storeItemsStickers = [];
         for (let i = 0; i < 10; i++) {
-            this.storeItemsZonesHighlights[i] = new PIXI.Graphics();
-            this.storeItemsZonesHighlights[i].beginFill(0x0d47a1);
-            this.storeItemsZonesHighlights[i].drawRoundedRect(this.positions[i].x, this.positions[i].y, 120, 150, 8);
-            this.storeItemsZonesHighlights[i].endFill();
-            this.storeItemsZonesHighlights[i].alpha = 0;
-            mattressContainer.addChild(this.storeItemsZonesHighlights[i]);
+            this.storeItemsStickers[i] = new Sticker(gameContainer, items.positions[i]);
         }
     }
 
@@ -159,14 +156,17 @@ export class Mattress {
         if (onSale) {
             this.storeItemsZones[i].tint = 0xc026d3;
             this.storeItemsZones[i].alpha = 0.6;
+            this.storeItemsStickers[i].setVisible(true);
         } else {
             this.storeItemsZones[i].tint = 0x0d47a1;
             this.storeItemsZones[i].alpha = 0.6;
+            this.storeItemsStickers[i].setVisible(false);
         }
     }
 
     clearHighlight(i) {
         this.storeItemsZones[i].tint = 0x000000;
         this.storeItemsZones[i].alpha = 0.25;
+        this.storeItemsStickers[i].setVisible(false);
     }
 }

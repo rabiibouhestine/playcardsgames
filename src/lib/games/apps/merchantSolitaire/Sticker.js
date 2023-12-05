@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import '@pixi/graphics-extras';
 
 export class Sticker {
-    constructor(gameContainer) {
+    constructor(gameContainer, position) {
         // sticker graphic
         this.stickerGraphic = new PIXI.Graphics();
         this.stickerGraphic.beginFill(0xc026d3);
@@ -24,6 +24,8 @@ export class Sticker {
 
         // sticker container
         this.stickerContainer = new PIXI.Container();
+        this.stickerContainer.x = position.x + 30;
+        this.stickerContainer.y = position.y - 45;
         this.stickerContainer.zIndex = 999;
         this.stickerContainer.angle = -20;
         this.stickerContainer.visible = false;
@@ -32,13 +34,7 @@ export class Sticker {
         gameContainer.addChild(this.stickerContainer);
     }
 
-    setVisible(card) {
-        this.stickerContainer.x = card.position.x + 30;
-        this.stickerContainer.y = card.position.y - 45;
-        this.stickerContainer.visible = true;
-    }
-
-    hide() {
-        this.stickerContainer.visible = false;
+    setVisible(isVisible) {
+        this.stickerContainer.visible = isVisible;
     }
 }
