@@ -86,6 +86,24 @@ export class Game extends App {
             counter: false
         });
 
+        // add items discard pile
+        this.itemsDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: [],
+            position: {x: 630, y: 195},
+            faceUp: false,
+            counter: true
+        });
+
+        // add customers discard pile
+        this.customersDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: [],
+            position: {x: 90, y: 195},
+            faceUp: false,
+            counter: true
+        });
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
 
