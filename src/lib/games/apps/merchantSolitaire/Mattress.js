@@ -179,11 +179,7 @@ export class Mattress {
         }
     }
 
-    setHighlighted(isHighlighted) {
-        const alpha = 0.15;
-        this.leftAttackZoneHighlight.alpha = isHighlighted ? alpha : 0;
-        this.centerAttackZoneHighlight.alpha = isHighlighted ? alpha : 0;
-        this.rightAttackZoneHighlight.alpha = isHighlighted ? alpha : 0;
-        this.reserveZoneHighlight.alpha = isHighlighted ? alpha : 0;
+    setHighlighted(i, isHighlighted) {
+        this.storeItemsZonesHighlights[i].alpha = isHighlighted ? 0.15 : 0;
     }
 }
