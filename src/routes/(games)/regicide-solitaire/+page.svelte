@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Game } from '$lib/games/regicideSolitaire/Game.js';
+	import { Game } from '$lib/games/apps/regicideSolitaire/Game.js';
 	import GamePage from '$lib/components/GamePage.svelte';
 
 	let game;

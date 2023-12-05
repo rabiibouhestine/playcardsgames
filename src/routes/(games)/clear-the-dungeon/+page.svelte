@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Game } from '$lib/games/clearthedungeon/Game.js';
+	import { Game } from '$lib/games/apps/clearthedungeon/Game.js';
 	import GamePage from '$lib/components/GamePage.svelte';
 	import Link from '$lib/components/Link.svelte';
 

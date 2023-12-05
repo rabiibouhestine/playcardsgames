@@ -1,17 +1,17 @@
 import * as PIXI from "pixi.js";
 
-import cardsSpritesheetImage from '../assets/images/spritesheetColor.png';
-import cardsSpritesheetAtlas from '../assets/json/cardsSpritesheet.json';
-import paramsAtlas from '../assets/json/regicideSolitaire.json';
+import cardsSpritesheetImage from '../../assets/images/spritesheetColor.png';
+import cardsSpritesheetAtlas from '../../assets/json/cardsSpritesheet.json';
+import paramsAtlas from '../../assets/json/regicideSolitaire.json';
 
-import { App } from '../utils/App';
-import { Card } from '../utils/Card';
-import { Cards } from '../utils/Cards';
-import { Dealer } from '../utils/Dealer';
-import { Number } from "../utils/Number";
-import { Message } from "../utils/Message";
-import { Button } from "../utils/Button";
-import { GameOverPanel } from "../utils/GameOverPanel";
+import { App } from '../../utils/App';
+import { Card } from '../../utils/Card';
+import { Cards } from '../../utils/Cards';
+import { Dealer } from '../../utils/Dealer';
+import { Number } from "../../utils/Number";
+import { Message } from "../../utils/Message";
+import { Button } from "../../utils/Button";
+import { GameOverPanel } from "../../utils/GameOverPanel";
 
 import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";

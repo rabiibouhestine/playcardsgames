@@ -53,7 +53,7 @@
 		{
 			name: 'Merchant Solitaire',
 			src: merchantSolitaireCover,
-			href: '/'
+			href: '/merchant-solitaire'
 		},
 		{
 			name: 'Card Capture',
