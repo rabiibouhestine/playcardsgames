@@ -105,7 +105,8 @@ export class Game extends App {
             faceNames: itemsDeck,
             position: {x: 431, y: 195},
             faceUp: false,
-            counter: false
+            counter: false,
+            onPointerDown: this.onCardPointerDown.bind(this)
         });
 
         // add customers pile
@@ -166,6 +167,16 @@ export class Game extends App {
 
         // game over panel
         this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Satisfied Customers:");
+    }
+
+    onCardPointerDown(card) {
+        if (this.selectedItems.includes(card.faceName)) {
+            this.selectedItems = this.selectedItems.filter(name => name !== card.faceName);
+            this.mattress.setHighlighted(card.location, false);
+        } else {
+            this.selectedItems.push(card.faceName);
+            this.mattress.setHighlighted(card.location, true);
+        }
     }
 
     async restock() {
