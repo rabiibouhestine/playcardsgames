@@ -47,6 +47,32 @@ export class Game extends App {
             // onPointerDown: this.handleRestart.bind(this)
         });
 
+        // add trade button
+        this.tradeButton = new Button(this.gameContainer, {
+            width: 250,
+            height: 50,
+            color: 0x0d47a1,
+            alpha: 0.5,
+            text: "Happy to trade with you!",
+            textSize: 16,
+            x: 513,
+            y: 671,
+            // onPointerDown: this.handleRestart.bind(this)
+        });
+
+        // add failed button
+        this.failedButton = new Button(this.gameContainer, {
+            width: 250,
+            height: 50,
+            color: 0xbf360c,
+            alpha: 0.5,
+            text: "I can’t trade with you..",
+            textSize: 16,
+            x: 201,
+            y: 671,
+            // onPointerDown: this.handleRestart.bind(this)
+        });
+
         // add customer offer
         this.customerOffer = new Number(this.gameContainer, { x: 285, y: 65 }, 0, { fontSize: 48 });
 

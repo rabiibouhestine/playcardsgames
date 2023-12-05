@@ -5,6 +5,7 @@ export class Button {
         width = 100,
         height = 50,
         color = 0x000000,
+        alpha = 0.25,
         text = "Restart",
         textSize = 20,
         textColor = 0xFFFFFF,
@@ -19,7 +20,7 @@ export class Button {
         this.graphic.beginFill(color);
         this.graphic.drawRoundedRect(-(width / 2), -(height / 2), width, height, 8);
         this.graphic.endFill();
-        this.graphic.alpha = 0.25;
+        this.graphic.alpha = alpha;
 
         // Define label
         this.label = new PIXI.Text(text, {
@@ -41,8 +42,8 @@ export class Button {
         this.container.addChild(this.graphic);
         this.container.addChild(this.label);
         this.container
-            .on('pointerover', () => {this.graphic.alpha = 0.50})
-            .on('pointerout', () => {this.graphic.alpha = 0.25})
+            .on('pointerover', () => {this.graphic.alpha = alpha + 0.25})
+            .on('pointerout', () => {this.graphic.alpha = alpha})
 
         // add button to gameContainer
         this.gameContainer.addChild(this.container);
