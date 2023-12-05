@@ -155,13 +155,18 @@ export class Mattress {
         }
     }
 
-    setHighlighted(i, isHighlighted) {
-        if (isHighlighted) {
-            this.storeItemsZones[i].tint = 0x0d47a1;
+    setHighlighted(i, onSale) {
+        if (onSale) {
+            this.storeItemsZones[i].tint = 0xbf360c;
             this.storeItemsZones[i].alpha = 0.5;
         } else {
-            this.storeItemsZones[i].tint = 0x000000;
-            this.storeItemsZones[i].alpha = 0.25;
+            this.storeItemsZones[i].tint = 0x0d47a1;
+            this.storeItemsZones[i].alpha = 0.5;
         }
+    }
+
+    clearHighlight(i) {
+        this.storeItemsZones[i].tint = 0x000000;
+        this.storeItemsZones[i].alpha = 0.25;
     }
 }

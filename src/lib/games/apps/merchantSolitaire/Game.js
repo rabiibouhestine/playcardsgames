@@ -175,7 +175,7 @@ export class Game extends App {
     onCardPointerDown(card) {
         if (this.selectedItems.includes(card.faceName)) {
             this.selectedItems = this.selectedItems.filter(name => name !== card.faceName);
-            this.mattress.setHighlighted(card.location, false);
+            this.mattress.clearHighlight(card.location);
         } else {
             this.selectedItems.push(card.faceName);
             this.mattress.setHighlighted(card.location, true);
