@@ -68,6 +68,9 @@ export class Game extends App {
             // onPointerDown: this.handleRestart.bind(this)
         });
 
+        // disable trade button
+        this.tradeButton.setEnabled(false);
+
         // add failed button
         this.failedButton = new Button(this.gameContainer, {
             width: 250,
@@ -195,6 +198,14 @@ export class Game extends App {
             }
         }
         this.merchantOffer.setValue(this.getMerchantOffer(), true);
+
+        const isTradeFair = this.merchantOffer.getValue() === this.customerOffer.getValue();
+        const isThreeItems = this.selectedItems.length + this.selectedItemsOnSale.length === 3;
+        if (isThreeItems && isTradeFair) {
+            this.tradeButton.setEnabled(true);
+        } else {
+            this.tradeButton.setEnabled(false);
+        }
     }
 
     async restock() {
