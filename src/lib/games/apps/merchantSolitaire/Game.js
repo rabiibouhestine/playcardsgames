@@ -155,6 +155,9 @@ export class Game extends App {
         // reveal next item
         this.itemsPile.getTopCard().flip(true);
 
+        // update customer offer
+        this.customerOffer.setValue(this.getCustomerOffer());
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
 
@@ -175,6 +178,12 @@ export class Game extends App {
                 await this.dealer.delay(100);
             }
         }
+    }
+
+    getCustomerOffer() {
+        const customerMoney = this.customersPile.getTopCard().params.value;
+        const customerItemValue = this.itemsPile.getTopCard().params.value;
+        return customerMoney + customerItemValue;
     }
 
 }
