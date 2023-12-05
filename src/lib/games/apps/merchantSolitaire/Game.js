@@ -194,6 +194,7 @@ export class Game extends App {
                 this.mattress.setHighlighted(card.location, true);
             }
         }
+        this.merchantOffer.setValue(this.getMerchantOffer(), true);
     }
 
     async restock() {
@@ -218,6 +219,10 @@ export class Game extends App {
     }
 
     getMerchantOffer() {
-
+        const selectedItemsValue = this.selectedItems.reduce((accumulator, cardName) => {
+            return accumulator + paramsAtlas[cardName].value;
+        }, 0);
+        const selectedItemsOnSaleValue = this.selectedItemsOnSale.length;
+        return selectedItemsValue + selectedItemsOnSaleValue;
     }
 }
