@@ -66,7 +66,7 @@ export class Game extends App {
             textSize: 16,
             x: 513,
             y: 671,
-            // onPointerDown: this.handleRestart.bind(this)
+            onPointerDown: this.handleTrade.bind(this)
         });
 
         // disable trade button
@@ -222,6 +222,59 @@ export class Game extends App {
                 await this.dealer.delay(100);
             }
         }
+    }
+
+    discardSelectedCards() {
+        for (let i = 0; i < 10; i++) {
+            const isSelected = this.selectedItems.includes(this.storeItems[i].getTopCard().faceName);
+            const isSelectedOnSale = this.selectedItemsOnSale.includes(this.storeItems[i].getTopCard().faceName);
+            if (isSelected || isSelectedOnSale) {
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.storeItems[i],
+                    destination: this.itemsDiscardPile,
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+                this.mattress.clearHighlight(i);
+            }
+        }
+    }
+
+    async handleTrade() {
+        this.gameContainer.eventMode = 'none';
+
+        this.tradeButton.setEnabled(false);
+        this.discardSelectedCards();
+        this.merchantOffer.setValue(0, true);
+        this.selectedItems = [];
+        this.selectedItemsOnSale = [];
+        await this.dealer.delay(600);
+
+        this.dealer.moveCards({
+            nbCards: 1,
+            source: this.itemsPile,
+            destination: this.itemsDiscardPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+        this.dealer.moveCards({
+            nbCards: 1,
+            source: this.customersPile,
+            destination: this.customersDiscardPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+        this.customerOffer.setValue(0, true);
+        await this.dealer.delay(600);
+
+        await this.restock();
+
+        this.itemsPile.getTopCard().flip(true);
+        this.customersPile.getTopCard().flip(true);
+        this.customerOffer.setValue(this.getCustomerOffer());
+
+        this.gameContainer.eventMode = 'static';
     }
 
     getCustomerOffer() {
