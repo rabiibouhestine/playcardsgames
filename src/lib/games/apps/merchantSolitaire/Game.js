@@ -1,5 +1,8 @@
 import * as PIXI from "pixi.js";
 import '@pixi/graphics-extras';
+import {Howl} from 'howler';
+
+import sfxCash from '../../assets/audio/cash_register_purchase.ogg';
 
 import cardsSpritesheetImage from '../../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../../assets/json/cardsSpritesheet.json';
@@ -33,6 +36,11 @@ export class Game extends App {
 
         // disable interactions
         this.gameContainer.eventMode = 'none';
+
+        // cash sfx
+        this.sfxCashHowl = new Howl({
+            src: [sfxCash]
+        });
 
         // selected items
         this.selectedItems = [];
@@ -243,6 +251,8 @@ export class Game extends App {
 
     async handleTrade() {
         this.gameContainer.eventMode = 'none';
+
+        this.sfxCashHowl.play();
 
         this.tradeButton.setEnabled(false);
         this.discardSelectedCards();
