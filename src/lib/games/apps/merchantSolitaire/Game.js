@@ -232,9 +232,19 @@ export class Game extends App {
 
     getMerchantOffer() {
         const selectedItemsValue = this.selectedItems.reduce((accumulator, cardName) => {
-            return accumulator + paramsAtlas[cardName].value;
+            if (paramsAtlas[cardName].suit !== this.itemsPile.getTopCard().params.suit) {
+                return accumulator + paramsAtlas[cardName].value;
+            } else {
+                return accumulator;
+            }
         }, 0);
-        const selectedItemsOnSaleValue = this.selectedItemsOnSale.length;
+        const selectedItemsOnSaleValue = this.selectedItemsOnSale.reduce((accumulator, cardName) => {
+            if (paramsAtlas[cardName].suit !== this.itemsPile.getTopCard().params.suit) {
+                return accumulator + 1;
+            } else {
+                return accumulator;
+            }
+        }, 0);
         return selectedItemsValue + selectedItemsOnSaleValue;
     }
 }
