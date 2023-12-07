@@ -219,6 +219,17 @@ export class Game extends App {
 
     async restock() {
         for (let i = 0; i < 10; i++) {
+            if (!this.itemsPile.cards.length) {
+                this.itemsDiscardPile.shuffleCards();
+                await this.dealer.moveCards({
+                    nbCards: this.itemsDiscardPile.cards.length,
+                    source: this.itemsDiscardPile ,
+                    destination: this.itemsPile,
+                    positionSource: 'top',
+                    positionDestination: 'top',
+                    inSequence: false
+                });
+            }
             if (!this.storeItems[i].cards.length) {
                 this.dealer.moveCards({
                     nbCards: 1,
