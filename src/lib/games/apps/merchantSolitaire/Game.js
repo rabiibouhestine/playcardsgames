@@ -61,7 +61,7 @@ export class Game extends App {
             text: "Restart",
             x: 630,
             y: 39,
-            // onPointerDown: this.handleRestart.bind(this)
+            onPointerDown: this.handleRestart.bind(this)
         });
 
         // add trade button
@@ -320,5 +320,66 @@ export class Game extends App {
             }
         }, 0);
         return selectedItemsValue + selectedItemsOnSaleValue;
+    }
+
+    async handleRestart() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        this.customerOffer.setValue(0, true);
+        this.merchantOffer.setValue(0, true);
+
+        if (this.customersPile.cards.length) {
+            this.customersPile.getTopCard().flip(false);
+        }
+        if (this.itemsPile.cards.length) {
+            this.itemsPile.getTopCard().flip(false);
+        }
+        this.dealer.moveCards({
+            nbCards: this.customersDiscardPile.cards.length,
+            source: this.customersDiscardPile,
+            destination: this.customersPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+        this.dealer.moveCards({
+            nbCards: this.itemsDiscardPile.cards.length,
+            source: this.itemsDiscardPile,
+            destination: this.itemsPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+        for (let i = 0; i < 10; i++) {
+            if (this.storeItems[i].cards.length) {
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.storeItems[i],
+                    destination: this.itemsPile,
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+            }
+            this.mattress.clearHighlight(i);
+        }
+
+        await this.dealer.delay(600);
+
+        this.itemsPile.shuffleCards();
+        this.customersPile.shuffleCards();
+
+        // initialise store stock
+        await this.restock();
+
+        // reveal next customer
+        this.customersPile.getTopCard().flip(true);
+
+        // reveal next item
+        this.itemsPile.getTopCard().flip(true);
+
+        // update customer offer
+        this.customerOffer.setValue(this.getCustomerOffer());
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 }
