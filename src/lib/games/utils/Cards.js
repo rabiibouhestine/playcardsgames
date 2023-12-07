@@ -170,6 +170,9 @@ export class Cards {
     shuffleCards() {
         const dealer = new Dealer();
         this.cards = dealer.shuffleCards(this.cards);
+        for (let index = 0; index < this.cards.length; index++) {
+            this.cards[index].sprite.zIndex = this.gameContainer.zIndex + this.zIndex + index;
+        }
     }
 
     getTopCard() {
