@@ -335,20 +335,24 @@ export class Game extends App {
         if (this.itemsPile.cards.length) {
             this.itemsPile.getTopCard().flip(false);
         }
-        this.dealer.moveCards({
-            nbCards: this.customersDiscardPile.cards.length,
-            source: this.customersDiscardPile,
-            destination: this.customersPile,
-            positionSource: 'top',
-            positionDestination: 'top'
-        });
-        this.dealer.moveCards({
-            nbCards: this.itemsDiscardPile.cards.length,
-            source: this.itemsDiscardPile,
-            destination: this.itemsPile,
-            positionSource: 'top',
-            positionDestination: 'top'
-        });
+        if (this.customersDiscardPile.cards.length) {
+            this.dealer.moveCards({
+                nbCards: this.customersDiscardPile.cards.length,
+                source: this.customersDiscardPile,
+                destination: this.customersPile,
+                positionSource: 'top',
+                positionDestination: 'top'
+            });
+        }
+        if (this.itemsDiscardPile.cards.length) {
+            this.dealer.moveCards({
+                nbCards: this.itemsDiscardPile.cards.length,
+                source: this.itemsDiscardPile,
+                destination: this.itemsPile,
+                positionSource: 'top',
+                positionDestination: 'top'
+            });
+        }
         for (let i = 0; i < 10; i++) {
             if (this.storeItems[i].cards.length) {
                 this.dealer.moveCards({
