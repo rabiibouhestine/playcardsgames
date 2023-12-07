@@ -28,7 +28,7 @@ export class App {
         this.gameContainer = new PIXI.Container();
         this.gameContainer.sortableChildren = true;
         this.gameContainer.eventMode = 'static';
-        this.gameContainer.hitArea = this.app.screen;
+        this.gameContainer.hitArea = new PIXI.Rectangle(-5000, -5000, 10000, 10000);
         this.gameContainer.on('mousemove', (event) =>
         {
             this.mouseCoords.x = event.global.x;
