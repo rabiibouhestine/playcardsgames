@@ -109,8 +109,8 @@ export class Game extends App {
 
         // make customers deck
         const customersDeck = this.dealer.shuffleCards([
-            // 'KD', 'KS', 'KH', 'KC',
-            // 'QD', 'QS', 'QH', 'QC',
+            'KD', 'KS', 'KH', 'KC',
+            'QD', 'QS', 'QH', 'QC',
             'JD', 'JS', 'JH', 'JC'
         ]);
 
