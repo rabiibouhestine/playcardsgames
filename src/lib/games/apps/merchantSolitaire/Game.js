@@ -90,7 +90,7 @@ export class Game extends App {
             textSize: 16,
             x: 201,
             y: 671,
-            // onPointerDown: this.handleRestart.bind(this)
+            onPointerDown: this.handleFail.bind(this)
         });
 
         // add customer offer
@@ -164,6 +164,9 @@ export class Game extends App {
                 isInteractive: true
             });
         }
+
+        // game over panel
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Satisfied Customers:");
 
         // initialise store stock
         await this.restock();
@@ -260,6 +263,10 @@ export class Game extends App {
         }
     }
 
+    handleFail() {
+        this.handleGameOver(this.customersDiscardPile.cards.length);
+    }
+
     async handleTrade() {
         this.gameContainer.eventMode = 'none';
 
@@ -326,6 +333,13 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
+        // remove blur
+        this.gameContainer.filters = [];
+        this.mattressContainer.filters = [];
+
+        // hide game over panel
+        this.gameOverPanel.setVisible(false);
+
         this.customerOffer.setValue(0, true);
         this.merchantOffer.setValue(0, true);
 
@@ -385,5 +399,18 @@ export class Game extends App {
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
+    }
+
+    handleGameOver(score) {
+        // blur screen
+        const blurFilter = new PIXI.BlurFilter();
+        this.gameContainer.filters = [blurFilter];
+        this.mattressContainer.filters = [blurFilter];
+
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        // show game over panel
+        this.gameOverPanel.setVisible(true, score);
     }
 }
