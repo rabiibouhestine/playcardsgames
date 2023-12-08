@@ -59,7 +59,7 @@
 		{
 			name: 'Card Capture',
 			src: cardCaptureCover,
-			href: '/'
+			href: '/card-capture'
 		},
 		{
 			name: 'Skyway',
