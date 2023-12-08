@@ -109,8 +109,8 @@ export class Game extends App {
 
         // make customers deck
         const customersDeck = this.dealer.shuffleCards([
-            'KD', 'KS', 'KH', 'KC',
-            'QD', 'QS', 'QH', 'QC',
+            // 'KD', 'KS', 'KH', 'KC',
+            // 'QD', 'QS', 'QH', 'QC',
             'JD', 'JS', 'JH', 'JC'
         ]);
 
@@ -298,11 +298,15 @@ export class Game extends App {
 
         await this.restock();
 
-        this.itemsPile.getTopCard().flip(true);
-        this.customersPile.getTopCard().flip(true);
-        this.customerOffer.setValue(this.getCustomerOffer());
-
-        this.gameContainer.eventMode = 'static';
+        if (this.customersPile.cards.length) {
+            this.itemsPile.getTopCard().flip(true);
+            this.customersPile.getTopCard().flip(true);
+            this.customerOffer.setValue(this.getCustomerOffer());
+    
+            this.gameContainer.eventMode = 'static';
+        } else {
+            this.handleGameOver(this.customersDiscardPile.cards.length);
+        }
     }
 
     getCustomerOffer() {
@@ -355,7 +359,8 @@ export class Game extends App {
                 source: this.customersDiscardPile,
                 destination: this.customersPile,
                 positionSource: 'top',
-                positionDestination: 'top'
+                positionDestination: 'top',
+                inSequence: false
             });
         }
         if (this.itemsDiscardPile.cards.length) {
@@ -364,7 +369,8 @@ export class Game extends App {
                 source: this.itemsDiscardPile,
                 destination: this.itemsPile,
                 positionSource: 'top',
-                positionDestination: 'top'
+                positionDestination: 'top',
+                inSequence: false
             });
         }
         for (let i = 0; i < 10; i++) {
