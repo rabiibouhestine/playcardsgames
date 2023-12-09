@@ -398,6 +398,23 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
+    getPlayerSelectedCardsValue() {
+        let max = 0;
+        for (let card of this.playerSelectedCards) {
+            if (paramsAtlas[card].value > max) {
+                max = paramsAtlas[card].value;
+            }
+        }
+        const cardsValue = this.playerSelectedCards.reduce((accumulator, card) => {
+            if (paramsAtlas[card].suit === 'J') {
+                return accumulator + max;
+            } else {
+                return accumulator + paramsAtlas[card].value;
+            }
+        }, 0);
+        return cardsValue;
+    }
+
     checkPlayerCapture() {
         if (!this.playerSelectedCards.length) {
             return 'You must select cards to capture the enemy card.';
@@ -410,10 +427,9 @@ export class Game extends App {
                 return 'All cards must have the same suit.';
             }
         }
-        // get max value of selection, let's callit maxValue
-        // calculate the sum of values in selection
-        // add maxValue for each Joker in selection
-        // compare to selected enemy card value
+        if (this.getPlayerSelectedCardsValue() < this.enemySelectedCard.params.value) {
+            return 'Selected cards are not powerful enough to capture enemy.';
+        }
         return 'valid';
     }
 
