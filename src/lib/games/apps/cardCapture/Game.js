@@ -73,9 +73,9 @@ export class Game extends App {
 
         // add player discard button
         this.playerDiscardButton = new Button(this.gameContainer, {
-            width: 150,
+            width: 160,
             height: 50,
-            text: "Discard",
+            text: "Discard / Proceed",
             textSize: 16,
             x: 360,
             y: 575,
@@ -295,7 +295,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         this.dealer.moveSelection({
-            selectionNames: this.enemyTableau.getTopCard().faceName,
+            selectionNames: this.enemySelectedCard.faceName,
             source: this.enemyTableau,
             destination: this.enemyDiscardPile,
             positionDestination: 'top',
