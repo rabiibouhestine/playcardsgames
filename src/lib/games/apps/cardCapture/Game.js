@@ -39,7 +39,7 @@ export class Game extends App {
         this.mattress = new Mattress(this.mattressContainer);
 
         // add phase label
-        this.phaseLabel = new Message(this.gameContainer, 360, 16);
+        this.errorMessage = new Message(this.gameContainer, { x: 360, y: 271 }, 20);
 
         // add player sacrifice button
         this.playerSacrificeButton = new Button(this.gameContainer, {
