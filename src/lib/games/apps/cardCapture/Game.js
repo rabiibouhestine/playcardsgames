@@ -506,6 +506,7 @@ export class Game extends App {
         }
 
         if (!this.playerDrawPile.cards.length) {
+            this.playerDiscardPile.shuffleCards();
             await this.dealer.moveCards({
                 nbCards: this.playerDiscardPile.cards.length,
                 source: this.playerDiscardPile ,
