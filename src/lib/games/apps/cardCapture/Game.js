@@ -94,6 +94,14 @@ export class Game extends App {
         // player selected cards
         this.playerSelectedCards = [];
 
+        // define targets
+        this.targets = [
+            'JH', 'QH', 'KH', 'AH',
+            'JD', 'QD', 'KD', 'AD',
+            'JS', 'QS', 'KS', 'AS',
+            'JC', 'QC', 'KC', 'AC'
+        ];
+
         // make enemy deck
         const enemyDeck = this.dealer.shuffleCards([
             'AS', '5S', '6S', '7S', '8S', '9S', 'TS',
@@ -198,14 +206,8 @@ export class Game extends App {
         await this.dealer.delay(800);
 
         // move face cards and aces back to enemy deck
-        const targets = [
-            'JH', 'QH', 'KH', 'AH',
-            'JD', 'QD', 'KD', 'AD',
-            'JS', 'QS', 'KS', 'AS',
-            'JC', 'QC', 'KC', 'AC'
-        ];
         for (let card of this.enemyTableau.cards) {
-            if (targets.includes(card.faceName)) {
+            if (this.targets.includes(card.faceName)) {
                 await this.dealer.moveSelection({
                     selectionNames: card.faceName,
                     source: this.enemyTableau,
