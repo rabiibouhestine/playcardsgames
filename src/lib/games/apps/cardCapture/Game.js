@@ -46,7 +46,7 @@ export class Game extends App {
             textSize: 16,
             x: 190,
             y: 575,
-            // onPointerDown: this.handlePlayerSacrifice.bind(this)
+            onPointerDown: this.handlePlayerSacrifice.bind(this)
         });
 
         // add enemy capture button
@@ -235,14 +235,55 @@ export class Game extends App {
 
     resetSelection() {
         // reset enemy selected card position
-        this.enemySelectedCard.sprite.y = this.enemySelectedCard.position.y;
-        this.enemySelectedCard = null;
+        if (this.enemySelectedCard !== null) {
+            this.enemySelectedCard.sprite.y = this.enemySelectedCard.position.y;
+            this.enemySelectedCard = null;
+        }
 
         // reset player cards positions
         for (let i = 0; i < this.playerTableau.cards.length; i++) {
             this.playerTableau.cards[i].sprite.y = this.playerTableau.cards[i].position.y;
         }
         this.playerSelectedCards = [];
+    }
+
+    async handlePlayerSacrifice() {
+        if (false) {
+            this.resetSelection();
+            return;
+        }
+
+        this.gameContainer.eventMode = 'none';
+
+        this.dealer.moveSelection({
+            selectionNames: this.enemySelectedCard.faceName,
+            source: this.enemyTableau,
+            destination: this.enemyDiscardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        await this.dealer.moveSelection({
+            selectionNames: this.playerSelectedCards,
+            source: this.playerTableau ,
+            destination: this.enemyDiscardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        this.setCapturePhase(false);
+        this.resetSelection();
+
+        await this.dealer.moveCards({
+            nbCards: 1,
+            source: this.enemyDrawPile ,
+            destination: this.enemyTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: false
+        });
+
+        this.gameContainer.eventMode = 'static';
     }
 
     async handleEnemyCapture() {
@@ -270,6 +311,7 @@ export class Game extends App {
         });
 
         this.setCapturePhase(false);
+        this.resetSelection();
 
         await this.dealer.moveCards({
             nbCards: 1,
@@ -308,6 +350,7 @@ export class Game extends App {
         });
 
         this.setCapturePhase(false);
+        this.resetSelection();
 
         await this.dealer.moveCards({
             nbCards: 1,
@@ -324,24 +367,29 @@ export class Game extends App {
     async handlePlayerDiscard() {
         this.gameContainer.eventMode = 'none';
 
-        await this.dealer.moveSelection({
-            selectionNames: this.playerSelectedCards,
-            source: this.playerTableau ,
-            destination: this.playerDiscardPile,
-            positionDestination: 'top',
-            inSequence: false
-        });
+        if (this.playerSelectedCards.length) {
+            await this.dealer.moveSelection({
+                selectionNames: this.playerSelectedCards,
+                source: this.playerTableau ,
+                destination: this.playerDiscardPile,
+                positionDestination: 'top',
+                inSequence: false
+            });
+        }
 
         this.setCapturePhase(true);
+        this.resetSelection();
 
-        await this.dealer.moveCards({
-            nbCards: 4 - this.playerTableau.cards.length,
-            source: this.playerDrawPile ,
-            destination: this.playerTableau,
-            positionSource: 'top',
-            positionDestination: 'bottom',
-            inSequence: true
-        });
+        if (this.playerTableau.cards.length < 4) {
+            await this.dealer.moveCards({
+                nbCards: 4 - this.playerTableau.cards.length,
+                source: this.playerDrawPile ,
+                destination: this.playerTableau,
+                positionSource: 'top',
+                positionDestination: 'bottom',
+                inSequence: true
+            });
+        }
 
         this.gameContainer.eventMode = 'static';
     }
