@@ -68,7 +68,7 @@ export class Game extends App {
             textSize: 16,
             x: 530,
             y: 575,
-            // onPointerDown: this.handlePlayerCapture.bind(this)
+            onPointerDown: this.handlePlayerCapture.bind(this)
         });
 
         // add player discard button
@@ -234,8 +234,19 @@ export class Game extends App {
     }
 
     resetSelection() {
-        this.playerSelectedCards = [];
+        // reset enemy selected card position
+        this.enemySelectedCard.sprite.y = this.enemySelectedCard.position.y;
         this.enemySelectedCard = null;
+
+        // reset player cards positions
+        for (let i = 0; i < this.playerTableau.cards.length; i++) {
+            this.playerTableau.cards[i].sprite.y = this.playerTableau.cards[i].position.y;
+        }
+        this.playerSelectedCards = [];
+    }
+
+    handlePlayerCapture() {
+        this.resetSelection();
     }
 
 }
