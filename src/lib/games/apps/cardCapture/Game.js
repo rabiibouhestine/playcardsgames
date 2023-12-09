@@ -287,7 +287,21 @@ export class Game extends App {
     }
 
     checkPlayerSacrifice() {
-        return 'Oops You ve made a huge mistake!'
+        if (this.playerSelectedCards.length !== 2) {
+            return 'You must select 2 cards to sacrifice.';
+        }
+        if (this.enemySelectedCard === null) {
+            return 'You must select 1 card from the enemy cards.';
+        }
+        if (this.targets.includes(this.enemySelectedCard.faceName)) {
+            return 'You cannot use a face card or an Ace for a sacrifice.';
+        }
+        for (let card of this.playerSelectedCards) {
+            if (this.targets.includes(card)) {
+                return 'You cannot use a face card or an Ace for a sacrifice.';
+            }
+        }
+        return 'valid';
     }
 
     async handlePlayerSacrifice() {
