@@ -233,4 +233,9 @@ export class Game extends App {
         }
     }
 
+    resetSelection() {
+        this.playerSelectedCards = [];
+        this.enemySelectedCard = null;
+    }
+
 }
