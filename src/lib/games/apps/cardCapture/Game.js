@@ -294,11 +294,11 @@ export class Game extends App {
             return 'You must select 1 card from the enemy cards.';
         }
         if (this.targets.includes(this.enemySelectedCard.faceName)) {
-            return 'You cannot use a face card or an Ace for a sacrifice.';
+            return 'You cannot use an enemy face card or an enemy Ace.';
         }
         for (let card of this.playerSelectedCards) {
             if (this.targets.includes(card)) {
-                return 'You cannot use a face card or an Ace for a sacrifice.';
+                return 'You cannot sacrifice a face card or an Ace.';
             }
         }
         return 'valid';
@@ -345,16 +345,33 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
+    checkEnemyCapture() {
+        if (this.playerSelectedCards.length !== 1) {
+            return 'You must select 1 card to get captured.';
+        }
+        if (this.targets.includes(this.enemyTableau.getTopCard().faceName)) {
+            return 'Enemy face cards and Aces cannot capture your cards.';
+        }
+        for (let card of this.playerSelectedCards) {
+            if (this.targets.includes(card)) {
+                return 'You cannot let a face card or an Ace get captured.';
+            }
+        }
+        return 'valid';
+    }
+
     async handleEnemyCapture() {
-        if (false) {
+        const check = this.checkEnemyCapture();
+        if (check !== 'valid') {
             this.resetSelection();
+            this.errorMessage.setValue(check);
             return;
         }
 
         this.gameContainer.eventMode = 'none';
 
         this.dealer.moveSelection({
-            selectionNames: this.enemySelectedCard.faceName,
+            selectionNames: this.enemyTableau.getTopCard().faceName,
             source: this.enemyTableau,
             destination: this.enemyDiscardPile,
             positionDestination: 'top',
