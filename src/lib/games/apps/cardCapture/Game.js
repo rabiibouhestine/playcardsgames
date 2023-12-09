@@ -471,7 +471,11 @@ export class Game extends App {
             inSequence: false
         });
 
-        this.gameContainer.eventMode = 'static';
+        if (!this.playerTableau.cards.length) {
+            this.handlePlayerDiscard();
+        } else {
+            this.gameContainer.eventMode = 'static';
+        }
     }
 
     async handlePlayerDiscard() {
