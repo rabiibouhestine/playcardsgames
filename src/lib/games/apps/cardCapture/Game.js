@@ -79,7 +79,7 @@ export class Game extends App {
             textSize: 16,
             x: 360,
             y: 575,
-            // onPointerDown: this.handlePlayerDiscard.bind(this)
+            onPointerDown: this.handlePlayerDiscard.bind(this)
         });
 
         // set capture phase
@@ -245,8 +245,67 @@ export class Game extends App {
         this.playerSelectedCards = [];
     }
 
-    handlePlayerCapture() {
-        this.resetSelection();
+    async handlePlayerCapture() {
+        if (false) {
+            this.resetSelection();
+            return;
+        }
+
+        this.gameContainer.eventMode = 'none';
+
+        this.dealer.moveSelection({
+            selectionNames: this.enemySelectedCard.faceName,
+            source: this.enemyTableau,
+            destination: this.playerDiscardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        await this.dealer.moveSelection({
+            selectionNames: this.playerSelectedCards,
+            source: this.playerTableau ,
+            destination: this.playerDiscardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        this.setCapturePhase(false);
+
+        await this.dealer.moveCards({
+            nbCards: 1,
+            source: this.enemyDrawPile ,
+            destination: this.enemyTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: false
+        });
+
+        this.gameContainer.eventMode = 'static';
+    }
+
+    async handlePlayerDiscard() {
+        this.gameContainer.eventMode = 'none';
+
+        await this.dealer.moveSelection({
+            selectionNames: this.playerSelectedCards,
+            source: this.playerTableau ,
+            destination: this.playerDiscardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        this.setCapturePhase(true);
+
+        await this.dealer.moveCards({
+            nbCards: 4 - this.playerTableau.cards.length,
+            source: this.playerDrawPile ,
+            destination: this.playerTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: true
+        });
+
+        this.gameContainer.eventMode = 'static';
     }
 
 }
