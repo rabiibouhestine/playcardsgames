@@ -413,6 +413,10 @@ export class Game extends App {
                 return 'All cards must have the same suit.';
             }
         }
+        // get max value of selection, let's callit maxValue
+        // calculate the sum of values in selection
+        // add maxValue for each Joker in selection
+        // compare to selected enemy card value
         return 'valid';
     }
 
