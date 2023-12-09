@@ -29,6 +29,9 @@ export class Game extends App {
         );
         await this.spritesheet.parse();
 
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
         // add dealer
         this.dealer = new Dealer();
 
@@ -130,6 +133,10 @@ export class Game extends App {
             positionSource: 'top',
             positionDestination: 'bottom'
         });
+
+        // enable interactions
+        this.dealer.delay(600);
+        this.gameContainer.eventMode = 'static';
     }
 
 }
