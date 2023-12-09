@@ -212,6 +212,7 @@ export class Game extends App {
     }
 
     onCardPointerDown(card) {
+        this.errorMessage.clear();
         if (card.location === 'player') {
             if (this.playerSelectedCards.includes(card.faceName)) {
                 card.sprite.y = card.position.y;
