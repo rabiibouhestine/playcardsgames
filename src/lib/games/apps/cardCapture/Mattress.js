@@ -50,17 +50,6 @@ export class Mattress {
         this.enemyTableauZone.endFill();
         mattressContainer.addChild(this.enemyTableauZone);
 
-
-
-
-
-
-
-
-
-
-
-
         // Player Draw Pile Zone
         this.playerDrawPileZone = new PIXI.Graphics();
         this.playerDrawPileZone.beginFill(0x000000, 0.25);
