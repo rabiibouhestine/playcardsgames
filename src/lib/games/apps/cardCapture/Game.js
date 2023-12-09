@@ -401,9 +401,26 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
+    checkPlayerCapture() {
+        if (!this.playerSelectedCards.length) {
+            return 'You must select cards to capture the enemy card.';
+        }
+        if (this.enemySelectedCard === null) {
+            return 'You must select an enemy card to capture.';
+        }
+        for (let card of this.playerSelectedCards) {
+            if (paramsAtlas[card].suit !== this.enemySelectedCard.params.suit) {
+                return 'All cards must have the same suit.';
+            }
+        }
+        return 'valid';
+    }
+
     async handlePlayerCapture() {
-        if (false) {
+        const check = this.checkPlayerCapture();
+        if (check !== 'valid') {
             this.resetSelection();
+            this.errorMessage.setValue(check);
             return;
         }
 
