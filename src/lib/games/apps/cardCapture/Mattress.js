@@ -78,7 +78,7 @@ export class Mattress {
         });
         this.playerDrawPileLabel.anchor.set(0.5);
         this.playerDrawPileLabel.x = 60;
-        this.playerDrawPileLabel.y = 380;
+        this.playerDrawPileLabel.y = 329;
         mattressContainer.addChild(this.playerDrawPileLabel);
 
         // Player Discard Pile Zone
@@ -98,7 +98,7 @@ export class Mattress {
         });
         this.playerDiscardPileLabel.anchor.set(0.5);
         this.playerDiscardPileLabel.x = 660;
-        this.playerDiscardPileLabel.y = 380;
+        this.playerDiscardPileLabel.y = 329;
         mattressContainer.addChild(this.playerDiscardPileLabel);
 
         // Player Tableau Zone
