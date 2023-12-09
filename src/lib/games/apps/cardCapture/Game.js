@@ -38,6 +38,9 @@ export class Game extends App {
         // add mattress
         this.mattress = new Mattress(this.mattressContainer);
 
+        // add phase label
+        this.phaseLabel = new Message(this.gameContainer, 360, 16);
+
         // add player sacrifice button
         this.playerSacrificeButton = new Button(this.gameContainer, {
             width: 150,
@@ -83,7 +86,7 @@ export class Game extends App {
         });
 
         // set capture phase
-        this.setCapturePhase(true);
+        this.setCaptureButtons(true);
 
         // enemy selected card
         this.enemySelectedCard = null;
@@ -194,8 +197,8 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
-    setCapturePhase(isCapturePhase) {
-        if (isCapturePhase) {
+    setCaptureButtons(isCaptureButtons) {
+        if (isCaptureButtons) {
             this.playerDiscardButton.container.visible = false;
             this.playerSacrificeButton.container.visible = true;
             this.playerCaptureButton.container.visible = true;
@@ -271,7 +274,7 @@ export class Game extends App {
             inSequence: false
         });
 
-        this.setCapturePhase(false);
+        this.setCaptureButtons(false);
         this.resetSelection();
 
         await this.dealer.moveCards({
@@ -310,7 +313,7 @@ export class Game extends App {
             inSequence: false
         });
 
-        this.setCapturePhase(false);
+        this.setCaptureButtons(false);
         this.resetSelection();
 
         await this.dealer.moveCards({
@@ -349,7 +352,7 @@ export class Game extends App {
             inSequence: false
         });
 
-        this.setCapturePhase(false);
+        this.setCaptureButtons(false);
         this.resetSelection();
 
         await this.dealer.moveCards({
@@ -377,7 +380,7 @@ export class Game extends App {
             });
         }
 
-        this.setCapturePhase(true);
+        this.setCaptureButtons(true);
         this.resetSelection();
 
         if (this.playerTableau.cards.length < 4) {
