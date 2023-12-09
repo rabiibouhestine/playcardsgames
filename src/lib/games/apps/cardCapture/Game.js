@@ -85,6 +85,12 @@ export class Game extends App {
         // set capture phase
         this.setCapturePhase(true);
 
+        // enemy selected cards
+        this.enemySelectedCards = [];
+
+        // player selected cards
+        this.playerSelectedCards = [];
+
         // make enemy deck
         const enemyDeck = this.dealer.shuffleCards([
             'AS', '5S', '6S', '7S', '8S', '9S', 'TS',
@@ -112,7 +118,7 @@ export class Game extends App {
             position: {x: 60, y: 157},
             faceUp: false,
             counter: true,
-            // onPointerDown: this.onCardPointerDown.bind(this)
+            onPointerDown: this.onCardPointerDown.bind(this)
         });
 
         // add enemy discard pile
@@ -142,7 +148,7 @@ export class Game extends App {
             position: {x: 60, y: 404},
             faceUp: false,
             counter: true,
-            // onPointerDown: this.onCardPointerDown.bind(this)
+            onPointerDown: this.onCardPointerDown.bind(this)
         });
 
         // add player discard pile
@@ -200,6 +206,10 @@ export class Game extends App {
             this.playerCaptureButton.container.visible = false;
             this.enemyCaptureButton.container.visible = false;
         }
+    }
+
+    onCardPointerDown(card) {
+        alert("I am in the tableau of the " + card.location);
     }
 
 }
