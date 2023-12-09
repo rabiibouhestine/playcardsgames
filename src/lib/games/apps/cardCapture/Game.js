@@ -80,7 +80,8 @@ export class Game extends App {
             faceNames: [],
             position: {x: 360, y: 157},
             faceUp: true,
-            gap: 20
+            gap: 20,
+            isInteractive: true
         });
 
         // add player draw pile
@@ -108,7 +109,8 @@ export class Game extends App {
             faceNames: [],
             position: {x: 360, y: 404},
             faceUp: true,
-            gap: 20
+            gap: 20,
+            isInteractive: true
         });
 
         // initialise enemy tableau
