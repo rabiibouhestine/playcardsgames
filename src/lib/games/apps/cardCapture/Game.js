@@ -293,9 +293,6 @@ export class Game extends App {
         if (this.enemySelectedCard === null) {
             return 'You must select 1 card from the enemy cards.';
         }
-        if (this.targets.includes(this.enemySelectedCard.faceName)) {
-            return 'You cannot use an enemy face card or an enemy Ace.';
-        }
         for (let card of this.playerSelectedCards) {
             if (this.targets.includes(card)) {
                 return 'You cannot sacrifice a face card or an Ace.';
