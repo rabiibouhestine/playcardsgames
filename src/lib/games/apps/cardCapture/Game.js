@@ -409,7 +409,7 @@ export class Game extends App {
             return 'You must select an enemy card to capture.';
         }
         for (let card of this.playerSelectedCards) {
-            if (paramsAtlas[card].suit !== this.enemySelectedCard.params.suit) {
+            if (paramsAtlas[card].suit !== 'J' && paramsAtlas[card].suit !== this.enemySelectedCard.params.suit) {
                 return 'All cards must have the same suit.';
             }
         }
