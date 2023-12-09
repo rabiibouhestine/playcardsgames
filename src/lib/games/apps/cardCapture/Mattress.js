@@ -10,6 +10,13 @@ export class Mattress {
         this.enemyDrawPileZone.endFill();
         mattressContainer.addChild(this.enemyDrawPileZone);
 
+        // Enemy Draw Pile Zone BG
+        this.enemyDrawPileZoneBG = new PIXI.Graphics();
+        this.enemyDrawPileZoneBG.beginFill(0x000000, 0.25);
+        this.enemyDrawPileZoneBG.drawRoundedRect(20, 102, 80, 110, 8);
+        this.enemyDrawPileZoneBG.endFill();
+        mattressContainer.addChild(this.enemyDrawPileZoneBG);
+
         // Enemy Draw Pile Label
         this.enemyDrawPileLabel = new PIXI.Text("Enemy Deck", {
             fontFamily: 'Arial',
@@ -29,6 +36,13 @@ export class Mattress {
         this.enemyDiscardPileZone.drawRoundedRect(600, 62, 120, 170, 8);
         this.enemyDiscardPileZone.endFill();
         mattressContainer.addChild(this.enemyDiscardPileZone);
+
+        // Enemy Discard Pile Zone BG
+        this.enemyDiscardPileZoneBG = new PIXI.Graphics();
+        this.enemyDiscardPileZoneBG.beginFill(0x000000, 0.25);
+        this.enemyDiscardPileZoneBG.drawRoundedRect(620, 102, 80, 110, 8);
+        this.enemyDiscardPileZoneBG.endFill();
+        mattressContainer.addChild(this.enemyDiscardPileZoneBG);
 
         // Enemy Discard Pile Label
         this.enemyDiscardPileLabel = new PIXI.Text("Captured", {
@@ -57,6 +71,13 @@ export class Mattress {
         this.playerDrawPileZone.endFill();
         mattressContainer.addChild(this.playerDrawPileZone);
 
+        // Player Draw Pile Zone BG
+        this.playerDrawPileZoneBG = new PIXI.Graphics();
+        this.playerDrawPileZoneBG.beginFill(0x000000, 0.25);
+        this.playerDrawPileZoneBG.drawRoundedRect(20, 349, 80, 110, 8);
+        this.playerDrawPileZoneBG.endFill();
+        mattressContainer.addChild(this.playerDrawPileZoneBG);
+
         // Player Draw Pile Label
         this.playerDrawPileLabel = new PIXI.Text("Draw Deck", {
             fontFamily: 'Arial',
@@ -76,6 +97,13 @@ export class Mattress {
         this.playerDiscardPileZone.drawRoundedRect(600, 309, 120, 170, 8);
         this.playerDiscardPileZone.endFill();
         mattressContainer.addChild(this.playerDiscardPileZone);
+
+        // Player Discard Pile Zone BG
+        this.playerDiscardPileZoneBG = new PIXI.Graphics();
+        this.playerDiscardPileZoneBG.beginFill(0x000000, 0.25);
+        this.playerDiscardPileZoneBG.drawRoundedRect(620, 349, 80, 110, 8);
+        this.playerDiscardPileZoneBG.endFill();
+        mattressContainer.addChild(this.playerDiscardPileZoneBG);
 
         // Player Discard Pile Label
         this.playerDiscardPileLabel = new PIXI.Text("Captured", {
