@@ -127,6 +127,7 @@ export class Game extends App {
         // add enemy tableau
         this.enemyTableau = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'tableau',
+            name: 'enemy',
             faceNames: [],
             position: {x: 360, y: 157},
             faceUp: true,
@@ -156,6 +157,7 @@ export class Game extends App {
         // add player tableau
         this.playerTableau = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'tableau',
+            name: 'player',
             faceNames: [],
             position: {x: 360, y: 404},
             faceUp: true,
