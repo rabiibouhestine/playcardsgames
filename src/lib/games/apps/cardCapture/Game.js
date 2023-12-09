@@ -54,6 +54,80 @@ export class Game extends App {
             '2D', '3D', '4D',
             'J1', 'J2'
         ]);
+
+        // add enemy draw pile
+        this.enemyDrawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: enemyDeck,
+            position: {x: 60, y: 157},
+            faceUp: false,
+            counter: true,
+            // onPointerDown: this.onCardPointerDown.bind(this)
+        });
+
+        // add enemy discard pile
+        this.enemyDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: [],
+            position: {x: 660, y: 157},
+            faceUp: false,
+            counter: true
+        });
+
+        // add enemy tableau
+        this.enemyTableau = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'tableau',
+            faceNames: [],
+            position: {x: 360, y: 157},
+            faceUp: true,
+            gap: 20
+        });
+
+        // add player draw pile
+        this.playerDrawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: playerDeck,
+            position: {x: 60, y: 404},
+            faceUp: false,
+            counter: true,
+            // onPointerDown: this.onCardPointerDown.bind(this)
+        });
+
+        // add player discard pile
+        this.playerDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: [],
+            position: {x: 660, y: 404},
+            faceUp: false,
+            counter: true
+        });
+
+        // add player tableau
+        this.playerTableau = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'tableau',
+            faceNames: [],
+            position: {x: 360, y: 404},
+            faceUp: true,
+            gap: 20
+        });
+
+        // initialise enemy tableau
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.enemyDrawPile ,
+            destination: this.enemyTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom'
+        });
+
+        // initialise player tableau
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.playerDrawPile ,
+            destination: this.playerTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom'
+        });
     }
 
 }
