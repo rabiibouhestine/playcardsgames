@@ -6,7 +6,7 @@ export class Mattress {
         // Enemy Draw Pile Zone
         this.enemyDrawPileZone = new PIXI.Graphics();
         this.enemyDrawPileZone.beginFill(0x000000, 0.25);
-        this.enemyDrawPileZone.drawRoundedRect(0, 113, 120, 170, 8);
+        this.enemyDrawPileZone.drawRoundedRect(0, 62, 120, 170, 8);
         this.enemyDrawPileZone.endFill();
         mattressContainer.addChild(this.enemyDrawPileZone);
 
@@ -20,13 +20,13 @@ export class Mattress {
         });
         this.enemyDrawPileLabel.anchor.set(0.5);
         this.enemyDrawPileLabel.x = 60;
-        this.enemyDrawPileLabel.y = 133;
+        this.enemyDrawPileLabel.y = 82;
         mattressContainer.addChild(this.enemyDrawPileLabel);
 
         // Enemy Discard Pile Zone
         this.enemyDiscardPileZone = new PIXI.Graphics();
         this.enemyDiscardPileZone.beginFill(0x000000, 0.25);
-        this.enemyDiscardPileZone.drawRoundedRect(600, 113, 120, 170, 8);
+        this.enemyDiscardPileZone.drawRoundedRect(600, 62, 120, 170, 8);
         this.enemyDiscardPileZone.endFill();
         mattressContainer.addChild(this.enemyDiscardPileZone);
 
@@ -40,13 +40,13 @@ export class Mattress {
         });
         this.enemyDiscardPileLabel.anchor.set(0.5);
         this.enemyDiscardPileLabel.x = 660;
-        this.enemyDiscardPileLabel.y = 133;
+        this.enemyDiscardPileLabel.y = 82;
         mattressContainer.addChild(this.enemyDiscardPileLabel);
 
         // Enemy Tableau Zone
         this.enemyTableauZone = new PIXI.Graphics();
         this.enemyTableauZone.beginFill(0x000000, 0.25);
-        this.enemyTableauZone.drawRoundedRect(150, 113, 420, 170, 8);
+        this.enemyTableauZone.drawRoundedRect(150, 62, 420, 170, 8);
         this.enemyTableauZone.endFill();
         mattressContainer.addChild(this.enemyTableauZone);
 
@@ -64,7 +64,7 @@ export class Mattress {
         // Player Draw Pile Zone
         this.playerDrawPileZone = new PIXI.Graphics();
         this.playerDrawPileZone.beginFill(0x000000, 0.25);
-        this.playerDrawPileZone.drawRoundedRect(0, 360, 120, 170, 8);
+        this.playerDrawPileZone.drawRoundedRect(0, 309, 120, 170, 8);
         this.playerDrawPileZone.endFill();
         mattressContainer.addChild(this.playerDrawPileZone);
 
@@ -84,7 +84,7 @@ export class Mattress {
         // Player Discard Pile Zone
         this.playerDiscardPileZone = new PIXI.Graphics();
         this.playerDiscardPileZone.beginFill(0x000000, 0.25);
-        this.playerDiscardPileZone.drawRoundedRect(600, 360, 120, 170, 8);
+        this.playerDiscardPileZone.drawRoundedRect(600, 309, 120, 170, 8);
         this.playerDiscardPileZone.endFill();
         mattressContainer.addChild(this.playerDiscardPileZone);
 
@@ -104,7 +104,7 @@ export class Mattress {
         // Player Tableau Zone
         this.playerTableauZone = new PIXI.Graphics();
         this.playerTableauZone.beginFill(0x000000, 0.25);
-        this.playerTableauZone.drawRoundedRect(150, 360, 420, 170, 8);
+        this.playerTableauZone.drawRoundedRect(150, 309, 420, 170, 8);
         this.playerTableauZone.endFill();
         mattressContainer.addChild(this.playerTableauZone);
     }
