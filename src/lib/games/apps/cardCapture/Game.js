@@ -57,7 +57,7 @@ export class Game extends App {
             textSize: 16,
             x: 360,
             y: 575,
-            // onPointerDown: this.handleEnemyCapture.bind(this)
+            onPointerDown: this.handleEnemyCapture.bind(this)
         });
 
         // add player capture button
@@ -243,6 +243,44 @@ export class Game extends App {
             this.playerTableau.cards[i].sprite.y = this.playerTableau.cards[i].position.y;
         }
         this.playerSelectedCards = [];
+    }
+
+    async handleEnemyCapture() {
+        if (false) {
+            this.resetSelection();
+            return;
+        }
+
+        this.gameContainer.eventMode = 'none';
+
+        this.dealer.moveSelection({
+            selectionNames: this.enemyTableau.getTopCard().faceName,
+            source: this.enemyTableau,
+            destination: this.enemyDiscardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        await this.dealer.moveSelection({
+            selectionNames: this.playerSelectedCards,
+            source: this.playerTableau ,
+            destination: this.enemyDiscardPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        this.setCapturePhase(false);
+
+        await this.dealer.moveCards({
+            nbCards: 1,
+            source: this.enemyDrawPile ,
+            destination: this.enemyTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: false
+        });
+
+        this.gameContainer.eventMode = 'static';
     }
 
     async handlePlayerCapture() {
