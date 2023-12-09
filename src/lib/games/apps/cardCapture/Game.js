@@ -492,7 +492,29 @@ export class Game extends App {
 
         if (this.playerTableau.cards.length < 4) {
             await this.dealer.moveCards({
-                nbCards: 4 - this.playerTableau.cards.length,
+                nbCards: Math.min(this.playerDrawPile.cards.length, 4 - this.playerTableau.cards.length),
+                source: this.playerDrawPile ,
+                destination: this.playerTableau,
+                positionSource: 'top',
+                positionDestination: 'bottom',
+                inSequence: true
+            });
+        }
+
+        if (!this.playerDrawPile.cards.length) {
+            await this.dealer.moveCards({
+                nbCards: this.playerDiscardPile.cards.length,
+                source: this.playerDiscardPile ,
+                destination: this.playerDrawPile,
+                positionSource: 'top',
+                positionDestination: 'top',
+                inSequence: false
+            });
+        }
+
+        if (this.playerTableau.cards.length < 4) {
+            await this.dealer.moveCards({
+                nbCards: Math.min(this.playerDrawPile.cards.length, 4 - this.playerTableau.cards.length),
                 source: this.playerDrawPile ,
                 destination: this.playerTableau,
                 positionSource: 'top',
