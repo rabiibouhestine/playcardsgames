@@ -38,6 +38,53 @@ export class Game extends App {
         // add mattress
         this.mattress = new Mattress(this.mattressContainer);
 
+        // add player sacrifice button
+        this.playerSacrificeButton = new Button(this.gameContainer, {
+            width: 150,
+            height: 50,
+            text: "Sacrifice Cards",
+            textSize: 16,
+            x: 190,
+            y: 575,
+            // onPointerDown: this.handlePlayerSacrifice.bind(this)
+        });
+
+        // add enemy capture button
+        this.enemyCaptureButton = new Button(this.gameContainer, {
+            width: 150,
+            height: 50,
+            text: "Get Captured",
+            textSize: 16,
+            x: 360,
+            y: 575,
+            // onPointerDown: this.handleEnemyCapture.bind(this)
+        });
+
+        // add player capture button
+        this.playerCaptureButton = new Button(this.gameContainer, {
+            width: 150,
+            height: 50,
+            text: "Capture Card",
+            textSize: 16,
+            x: 530,
+            y: 575,
+            // onPointerDown: this.handlePlayerCapture.bind(this)
+        });
+
+        // add player discard button
+        this.playerDiscardButton = new Button(this.gameContainer, {
+            width: 150,
+            height: 50,
+            text: "Discard",
+            textSize: 16,
+            x: 360,
+            y: 575,
+            // onPointerDown: this.handlePlayerDiscard.bind(this)
+        });
+
+        // set capture phase
+        this.setCapturePhase(true);
+
         // make enemy deck
         const enemyDeck = this.dealer.shuffleCards([
             'AS', '5S', '6S', '7S', '8S', '9S', 'TS',
@@ -137,6 +184,20 @@ export class Game extends App {
         // enable interactions
         this.dealer.delay(600);
         this.gameContainer.eventMode = 'static';
+    }
+
+    setCapturePhase(isCapturePhase) {
+        if (isCapturePhase) {
+            this.playerDiscardButton.container.visible = false;
+            this.playerSacrificeButton.container.visible = true;
+            this.playerCaptureButton.container.visible = true;
+            this.enemyCaptureButton.container.visible = true;
+        } else {
+            this.playerDiscardButton.container.visible = true;
+            this.playerSacrificeButton.container.visible = false;
+            this.playerCaptureButton.container.visible = false;
+            this.enemyCaptureButton.container.visible = false;
+        }
     }
 
 }
