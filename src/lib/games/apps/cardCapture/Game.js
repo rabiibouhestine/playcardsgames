@@ -86,7 +86,7 @@ export class Game extends App {
         });
 
         // set capture phase
-        this.setCaptureButtons(true);
+        this.setCaptureButtons(false);
 
         // enemy selected card
         this.enemySelectedCard = null;
@@ -180,7 +180,8 @@ export class Game extends App {
             source: this.enemyDrawPile ,
             destination: this.enemyTableau,
             positionSource: 'top',
-            positionDestination: 'bottom'
+            positionDestination: 'bottom',
+            inSequence: true
         });
 
         // initialise player tableau
@@ -189,11 +190,43 @@ export class Game extends App {
             source: this.playerDrawPile ,
             destination: this.playerTableau,
             positionSource: 'top',
-            positionDestination: 'bottom'
+            positionDestination: 'bottom',
+            inSequence: true
+        });
+
+        // wait for initialisation
+        await this.dealer.delay(800);
+
+        // move face cards and aces back to enemy deck
+        const targets = [
+            'JH', 'QH', 'KH', 'AH',
+            'JD', 'QD', 'KD', 'AD',
+            'JS', 'QS', 'KS', 'AS',
+            'JC', 'QC', 'KC', 'AC'
+        ];
+        for (let card of this.enemyTableau.cards) {
+            if (targets.includes(card.faceName)) {
+                await this.dealer.moveSelection({
+                    selectionNames: card.faceName,
+                    source: this.enemyTableau,
+                    destination: this.enemyDrawPile,
+                    positionDestination: 'bottom',
+                    inSequence: false
+                });
+            }
+        }
+
+        // refill enemy tableau
+        await this.dealer.moveCards({
+            nbCards: 4 - this.enemyTableau.cards.length,
+            source: this.enemyDrawPile ,
+            destination: this.enemyTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: true
         });
 
         // enable interactions
-        this.dealer.delay(600);
         this.gameContainer.eventMode = 'static';
     }
 
@@ -262,8 +295,8 @@ export class Game extends App {
         this.dealer.moveSelection({
             selectionNames: this.enemySelectedCard.faceName,
             source: this.enemyTableau,
-            destination: this.enemyDiscardPile,
-            positionDestination: 'top',
+            destination: this.enemyDrawPile,
+            positionDestination: 'bottom',
             inSequence: false
         });
 
