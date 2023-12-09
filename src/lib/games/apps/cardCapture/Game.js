@@ -284,9 +284,15 @@ export class Game extends App {
         this.playerSelectedCards = [];
     }
 
+    checkPlayerSacrifice() {
+        return 'Oops You ve made a huge mistake!'
+    }
+
     async handlePlayerSacrifice() {
-        if (false) {
+        const check = this.checkPlayerSacrifice();
+        if (check !== 'valid') {
             this.resetSelection();
+            this.errorMessage.setValue(check);
             return;
         }
 
