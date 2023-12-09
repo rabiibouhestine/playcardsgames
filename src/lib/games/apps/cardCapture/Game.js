@@ -85,8 +85,8 @@ export class Game extends App {
         // set capture phase
         this.setCapturePhase(true);
 
-        // enemy selected cards
-        this.enemySelectedCards = [];
+        // enemy selected card
+        this.enemySelectedCard = null;
 
         // player selected cards
         this.playerSelectedCards = [];
@@ -209,7 +209,28 @@ export class Game extends App {
     }
 
     onCardPointerDown(card) {
-        alert("I am in the tableau of the " + card.location);
+        if (card.location === 'player') {
+            if (this.playerSelectedCards.includes(card.faceName)) {
+                card.sprite.y = card.position.y;
+                this.playerSelectedCards = this.playerSelectedCards.filter(name => name !== card.faceName);
+            } else {
+                card.sprite.y = card.position.y - 20;
+                this.playerSelectedCards.push(card.faceName);
+            }
+        }
+        if (card.location === 'enemy') {
+            if (this.enemySelectedCard === null) {
+                card.sprite.y = card.position.y - 20;
+                this.enemySelectedCard = card;
+            } else if (this.enemySelectedCard.faceName === card.faceName) {
+                card.sprite.y = card.position.y;
+                this.enemySelectedCard = null;
+            } else {
+                this.enemySelectedCard.sprite.y = this.enemySelectedCard.position.y;
+                card.sprite.y = card.position.y - 20;
+                this.enemySelectedCard = card;
+            }
+        }
     }
 
 }
