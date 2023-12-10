@@ -606,6 +606,9 @@ export class Game extends App {
             inSequence: false
         });
 
+        // set capture phase
+        this.setCaptureButtons(false);
+
         await this.dealer.delay(800);
 
         await this.dealer.moveSelection({
