@@ -54,6 +54,17 @@ export class Game extends App {
             onPointerDown: this.handleRestart.bind(this)
         });
 
+        // add surrender button
+        this.surrenderButton = new Button(this.gameContainer, {
+            width: 120,
+            height: 50,
+            text: "Surrender",
+            textSize: 16,
+            x: 480,
+            y: 685,
+            onPointerDown: this.handleSurrender.bind(this)
+        });
+
         // add player sacrifice button
         this.playerSacrificeButton = new Button(this.gameContainer, {
             width: 150,
@@ -492,7 +503,7 @@ export class Game extends App {
         });
 
         if (this.capturedTargets === this.targets.length) {
-            this.handleGameOver(this.targets.length);
+            this.handleGameOver(this.capturedTargets);
         }
 
         if (!this.playerTableau.cards.length) {
@@ -669,6 +680,10 @@ export class Game extends App {
         });
 
         this.gameContainer.eventMode = 'static';
+    }
+
+    handleSurrender() {
+        this.handleGameOver(this.capturedTargets);
     }
 
     handleGameOver(score) {
