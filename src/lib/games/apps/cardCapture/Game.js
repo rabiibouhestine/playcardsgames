@@ -115,6 +115,9 @@ export class Game extends App {
             'JC', 'QC', 'KC', 'AC'
         ];
 
+        // captured targets
+        this.capturedTargets = 0;
+
         // make enemy deck
         this.enemyDeck = this.dealer.shuffleCards([
             'AS', '5S', '6S', '7S', '8S', '9S', 'TS',
@@ -456,6 +459,10 @@ export class Game extends App {
 
         this.gameContainer.eventMode = 'none';
 
+        if (this.targets.includes(this.enemySelectedCard.faceName)) {
+            this.capturedTargets ++;
+        }
+
         this.dealer.moveSelection({
             selectionNames: this.enemySelectedCard.faceName,
             source: this.enemyTableau,
@@ -483,6 +490,10 @@ export class Game extends App {
             positionDestination: 'bottom',
             inSequence: false
         });
+
+        if (this.capturedTargets === this.targets.length) {
+            this.handleGameOver(this.targets.length);
+        }
 
         if (!this.playerTableau.cards.length) {
             this.handlePlayerDiscard();
