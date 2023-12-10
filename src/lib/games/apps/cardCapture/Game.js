@@ -41,6 +41,17 @@ export class Game extends App {
         // add phase label
         this.errorMessage = new Message(this.gameContainer, { x: 360, y: 271 }, 20);
 
+        // add restart button
+        this.restartButton = new Button(this.gameContainer, {
+            width: 120,
+            height: 50,
+            text: "Restart",
+            textSize: 16,
+            x: 625,
+            y: 685,
+            onPointerDown: this.handleRestart.bind(this)
+        });
+
         // add player sacrifice button
         this.playerSacrificeButton = new Button(this.gameContainer, {
             width: 150,
@@ -103,7 +114,7 @@ export class Game extends App {
         ];
 
         // make enemy deck
-        const enemyDeck = this.dealer.shuffleCards([
+        this.enemyDeck = this.dealer.shuffleCards([
             'AS', '5S', '6S', '7S', '8S', '9S', 'TS',
             'AC', '5C', '6C', '7C', '8C', '9C', 'TC',
             'AH', '5H', '6H', '7H', '8H', '9H', 'TH',
@@ -114,7 +125,7 @@ export class Game extends App {
         ]);
 
         // make player deck
-        const playerDeck = this.dealer.shuffleCards([
+        this.playerDeck = this.dealer.shuffleCards([
             '2S', '3S', '4S',
             '2C', '3C', '4C',
             '2H', '3H', '4H',
@@ -125,7 +136,7 @@ export class Game extends App {
         // add enemy draw pile
         this.enemyDrawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
-            faceNames: enemyDeck,
+            faceNames: this.enemyDeck,
             position: {x: 60, y: 157},
             faceUp: false,
             counter: true,
@@ -155,7 +166,7 @@ export class Game extends App {
         // add player draw pile
         this.playerDrawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
-            faceNames: playerDeck,
+            faceNames: this.playerDeck,
             position: {x: 60, y: 404},
             faceUp: false,
             counter: true,
@@ -527,6 +538,112 @@ export class Game extends App {
                 inSequence: true
             });
         }
+
+        this.gameContainer.eventMode = 'static';
+    }
+    
+    async handleRestart() {
+        this.gameContainer.eventMode = 'none';
+
+        this.dealer.moveCards({
+            nbCards: this.enemyTableau.cards.length,
+            source: this.enemyTableau ,
+            destination: this.enemyDrawPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+        this.dealer.moveCards({
+            nbCards: this.enemyDiscardPile.cards.length,
+            source: this.enemyDiscardPile ,
+            destination: this.enemyDrawPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+        this.dealer.moveCards({
+            nbCards: this.playerDrawPile.cards.length,
+            source: this.playerDrawPile ,
+            destination: this.enemyDrawPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+        this.dealer.moveCards({
+            nbCards: this.playerTableau.cards.length,
+            source: this.playerTableau ,
+            destination: this.enemyDrawPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+        this.dealer.moveCards({
+            nbCards: this.playerDiscardPile.cards.length,
+            source: this.playerDiscardPile ,
+            destination: this.enemyDrawPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        await this.dealer.delay(800);
+
+        await this.dealer.moveSelection({
+            selectionNames: this.playerDeck,
+            source: this.enemyDrawPile,
+            destination: this.playerDrawPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        this.enemyDrawPile.shuffleCards();
+        this.playerDrawPile.shuffleCards();
+
+        // initialise enemy tableau
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.enemyDrawPile ,
+            destination: this.enemyTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: true
+        });
+
+        // initialise player tableau
+        this.dealer.moveCards({
+            nbCards: 4,
+            source: this.playerDrawPile ,
+            destination: this.playerTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: true
+        });
+
+        // wait for initialisation
+        await this.dealer.delay(800);
+
+        // move face cards and aces back to enemy deck
+        for (let card of this.enemyTableau.cards) {
+            if (this.targets.includes(card.faceName)) {
+                await this.dealer.moveSelection({
+                    selectionNames: card.faceName,
+                    source: this.enemyTableau,
+                    destination: this.enemyDrawPile,
+                    positionDestination: 'bottom',
+                    inSequence: false
+                });
+            }
+        }
+
+        // refill enemy tableau
+        await this.dealer.moveCards({
+            nbCards: 4 - this.enemyTableau.cards.length,
+            source: this.enemyDrawPile ,
+            destination: this.enemyTableau,
+            positionSource: 'top',
+            positionDestination: 'bottom',
+            inSequence: true
+        });
 
         this.gameContainer.eventMode = 'static';
     }
