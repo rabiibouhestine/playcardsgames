@@ -165,9 +165,6 @@ export class Game extends App {
             });
         }
 
-        // game over panel
-        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Satisfied Customers:");
-
         // initialise store stock
         await this.restock();
 

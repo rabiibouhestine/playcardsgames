@@ -37,8 +37,11 @@ export class Game extends App {
         // add mattress
         this.mattress = new Mattress(this.mattressContainer);
 
-        // add phase label
+        // add error message
         this.errorMessage = new Message(this.gameContainer, { x: 360, y: 271 }, 20);
+
+        // game over panel
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Captured Targets:");
 
         // add restart button
         this.restartButton = new Button(this.gameContainer, {
@@ -544,6 +547,13 @@ export class Game extends App {
     async handleRestart() {
         this.gameContainer.eventMode = 'none';
 
+        // remove blur
+        this.gameContainer.filters = [];
+        this.mattressContainer.filters = [];
+
+        // hide game over panel
+        this.gameOverPanel.setVisible(false);
+
         this.dealer.moveCards({
             nbCards: this.enemyTableau.cards.length,
             source: this.enemyTableau ,
@@ -647,4 +657,16 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
+    handleGameOver(score) {
+        // blur screen
+        const blurFilter = new PIXI.BlurFilter();
+        this.gameContainer.filters = [blurFilter];
+        this.mattressContainer.filters = [blurFilter];
+
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        // show game over panel
+        this.gameOverPanel.setVisible(true, score);
+    }
 }
