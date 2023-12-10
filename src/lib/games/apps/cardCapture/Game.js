@@ -7,7 +7,6 @@ import { App } from '../../utils/App';
 import { Cards } from '../../utils/Cards';
 import { Dealer } from '../../utils/Dealer';
 import { Message } from '../../utils/Message';
-import { Number } from '../../utils/Number';
 import { Button } from '../../utils/Button';
 import { GameOverPanel } from '../../utils/GameOverPanel';
 
