@@ -63,14 +63,14 @@
 			href: '/card-capture'
 		},
 		{
-			name: 'Skyway',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
-		},
-		{
 			name: 'The Sandwich Guy',
 			src: theSandwichGuyCover,
 			href: '/the-sandwich-guy'
+		},
+		{
+			name: 'Skyway',
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/'
 		},
 		{
 			name: 'Area 52',
