@@ -1,128 +1,90 @@
 import * as PIXI from "pixi.js";
 
+import zones from './ingredientsZones.json';
+
 export class Mattress {
     constructor(mattressContainer) {
+        this.positions = zones.positions;
 
-        // Enemy Draw Pile Zone
-        this.enemyDrawPileZone = new PIXI.Graphics();
-        this.enemyDrawPileZone.beginFill(0x000000, 0.25);
-        this.enemyDrawPileZone.drawRoundedRect(0, 62, 120, 170, 8);
-        this.enemyDrawPileZone.endFill();
-        mattressContainer.addChild(this.enemyDrawPileZone);
+        // Discard Pile Zone
+        this.discardPileZone = new PIXI.Graphics();
+        this.discardPileZone.beginFill(0x000000, 0.25);
+        this.discardPileZone.drawRoundedRect(230, 99, 120, 170, 8);
+        this.discardPileZone.endFill();
+        mattressContainer.addChild(this.discardPileZone);
 
-        // Enemy Draw Pile Zone BG
-        this.enemyDrawPileZoneBG = new PIXI.Graphics();
-        this.enemyDrawPileZoneBG.beginFill(0x000000, 0.25);
-        this.enemyDrawPileZoneBG.drawRoundedRect(20, 102, 80, 110, 8);
-        this.enemyDrawPileZoneBG.endFill();
-        mattressContainer.addChild(this.enemyDrawPileZoneBG);
+        // Discard Pile Zone BG
+        this.discardPileZoneBG = new PIXI.Graphics();
+        this.discardPileZoneBG.beginFill(0x000000, 0.25);
+        this.discardPileZoneBG.drawRoundedRect(250, 139, 80, 110, 8);
+        this.discardPileZoneBG.endFill();
+        mattressContainer.addChild(this.discardPileZoneBG);
 
-        // Enemy Draw Pile Label
-        this.enemyDrawPileLabel = new PIXI.Text("Enemy Deck", {
+        // Discard Pile Label
+        this.discardPileLabel = new PIXI.Text("Served", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 16,
             fill: 0xFFFFFF,
             align: 'center'
         });
-        this.enemyDrawPileLabel.anchor.set(0.5);
-        this.enemyDrawPileLabel.x = 60;
-        this.enemyDrawPileLabel.y = 82;
-        mattressContainer.addChild(this.enemyDrawPileLabel);
+        this.discardPileLabel.anchor.set(0.5);
+        this.discardPileLabel.x = 290;
+        this.discardPileLabel.y = 119;
+        mattressContainer.addChild(this.discardPileLabel);
 
-        // Enemy Discard Pile Zone
-        this.enemyDiscardPileZone = new PIXI.Graphics();
-        this.enemyDiscardPileZone.beginFill(0x000000, 0.25);
-        this.enemyDiscardPileZone.drawRoundedRect(600, 62, 120, 170, 8);
-        this.enemyDiscardPileZone.endFill();
-        mattressContainer.addChild(this.enemyDiscardPileZone);
+        // Draw Pile Zone
+        this.drawPileZone = new PIXI.Graphics();
+        this.drawPileZone.beginFill(0x000000, 0.25);
+        this.drawPileZone.drawRoundedRect(370, 99, 120, 170, 8);
+        this.drawPileZone.endFill();
+        mattressContainer.addChild(this.drawPileZone);
 
-        // Enemy Discard Pile Zone BG
-        this.enemyDiscardPileZoneBG = new PIXI.Graphics();
-        this.enemyDiscardPileZoneBG.beginFill(0x000000, 0.25);
-        this.enemyDiscardPileZoneBG.drawRoundedRect(620, 102, 80, 110, 8);
-        this.enemyDiscardPileZoneBG.endFill();
-        mattressContainer.addChild(this.enemyDiscardPileZoneBG);
+        // Draw Pile Zone BG
+        this.drawPileZoneBG = new PIXI.Graphics();
+        this.drawPileZoneBG.beginFill(0x000000, 0.25);
+        this.drawPileZoneBG.drawRoundedRect(390, 139, 80, 110, 8);
+        this.drawPileZoneBG.endFill();
+        mattressContainer.addChild(this.drawPileZoneBG);
 
-        // Enemy Discard Pile Label
-        this.enemyDiscardPileLabel = new PIXI.Text("Captured", {
+        // Draw Pile Label
+        this.drawPileLabel = new PIXI.Text("Ingredients", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 16,
             fill: 0xFFFFFF,
             align: 'center'
         });
-        this.enemyDiscardPileLabel.anchor.set(0.5);
-        this.enemyDiscardPileLabel.x = 660;
-        this.enemyDiscardPileLabel.y = 82;
-        mattressContainer.addChild(this.enemyDiscardPileLabel);
+        this.drawPileLabel.anchor.set(0.5);
+        this.drawPileLabel.x = 430;
+        this.drawPileLabel.y = 119;
+        mattressContainer.addChild(this.drawPileLabel);
 
-        // Enemy Tableau Zone
-        this.enemyTableauZone = new PIXI.Graphics();
-        this.enemyTableauZone.beginFill(0x000000, 0.25);
-        this.enemyTableauZone.drawRoundedRect(150, 62, 420, 170, 8);
-        this.enemyTableauZone.endFill();
-        mattressContainer.addChild(this.enemyTableauZone);
+        // Ingredients Zones
+        this.ingredientsZones = [];
+        for (let i = 0; i < 8; i++) {
+            this.ingredientsZones[i] = new PIXI.Graphics();
+            this.ingredientsZones[i].beginFill(0xFFFFFF);
+            this.ingredientsZones[i].drawRoundedRect(this.positions[i].x, this.positions[i].y, 120, 150, 8);
+            this.ingredientsZones[i].endFill();
+            this.ingredientsZones[i].tint = 0x000000;
+            this.ingredientsZones[i].alpha = 0.25;
+            mattressContainer.addChild(this.ingredientsZones[i]);
+        }
+    }
 
-        // Player Draw Pile Zone
-        this.playerDrawPileZone = new PIXI.Graphics();
-        this.playerDrawPileZone.beginFill(0x000000, 0.25);
-        this.playerDrawPileZone.drawRoundedRect(0, 309, 120, 170, 8);
-        this.playerDrawPileZone.endFill();
-        mattressContainer.addChild(this.playerDrawPileZone);
+    setHighlighted(i, suit) {
+        if (suit === 'H' || suit === 'D') {
+            this.ingredientsZones[i].tint = 0xc026d3;
+            this.ingredientsZones[i].alpha = 0.6;
+        } else {
+            this.ingredientsZones[i].tint = 0x0d47a1;
+            this.ingredientsZones[i].alpha = 0.6;
+        }
+    }
 
-        // Player Draw Pile Zone BG
-        this.playerDrawPileZoneBG = new PIXI.Graphics();
-        this.playerDrawPileZoneBG.beginFill(0x000000, 0.25);
-        this.playerDrawPileZoneBG.drawRoundedRect(20, 349, 80, 110, 8);
-        this.playerDrawPileZoneBG.endFill();
-        mattressContainer.addChild(this.playerDrawPileZoneBG);
-
-        // Player Draw Pile Label
-        this.playerDrawPileLabel = new PIXI.Text("Draw Deck", {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
-            fontSize: 16,
-            fill: 0xFFFFFF,
-            align: 'center'
-        });
-        this.playerDrawPileLabel.anchor.set(0.5);
-        this.playerDrawPileLabel.x = 60;
-        this.playerDrawPileLabel.y = 329;
-        mattressContainer.addChild(this.playerDrawPileLabel);
-
-        // Player Discard Pile Zone
-        this.playerDiscardPileZone = new PIXI.Graphics();
-        this.playerDiscardPileZone.beginFill(0x000000, 0.25);
-        this.playerDiscardPileZone.drawRoundedRect(600, 309, 120, 170, 8);
-        this.playerDiscardPileZone.endFill();
-        mattressContainer.addChild(this.playerDiscardPileZone);
-
-        // Player Discard Pile Zone BG
-        this.playerDiscardPileZoneBG = new PIXI.Graphics();
-        this.playerDiscardPileZoneBG.beginFill(0x000000, 0.25);
-        this.playerDiscardPileZoneBG.drawRoundedRect(620, 349, 80, 110, 8);
-        this.playerDiscardPileZoneBG.endFill();
-        mattressContainer.addChild(this.playerDiscardPileZoneBG);
-
-        // Player Discard Pile Label
-        this.playerDiscardPileLabel = new PIXI.Text("Captured", {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
-            fontSize: 16,
-            fill: 0xFFFFFF,
-            align: 'center'
-        });
-        this.playerDiscardPileLabel.anchor.set(0.5);
-        this.playerDiscardPileLabel.x = 660;
-        this.playerDiscardPileLabel.y = 329;
-        mattressContainer.addChild(this.playerDiscardPileLabel);
-
-        // Player Tableau Zone
-        this.playerTableauZone = new PIXI.Graphics();
-        this.playerTableauZone.beginFill(0x000000, 0.25);
-        this.playerTableauZone.drawRoundedRect(150, 309, 420, 170, 8);
-        this.playerTableauZone.endFill();
-        mattressContainer.addChild(this.playerTableauZone);
+    clearHighlight(i) {
+        this.ingredientsZones[i].tint = 0x000000;
+        this.ingredientsZones[i].alpha = 0.25;
     }
 }
