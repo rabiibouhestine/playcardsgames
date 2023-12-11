@@ -86,32 +86,32 @@
 			name: 'Boba Tea Shop',
 			src: 'https://placehold.co/400x400/grey/white',
 			href: '/'
-		},
-		{
-			name: 'Foursquare',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
-		},
-		{
-			name: 'Loot The Loop',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
-		},
-		{
-			name: 'Syndicate',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
-		},
-		{
-			name: 'Hide and Seek',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
-		},
-		{
-			name: 'The Emissary',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
 		}
+		// {
+		// 	name: 'Foursquare',
+		// 	src: 'https://placehold.co/400x400/grey/white',
+		// 	href: '/'
+		// },
+		// {
+		// 	name: 'Loot The Loop',
+		// 	src: 'https://placehold.co/400x400/grey/white',
+		// 	href: '/'
+		// },
+		// {
+		// 	name: 'Syndicate',
+		// 	src: 'https://placehold.co/400x400/grey/white',
+		// 	href: '/'
+		// },
+		// {
+		// 	name: 'Hide and Seek',
+		// 	src: 'https://placehold.co/400x400/grey/white',
+		// 	href: '/'
+		// },
+		// {
+		// 	name: 'The Emissary',
+		// 	src: 'https://placehold.co/400x400/grey/white',
+		// 	href: '/'
+		// }
 	];
 </script>
 
