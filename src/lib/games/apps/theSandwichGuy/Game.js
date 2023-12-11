@@ -161,11 +161,65 @@ export class Game extends App {
         }
     }
 
+    permute(arr) {
+        const result = [];
+      
+        function swap(a, b) {
+          const temp = arr[a];
+          arr[a] = arr[b];
+          arr[b] = temp;
+        }
+      
+        function generatePermutations(n) {
+          if (n === 1) {
+            result.push([...arr]);
+            return;
+          }
+      
+          for (let i = 0; i < n; i++) {
+            generatePermutations(n - 1);
+            if (n % 2 === 0) {
+              swap(i, n - 1);
+            } else {
+              swap(0, n - 1);
+            }
+          }
+        }
+      
+        generatePermutations(arr.length);
+        return result;
+    }
+
     checkSelection() {
         if (this.selectedCards.length !== 3) {
             return 'A sandwich must consist of exactly 3 cards.';
         }
-        return 'valid';
+        const permutations = this.permute(this.selectedCards);
+        for (let permutation of permutations) {
+            const value1 = paramsAtlas[permutation[0]].value;
+            const value2 = paramsAtlas[permutation[1]].value;
+            const value3 = paramsAtlas[permutation[2]].value;
+
+            let diff1;
+            let diff2;
+
+            if (value1 < value2) {
+                diff1 = value2 - value1;
+            } else {
+                diff1 = 13 + value1 - value2;
+            }
+
+            if (value2 < value3) {
+                diff2 = value3 - value2;
+            } else {
+                diff1 = 13 + value2 - value3;
+            }
+
+            if (diff1 === diff2) {
+                return 'valid';
+            }
+        }
+        return 'The selected cards do not make a valid sandwich.';
     }
 
     checkQuality() {
