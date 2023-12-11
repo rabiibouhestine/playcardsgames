@@ -6,6 +6,7 @@
 	import scoundrelCover from '$lib/assets/scoundrel.svg';
 	import merchantSolitaireCover from '$lib/assets/merchantSolitaire.svg';
 	import cardCaptureCover from '$lib/assets/cardCapture.svg';
+	import theSandwichGuyCover from '$lib/assets/theSandwichGuy.svg';
 
 	const classic = [
 		{
@@ -67,8 +68,8 @@
 			href: '/'
 		},
 		{
-			name: 'Sandwich Guy',
-			src: 'https://placehold.co/400x400/grey/white',
+			name: 'The Sandwich Guy',
+			src: theSandwichGuyCover,
 			href: '/'
 		},
 		{
