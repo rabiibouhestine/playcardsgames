@@ -203,13 +203,13 @@ export class Game extends App {
             let diff1;
             let diff2;
 
-            if (value1 < value2) {
+            if (value1 <= value2) {
                 diff1 = value2 - value1;
             } else {
                 diff1 = 13 + value1 - value2;
             }
 
-            if (value2 < value3) {
+            if (value2 <= value3) {
                 diff2 = value3 - value2;
             } else {
                 diff1 = 13 + value2 - value3;
