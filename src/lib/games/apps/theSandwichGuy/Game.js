@@ -212,7 +212,7 @@ export class Game extends App {
             if (value2 <= value3) {
                 diff2 = value3 - value2;
             } else {
-                diff1 = 13 + value3 - value2;
+                diff2 = 13 + value3 - value2;
             }
 
             if (diff1 === diff2) {
