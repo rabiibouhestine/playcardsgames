@@ -70,7 +70,7 @@
 		{
 			name: 'The Sandwich Guy',
 			src: theSandwichGuyCover,
-			href: '/'
+			href: '/the-sandwich-guy'
 		},
 		{
 			name: 'Area 52',
