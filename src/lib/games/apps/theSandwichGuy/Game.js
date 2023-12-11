@@ -60,6 +60,9 @@ export class Game extends App {
             // onPointerDown: this.handleServe.bind(this)
         });
 
+        // selected cards
+        this.selectedCards = [];
+
         // make shuffled deck
         this.deck = this.dealer.shuffleCards([
             'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS', 'JS', 'QS', 'KS',
@@ -75,7 +78,7 @@ export class Game extends App {
             position: {x: 430, y: 165},
             faceUp: false,
             counter: true,
-            // onPointerDown: this.onCardPointerDown.bind(this)
+            onPointerDown: this.onCardPointerDown.bind(this)
         });
 
         // add discard pile
@@ -121,6 +124,16 @@ export class Game extends App {
                 });
                 await this.dealer.delay(100);
             }
+        }
+    }
+
+    onCardPointerDown(card) {
+        if (this.selectedCards.includes(card.faceName)) {
+            this.selectedCards = this.selectedCards.filter(name => name !== card.faceName);
+            this.mattress.clearHighlight(card.location);
+        } else {
+            this.selectedCards.push(card.faceName);
+            this.mattress.setHighlighted(card.location, card.params.suit);
         }
     }
 }
