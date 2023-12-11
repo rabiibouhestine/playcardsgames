@@ -38,6 +38,9 @@ export class Game extends App {
         // add mattress
         this.mattress = new Mattress(this.mattressContainer);
 
+        // add error message
+        this.errorMessage = new Message(this.gameContainer, { x: 360, y: 265 }, 20);
+
         // add giveup button
         this.giveupButton = new Button(this.gameContainer, {
             width: 150,
@@ -148,6 +151,7 @@ export class Game extends App {
     }
 
     onCardPointerDown(card) {
+        this.errorMessage.clear();
         if (this.selectedCards.includes(card.faceName)) {
             this.selectedCards = this.selectedCards.filter(name => name !== card.faceName);
             this.mattress.clearHighlight(card.location);
@@ -158,6 +162,9 @@ export class Game extends App {
     }
 
     checkSelection() {
+        if (this.selectedCards.length !== 3) {
+            return 'A sandwich must consist of exactly 3 cards.';
+        }
         return 'valid';
     }
 
