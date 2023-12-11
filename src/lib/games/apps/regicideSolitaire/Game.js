@@ -2,7 +2,6 @@ import * as PIXI from "pixi.js";
 
 import cardsSpritesheetImage from '../../assets/images/spritesheetColor.png';
 import cardsSpritesheetAtlas from '../../assets/json/cardsSpritesheet.json';
-import paramsAtlas from '../../assets/json/regicideSolitaire.json';
 
 import { App } from '../../utils/App';
 import { Card } from '../../utils/Card';
@@ -16,6 +15,7 @@ import { GameOverPanel } from "../../utils/GameOverPanel";
 import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";
 import { RoyalSuits } from "./RoyalSuits";
+import paramsAtlas from './values.json';
 
 export class Game extends App {
     constructor(canvasRef) {
