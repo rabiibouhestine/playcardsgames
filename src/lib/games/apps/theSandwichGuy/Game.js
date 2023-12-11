@@ -103,6 +103,7 @@ export class Game extends App {
 
         // restock
         this.restock();
+        await this.dealer.delay(600);
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
