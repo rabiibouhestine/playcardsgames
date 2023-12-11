@@ -134,8 +134,7 @@ export class Game extends App {
 
     discardSelectedCards() {
         for (let i = 0; i < 8; i++) {
-            const isSelected = this.selectedCards.includes(this.ingredients[i].getTopCard().faceName);
-            if (isSelected) {
+            if (this.ingredients[i].cards.length && this.selectedCards.includes(this.ingredients[i].getTopCard().faceName)) {
                 this.dealer.moveCards({
                     nbCards: 1,
                     source: this.ingredients[i],
@@ -158,11 +157,27 @@ export class Game extends App {
         }
     }
 
+    checkSelection() {
+        return 'valid';
+    }
+
+    checkQuality() {
+        return 2;
+    }
+
     async handleServe() {
+        const check = this.checkSelection();
+        if (check !== 'valid') {
+            this.errorMessage.setValue(check);
+            return;
+        }
+
         this.discardSelectedCards();
         await this.dealer.delay(600);
 
-        this.restock(2);
+        this.restock(this.checkQuality());
         await this.dealer.delay(600);
+
+        this.selectedCards = [];
     }
 }
