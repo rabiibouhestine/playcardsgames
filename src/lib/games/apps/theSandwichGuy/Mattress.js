@@ -9,14 +9,14 @@ export class Mattress {
         // Discard Pile Zone
         this.discardPileZone = new PIXI.Graphics();
         this.discardPileZone.beginFill(0x000000, 0.25);
-        this.discardPileZone.drawRoundedRect(230, 99, 120, 170, 8);
+        this.discardPileZone.drawRoundedRect(230, 70, 120, 170, 8);
         this.discardPileZone.endFill();
         mattressContainer.addChild(this.discardPileZone);
 
         // Discard Pile Zone BG
         this.discardPileZoneBG = new PIXI.Graphics();
         this.discardPileZoneBG.beginFill(0x000000, 0.25);
-        this.discardPileZoneBG.drawRoundedRect(250, 139, 80, 110, 8);
+        this.discardPileZoneBG.drawRoundedRect(250, 110, 80, 110, 8);
         this.discardPileZoneBG.endFill();
         mattressContainer.addChild(this.discardPileZoneBG);
 
@@ -30,20 +30,20 @@ export class Mattress {
         });
         this.discardPileLabel.anchor.set(0.5);
         this.discardPileLabel.x = 290;
-        this.discardPileLabel.y = 119;
+        this.discardPileLabel.y = 90;
         mattressContainer.addChild(this.discardPileLabel);
 
         // Draw Pile Zone
         this.drawPileZone = new PIXI.Graphics();
         this.drawPileZone.beginFill(0x000000, 0.25);
-        this.drawPileZone.drawRoundedRect(370, 99, 120, 170, 8);
+        this.drawPileZone.drawRoundedRect(370, 70, 120, 170, 8);
         this.drawPileZone.endFill();
         mattressContainer.addChild(this.drawPileZone);
 
         // Draw Pile Zone BG
         this.drawPileZoneBG = new PIXI.Graphics();
         this.drawPileZoneBG.beginFill(0x000000, 0.25);
-        this.drawPileZoneBG.drawRoundedRect(390, 139, 80, 110, 8);
+        this.drawPileZoneBG.drawRoundedRect(390, 110, 80, 110, 8);
         this.drawPileZoneBG.endFill();
         mattressContainer.addChild(this.drawPileZoneBG);
 
@@ -57,7 +57,7 @@ export class Mattress {
         });
         this.drawPileLabel.anchor.set(0.5);
         this.drawPileLabel.x = 430;
-        this.drawPileLabel.y = 119;
+        this.drawPileLabel.y = 90;
         mattressContainer.addChild(this.drawPileLabel);
 
         // Ingredients Zones
