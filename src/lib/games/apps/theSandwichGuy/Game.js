@@ -46,7 +46,7 @@ export class Game extends App {
             textSize: 16,
             x: 267,
             y: 654,
-            onPointerDown: this.handleServe.bind(this)
+            // onPointerDown: this.handleServe.bind(this)
         });
 
         // add serve button
@@ -57,7 +57,7 @@ export class Game extends App {
             textSize: 16,
             x: 452,
             y: 654,
-            // onPointerDown: this.handleServe.bind(this)
+            onPointerDown: this.handleServe.bind(this)
         });
 
         // selected cards
@@ -105,16 +105,18 @@ export class Game extends App {
         }
 
         // restock
-        this.restock();
+        this.restock(8);
         await this.dealer.delay(600);
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
     }
 
-    async restock() {
+    async restock(n) {
+        let j = 0;
         for (let i = 0; i < 8; i++) {
             if (!this.ingredients[i].cards.length) {
+                j ++;
                 this.dealer.moveCards({
                     nbCards: 1,
                     source: this.drawPile ,
@@ -123,6 +125,9 @@ export class Game extends App {
                     positionDestination: 'top'
                 });
                 await this.dealer.delay(100);
+            }
+            if (j === n) {
+                return;
             }
         }
     }
@@ -154,6 +159,10 @@ export class Game extends App {
     }
 
     async handleServe() {
+        this.discardSelectedCards();
+        await this.dealer.delay(600);
 
+        this.restock(2);
+        await this.dealer.delay(600);
     }
 }
