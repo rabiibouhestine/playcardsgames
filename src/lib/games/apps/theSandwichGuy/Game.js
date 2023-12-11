@@ -46,7 +46,7 @@ export class Game extends App {
             textSize: 16,
             x: 267,
             y: 654,
-            // onPointerDown: this.handleServe.bind(this)
+            onPointerDown: this.handleServe.bind(this)
         });
 
         // add serve button
@@ -127,6 +127,22 @@ export class Game extends App {
         }
     }
 
+    discardSelectedCards() {
+        for (let i = 0; i < 8; i++) {
+            const isSelected = this.selectedCards.includes(this.ingredients[i].getTopCard().faceName);
+            if (isSelected) {
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.ingredients[i],
+                    destination: this.discardPile,
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+                this.mattress.clearHighlight(i);
+            }
+        }
+    }
+
     onCardPointerDown(card) {
         if (this.selectedCards.includes(card.faceName)) {
             this.selectedCards = this.selectedCards.filter(name => name !== card.faceName);
@@ -135,5 +151,9 @@ export class Game extends App {
             this.selectedCards.push(card.faceName);
             this.mattress.setHighlighted(card.location, card.params.suit);
         }
+    }
+
+    async handleServe() {
+
     }
 }
