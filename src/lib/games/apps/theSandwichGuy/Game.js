@@ -11,6 +11,7 @@ import { Button } from '../../utils/Button';
 import { GameOverPanel } from '../../utils/GameOverPanel';
 
 import paramsAtlas from './values.json';
+import ingredientsAtlas from './ingredients.json';
 import { Mattress } from './Mattress';
 
 export class Game extends App {
@@ -86,7 +87,39 @@ export class Game extends App {
             counter: true
         });
 
+        // add ingredients
+        this.ingredients = [];
+        for (let i = 0; i < 8; i++) {
+            this.ingredients[i] = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+                name: i,
+                type: 'pile',
+                faceNames: [],
+                position: ingredientsAtlas.positions[i],
+                faceUp: true,
+                counter: false,
+                isInteractive: true
+            });
+        }
+
+        // restock
+        this.restock();
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
+    }
+
+    async restock() {
+        for (let i = 0; i < 8; i++) {
+            if (!this.ingredients[i].cards.length) {
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.drawPile ,
+                    destination: this.ingredients[i],
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+                await this.dealer.delay(100);
+            }
+        }
     }
 }
