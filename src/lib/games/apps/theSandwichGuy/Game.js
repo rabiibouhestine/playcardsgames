@@ -223,7 +223,27 @@ export class Game extends App {
     }
 
     checkQuality() {
-        return 2;
+        const suitColors = {
+            H: 'red',
+            D: 'red',
+            C: 'black',
+            S: 'black',
+        };
+
+        const suit1 = paramsAtlas[this.selectedCards[0]].suit;
+        const suit2 = paramsAtlas[this.selectedCards[1]].suit;
+        const suit3 = paramsAtlas[this.selectedCards[2]].suit;
+
+        const sameSuit = suit1 === suit2 && suit2 === suit3;
+        const sameSuitColor = suitColors[suit1] === suitColors[suit2] && suitColors[suit2] === suitColors[suit3];
+    
+        if (sameSuit) {
+            return 4;
+        } else if (sameSuitColor) {
+            return 3;
+        } else {
+            return 2;
+        }
     }
 
     async handleServe() {
