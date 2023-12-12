@@ -142,7 +142,7 @@
 					<div class="h-28 flex justify-center pb-2">
 						<img src={apples} alt={game.name} />
 					</div>
-					<div class="flex justify-between pt-2 border-t-[1px] border-slate-200">
+					<div class="flex justify-between pt-3 border-t-[1px] border-slate-200 text-sm">
 						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">5 min</span>
 						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">Easy</span>
 					</div>
