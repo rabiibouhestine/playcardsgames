@@ -16,7 +16,7 @@
 	});
 </script>
 
-<GamePage title="Card Capture">
+<GamePage title="CARD CAPTURE">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
 	<h1 class="text-5xl font-bold">Card Capture</h1>
 	<p>

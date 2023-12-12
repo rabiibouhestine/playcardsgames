@@ -16,7 +16,7 @@
 	});
 </script>
 
-<GamePage title="Merchant Solitaire">
+<GamePage title="MERCHANT SOLITAIRE">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
 	<h1 class="text-5xl font-bold">Merchant Solitaire</h1>
 	<p>

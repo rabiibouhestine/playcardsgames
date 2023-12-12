@@ -16,7 +16,7 @@
 	});
 </script>
 
-<GamePage title="Clear the Dungeon">
+<GamePage title="CLEAR THE DUNGEON">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
 	<h1 class="text-5xl font-bold">Clear the Dungeon</h1>
 	<p>

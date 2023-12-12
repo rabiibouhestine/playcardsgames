@@ -7,7 +7,9 @@
 	import merchantSolitaireCover from '$lib/assets/merchantSolitaire.svg';
 	import cardCaptureCover from '$lib/assets/cardCapture.svg';
 	import theSandwichGuyCover from '$lib/assets/theSandwichGuy.svg';
+	import fourSquare from '$lib/assets/fourSquare.svg';
 	import apples from '$lib/assets/ROTTEN_APPLES.svg';
+	import ninja from '$lib/assets/gameIcons/scoundrel.svg';
 
 	const classic = [
 		{
@@ -39,63 +41,63 @@
 
 	const games = [
 		{
-			name: 'Regicide Solitaire',
+			name: 'REGICIDE SOLITAIRE',
 			src: regicideSolitaireCover,
 			href: '/regicide-solitaire',
 			time: 5,
 			weight: 3.0
 		},
 		{
-			name: 'Scoundrel',
+			name: 'SCOUNDREL',
 			src: scoundrelCover,
 			href: '/scoundrel',
 			time: 5,
 			weight: 3.0
 		},
 		{
-			name: 'Clear the Dungeon',
+			name: 'CLEAR THE DUNGEON',
 			src: clearTheDungeonCover,
 			href: '/clear-the-dungeon',
 			time: 5,
 			weight: 3.0
 		},
 		{
-			name: 'Merchant Solitaire',
+			name: 'MERCHANT SOLITAIRE',
 			src: merchantSolitaireCover,
 			href: '/merchant-solitaire',
 			time: 5,
 			weight: 3.0
 		},
 		{
-			name: 'Card Capture',
+			name: 'CARD CAPTURE',
 			src: cardCaptureCover,
 			href: '/card-capture',
 			time: 5,
 			weight: 3.0
 		},
 		{
-			name: 'The Sandwich Guy',
+			name: 'THE SANDWICH GUY',
 			src: theSandwichGuyCover,
 			href: '/the-sandwich-guy',
 			time: 5,
 			weight: 3.0
 		},
 		{
-			name: 'Skyway',
+			name: 'SKYWAY',
 			src: apples,
 			href: '/',
 			time: 5,
 			weight: 3.0
 		},
 		{
-			name: 'Area 52',
-			src: 'https://placehold.co/400x400/grey/white',
+			name: 'AREA 52',
+			src: fourSquare,
 			href: '/',
 			time: 5,
 			weight: 3.0
 		},
 		{
-			name: 'Dead Center',
+			name: 'DEAD CENTER',
 			src: 'https://placehold.co/400x400/grey/white',
 			href: '/',
 			time: 5,
@@ -150,7 +152,7 @@
 	<div class="bg-base-100/90 backdrop-blur-md">
 		<Header />
 		<div class="grid justify-items-center space-y-6 py-10">
-			<h1 class="text-4xl md:text-5xl font-bold">Play Card Games</h1>
+			<h1 class="text-4xl md:text-5xl font-black">PLAY CARD GAMES</h1>
 			<div>
 				<p class="px-6 text-center text-lg">
 					Enjoy an amazing collection of modern thematic solitaire card games
@@ -169,8 +171,11 @@
 					href={game.href}
 					class="group w-80 p-2 bg-emerald-600 rounded-lg border-2 border-emerald-600 hover:border-slate-200"
 				>
-					<div class="h-28 flex justify-center p-2">
-						<img src={game.src} alt={game.name} />
+					<div
+						class="flex flex-col justify-center items-center gap-y-2 h-28 flex justify-center text-white"
+					>
+						<img src={ninja} alt={game.name} class="h-10" />
+						<h2 class="font-black text-2xl">{game.name}</h2>
 					</div>
 					<div class="flex justify-between pt-3 border-t-[1px] border-slate-200 text-sm">
 						<span class="flex flex-nowrap items-center gap-2 px-3 py-1 bg-emerald-700 rounded-3xl">

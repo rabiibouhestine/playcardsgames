@@ -15,7 +15,7 @@
 	});
 </script>
 
-<GamePage title="The Sandwich Guy">
+<GamePage title="THE SANDWICH GUY">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
 	<h1 class="text-5xl font-bold">The Sandwich Guy</h1>
 	<p>

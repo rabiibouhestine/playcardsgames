@@ -15,7 +15,7 @@
 	});
 </script>
 
-<GamePage title="Scoundrel">
+<GamePage title="SCOUNDREL">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
 	<h1 class="text-5xl font-bold">Scoundrel</h1>
 	<p>
