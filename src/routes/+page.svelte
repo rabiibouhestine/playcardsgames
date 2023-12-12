@@ -148,7 +148,7 @@
 					</div>
 					<div class="flex justify-between pt-3 border-t-[1px] border-slate-200 text-sm">
 						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">5 min</span>
-						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">Easy</span>
+						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">Weight: 3.00</span>
 					</div>
 				</a>
 			{/each}
