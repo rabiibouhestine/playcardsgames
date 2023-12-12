@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="279.26413mm"
-   height="63.802017mm"
-   viewBox="0 0 279.26413 63.802017"
+   width="246.9006mm"
+   height="66.774544mm"
+   viewBox="0 0 246.9006 66.774544"
    version="1.1"
    id="svg1"
    inkscape:version="1.3 (0e150ed, 2023-07-21)"
@@ -23,55 +23,39 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.73472102"
-     inkscape:cx="370.88907"
-     inkscape:cy="1680.2296"
+     inkscape:zoom="0.48343114"
+     inkscape:cx="321.65905"
+     inkscape:cy="1568.9928"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg1" /><defs
-     id="defs1"><rect
-       x="-157.88306"
-       y="1486.2784"
-       width="974.51959"
-       height="185.10426"
-       id="rect2" /></defs><rect
-     style="fill:#1e3a8a;stroke:none;stroke-width:0.717615;stroke-dasharray:none"
-     id="rect6"
-     width="279.26413"
-     height="29.099005"
-     x="8.8862049e-07"
-     y="34.703014"
-     ry="5.7590585"
-     inkscape:export-filename="gameLogos/regicideSolitaire.svg"
-     inkscape:export-xdpi="96"
-     inkscape:export-ydpi="96" /><g
-     id="g1"
-     transform="matrix(0.1171875,0,0,0.1171875,109.63207,-10.667671)"
-     inkscape:label="crown"
-     style="fill:#1e3a8a;stroke:none;stroke-width:7.35858;stroke-dasharray:none">&#10;	<path
-   class="st0"
-   d="m 474.25,193.656 c -20.859,0 -37.766,16.906 -37.766,37.75 0,14.078 7.797,26.203 19.203,32.703 -5.594,19.203 -16.5,39.156 -34.031,49.141 -35.063,19.906 -66.703,-11.859 -48.219,-97.75 18.078,-2.813 31.969,-18.313 31.969,-37.188 0,-20.844 -16.906,-37.75 -37.766,-37.75 -20.86,0 -37.75,16.906 -37.75,37.75 0,13.469 7.109,25.219 17.703,31.891 -10.063,49.516 -25.453,69.281 -44.406,66.688 -28.328,-3.859 -32.656,-42.203 -32.797,-113.219 13.703,-5.672 23.359,-19.141 23.359,-34.875 0,-20.859 -16.906,-37.766 -37.75,-37.766 -20.844,0 -37.75,16.906 -37.75,37.766 0,15.75 9.656,29.219 23.375,34.875 -0.156,71.016 -4.5,109.359 -32.813,113.219 -18.969,2.594 -34.359,-17.172 -44.406,-66.688 10.594,-6.688 17.703,-18.422 17.703,-31.891 0,-20.844 -16.906,-37.75 -37.766,-37.75 -20.844,0 -37.75,16.906 -37.75,37.75 0,18.875 13.891,34.391 31.969,37.188 18.484,85.891 -13.156,117.656 -48.219,97.75 -17.531,-9.984 -28.438,-29.938 -34.031,-49.156 11.406,-6.484 19.188,-18.609 19.188,-32.688 0,-20.844 -16.906,-37.75 -37.75,-37.75 C 16.905,193.656 0,210.563 0,231.406 0,250.438 14.125,266 32.406,268.625 L 58.687,420.969 H 256 453.313 L 479.594,268.625 C 497.875,266 512,250.438 512,231.406 c 0,-20.843 -16.906,-37.75 -37.75,-37.75 z"
-   id="path1"
-   style="fill:#1e3a8a;stroke:none;stroke-width:7.35858;stroke-dasharray:none" />&#10;</g><g
-     id="g5"
-     transform="matrix(1.1502748,0,0,1.1502748,23.720908,-464.8442)"
-     inkscape:label="title"
-     inkscape:export-filename="gameLogos/regicideSolitaire.svg"
-     inkscape:export-xdpi="96"
-     inkscape:export-ydpi="96"><text
-       xml:space="preserve"
-       transform="matrix(0.29487525,0,0,0.29487525,33.962601,-14.162774)"
-       id="text1"
-       style="font-size:96px;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, ';letter-spacing:-6.95486px;white-space:pre;shape-inside:url(#rect2);fill:#059669;stroke:#2563eb;stroke-width:4.42233;stroke-dasharray:none"><tspan
-         x="-157.88281"
-         y="1574.1472"
-         id="tspan2"><tspan
-           style="font-family:'Zero Cool';-inkscape-font-specification:'Zero Cool';fill:#fafafa"
-           id="tspan1">REGICIDE SOLITAIRE</tspan></tspan></text></g><style
+     id="defs1" /><style
      type="text/css"
      id="style1">&#10;<![CDATA[
+	.st0{fill:#000000;}
+]]>&#10;</style><path
+     class="st0"
+     d="m 149.90983,12.441716 c -2.52884,0 -4.57856,2.0496 -4.57856,4.57662 0,1.70674 0.94527,3.17672 2.32808,3.96474 -0.67819,2.32808 -2.00038,4.74708 -4.12575,5.95761 -4.25086,2.4133 -8.08673,-1.43773 -5.84583,-11.85071 2.19169,-0.34104 3.87576,-2.22018 3.87576,-4.50849 0,-2.5270204 -2.04959,-4.5766204 -4.57855,-4.5766204 -2.52896,0 -4.57662,2.0496 -4.57662,4.5766204 0,1.63291 0.86186,3.05742 2.14622,3.8663 -1.21999,6.00307 -3.08579,8.39928 -5.38356,8.08492 -3.43434,-0.46785 -3.95904,-5.11648 -3.97614,-13.7261004 1.66128,-0.68764 2.83193,-2.32055 2.83193,-4.22806 0,-2.52884 -2.0496,-4.578559990543 -4.57662,-4.578559990543 -2.52702,0 -4.57662,2.049599990543 -4.57662,4.578559990543 0,1.90945 1.17064,3.54236 2.83387,4.22806 -0.0189,8.6096204 -0.54556,13.2581304 -3.97809,13.7261004 -2.2997,0.31448 -4.16551,-2.08185 -5.38355,-8.08492 1.28436,-0.81082 2.14622,-2.23339 2.14622,-3.8663 0,-2.5270204 -2.0496,-4.5766204 -4.57856,-4.5766204 -2.52702,0 -4.57662,2.0496 -4.57662,4.5766204 0,2.28831 1.68408,4.16939 3.87576,4.50849 2.24091,10.41298 -1.59496,14.26401 -5.84582,11.85071 -2.12537,-1.21041 -3.447682,-3.62953 -4.125749,-5.95943 1.382809,-0.78608 2.326259,-2.25606 2.326259,-3.96292 0,-2.52702 -2.049601,-4.57662 -4.576621,-4.57662 -2.52702,0 -4.576496,2.04972 -4.576496,4.57662 0,2.30734 1.712443,4.194 3.928738,4.51224 l 3.186175,18.46941 h 23.921224 23.92122 l 3.18618,-18.46941 c 2.21629,-0.31824 3.92874,-2.2049 3.92874,-4.51224 0,-2.5269 -2.0496,-4.57662 -4.57662,-4.57662 z"
+     id="path1-3"
+     style="fill:#e2e8f0;stroke-width:0.121235" /><text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5778px;font-family:'Arial Black';-inkscape-font-specification:'Arial Black,  Bold';letter-spacing:-0.79375px;fill:#e2e8f0;stroke:none;stroke-width:1.5;stroke-dasharray:none"
+     x="-1.7197928"
+     y="66.487892"
+     id="text7"><tspan
+       sodipodi:role="line"
+       id="tspan7"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5778px;font-family:'Arial Black';-inkscape-font-specification:'Arial Black,  Bold';letter-spacing:-0.79375px;fill:#e2e8f0;stroke:none;stroke-width:1.5"
+       x="-1.7197928"
+       y="66.487892">REGICIDE SOLITAIRE</tspan></text><style
+     type="text/css"
+     id="style1-8">&#10;<![CDATA[
+	.st0{fill:#000000;}
+]]>&#10;</style><style
+     type="text/css"
+     id="style1-5">&#10;<![CDATA[
 	.st0{fill:#000000;}
 ]]>&#10;</style></svg>

@@ -41,77 +41,107 @@
 		{
 			name: 'Regicide Solitaire',
 			src: regicideSolitaireCover,
-			href: '/regicide-solitaire'
-		},
-		{
-			name: 'Clear the Dungeon',
-			src: clearTheDungeonCover,
-			href: '/clear-the-dungeon'
+			href: '/regicide-solitaire',
+			time: 5,
+			weight: 3.0
 		},
 		{
 			name: 'Scoundrel',
 			src: scoundrelCover,
-			href: '/scoundrel'
+			href: '/scoundrel',
+			time: 5,
+			weight: 3.0
+		},
+		{
+			name: 'Clear the Dungeon',
+			src: clearTheDungeonCover,
+			href: '/clear-the-dungeon',
+			time: 5,
+			weight: 3.0
 		},
 		{
 			name: 'Merchant Solitaire',
 			src: merchantSolitaireCover,
-			href: '/merchant-solitaire'
+			href: '/merchant-solitaire',
+			time: 5,
+			weight: 3.0
 		},
 		{
 			name: 'Card Capture',
 			src: cardCaptureCover,
-			href: '/card-capture'
+			href: '/card-capture',
+			time: 5,
+			weight: 3.0
 		},
 		{
 			name: 'The Sandwich Guy',
 			src: theSandwichGuyCover,
-			href: '/the-sandwich-guy'
+			href: '/the-sandwich-guy',
+			time: 5,
+			weight: 3.0
 		},
 		{
 			name: 'Skyway',
 			src: apples,
-			href: '/'
+			href: '/',
+			time: 5,
+			weight: 3.0
 		},
 		{
 			name: 'Area 52',
 			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
+			href: '/',
+			time: 5,
+			weight: 3.0
 		},
 		{
 			name: 'Dead Center',
 			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
+			href: '/',
+			time: 5,
+			weight: 3.0
 		}
 		// {
 		// 	name: 'Boba Tea Shop',
 		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/'
+		// 	href: '/',
+		// 	time: 5,
+		// 	weight: 3.00
 		// },
 		// {
 		// 	name: 'Foursquare',
 		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/'
+		// 	href: '/',
+		// 	time: 5,
+		// 	weight: 3.00
 		// },
 		// {
 		// 	name: 'Loot The Loop',
 		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/'
+		// 	href: '/',
+		// 	time: 5,
+		// 	weight: 3.00
 		// },
 		// {
 		// 	name: 'Syndicate',
 		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/'
+		// 	href: '/',
+		// 	time: 5,
+		// 	weight: 3.00
 		// },
 		// {
 		// 	name: 'Hide and Seek',
 		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/'
+		// 	href: '/',
+		// 	time: 5,
+		// 	weight: 3.00
 		// },
 		// {
 		// 	name: 'The Emissary',
 		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/'
+		// 	href: '/',
+		// 	time: 5,
+		// 	weight: 3.00
 		// }
 	];
 </script>
@@ -139,12 +169,12 @@
 					href={game.href}
 					class="group w-80 p-2 bg-emerald-600 rounded-lg border-2 border-emerald-600 hover:border-slate-200"
 				>
-					<div class="h-28 flex justify-center pb-2">
+					<div class="h-28 flex justify-center p-2">
 						<img src={game.src} alt={game.name} />
 					</div>
 					<div class="flex justify-between pt-3 border-t-[1px] border-slate-200 text-sm">
-						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">5 min</span>
-						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">Weight: 3.00</span>
+						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">{game.time} min</span>
+						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">Weight: {game.weight}</span>
 					</div>
 				</a>
 			{/each}
