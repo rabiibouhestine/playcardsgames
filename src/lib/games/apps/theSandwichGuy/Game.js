@@ -41,6 +41,16 @@ export class Game extends App {
         // add error message
         this.errorMessage = new Message(this.gameContainer, { x: 360, y: 265 }, 20);
 
+        // add restart button
+        this.restartButton = new Button(this.gameContainer, {
+            width: 120,
+            height: 50,
+            text: "Restart",
+            x: 630,
+            y: 55,
+            onPointerDown: this.handleRestart.bind(this)
+        });
+
         // add giveup button
         this.giveupButton = new Button(this.gameContainer, {
             width: 150,
@@ -260,5 +270,48 @@ export class Game extends App {
         await this.dealer.delay(600);
 
         this.selectedCards = [];
+    }
+
+    async handleRestart() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        // remove blur
+        this.gameContainer.filters = [];
+        this.mattressContainer.filters = [];
+
+        // hide game over panel
+        // this.gameOverPanel.setVisible(false);
+
+        for (let i = 0; i < 8; i++) {
+            if (this.ingredients[i].cards.length) {
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.ingredients[i],
+                    destination: this.drawPile,
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+                this.mattress.clearHighlight(i);
+            }
+        }
+
+        await this.dealer.moveCards({
+            nbCards: this.discardPile.cards.length,
+            source: this.discardPile,
+            destination: this.drawPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
+
+        // shuffle draw pile
+        this.drawPile.shuffleCards();
+
+        // restock
+        this.restock(8);
+        await this.dealer.delay(600);
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 }
