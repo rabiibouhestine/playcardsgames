@@ -32,42 +32,42 @@
 			src: regicideSolitaireCover,
 			href: '/regicide-solitaire',
 			time: 5,
-			weight: 3.0
+			weight: 1.94
 		},
 		{
 			name: 'SCOUNDREL',
 			src: scoundrelCover,
 			href: '/scoundrel',
 			time: 5,
-			weight: 3.0
+			weight: 1.0
 		},
 		{
 			name: 'CLEAR THE DUNGEON',
 			src: clearTheDungeonCover,
 			href: '/clear-the-dungeon',
 			time: 5,
-			weight: 3.0
+			weight: 1.0
 		},
 		{
 			name: 'MERCHANT SOLITAIRE',
 			src: merchantSolitaireCover,
 			href: '/merchant-solitaire',
 			time: 5,
-			weight: 3.0
+			weight: 1.0
 		},
 		{
 			name: 'CARD CAPTURE',
 			src: cardCaptureCover,
 			href: '/card-capture',
 			time: 5,
-			weight: 3.0
+			weight: 1.4
 		},
 		{
 			name: 'THE SANDWICH GUY',
 			src: theSandwichGuyCover,
 			href: '/the-sandwich-guy',
 			time: 5,
-			weight: 3.0
+			weight: 1.2
 		},
 		{
 			name: 'SKYWAY',
@@ -183,7 +183,9 @@
 							</svg>
 							{game.time} min</span
 						>
-						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">Weight: {game.weight}</span>
+						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">
+							Weight: {game.weight.toFixed(2)}
+						</span>
 					</div>
 				</a>
 			{/each}
