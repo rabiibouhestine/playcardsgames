@@ -41,6 +41,9 @@ export class Game extends App {
         // add error message
         this.errorMessage = new Message(this.gameContainer, { x: 360, y: 265 }, 20);
 
+        // game over panel
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Score:");
+
         // add restart button
         this.restartButton = new Button(this.gameContainer, {
             width: 120,
@@ -59,7 +62,7 @@ export class Game extends App {
             textSize: 16,
             x: 267,
             y: 654,
-            // onPointerDown: this.handleServe.bind(this)
+            onPointerDown: this.handleGiveup.bind(this)
         });
 
         // add serve button
@@ -140,6 +143,9 @@ export class Game extends App {
                 await this.dealer.delay(100);
             }
             if (j === n) {
+                if (!this.drawPile.cards.length) {
+                    this.handleGameOver(44);
+                }
                 return;
             }
         }
@@ -281,7 +287,7 @@ export class Game extends App {
         this.mattressContainer.filters = [];
 
         // hide game over panel
-        // this.gameOverPanel.setVisible(false);
+        this.gameOverPanel.setVisible(false);
 
         for (let i = 0; i < 8; i++) {
             if (this.ingredients[i].cards.length) {
@@ -315,5 +321,22 @@ export class Game extends App {
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
+    }
+
+    handleGameOver(score) {
+        // blur screen
+        const blurFilter = new PIXI.BlurFilter();
+        this.gameContainer.filters = [blurFilter];
+        this.mattressContainer.filters = [blurFilter];
+
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        // show game over panel
+        this.gameOverPanel.setVisible(true, score);
+    }
+
+    handleGiveup() {
+        this.handleGameOver(44 - this.drawPile.cards.length);
     }
 }
