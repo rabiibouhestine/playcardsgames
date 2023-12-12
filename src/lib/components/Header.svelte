@@ -1,6 +1,4 @@
 <script>
-	import logo from '$lib/assets/logo.svg';
-
 	export let title = '';
 
 	let notification = true;
