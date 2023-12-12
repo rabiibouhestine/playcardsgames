@@ -137,10 +137,14 @@
 			{#each games as game}
 				<a
 					href={game.href}
-					class="w-80 p-2 bg-emerald-600 rounded-lg transition duration-300 ease-in-out hover:scale-105 border-2 border-emerald-600 hover:border-slate-200"
+					class="group w-80 p-2 bg-emerald-600 rounded-lg border-2 border-emerald-600 hover:border-slate-200"
 				>
 					<div class="h-28 flex justify-center pb-2">
-						<img src={apples} alt={game.name} />
+						<img
+							src={apples}
+							alt={game.name}
+							class="transition duration-300 ease-in-out group-hover:scale-105"
+						/>
 					</div>
 					<div class="flex justify-between pt-3 border-t-[1px] border-slate-200 text-sm">
 						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">5 min</span>
