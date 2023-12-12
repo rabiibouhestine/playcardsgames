@@ -1,12 +1,12 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 
-	import regicideSolitaireCover from '$lib/assets/regicideSolitaire.svg';
+	import regicideSolitaireCover from '$lib/assets/gameIcons/regicideSolitaire.svg';
 	import scoundrelCover from '$lib/assets/gameIcons/scoundrel.svg';
-	import clearTheDungeonCover from '$lib/assets/clearTheDungeon.svg';
-	import merchantSolitaireCover from '$lib/assets/merchantSolitaire.svg';
-	import cardCaptureCover from '$lib/assets/cardCapture.svg';
-	import theSandwichGuyCover from '$lib/assets/theSandwichGuy.svg';
+	import clearTheDungeonCover from '$lib/assets/gameIcons/clearTheDungeon.svg';
+	import merchantSolitaireCover from '$lib/assets/gameIcons/merchantSolitaire.svg';
+	import cardCaptureCover from '$lib/assets/gameIcons/cardCapture.svg';
+	import theSandwichGuyCover from '$lib/assets/gameIcons/theSandwichGuy.svg';
 
 	const classic = [
 		{
@@ -21,16 +21,6 @@
 		},
 		{
 			name: 'Spider',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
-		},
-		{
-			name: 'Yukon',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
-		},
-		{
-			name: 'Scorpion',
 			src: 'https://placehold.co/400x400/grey/white',
 			href: '/'
 		}
