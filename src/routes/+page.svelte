@@ -2,13 +2,11 @@
 	import Header from '$lib/components/Header.svelte';
 
 	import regicideSolitaireCover from '$lib/assets/regicideSolitaire.svg';
+	import scoundrelCover from '$lib/assets/gameIcons/scoundrel.svg';
 	import clearTheDungeonCover from '$lib/assets/clearTheDungeon.svg';
-	import scoundrelCover from '$lib/assets/scoundrel.svg';
 	import merchantSolitaireCover from '$lib/assets/merchantSolitaire.svg';
 	import cardCaptureCover from '$lib/assets/cardCapture.svg';
 	import theSandwichGuyCover from '$lib/assets/theSandwichGuy.svg';
-	import fourSquare from '$lib/assets/fourSquare.svg';
-	import ninja from '$lib/assets/gameIcons/scoundrel.svg';
 
 	const classic = [
 		{
@@ -83,14 +81,14 @@
 		},
 		{
 			name: 'SKYWAY',
-			src: fourSquare,
+			src: 'https://placehold.co/400x400/grey/white',
 			href: '/',
 			time: 5,
 			weight: 3.0
 		},
 		{
 			name: 'AREA 52',
-			src: fourSquare,
+			src: 'https://placehold.co/400x400/grey/white',
 			href: '/',
 			time: 5,
 			weight: 3.0
@@ -173,7 +171,7 @@
 					<div
 						class="flex flex-col justify-center items-center gap-y-2 h-28 flex justify-center text-white"
 					>
-						<img src={ninja} alt={game.name} class="h-10" />
+						<img src={game.src} alt={game.name} class="h-10" />
 						<h2 class="font-black text-2xl">{game.name}</h2>
 					</div>
 					<div class="flex justify-between pt-3 border-t-[1px] border-slate-200 text-sm">
