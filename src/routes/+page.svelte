@@ -8,7 +8,6 @@
 	import cardCaptureCover from '$lib/assets/cardCapture.svg';
 	import theSandwichGuyCover from '$lib/assets/theSandwichGuy.svg';
 	import fourSquare from '$lib/assets/fourSquare.svg';
-	import apples from '$lib/assets/ROTTEN_APPLES.svg';
 	import ninja from '$lib/assets/gameIcons/scoundrel.svg';
 
 	const classic = [
@@ -84,7 +83,7 @@
 		},
 		{
 			name: 'SKYWAY',
-			src: apples,
+			src: fourSquare,
 			href: '/',
 			time: 5,
 			weight: 3.0
