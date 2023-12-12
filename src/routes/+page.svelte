@@ -7,6 +7,7 @@
 	import merchantSolitaireCover from '$lib/assets/merchantSolitaire.svg';
 	import cardCaptureCover from '$lib/assets/cardCapture.svg';
 	import theSandwichGuyCover from '$lib/assets/theSandwichGuy.svg';
+	import apples from '$lib/assets/ROTTEN_APPLES.svg';
 
 	const classic = [
 		{
@@ -81,12 +82,12 @@
 			name: 'Dead Center',
 			src: 'https://placehold.co/400x400/grey/white',
 			href: '/'
-		},
-		{
-			name: 'Boba Tea Shop',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/'
 		}
+		// {
+		// 	name: 'Boba Tea Shop',
+		// 	src: 'https://placehold.co/400x400/grey/white',
+		// 	href: '/'
+		// },
 		// {
 		// 	name: 'Foursquare',
 		// 	src: 'https://placehold.co/400x400/grey/white',
@@ -134,24 +135,16 @@
 		</div>
 		<div class="my-10 flex flex-wrap justify-center gap-10 sm:gap-5 max-w-screen-xl mx-auto">
 			{#each games as game}
-				<a href={game.href} class="group">
-					<div
-						class="card overflow-hidden w-80 sm:w-60 bg-base-100 shadow-xl ease-in-out duration-300 group-hover:scale-105"
-					>
-						<figure>
-							<img
-								src={game.src}
-								alt={game.name}
-								class="ease-in-out duration-300 group-hover:scale-110"
-							/>
-						</figure>
-						<div class="card-body items-center text-center">
-							<h1
-								class="card-title text-3xl sm:text-xl transition duration-300 ease-in-out group-hover:text-primary"
-							>
-								{game.name}
-							</h1>
-						</div>
+				<a
+					href={game.href}
+					class="w-80 p-2 bg-emerald-600 rounded-lg transition duration-300 ease-in-out hover:scale-105 border-2 border-emerald-600 hover:border-slate-200"
+				>
+					<div class="h-28 flex justify-center pb-2">
+						<img src={apples} alt={game.name} />
+					</div>
+					<div class="flex justify-between pt-2 border-t-[1px] border-slate-200">
+						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">5 min</span>
+						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">Easy</span>
 					</div>
 				</a>
 			{/each}
