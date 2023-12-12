@@ -296,13 +296,15 @@ export class Game extends App {
             }
         }
 
-        await this.dealer.moveCards({
+        this.dealer.moveCards({
             nbCards: this.discardPile.cards.length,
             source: this.discardPile,
             destination: this.drawPile,
             positionSource: 'top',
             positionDestination: 'top'
         });
+
+        await this.dealer.delay(600);
 
         // shuffle draw pile
         this.drawPile.shuffleCards();
