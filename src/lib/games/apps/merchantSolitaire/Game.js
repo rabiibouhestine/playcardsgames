@@ -4,8 +4,8 @@ import {Howl} from 'howler';
 
 import sfxCash from '../../assets/audio/cash_register_purchase.ogg';
 
-import cardsSpritesheetImage from '../../assets/images/spritesheetColor.png';
-import cardsSpritesheetAtlas from '../../assets/json/cardsSpritesheet.json';
+import cardsSpritesheetImage from '../../assets/images/spritesheet.png';
+import cardsSpritesheetAtlas from '../../assets/json/spritesheet.json';
 
 import { App } from '../../utils/App';
 import { Cards } from '../../utils/Cards';

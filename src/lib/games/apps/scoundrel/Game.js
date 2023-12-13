@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 
-import cardsSpritesheetImage from '../../assets/images/spritesheetColor.png';
-import cardsSpritesheetAtlas from '../../assets/json/cardsSpritesheet.json';
+import cardsSpritesheetImage from '../../assets/images/spritesheet.png';
+import cardsSpritesheetAtlas from '../../assets/json/spritesheet.json';
 
 import { App } from '../../utils/App';
 import { Cards } from '../../utils/Cards';
