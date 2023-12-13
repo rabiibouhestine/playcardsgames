@@ -123,11 +123,11 @@ export class Game extends App {
         this.alienStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackH',
             faceNames: [],
-            position: {x: 230, y: 170},
+            position: {x: 210, y: 170},
             faceUp: true,
             counter: false,
             centered:false,
-            gap: 40
+            gap: 50
             // onPointerDown: this.onCardPointerDown.bind(this)
         });
 

@@ -107,7 +107,7 @@ export class Game extends App {
         this.field = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             name: 'field',
             type: 'stackH',
-            gap: 40,
+            gap: 50,
             position: {x: 260, y: 267},
             faceUp: true,
             onPointerUp: this.handleCardClick.bind(this),

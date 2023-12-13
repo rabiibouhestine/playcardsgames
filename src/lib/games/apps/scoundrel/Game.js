@@ -79,7 +79,7 @@ export class Game extends App {
         this.weaponStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             name: 'weapon',
             type: 'stackH',
-            gap: 40,
+            gap: 50,
             position: {x: 360, y: 442},
             faceUp: true
         });
