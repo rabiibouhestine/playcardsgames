@@ -7,7 +7,7 @@ export class Number {
     constructor(gameContainer, position, value, {
         z = 999,
         visible = true,
-        fontFamily = 'Arial',
+        fontFamily = 'Impact',
         fontWeight = 'bold',
         fontSize = 64,
         fill = 0xFFFFFF,

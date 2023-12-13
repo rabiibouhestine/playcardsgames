@@ -51,7 +51,7 @@ export class Cards {
         }
         this.adjustCards({immediate: true, faceUp: faceUp});
 
-        this.counter = new Number(gameContainer, position, this.cards.length, { visible: counter, fontSize: 20 });
+        this.counter = new Number(gameContainer, position, this.cards.length, { visible: counter, fontSize: 32 });
         this.counter.valueText.zIndex = this.zIndex + 60;
     }
 
