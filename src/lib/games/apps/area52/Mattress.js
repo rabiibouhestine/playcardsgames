@@ -89,7 +89,7 @@ export class Mattress {
 
         // Battle Zones
         this.battleZones = [];
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 6; i++) {
             this.battleZones[i] = new PIXI.Graphics();
             this.battleZones[i].beginFill(0xFFFFFF);
             this.battleZones[i].drawRoundedRect(this.positions[i].x, this.positions[i].y, 120, 150, 8);
