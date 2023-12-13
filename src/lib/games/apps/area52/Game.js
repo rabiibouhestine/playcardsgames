@@ -122,7 +122,7 @@ export class Game extends App {
         // add aliens stack
         this.alienStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackH',
-            faceNames: ['2H', '3D', '4H'],
+            faceNames: [],
             position: {x: 230, y: 170},
             faceUp: true,
             counter: false,
@@ -145,11 +145,25 @@ export class Game extends App {
             });
         }
 
+        // draw 3 alien
+        this.drawAliens();
+
         // restock
         this.restock();
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
+    }
+
+    drawAliens() {
+        this.dealer.moveCards({
+            nbCards: 3,
+            source: this.aliensPile ,
+            destination: this.alienStack,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
     }
 
     async restock() {
