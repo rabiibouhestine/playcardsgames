@@ -145,8 +145,26 @@ export class Game extends App {
             });
         }
 
+        // restock
+        this.restock();
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
+    }
+
+    async restock() {
+        for (let i = 0; i < 6; i++) {
+            if (!this.battleCards[i].cards.length && this.defendersPile.cards.length) {
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.defendersPile ,
+                    destination: this.battleCards[i],
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+                await this.dealer.delay(100);
+            }
+        }
     }
 
 }
