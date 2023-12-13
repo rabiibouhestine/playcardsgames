@@ -1,7 +1,4 @@
 <script>
-	import { fly } from 'svelte/transition';
-	import { bounceOut } from 'svelte/easing';
-
 	import Header from './Header.svelte';
 
 	export let title;
