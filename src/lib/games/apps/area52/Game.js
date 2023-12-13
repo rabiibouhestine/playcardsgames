@@ -43,7 +43,7 @@ export class Game extends App {
 
         // add sacrifice button
         this.sacrificeButton = new Button(this.gameContainer, {
-            width: 180,
+            width: 170,
             height: 50,
             text: "Sacrifice",
             textSize: 20,
@@ -54,7 +54,7 @@ export class Game extends App {
 
         // add giveup button
         this.singleAttackButton = new Button(this.gameContainer, {
-            width: 180,
+            width: 170,
             height: 50,
             text: "Single Attack",
             textSize: 20,
@@ -65,7 +65,7 @@ export class Game extends App {
 
         // add serve button
         this.dualAttackButton = new Button(this.gameContainer, {
-            width: 180,
+            width: 170,
             height: 50,
             text: "Dual Attack",
             textSize: 20,
