@@ -42,7 +42,7 @@ export class Mattress {
         const discardPileLabel = new PIXI.Text("Discard", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -55,7 +55,7 @@ export class Mattress {
         const drawPileLabel = new PIXI.Text("Draw", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -75,7 +75,7 @@ export class Mattress {
         const jokersLabel = new PIXI.Text("Jokers", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
