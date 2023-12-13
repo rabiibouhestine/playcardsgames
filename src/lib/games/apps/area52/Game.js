@@ -11,7 +11,7 @@ import { Button } from '../../utils/Button';
 import { GameOverPanel } from '../../utils/GameOverPanel';
 
 import paramsAtlas from './values.json';
-import defendersAtlas from './defenders.json';
+import battleCardsAtlas from './defenders.json';
 import { Mattress } from './Mattress';
 
 export class Game extends App {
@@ -130,6 +130,20 @@ export class Game extends App {
             gap: 40
             // onPointerDown: this.onCardPointerDown.bind(this)
         });
+
+        // add battle cards
+        this.battleCards = [];
+        for (let i = 0; i < 6; i++) {
+            this.battleCards[i] = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+                name: i,
+                type: 'pile',
+                faceNames: [],
+                position: battleCardsAtlas.positions[i],
+                faceUp: true,
+                counter: false,
+                isInteractive: true
+            });
+        }
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
