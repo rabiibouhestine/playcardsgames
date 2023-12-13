@@ -24,7 +24,7 @@ export class Mattress {
         this.aliensLabel = new PIXI.Text("Aliens", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -51,7 +51,7 @@ export class Mattress {
         this.discardPileLabel = new PIXI.Text("Discard", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -78,7 +78,7 @@ export class Mattress {
         this.defendersPileLabel = new PIXI.Text("Defenders", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });

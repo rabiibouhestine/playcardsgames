@@ -43,10 +43,10 @@ export class Game extends App {
 
         // add sacrifice button
         this.sacrificeButton = new Button(this.gameContainer, {
-            width: 150,
+            width: 180,
             height: 50,
             text: "Sacrifice",
-            textSize: 16,
+            textSize: 20,
             x: 175,
             y: 666,
             // onPointerDown: this.handleRestart.bind(this)
@@ -54,10 +54,10 @@ export class Game extends App {
 
         // add giveup button
         this.singleAttackButton = new Button(this.gameContainer, {
-            width: 150,
+            width: 180,
             height: 50,
             text: "Single Attack",
-            textSize: 16,
+            textSize: 20,
             x: 360,
             y: 666,
             // onPointerDown: this.handleGiveup.bind(this)
@@ -65,10 +65,10 @@ export class Game extends App {
 
         // add serve button
         this.dualAttackButton = new Button(this.gameContainer, {
-            width: 150,
+            width: 180,
             height: 50,
             text: "Dual Attack",
-            textSize: 16,
+            textSize: 20,
             x: 545,
             y: 666,
             // onPointerDown: this.handleServe.bind(this)
