@@ -89,6 +89,48 @@ export class Game extends App {
             'AC', '2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', 'TC', 'JC', 'QC', 'KC'
         ]);
 
+        // add aliens pile
+        this.aliensPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: this.aliensDeck,
+            position: {x: 130, y: 170},
+            faceUp: false,
+            counter: true,
+            // onPointerDown: this.onCardPointerDown.bind(this)
+        });
+
+        // add defenders pile
+        this.defendersPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: this.defendersDeck,
+            position: {x: 590, y: 170},
+            faceUp: false,
+            counter: true,
+            // onPointerDown: this.onCardPointerDown.bind(this)
+        });
+
+        // add discard pile
+        this.discardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'pile',
+            faceNames: [],
+            position: {x: 450, y: 170},
+            faceUp: false,
+            counter: true,
+            // onPointerDown: this.onCardPointerDown.bind(this)
+        });
+
+        // add aliens stack
+        this.alienStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
+            type: 'stackH',
+            faceNames: ['2H', '3D', '4H'],
+            position: {x: 230, y: 170},
+            faceUp: true,
+            counter: false,
+            centered:false,
+            gap: 40
+            // onPointerDown: this.onCardPointerDown.bind(this)
+        });
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
     }
