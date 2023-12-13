@@ -7,6 +7,7 @@
 	import merchantSolitaireCover from '$lib/assets/gameIcons/merchantSolitaire.svg';
 	import cardCaptureCover from '$lib/assets/gameIcons/cardCapture.svg';
 	import theSandwichGuyCover from '$lib/assets/gameIcons/theSandwichGuy.svg';
+	import area52Cover from '$lib/assets/gameIcons/area52.svg';
 
 	const classic = [
 		{
@@ -70,14 +71,14 @@
 			weight: 1.2
 		},
 		{
-			name: 'SKYWAY',
-			src: 'https://placehold.co/400x400/grey/white',
+			name: 'AREA 52',
+			src: area52Cover,
 			href: '/',
 			time: 5,
-			weight: 3.0
+			weight: 1.3
 		},
 		{
-			name: 'AREA 52',
+			name: 'SKYWAY',
 			src: 'https://placehold.co/400x400/grey/white',
 			href: '/',
 			time: 5,
@@ -156,14 +157,16 @@
 			{#each games as game}
 				<a
 					href={game.href}
-					class="group w-80 p-2 bg-base-100 rounded-lg border-2 border-neutral hover:border-slate-200"
+					class="group w-80 p-2 bg-emerald-600 rounded-lg border-2 border-neutral hover:border-slate-200"
 				>
 					<div class="flex flex-col justify-center items-center gap-y-2 h-28 flex justify-center">
 						<img src={game.src} alt={game.name} class="h-10" />
-						<h2 class="font-black text-2xl">{game.name}</h2>
+						<h2 class="font-black text-white text-2xl">{game.name}</h2>
 					</div>
-					<div class="flex justify-between pt-3 border-t-[1px] border-slate-200 text-sm">
-						<span class="flex flex-nowrap items-center gap-2 px-3 py-1 bg-neutral rounded-3xl">
+					<div
+						class="flex justify-between pt-3 border-t-[1px] border-slate-200 font-semibold text-emerald-100 text-sm"
+					>
+						<span class="flex flex-nowrap items-center gap-2 px-3 py-1 bg-emerald-700 rounded-3xl">
 							<svg
 								class="fill-current w-4 h-4"
 								viewBox="0 0 24 24"
@@ -181,7 +184,7 @@
 							</svg>
 							{game.time} min</span
 						>
-						<span class="px-3 py-1 bg-neutral rounded-3xl">
+						<span class="px-3 py-1 bg-emerald-700 rounded-3xl">
 							Weight: {game.weight.toFixed(2)}
 						</span>
 					</div>
