@@ -157,7 +157,7 @@
 			{#each games as game}
 				<a
 					href={game.href}
-					class="group w-80 p-2 bg-emerald-600 rounded-lg border-2 border-neutral hover:border-slate-200"
+					class="group w-80 p-2 bg-emerald-600 rounded-lg border-2 border-emerald-500 hover:border-slate-200"
 				>
 					<div class="flex flex-col justify-center items-center gap-y-2 h-28 flex justify-center">
 						<img src={game.src} alt={game.name} class="h-10" />
