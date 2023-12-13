@@ -74,7 +74,7 @@
 		{
 			name: 'AREA 52',
 			src: area52Cover,
-			href: '/',
+			href: '/area-52',
 			time: 5,
 			weight: 1.3
 		},
