@@ -10,7 +10,7 @@
 		class="flex flex-col justify-center items-center gap-y-2 h-28 flex justify-center ease-in-out duration-300 group-hover:scale-105"
 	>
 		<img src={game.src} alt={game.name} class="h-10" />
-		<h2 class="font-black text-white text-2xl">{game.name}</h2>
+		<h2 class="font-black text-white text-xl">{game.name}</h2>
 	</div>
 	<div
 		class="flex justify-between pt-3 border-t-[1px] border-slate-200 font-semibold text-emerald-100 text-sm"
