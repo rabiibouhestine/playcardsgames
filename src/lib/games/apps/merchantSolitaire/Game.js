@@ -66,12 +66,12 @@ export class Game extends App {
 
         // add trade button
         this.tradeButton = new Button(this.gameContainer, {
-            width: 250,
+            width: 300,
             height: 50,
             color: 0x0d47a1,
             alpha: 0.5,
             text: "Happy to trade with you!",
-            textSize: 16,
+            textSize: 20,
             x: 513,
             y: 671,
             onPointerDown: this.handleTrade.bind(this)
@@ -82,12 +82,12 @@ export class Game extends App {
 
         // add failed button
         this.failedButton = new Button(this.gameContainer, {
-            width: 250,
+            width: 300,
             height: 50,
             color: 0xbf360c,
             alpha: 0.5,
-            text: "I can’t trade with you..",
-            textSize: 16,
+            text: "I can't trade with you..",
+            textSize: 20,
             x: 201,
             y: 671,
             onPointerDown: this.handleFail.bind(this)
