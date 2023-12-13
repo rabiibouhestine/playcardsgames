@@ -6,7 +6,9 @@
 	href={game.href}
 	class="group w-80 p-2 bg-emerald-600 rounded-lg border-2 border-emerald-500 hover:border-slate-200"
 >
-	<div class="flex flex-col justify-center items-center gap-y-2 h-28 flex justify-center">
+	<div
+		class="flex flex-col justify-center items-center gap-y-2 h-28 flex justify-center ease-in-out duration-300 group-hover:scale-105"
+	>
 		<img src={game.src} alt={game.name} class="h-10" />
 		<h2 class="font-black text-white text-2xl">{game.name}</h2>
 	</div>
