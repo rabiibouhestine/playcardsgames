@@ -155,7 +155,7 @@ export class Game extends App {
 
     drawAliens() {
         this.dealer.moveCards({
-            nbCards: 3,
+            nbCards: Math.min(this.aliensPile.cards.length, 3),
             source: this.aliensPile ,
             destination: this.alienStack,
             positionSource: 'top',
@@ -225,6 +225,11 @@ export class Game extends App {
             positionDestination: 'top'
         });
 
+        if (!this.alienStack.cards.length && this.aliensPile.cards.length) {
+            this.drawAliens();
+            await this.dealer.delay(600);
+        }
+
         this.selectedCards = [];
         this.restock();
         this.gameContainer.eventMode = 'static';
@@ -287,6 +292,10 @@ export class Game extends App {
             }
         }
 
+        if (!this.alienStack.cards.length && this.aliensPile.cards.length) {
+            this.drawAliens();
+            await this.dealer.delay(600);
+        }
         this.selectedCards = [];
         this.restock();
         this.gameContainer.eventMode = 'static';
@@ -328,6 +337,10 @@ export class Game extends App {
             }
         }
 
+        if (!this.alienStack.cards.length && this.aliensPile.cards.length) {
+            this.drawAliens();
+            await this.dealer.delay(600);
+        }
         this.selectedCards = [];
         this.restock();
         this.gameContainer.eventMode = 'static';
