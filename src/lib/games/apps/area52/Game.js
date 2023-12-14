@@ -39,7 +39,7 @@ export class Game extends App {
         this.mattress = new Mattress(this.mattressContainer);
 
         // add error message
-        this.errorMessage = new Message(this.gameContainer, { x: 360, y: 265 }, 20);
+        this.errorMessage = new Message(this.gameContainer, { x: 360, y: 270 }, 20);
 
         // add sacrifice button
         this.sacrificeButton = new Button(this.gameContainer, {
