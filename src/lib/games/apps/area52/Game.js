@@ -49,7 +49,7 @@ export class Game extends App {
             textSize: 20,
             x: 175,
             y: 666,
-            // onPointerDown: this.handleRestart.bind(this)
+            onPointerDown: this.handleSacrifice.bind(this)
         });
 
         // add single attack button
@@ -274,4 +274,44 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
+    checkSacrifice() {
+        if (this.selectedCards.length !== 1) {
+            return 'A sacrifice must consist of exactly 1 defender.'
+        }
+        return 'valid';
+    }
+
+    async handleSacrifice() {
+        const check = this.checkSacrifice();
+        if (check !== 'valid') {
+            this.errorMessage.setValue(check);
+            return;
+        }
+
+        this.gameContainer.eventMode = 'none';
+
+        for (let i = 0; i < 6; i++) {
+            if (this.selectedCards.includes(this.battleCards[i].getTopCard().faceName)) {
+                this.mattress.clearHighlight(i);
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.battleCards[i],
+                    destination: this.discardPile,
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+                await this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.alienStack ,
+                    destination: this.aliensPile,
+                    positionSource: 'top',
+                    positionDestination: 'bottom'
+                });
+            }
+        }
+
+        this.selectedCards = [];
+
+        this.gameContainer.eventMode = 'static';
+    }
 }
