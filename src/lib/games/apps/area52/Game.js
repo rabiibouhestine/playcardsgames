@@ -231,6 +231,12 @@ export class Game extends App {
     }
 
     checkSingleAttack() {
+        if (this.selectedCards.length !== 1) {
+            return 'A single attack must consist of exactly 1 defender.'
+        }
+        if (paramsAtlas[this.selectedCards[0]].value < this.alienStack.getTopCard().params.value) {
+            return 'Selected defender is not strong enough to beat the alien.'
+        }
         return 'valid';
     }
 
