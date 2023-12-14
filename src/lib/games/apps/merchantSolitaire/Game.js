@@ -341,6 +341,11 @@ export class Game extends App {
         // hide game over panel
         this.gameOverPanel.setVisible(false);
 
+        // reset selection
+        this.selectedItems = [];
+        this.selectedItemsOnSale = [];
+
+        // reset values
         this.customerOffer.setValue(0, true);
         this.merchantOffer.setValue(0, true);
 
