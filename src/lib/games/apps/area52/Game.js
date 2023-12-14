@@ -60,7 +60,7 @@ export class Game extends App {
             textSize: 20,
             x: 360,
             y: 666,
-            // onPointerDown: this.handleGiveup.bind(this)
+            onPointerDown: this.handleSingleAttack.bind(this)
         });
 
         // add dual attack button
@@ -213,7 +213,6 @@ export class Game extends App {
 
         this.gameContainer.eventMode = 'none';
 
-        this.selectedCards = [];
         for (let i = 0; i < 6; i++) {
             this.mattress.clearHighlight(i);
         }
@@ -225,6 +224,46 @@ export class Game extends App {
             positionSource: 'top',
             positionDestination: 'top'
         });
+
+        this.selectedCards = [];
+
+        this.gameContainer.eventMode = 'static';
+    }
+
+    checkSingleAttack() {
+        return 'valid';
+    }
+
+    async handleSingleAttack() {
+        const check = this.checkSingleAttack();
+        if (check !== 'valid') {
+            this.errorMessage.setValue(check);
+            return;
+        }
+
+        this.gameContainer.eventMode = 'none';
+
+        for (let i = 0; i < 6; i++) {
+            if (this.selectedCards.includes(this.battleCards[i].getTopCard().faceName)) {
+                this.mattress.clearHighlight(i);
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.battleCards[i],
+                    destination: this.discardPile,
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+                await this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.alienStack ,
+                    destination: this.battleCards[i],
+                    positionSource: 'top',
+                    positionDestination: 'top'
+                });
+            }
+        }
+
+        this.selectedCards = [];
 
         this.gameContainer.eventMode = 'static';
     }
