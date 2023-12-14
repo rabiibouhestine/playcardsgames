@@ -190,8 +190,24 @@ export class Game extends App {
         }
     }
 
-    async hanleDualAttack() {
+    checkDualAttack() {
+        return 'valid';
+    }
 
+    async hanleDualAttack() {
+        const check = this.checkDualAttack();
+        if (check !== 'valid') {
+            this.errorMessage.setValue(check);
+            return;
+        }
+
+        this.dealer.moveCards({
+            nbCards: 1,
+            source: this.alienStack ,
+            destination: this.discardPile,
+            positionSource: 'top',
+            positionDestination: 'top'
+        });
     }
 
 }
