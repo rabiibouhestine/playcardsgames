@@ -77,6 +77,9 @@ export class Game extends App {
         // selected cards
         this.selectedCards = [];
 
+        // wave
+        this.wave = 1;
+
         // make shuffled aliens
         this.aliensDeck = this.dealer.shuffleCards([
             'AH', '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', 'TH', 'JH', 'QH', 'KH',
@@ -225,8 +228,21 @@ export class Game extends App {
             positionDestination: 'top'
         });
 
-        if (!this.alienStack.cards.length && this.aliensPile.cards.length) {
-            this.drawAliens();
+        if (!this.alienStack.cards.length) {
+            if (this.aliensPile.cards.length) {
+                this.drawAliens();
+            } else {
+                this.discardPile.shuffleCards();
+                await this.dealer.moveCards({
+                    nbCards: this.discardPile.cards.length,
+                    source: this.discardPile ,
+                    destination: this.aliensPile,
+                    positionSource: 'top',
+                    positionDestination: 'top',
+                    inSequence: false
+                });
+                this.drawAliens();
+            }
             await this.dealer.delay(600);
         }
 
@@ -292,8 +308,21 @@ export class Game extends App {
             }
         }
 
-        if (!this.alienStack.cards.length && this.aliensPile.cards.length) {
-            this.drawAliens();
+        if (!this.alienStack.cards.length) {
+            if (this.aliensPile.cards.length) {
+                this.drawAliens();
+            } else {
+                this.discardPile.shuffleCards();
+                await this.dealer.moveCards({
+                    nbCards: this.discardPile.cards.length,
+                    source: this.discardPile ,
+                    destination: this.aliensPile,
+                    positionSource: 'top',
+                    positionDestination: 'top',
+                    inSequence: false
+                });
+                this.drawAliens();
+            }
             await this.dealer.delay(600);
         }
         this.selectedCards = [];
@@ -337,8 +366,21 @@ export class Game extends App {
             }
         }
 
-        if (!this.alienStack.cards.length && this.aliensPile.cards.length) {
-            this.drawAliens();
+        if (!this.alienStack.cards.length) {
+            if (this.aliensPile.cards.length) {
+                this.drawAliens();
+            } else {
+                this.discardPile.shuffleCards();
+                await this.dealer.moveCards({
+                    nbCards: this.discardPile.cards.length,
+                    source: this.discardPile ,
+                    destination: this.aliensPile,
+                    positionSource: 'top',
+                    positionDestination: 'top',
+                    inSequence: false
+                });
+                this.drawAliens();
+            }
             await this.dealer.delay(600);
         }
         this.selectedCards = [];
