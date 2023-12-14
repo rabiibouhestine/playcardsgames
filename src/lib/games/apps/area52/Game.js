@@ -226,7 +226,7 @@ export class Game extends App {
         });
 
         this.selectedCards = [];
-
+        this.restock();
         this.gameContainer.eventMode = 'static';
     }
 
@@ -270,7 +270,7 @@ export class Game extends App {
         }
 
         this.selectedCards = [];
-
+        this.restock();
         this.gameContainer.eventMode = 'static';
     }
 
@@ -311,7 +311,7 @@ export class Game extends App {
         }
 
         this.selectedCards = [];
-
+        this.restock();
         this.gameContainer.eventMode = 'static';
     }
 }
