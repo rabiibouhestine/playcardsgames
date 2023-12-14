@@ -146,11 +146,11 @@ export class Game extends App {
             });
         }
 
-        // draw 3 alien
-        await this.drawAliens();
-
         // restock
         await this.restock();
+
+        // draw 3 alien
+        await this.drawAliens();
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
@@ -221,8 +221,8 @@ export class Game extends App {
         });
 
         this.selectedCards = [];
-        await this.handleWave();
         await this.restock();
+        await this.handleWave();
         this.gameContainer.eventMode = 'static';
     }
 
@@ -284,8 +284,8 @@ export class Game extends App {
         }
 
         this.selectedCards = [];
-        await this.handleWave();
         await this.restock();
+        await this.handleWave();
         this.gameContainer.eventMode = 'static';
     }
 
@@ -326,8 +326,8 @@ export class Game extends App {
         }
 
         this.selectedCards = [];
-        await this.handleWave();
         await this.restock();
+        await this.handleWave();
         this.gameContainer.eventMode = 'static';
     }
 
