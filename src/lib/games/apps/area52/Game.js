@@ -147,24 +147,13 @@ export class Game extends App {
         }
 
         // draw 3 alien
-        this.drawAliens();
+        await this.drawAliens();
 
         // restock
-        this.restock();
+        await this.restock();
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
-    }
-
-    drawAliens() {
-        this.dealer.moveCards({
-            nbCards: Math.min(this.aliensPile.cards.length, 3),
-            source: this.aliensPile ,
-            destination: this.alienStack,
-            positionSource: 'top',
-            positionDestination: 'top',
-            inSequence: false
-        });
     }
 
     async restock() {
@@ -180,6 +169,9 @@ export class Game extends App {
                 await this.dealer.delay(100);
             }
         }
+        return new Promise((resolve) => {
+            resolve();
+        });
     }
 
     onCardPointerDown(card) {
@@ -228,26 +220,9 @@ export class Game extends App {
             positionDestination: 'top'
         });
 
-        if (!this.alienStack.cards.length) {
-            if (this.aliensPile.cards.length) {
-                this.drawAliens();
-            } else {
-                this.discardPile.shuffleCards();
-                await this.dealer.moveCards({
-                    nbCards: this.discardPile.cards.length,
-                    source: this.discardPile ,
-                    destination: this.aliensPile,
-                    positionSource: 'top',
-                    positionDestination: 'top',
-                    inSequence: false
-                });
-                this.drawAliens();
-            }
-            await this.dealer.delay(600);
-        }
-
         this.selectedCards = [];
-        this.restock();
+        await this.handleWave();
+        await this.restock();
         this.gameContainer.eventMode = 'static';
     }
 
@@ -308,25 +283,9 @@ export class Game extends App {
             }
         }
 
-        if (!this.alienStack.cards.length) {
-            if (this.aliensPile.cards.length) {
-                this.drawAliens();
-            } else {
-                this.discardPile.shuffleCards();
-                await this.dealer.moveCards({
-                    nbCards: this.discardPile.cards.length,
-                    source: this.discardPile ,
-                    destination: this.aliensPile,
-                    positionSource: 'top',
-                    positionDestination: 'top',
-                    inSequence: false
-                });
-                this.drawAliens();
-            }
-            await this.dealer.delay(600);
-        }
         this.selectedCards = [];
-        this.restock();
+        await this.handleWave();
+        await this.restock();
         this.gameContainer.eventMode = 'static';
     }
 
@@ -366,9 +325,30 @@ export class Game extends App {
             }
         }
 
+        this.selectedCards = [];
+        await this.handleWave();
+        await this.restock();
+        this.gameContainer.eventMode = 'static';
+    }
+
+    async drawAliens() {
+        await this.dealer.moveCards({
+            nbCards: Math.min(this.aliensPile.cards.length, 3),
+            source: this.aliensPile ,
+            destination: this.alienStack,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+        return new Promise((resolve) => {
+            resolve();
+        });
+    }
+
+    async handleWave() {
         if (!this.alienStack.cards.length) {
             if (this.aliensPile.cards.length) {
-                this.drawAliens();
+                await this.drawAliens();
             } else {
                 this.discardPile.shuffleCards();
                 await this.dealer.moveCards({
@@ -379,12 +359,11 @@ export class Game extends App {
                     positionDestination: 'top',
                     inSequence: false
                 });
-                this.drawAliens();
+                await this.drawAliens();
             }
-            await this.dealer.delay(600);
         }
-        this.selectedCards = [];
-        this.restock();
-        this.gameContainer.eventMode = 'static';
+        return new Promise((resolve) => {
+            resolve();
+        });
     }
 }
