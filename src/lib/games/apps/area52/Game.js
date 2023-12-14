@@ -52,7 +52,7 @@ export class Game extends App {
             // onPointerDown: this.handleRestart.bind(this)
         });
 
-        // add giveup button
+        // add single attack button
         this.singleAttackButton = new Button(this.gameContainer, {
             width: 170,
             height: 50,
@@ -63,7 +63,7 @@ export class Game extends App {
             // onPointerDown: this.handleGiveup.bind(this)
         });
 
-        // add serve button
+        // add dual attack button
         this.dualAttackButton = new Button(this.gameContainer, {
             width: 170,
             height: 50,
@@ -71,7 +71,7 @@ export class Game extends App {
             textSize: 20,
             x: 545,
             y: 666,
-            // onPointerDown: this.handleServe.bind(this)
+            onPointerDown: this.hanleDualAttack.bind(this)
         });
 
         // selected cards
@@ -96,7 +96,7 @@ export class Game extends App {
             position: {x: 130, y: 170},
             faceUp: false,
             counter: true,
-            // onPointerDown: this.onCardPointerDown.bind(this)
+            onPointerDown: this.onCardPointerDown.bind(this)
         });
 
         // add defenders pile
@@ -106,7 +106,7 @@ export class Game extends App {
             position: {x: 590, y: 170},
             faceUp: false,
             counter: true,
-            // onPointerDown: this.onCardPointerDown.bind(this)
+            onPointerDown: this.onCardPointerDown.bind(this)
         });
 
         // add discard pile
@@ -115,8 +115,7 @@ export class Game extends App {
             faceNames: [],
             position: {x: 450, y: 170},
             faceUp: false,
-            counter: true,
-            // onPointerDown: this.onCardPointerDown.bind(this)
+            counter: true
         });
 
         // add aliens stack
@@ -128,7 +127,6 @@ export class Game extends App {
             counter: false,
             centered:false,
             gap: 50
-            // onPointerDown: this.onCardPointerDown.bind(this)
         });
 
         // add battle cards
@@ -179,6 +177,21 @@ export class Game extends App {
                 await this.dealer.delay(100);
             }
         }
+    }
+
+    onCardPointerDown(card) {
+        this.errorMessage.clear();
+        if (this.selectedCards.includes(card.faceName)) {
+            this.selectedCards = this.selectedCards.filter(name => name !== card.faceName);
+            this.mattress.clearHighlight(card.location);
+        } else {
+            this.selectedCards.push(card.faceName);
+            this.mattress.setHighlighted(card.location);
+        }
+    }
+
+    async hanleDualAttack() {
+
     }
 
 }

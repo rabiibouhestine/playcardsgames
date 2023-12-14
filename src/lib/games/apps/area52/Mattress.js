@@ -100,14 +100,9 @@ export class Mattress {
         }
     }
 
-    setHighlighted(i, suit) {
-        if (suit === 'H' || suit === 'D') {
-            this.battleZones[i].tint = 0xc026d3;
-            this.battleZones[i].alpha = 0.6;
-        } else {
-            this.battleZones[i].tint = 0x0d47a1;
-            this.battleZones[i].alpha = 0.6;
-        }
+    setHighlighted(i) {
+        this.battleZones[i].tint = 0x0d47a1;
+        this.battleZones[i].alpha = 0.6;
     }
 
     clearHighlight(i) {
