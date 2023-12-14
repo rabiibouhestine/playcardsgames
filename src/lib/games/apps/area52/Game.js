@@ -230,12 +230,30 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
+    getColor(suit) {
+        switch (suit) {
+            case 'H':
+                return 'Red';
+            case 'D':
+                return 'Red';
+            case 'S':
+                return 'Black';
+            case 'C':
+                return 'Black';
+        }
+    }
+
     checkSingleAttack() {
         if (this.selectedCards.length !== 1) {
             return 'A single attack must consist of exactly 1 defender.'
         }
         if (paramsAtlas[this.selectedCards[0]].value < this.alienStack.getTopCard().params.value) {
             return 'Selected defender is not strong enough to beat the alien.'
+        }
+        const defenderColor = this.getColor(paramsAtlas[this.selectedCards[0]].suit);
+        const alienColor = this.getColor(this.alienStack.getTopCard().params.suit);
+        if (defenderColor === alienColor) {
+            return 'The defender must have the opposite color of the alien.'
         }
         return 'valid';
     }
