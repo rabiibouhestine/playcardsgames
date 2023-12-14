@@ -191,6 +191,7 @@ export class Game extends App {
     }
 
     checkDualAttack() {
+
         return 'valid';
     }
 
@@ -201,13 +202,22 @@ export class Game extends App {
             return;
         }
 
-        this.dealer.moveCards({
+        this.gameContainer.eventMode = 'none';
+
+        this.selectedCards = [];
+        for (let i = 0; i < 6; i++) {
+            this.mattress.clearHighlight(i);
+        }
+
+        await this.dealer.moveCards({
             nbCards: 1,
             source: this.alienStack ,
             destination: this.discardPile,
             positionSource: 'top',
             positionDestination: 'top'
         });
+
+        this.gameContainer.eventMode = 'static';
     }
 
 }
