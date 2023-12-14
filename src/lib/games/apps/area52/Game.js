@@ -191,7 +191,16 @@ export class Game extends App {
     }
 
     checkDualAttack() {
-
+        if (this.selectedCards.length !== 2) {
+            return 'A dual attack must consist of exactly 2 defenders.'
+        }
+        const slectionSum = this.selectedCards.reduce((accumulator, cardName) => {
+            return accumulator + paramsAtlas[cardName].value;
+        }, 0);
+        const alienValue = this.alienStack.getTopCard().params.value;
+        if (slectionSum !== alienValue) {
+            return 'Defenders value must match the alien value: ' + alienValue;
+        }
         return 'valid';
     }
 
