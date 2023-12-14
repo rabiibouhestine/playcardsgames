@@ -349,7 +349,8 @@ export class Game extends App {
         if (!this.alienStack.cards.length) {
             if (this.aliensPile.cards.length) {
                 await this.drawAliens();
-            } else {
+            } else if (this.wave === 1) {
+                this.wave ++;
                 this.discardPile.shuffleCards();
                 await this.dealer.moveCards({
                     nbCards: this.discardPile.cards.length,
@@ -360,6 +361,8 @@ export class Game extends App {
                     inSequence: false
                 });
                 await this.drawAliens();
+            } else {
+                console.log('Game Over');
             }
         }
         return new Promise((resolve) => {
