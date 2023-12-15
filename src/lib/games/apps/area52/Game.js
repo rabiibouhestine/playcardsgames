@@ -41,6 +41,9 @@ export class Game extends App {
         // add error message
         this.errorMessage = new Message(this.gameContainer, { x: 360, y: 270 }, 20);
 
+        // game over panel
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Score:");
+
         // add restart button
         this.restartButton = new Button(this.gameContainer, {
             width: 120,
@@ -372,7 +375,7 @@ export class Game extends App {
                 });
                 await this.drawAliens();
             } else {
-                console.log('Game Over');
+                this.handleGameOver(this.defendersPile.cards.length);
             }
         }
         return new Promise((resolve) => {
@@ -389,7 +392,7 @@ export class Game extends App {
         this.mattressContainer.filters = [];
 
         // hide game over panel
-        // this.gameOverPanel.setVisible(false);
+        this.gameOverPanel.setVisible(false);
 
         // clear error message
         this.errorMessage.clear();
@@ -469,5 +472,18 @@ export class Game extends App {
 
         // enable interactions
         this.gameContainer.eventMode = 'static';
+    }
+
+    handleGameOver(score) {
+        // blur screen
+        const blurFilter = new PIXI.BlurFilter();
+        this.gameContainer.filters = [blurFilter];
+        this.mattressContainer.filters = [blurFilter];
+
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        // show game over panel
+        this.gameOverPanel.setVisible(true, score);
     }
 }
