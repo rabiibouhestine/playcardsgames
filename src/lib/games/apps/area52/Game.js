@@ -41,6 +41,16 @@ export class Game extends App {
         // add error message
         this.errorMessage = new Message(this.gameContainer, { x: 360, y: 270 }, 20);
 
+        // add restart button
+        this.restartButton = new Button(this.gameContainer, {
+            width: 120,
+            height: 50,
+            text: "Restart",
+            x: 590,
+            y: 39,
+            onPointerDown: this.handleRestart.bind(this)
+        });
+
         // add sacrifice button
         this.sacrificeButton = new Button(this.gameContainer, {
             width: 170,
@@ -368,5 +378,96 @@ export class Game extends App {
         return new Promise((resolve) => {
             resolve();
         });
+    }
+
+    async handleRestart() {
+        // disable interactions
+        this.gameContainer.eventMode = 'none';
+
+        // remove blur
+        this.gameContainer.filters = [];
+        this.mattressContainer.filters = [];
+
+        // hide game over panel
+        // this.gameOverPanel.setVisible(false);
+
+        // clear error message
+        this.errorMessage.clear();
+
+        // reset selection
+        this.selectedCards = [];
+
+        // reset values
+        this.wave = 1;
+
+        // collect all cards into the discard pile
+        this.dealer.moveCards({
+            nbCards: this.aliensPile.cards.length,
+            source: this.aliensPile ,
+            destination: this.discardPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+        this.dealer.moveCards({
+            nbCards: this.alienStack.cards.length,
+            source: this.alienStack ,
+            destination: this.discardPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+        this.dealer.moveCards({
+            nbCards: this.defendersPile.cards.length,
+            source: this.defendersPile ,
+            destination: this.discardPile,
+            positionSource: 'top',
+            positionDestination: 'top',
+            inSequence: false
+        });
+        for (let i = 0; i < 6; i++) {
+            if (this.battleCards[i].cards.length) {
+                this.dealer.moveCards({
+                    nbCards: 1,
+                    source: this.battleCards[i],
+                    destination: this.discardPile,
+                    positionSource: 'top',
+                    positionDestination: 'top',
+                    inSequence: false
+                });
+            }
+        }
+        await this.dealer.delay(700);
+
+        // fill aliens pile
+        this.dealer.moveSelection({
+            selectionNames: this.aliensDeck,
+            source: this.discardPile ,
+            destination: this.aliensPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        // fill defenders pile
+        this.dealer.moveSelection({
+            selectionNames: this.defendersDeck,
+            source: this.discardPile ,
+            destination: this.defendersPile,
+            positionDestination: 'top',
+            inSequence: false
+        });
+
+        await this.dealer.delay(700);
+
+        // shuffle piles
+        this.aliensPile.shuffleCards();
+        this.defendersPile.shuffleCards();
+
+        // initialise game
+        await this.restock();
+        await this.drawAliens();
+
+        // enable interactions
+        this.gameContainer.eventMode = 'static';
     }
 }
