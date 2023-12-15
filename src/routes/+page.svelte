@@ -92,48 +92,6 @@
 			time: 5,
 			weight: 3.0
 		}
-		// {
-		// 	name: 'Boba Tea Shop',
-		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/',
-		// 	time: 5,
-		// 	weight: 3.00
-		// },
-		// {
-		// 	name: 'Foursquare',
-		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/',
-		// 	time: 5,
-		// 	weight: 3.00
-		// },
-		// {
-		// 	name: 'Loot The Loop',
-		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/',
-		// 	time: 5,
-		// 	weight: 3.00
-		// },
-		// {
-		// 	name: 'Syndicate',
-		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/',
-		// 	time: 5,
-		// 	weight: 3.00
-		// },
-		// {
-		// 	name: 'Hide and Seek',
-		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/',
-		// 	time: 5,
-		// 	weight: 3.00
-		// },
-		// {
-		// 	name: 'The Emissary',
-		// 	src: 'https://placehold.co/400x400/grey/white',
-		// 	href: '/',
-		// 	time: 5,
-		// 	weight: 3.00
-		// }
 	];
 </script>
 
