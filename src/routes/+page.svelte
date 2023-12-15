@@ -72,6 +72,13 @@
 			weight: 1.2
 		},
 		{
+			name: 'LOOT THE LOOP',
+			src: 'https://placehold.co/400x400/grey/white',
+			href: '/',
+			time: 5,
+			weight: 3.0
+		},
+		{
 			name: 'AREA 52',
 			src: area52Cover,
 			href: '/area-52',
@@ -79,14 +86,7 @@
 			weight: 1.3
 		},
 		{
-			name: 'SKYWAY',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/',
-			time: 5,
-			weight: 3.0
-		},
-		{
-			name: 'DEAD CENTER',
+			name: 'HIDE AND SEEK',
 			src: 'https://placehold.co/400x400/grey/white',
 			href: '/',
 			time: 5,
