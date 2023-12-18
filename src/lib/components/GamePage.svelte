@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	<div class="bg-base-100">
-		<article class="max-w-screen-md mx-auto py-10 flex flex-col gap-y-3">
+		<article class="max-w-screen-md mx-auto py-10 px-4 flex flex-col gap-y-3">
 			<slot />
 		</article>
 	</div>
