@@ -64,4 +64,15 @@
 		discretion.
 	</p>
 	<h3 class="text-4xl font-bold">3. Trade</h3>
+	<p>
+		If it’s impossible to match the current customer’s offer based on the combination of items in
+		the shop, your reputation crumbles! Restart the game and try again, we believe in you :)
+	</p>
+	<p>
+		A trade is possible if the trade value of the current customer's offer is equal to the combined
+		worth of the three selected items from the shop. In that case, the customer will leave your shop
+		happy.
+	</p>
+	<h3 class="text-4xl font-bold">4. Restock Shop</h3>
+	<p>After each successful trade, the shop will be restocked from the items pile.</p>
 </GamePage>
