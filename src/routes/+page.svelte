@@ -65,33 +65,33 @@
 			weight: 1.4
 		},
 		{
-			name: 'THE SANDWICH GUY',
-			src: theSandwichGuyCover,
-			href: '/the-sandwich-guy',
-			time: 5,
-			weight: 1.2
-		},
-		{
-			name: 'LOOT THE LOOP',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/',
-			time: 5,
-			weight: 3.0
-		},
-		{
 			name: 'AREA 52',
 			src: area52Cover,
 			href: '/area-52',
 			time: 5,
 			weight: 1.3
-		},
-		{
-			name: 'HIDE AND SEEK',
-			src: 'https://placehold.co/400x400/grey/white',
-			href: '/',
-			time: 5,
-			weight: 3.0
 		}
+		// {
+		// 	name: 'THE SANDWICH GUY',
+		// 	src: theSandwichGuyCover,
+		// 	href: '/the-sandwich-guy',
+		// 	time: 5,
+		// 	weight: 1.2
+		// },
+		// {
+		// 	name: 'LOOT THE LOOP',
+		// 	src: 'https://placehold.co/400x400/grey/white',
+		// 	href: '/',
+		// 	time: 5,
+		// 	weight: 3.0
+		// },
+		// {
+		// 	name: 'HIDE AND SEEK',
+		// 	src: 'https://placehold.co/400x400/grey/white',
+		// 	href: '/',
+		// 	time: 5,
+		// 	weight: 3.0
+		// }
 	];
 </script>
 
