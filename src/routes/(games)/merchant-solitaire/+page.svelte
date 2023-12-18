@@ -18,94 +18,50 @@
 
 <GamePage title="MERCHANT SOLITAIRE">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
-	<h1 class="text-5xl font-bold">Merchant Solitaire</h1>
+	<h2 class="text-5xl font-bold">Merchant Solitaire</h2>
 	<p>
 		Merchant Solitaire is a solitaire card game designed by <Link
-			href="https://boardgamegeek.com/boardgamedesigner/136705/mark-s-ball">Mark S Ball</Link
-		>
-		and published by
-		<Link href="https://www.riffleshuffleandroll.com/">Riffle Shuffle & Roll</Link>. The goal of the
-		game is to successfully remove the monsters (face cards) from the dungeon (tableau). This is
-		done by building up an attack on the tableau with cards from the draw pile and triggering it
-		with a card that matches in suit. If you enjoy the game, consider <Link
-			href="https://www.buymeacoffee.com/marksball">buying the designer a cup of coffee</Link
-		>.
-	</p>
-	<p>
-		You can <Link href="https://www.youtube.com/watch?v=GbEkAfCqfTM"
-			>watch Mark explain the rules of the game on Youtube</Link
-		>.
+			href="https://greggjewell.itch.io/">Gregg Jewell</Link
+		>. All you need to play in real life is a standard deck of playing cards and a copy of <Link
+			href="https://greggjewell.itch.io/merchants-solitaire">the game rules</Link
+		>. You can <Link href="https://www.youtube.com/watch?v=Q6zZw1PA5J4"
+			>watch Gregg explain the rules of the game on Youtube</Link
+		>, or play the digital version of the game above by following the rules explained here.
 	</p>
 	<h2 class="text-5xl font-bold">Overview</h2>
 	<p>
-		In Clear the Dungeon, you are a monster exterminator hired by the King to rid his castle of
-		pesky beasts. As you tread through the dark and dingy dungeon cells, monsters will appear. Beat
-		them down with a powerful attack and wipe them out using their weakness against them.
-		Exterminate the monsters before running out of power and victory will be yours.
+		In Merchant's Solitaire, you take on the part of an aspiring merchant attempting to earn fame by
+		providing the rarest and most distinctive goods to a diverse range of customers. You must match
+		a customer's offer with an equivalent amount of merchandise from your shop to complete a trade.
+		Making fair trades with each customer you encounter will help you build a great reputation, but
+		if you don't, your reputation will be tarnished.
 	</p>
 	<h2 class="text-5xl font-bold">Rules</h2>
-	<h3 class="text-4xl font-bold">Materials</h3>
 	<p>
-		Clear the Dungeon requires a fifty-four card deck: aces up through kings in four suits as well
-		as two jokers.
+		The game is played over a series of turns until an end game condition is satisfied, (win or
+		lose).
 	</p>
-	<h3 class="text-4xl font-bold">Setup</h3>
+	<p>There are four steps in each turn:</p>
+	<ul class="steps steps-vertical md:steps-horizontal my-6">
+		<li class="step step-primary">Customer’s Offer</li>
+		<li class="step step-primary">Your Offer</li>
+		<li class="step step-primary">Trade</li>
+		<li class="step step-primary">Restock Shop</li>
+	</ul>
+	<h3 class="text-4xl font-bold">1. Customer’s Offer</h3>
+	<p>Each customer has an item to trade and a set amount of money.</p>
+	<p>Jacks (J) have $11, Queens (Q) have $12 and Kings (K) have $13.</p>
+	<p>The value of the customer's offered Aces (A) is always $11.</p>
+	<p>The customer’s trade value is the sum of their money and the value of the offered item.</p>
+	<p>A K♠ offering a 3♠, for instance, has an offer of $16.</p>
+	<h3 class="text-4xl font-bold">2. Your Offer</h3>
 	<p>
-		Separate all of the face cards (J’s, Q’s, & K’s) from the deck. These twelve cards are used to
-		form the dungeon monster deck. The rest of the cards (A-10, jokers) make up your power deck.
-	</p>
-	<p>
-		Shuffle the dungeon monster deck and deal out four columns face down with three cards in each
-		column. Flip the top most card of each column over to reveal the first set of monsters.
-	</p>
-	<p>Shuffle the power deck and place it face down in front of you.</p>
-	<h3 class="text-4xl font-bold">Play</h3>
-	<p>Each turn has three phases: draw, attack, & discard.</p>
-	<h4 class="text-3xl font-bold">Draw</h4>
-	<p>
-		Draw three cards from the power deck. These three cards make up your hand. Each card will have
-		to be played or discarded before drawing again.
-	</p>
-	<h4 class="text-3xl font-bold">Attack</h4>
-	<p>Each monster type has a different power level: jacks 11, queens 12, and kings 13.</p>
-	<p>Decide how you want to play your cards. Place them on the monsters you wish to attack.</p>
-	<p>
-		Three cards must be used to defeat a dungeon monster. Added together, the first two cards must
-		be equal to or more than the monster’s power level. Suit does not matter.
+		The trade value of items in the shop that match the suit of the current customer's offered item
+		is $0.
 	</p>
 	<p>
-		The third card is used to finish the attack, and it must match the monster’s suit. Rank does not
-		matter.
+		The trade value of Aces (A) in the Shop can be worth either $1 (On Sale) or $11 at your
+		discretion.
 	</p>
-	<p>
-		A monster is immediately defeated once the third card is played. Remove the defeated monster
-		with the attack cards and place them in your clear pile.
-	</p>
-	<p>
-		For example, if you are attacking a jack of hearts, your first two attack cards must add up to
-		11 or more. In order to defeat the monster, your third attack card must be a heart of any rank.
-		Once the heart card is played, the monster is defeated.
-	</p>
-	<h4 class="text-3xl font-bold">Jokers</h4>
-	<p>Jokers are worth a power of 10, and they may be any suit needed.</p>
-	<h4 class="text-3xl font-bold">Discard</h4>
-	<p>
-		Any cards that cannot be played (or that you choose not to play) must be discarded prior to
-		drawing your next three card hand. Those attack cards are considered misses and must be placed
-		face up on the discard pile.
-	</p>
-	<h4 class="text-3xl font-bold">Reserve Card</h4>
-	<p>
-		Choose how you discard wisely. The top card on the discard pile is your reserve card. It can be
-		played as if it is part of your hand. Once it is played, the next top card of the pile becomes
-		your new reserve card.
-	</p>
-	<h3 class="text-4xl font-bold">Win</h3>
-	<p>
-		If you defeat all of the monsters before running out of cards in the power deck, you win the
-		game.
-	</p>
-	<p>
-		Increase the difficulty level by removing the jokers and/or playing without the reserve card.
-	</p>
+	<h3 class="text-4xl font-bold">3. Trade</h3>
 </GamePage>
