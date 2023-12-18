@@ -17,6 +17,6 @@
 
 <GamePage title="REGICIDE SOLITAIRE">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
-	<h1 class="text-5xl font-bold">Regicide Solitaire</h1>
+	<h2 class="text-5xl font-bold">Regicide Solitaire</h2>
 	<p>Regicide solitaire is the single player mode of the card game Regicide.</p>
 </GamePage>
