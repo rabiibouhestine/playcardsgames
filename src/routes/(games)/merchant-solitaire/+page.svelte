@@ -77,8 +77,7 @@
 	<h3 class="text-2xl font-bold">Successful Trades</h3>
 	<p>
 		A trade is successful if the trade value of the current customer's offer is equal to the
-		combined worth of the three selected items from the shop. In that case, the customer will leave
-		happy.
+		combined worth of 3 selected items from the shop. In that case, the customer will leave happy.
 	</p>
 	<p>
 		If it’s impossible to match the current customer’s offer based on the combination of items in
@@ -89,6 +88,6 @@
 	<p>
 		If you can match a customer's offer with only 2 items, no worries, just give them a third item
 		that matches the suit of their offered item. Remember, an item that matches the suit of the
-		customer's offer has a trade value of 0, but you can still offer it anyways.
+		customer's offer has a trade value of $0, but you can still offer it anyways.
 	</p>
 </GamePage>
