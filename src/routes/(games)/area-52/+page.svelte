@@ -42,7 +42,6 @@
 		wave.
 	</p>
 	<p>The black cards are shuffled together and placed face down in the Defenders pile.</p>
-	<p>All discarded cards (both aliens and defenders) go to the Discard pile.</p>
 	<p>
 		The game starts with 3 aliens revealed from the Aliens pile and 6 defenders drawn from the
 		Defenders pile.
