@@ -36,11 +36,23 @@
 		Making fair trades with each customer you encounter will help you build a great reputation, but
 		if you don't, your reputation will be tarnished.
 	</p>
-	<h2 class="text-5xl font-bold">Rules</h2>
+	<h2 class="text-5xl font-bold">Setup</h2>
+	<p>The game is played with a standard deck of playing cards with no jokers.</p>
 	<p>
-		The game is played over a series of turns until an end game condition is satisfied, (win or
-		lose).
+		The 12 face cards of Jacks (J), Queens (Q), and Kings (K) are shuffled together and placed face
+		up in the Customers pile to form the Line.
 	</p>
+	<p>
+		The top faceup card of the Line is always the current Customer. During the game, satisfied
+		customers are placed in a pile to the left of the line.
+	</p>
+	<p />
+	<p>
+		The 40 cards numbered Ace (A) to 10 are shuffled together and placed face down in the Items
+		pile. During the game, discarded Items are placed face up into the Traded Items pile. Whenever
+		the Items pile is depleated, the Traded Items pile is shuffled and placed in the Items pile.
+	</p>
+	<h2 class="text-5xl font-bold">Rules</h2>
 	<p>There are four steps in each turn:</p>
 	<ul class="steps steps-vertical md:steps-horizontal my-6">
 		<li class="step step-primary">Customer’s Offer</li>

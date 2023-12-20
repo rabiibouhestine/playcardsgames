@@ -138,8 +138,8 @@ export class Game extends App {
             type: 'pile',
             faceNames: [],
             position: {x: 630, y: 195},
-            faceUp: false,
-            counter: true
+            faceUp: true,
+            counter: false
         });
 
         // add customers discard pile
