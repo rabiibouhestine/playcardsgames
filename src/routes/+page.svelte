@@ -119,17 +119,17 @@
 		</div>
 		<div class="grid justify-items-center space-y-6 py-10">
 			<div id="about" class="px-6 text-center">
-				<h2 class="text-4xl md:text-5xl font-bold mb-4">About Us</h2>
+				<h2 class="text-3xl md:text-4xl font-bold mb-4">About Us</h2>
 				<p>Enjoy an amazing collection of modern thematic solitaire card games</p>
 				<p>All games can be played with standard playing cards</p>
 			</div>
 			<div id="faq" class="px-6 text-center">
-				<h2 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
+				<h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
 				<p>Enjoy an amazing collection of modern thematic solitaire card games</p>
 				<p>All games can be played with standard playing cards</p>
 			</div>
 			<div id="contact" class="px-6 text-center">
-				<h2 class="text-4xl md:text-5xl font-bold mb-4">Contact</h2>
+				<h2 class="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
 				<p>Enjoy an amazing collection of modern thematic solitaire card games</p>
 				<p>All games can be played with standard playing cards</p>
 			</div>
