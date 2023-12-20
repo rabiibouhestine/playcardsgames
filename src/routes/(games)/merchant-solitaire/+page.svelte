@@ -48,13 +48,13 @@
 		<li class="step step-primary">Trade</li>
 		<li class="step step-primary">Restock Shop</li>
 	</ul>
-	<h3 class="text-4xl font-bold">1. Customer’s Offer</h3>
+	<h3 class="text-2xl font-bold">1. Customer’s Offer</h3>
 	<p>Each customer has an item to trade and a set amount of money.</p>
 	<p>Jacks (J) have $11, Queens (Q) have $12 and Kings (K) have $13.</p>
 	<p>The value of the customer's offered Aces (A) is always $11.</p>
 	<p>The customer’s trade value is the sum of their money and the value of the offered item.</p>
 	<p>A K♠ offering a 3♠, for instance, has an offer of $16.</p>
-	<h3 class="text-4xl font-bold">2. Your Offer</h3>
+	<h3 class="text-2xl font-bold">2. Your Offer</h3>
 	<p>
 		The trade value of items in the shop that match the suit of the current customer's offered item
 		is $0.
@@ -63,7 +63,7 @@
 		The trade value of Aces (A) in the Shop can be worth either $1 (On Sale) or $11 at your
 		discretion.
 	</p>
-	<h3 class="text-4xl font-bold">3. Trade</h3>
+	<h3 class="text-2xl font-bold">3. Trade</h3>
 	<p>
 		If it’s impossible to match the current customer’s offer based on the combination of items in
 		the shop, your reputation crumbles! Restart the game and try again, we believe in you :)
@@ -73,6 +73,6 @@
 		worth of the three selected items from the shop. In that case, the customer will leave your shop
 		happy.
 	</p>
-	<h3 class="text-4xl font-bold">4. Restock Shop</h3>
+	<h3 class="text-2xl font-bold">4. Restock Shop</h3>
 	<p>After each successful trade, the shop will be restocked from the items pile.</p>
 </GamePage>
