@@ -42,13 +42,10 @@
 		wave.
 	</p>
 	<p>The black cards are shuffled together and placed face down in the Defenders pile.</p>
+	<p>The game starts with 3 aliens revealed and 6 defenders drawn from the Defenders pile.</p>
 	<p>
-		The game starts with 3 aliens revealed from the Aliens pile and 6 defenders drawn from the
-		Defenders pile.
-	</p>
-	<p>
-		In Area 52, Aces (A) are worth 1, while Jacks (J), Queens (Q), and Kings (K) are worth 11, 12,
-		and 13 respectively.
+		Aces (A) are worth 1, while Jacks (J), Queens (Q) and Kings (K) are worth 11, 12, and 13
+		respectively.
 	</p>
 	<h2 class="text-5xl font-bold">Rules</h2>
 	<h3 class="text-2xl font-bold">Customer’s Offer</h3>
