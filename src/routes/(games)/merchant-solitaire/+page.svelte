@@ -22,7 +22,7 @@
 	<p>
 		Merchant Solitaire is a solitaire card game designed by <Link
 			href="https://greggjewell.itch.io/">Gregg Jewell</Link
-		>. All you need to play in real life is a standard deck of playing cards and a copy of <Link
+		>. All you need to play is a standard deck of playing cards and a copy of <Link
 			href="https://greggjewell.itch.io/merchants-solitaire">the game rules</Link
 		>. You can <Link href="https://www.youtube.com/watch?v=Q6zZw1PA5J4"
 			>watch Gregg explain the rules of the game on Youtube</Link
