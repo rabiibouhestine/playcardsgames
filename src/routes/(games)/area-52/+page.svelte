@@ -30,33 +30,27 @@
 	</p>
 	<h2 class="text-5xl font-bold">Overview</h2>
 	<p>
-		In Merchant's Solitaire, you take on the part of an aspiring merchant attempting to earn fame by
-		providing the rarest and most distinctive goods to a diverse range of customers. You must match
-		a customer's offer with an equivalent amount of merchandise from your shop to complete a trade.
-		Making fair trades with each customer you encounter will help you build a great reputation, but
-		if you don't, your reputation will be tarnished.
+		To repel an alien invasion, you must lead a team of elite soldiers. The aliens will launch two
+		waves of attacks. The second wave will be stronger and more brutal than the first. To win the
+		game, you need to successfully repel both waves without running out of resources. It's crucial
+		to maintain a diverse and well-dispersed defense force to effectively fend off the intruders.
 	</p>
 	<h2 class="text-5xl font-bold">Setup</h2>
 	<p>The game is played with a standard deck of playing cards with no jokers.</p>
 	<p>
-		The 12 face cards of Jacks (J), Queens (Q), and Kings (K) are shuffled together and placed face
-		up in the Customers pile to form the Line.
+		The red cards are shuffled together and placed face down in the Aliens pile to form the first
+		wave.
+	</p>
+	<p>The black cards are shuffled together and placed face down in the Defenders pile.</p>
+	<p>All discarded cards (both aliens and defenders) go to the Discard pile.</p>
+	<p>
+		The game starts with 3 aliens revealed from the Aliens pile and 6 defenders drawn from the
+		Defenders pile.
 	</p>
 	<p>
-		The top faceup card of the Line is always the current Customer. During the game, satisfied
-		customers are placed in a pile to the left of the line.
+		In Area 52, Aces (A) are worth 1, while Jacks (J), Queens (Q), and Kings (K) are worth 11, 12,
+		and 13 respectively.
 	</p>
-	<p />
-	<p>
-		The 40 cards numbered Ace (A) to 10 are shuffled together and placed face down in the Items
-		pile. During the game, discarded Items are placed face up into the Traded Items pile. Whenever
-		the Items pile is depleated, the Traded Items pile is shuffled and placed in the Items pile.
-	</p>
-	<p>
-		The Shop is initially formed by 10 drawn items from the Items pile. During the game, after each
-		successful trade, the shop gets restocked with 3 drawn cards from the Items pile.
-	</p>
-	<p>The goal of the game is to make successful trades with all 12 customers in the line.</p>
 	<h2 class="text-5xl font-bold">Rules</h2>
 	<h3 class="text-2xl font-bold">Customer’s Offer</h3>
 	<p>Each customer has an item to trade and a set amount of money.</p>
