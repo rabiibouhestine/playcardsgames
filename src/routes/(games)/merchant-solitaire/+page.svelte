@@ -84,4 +84,11 @@
 		If it’s impossible to match the current customer’s offer based on the combination of items in
 		the shop, your reputation crumbles! Restart the game and try again, we believe in you :)
 	</p>
+	<h2 class="text-5xl font-bold">Tips</h2>
+	<p>Make sure to take advantage of the Aces (A) dynamic trade value.</p>
+	<p>
+		If you can match a customer's offer with only 2 items, no worries, just give them a third item
+		that matches the suit of their offered item. Remember, an item that matches the suit of the
+		customer's offer has a trade value of 0, but you can still offer it anyways.
+	</p>
 </GamePage>
