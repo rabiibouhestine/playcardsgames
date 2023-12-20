@@ -52,21 +52,19 @@
 		pile. During the game, discarded Items are placed face up into the Traded Items pile. Whenever
 		the Items pile is depleated, the Traded Items pile is shuffled and placed in the Items pile.
 	</p>
+	<p>
+		The Shop is initially formed by 10 drawn items from the Items pile. During the game, after each
+		successful trade, the shop gets restocked with 3 drawn cards from the Items pile.
+	</p>
+	<p>The goal of the game is to make successful trades with all 12 customers in the line.</p>
 	<h2 class="text-5xl font-bold">Rules</h2>
-	<p>There are four steps in each turn:</p>
-	<ul class="steps steps-vertical md:steps-horizontal my-6">
-		<li class="step step-primary">Customer’s Offer</li>
-		<li class="step step-primary">Your Offer</li>
-		<li class="step step-primary">Trade</li>
-		<li class="step step-primary">Restock Shop</li>
-	</ul>
-	<h3 class="text-2xl font-bold">1. Customer’s Offer</h3>
+	<h3 class="text-2xl font-bold">Customer’s Offer</h3>
 	<p>Each customer has an item to trade and a set amount of money.</p>
 	<p>Jacks (J) have $11, Queens (Q) have $12 and Kings (K) have $13.</p>
 	<p>The value of the customer's offered Aces (A) is always $11.</p>
 	<p>The customer’s trade value is the sum of their money and the value of the offered item.</p>
 	<p>A K♠ offering a 3♠, for instance, has an offer of $16.</p>
-	<h3 class="text-2xl font-bold">2. Your Offer</h3>
+	<h3 class="text-2xl font-bold">Your Offer's value</h3>
 	<p>
 		The trade value of items in the shop that match the suit of the current customer's offered item
 		is $0.
@@ -75,16 +73,15 @@
 		The trade value of Aces (A) in the Shop can be worth either $1 (On Sale) or $11 at your
 		discretion.
 	</p>
-	<h3 class="text-2xl font-bold">3. Trade</h3>
+	<p>Your offer's trade value is the sum of the trade values of 3 selected items.</p>
+	<h3 class="text-2xl font-bold">Successful Trades</h3>
+	<p>
+		A trade is successful if the trade value of the current customer's offer is equal to the
+		combined worth of the three selected items from the shop. In that case, the customer will leave
+		happy.
+	</p>
 	<p>
 		If it’s impossible to match the current customer’s offer based on the combination of items in
 		the shop, your reputation crumbles! Restart the game and try again, we believe in you :)
 	</p>
-	<p>
-		A trade is possible if the trade value of the current customer's offer is equal to the combined
-		worth of the three selected items from the shop. In that case, the customer will leave your shop
-		happy.
-	</p>
-	<h3 class="text-2xl font-bold">4. Restock Shop</h3>
-	<p>After each successful trade, the shop will be restocked from the items pile.</p>
 </GamePage>
