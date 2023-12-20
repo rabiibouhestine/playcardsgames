@@ -10,7 +10,7 @@
 	}
 </script>
 
-<div class="bg-base-200 border-b border-base-300 sticky top-0 z-10 h-16">
+<div class="bg-base-300 border-b border-base-300 sticky top-0 z-10 h-16">
 	<div class="navbar max-w-screen-xl mx-auto">
 		<div class="navbar-start">
 			<a href="/">

@@ -18,7 +18,7 @@
 	<slot />
 
 	<footer
-		class="footer footer-center p-10 bg-base-200 text-base-content rounded sticky top-[100vh] gap-y-8"
+		class="footer footer-center p-10 bg-base-300 text-base-content rounded sticky top-[100vh] gap-y-8"
 	>
 		<nav class="flex flex-wrap justify-center gap-4">
 			<a href="/terms" class="link link-hover">Terms of use</a>
