@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { Game } from '$lib/games/apps/area52/Game.js';
 	import GamePage from '$lib/components/GamePage.svelte';
+	import Link from '$lib/components/Link.svelte';
 
 	let game;
 	let canvas;
@@ -17,75 +18,76 @@
 
 <GamePage title="AREA 52">
 	<div bind:this={canvas} class="grow" slot="gameSection" />
-	<h1 class="text-5xl font-bold">Area 52</h1>
+	<h2 class="text-5xl font-bold">Area 52</h2>
 	<p>
-		In Clear the Dungeon, you are a monster exterminator hired by the King to rid his castle of
-		pesky beasts. As you tread through the dark and dingy dungeon cells, monsters will appear. Beat
-		them down with a powerful attack and wipe them out using their weakness against them.
-		Exterminate the monsters before running out of power and victory will be yours.
+		Merchant Solitaire is a solitaire card game designed by <Link
+			href="https://greggjewell.itch.io/">Gregg Jewell</Link
+		>. All you need to play is a standard deck of playing cards and a copy of <Link
+			href="https://greggjewell.itch.io/merchants-solitaire">the game rules</Link
+		>. You can <Link href="https://www.youtube.com/watch?v=Q6zZw1PA5J4"
+			>watch Gregg explain the rules of the game on Youtube</Link
+		>, or play the digital version of the game above by following the rules explained here.
 	</p>
-	<h2 class="text-4xl font-bold">Materials</h2>
+	<h2 class="text-5xl font-bold">Overview</h2>
 	<p>
-		Clear the Dungeon requires a fifty-four card deck: aces up through kings in four suits as well
-		as two jokers.
+		In Merchant's Solitaire, you take on the part of an aspiring merchant attempting to earn fame by
+		providing the rarest and most distinctive goods to a diverse range of customers. You must match
+		a customer's offer with an equivalent amount of merchandise from your shop to complete a trade.
+		Making fair trades with each customer you encounter will help you build a great reputation, but
+		if you don't, your reputation will be tarnished.
 	</p>
-	<h2 class="text-4xl font-bold">Setup</h2>
+	<h2 class="text-5xl font-bold">Setup</h2>
+	<p>The game is played with a standard deck of playing cards with no jokers.</p>
 	<p>
-		Separate all of the face cards (J’s, Q’s, & K’s) from the deck. These twelve cards are used to
-		form the dungeon monster deck. The rest of the cards (A-10, jokers) make up your power deck.
-	</p>
-	<p>
-		Shuffle the dungeon monster deck and deal out four columns face down with three cards in each
-		column. Flip the top most card of each column over to reveal the first set of monsters.
-	</p>
-	<p>Shuffle the power deck and place it face down in front of you.</p>
-	<h2 class="text-4xl font-bold">Play</h2>
-	<p>Each turn has three phases: draw, attack, & discard.</p>
-	<h3 class="text-3xl font-bold">Draw</h3>
-	<p>
-		Draw three cards from the power deck. These three cards make up your hand. Each card will have
-		to be played or discarded before drawing again.
-	</p>
-	<h3 class="text-3xl font-bold">Attack</h3>
-	<p>Each monster type has a different power level: jacks 11, queens 12, and kings 13.</p>
-	<p>Decide how you want to play your cards. Place them on the monsters you wish to attack.</p>
-	<p>
-		Three cards must be used to defeat a dungeon monster. Added together, the first two cards must
-		be equal to or more than the monster’s power level. Suit does not matter.
+		The 12 face cards of Jacks (J), Queens (Q), and Kings (K) are shuffled together and placed face
+		up in the Customers pile to form the Line.
 	</p>
 	<p>
-		The third card is used to finish the attack, and it must match the monster’s suit. Rank does not
-		matter.
+		The top faceup card of the Line is always the current Customer. During the game, satisfied
+		customers are placed in a pile to the left of the line.
+	</p>
+	<p />
+	<p>
+		The 40 cards numbered Ace (A) to 10 are shuffled together and placed face down in the Items
+		pile. During the game, discarded Items are placed face up into the Traded Items pile. Whenever
+		the Items pile is depleated, the Traded Items pile is shuffled and placed in the Items pile.
 	</p>
 	<p>
-		A monster is immediately defeated once the third card is played. Remove the defeated monster
-		with the attack cards and place them in your clear pile.
+		The Shop is initially formed by 10 drawn items from the Items pile. During the game, after each
+		successful trade, the shop gets restocked with 3 drawn cards from the Items pile.
+	</p>
+	<p>The goal of the game is to make successful trades with all 12 customers in the line.</p>
+	<h2 class="text-5xl font-bold">Rules</h2>
+	<h3 class="text-2xl font-bold">Customer’s Offer</h3>
+	<p>Each customer has an item to trade and a set amount of money.</p>
+	<p>Jacks (J) have $11, Queens (Q) have $12 and Kings (K) have $13.</p>
+	<p>The value of the customer's offered Aces (A) is always $11.</p>
+	<p>The customer’s trade value is the sum of their money and the value of the offered item.</p>
+	<p>A K♠ offering a 3♠, for instance, has an offer of $16.</p>
+	<h3 class="text-2xl font-bold">Your Offer's value</h3>
+	<p>
+		The trade value of items in the shop that match the suit of the current customer's offered item
+		is $0.
 	</p>
 	<p>
-		For example, if you are attacking a jack of hearts, your first two attack cards must add up to
-		11 or more. In order to defeat the monster, your third attack card must be a heart of any rank.
-		Once the heart card is played, the monster is defeated.
+		The trade value of Aces (A) in the Shop can be worth either $1 (On Sale) or $11 at your
+		discretion.
 	</p>
-	<h3 class="text-3xl font-bold">Jokers</h3>
-	<p>Jokers are worth a power of 10, and they may be any suit needed.</p>
-	<h3 class="text-3xl font-bold">Discard</h3>
+	<p>Your offer's trade value is the sum of the trade values of 3 selected items.</p>
+	<h3 class="text-2xl font-bold">Successful Trades</h3>
 	<p>
-		Any cards that cannot be played (or that you choose not to play) must be discarded prior to
-		drawing your next three card hand. Those attack cards are considered misses and must be placed
-		face up on the discard pile.
-	</p>
-	<h3 class="text-3xl font-bold">Reserve Card</h3>
-	<p>
-		Choose how you discard wisely. The top card on the discard pile is your reserve card. It can be
-		played as if it is part of your hand. Once it is played, the next top card of the pile becomes
-		your new reserve card.
-	</p>
-	<h2 class="text-4xl font-bold">Win</h2>
-	<p>
-		If you defeat all of the monsters before running out of cards in the power deck, you win the
-		game.
+		A trade is successful if the trade value of the current customer's offer is equal to the
+		combined worth of 3 selected items from the shop. In that case, the customer will leave happy.
 	</p>
 	<p>
-		Increase the difficulty level by removing the jokers and/or playing without the reserve card.
+		If it’s impossible to match the current customer’s offer based on the combination of items in
+		the shop, your reputation crumbles! Restart the game and try again, we believe in you :)
+	</p>
+	<h2 class="text-5xl font-bold">Tips</h2>
+	<p>Make sure to take advantage of the Aces (A) dynamic trade value.</p>
+	<p>
+		If you can match a customer's offer with only 2 items, no worries, just give them a third item
+		that matches the suit of their offered item. Remember, an item that matches the suit of the
+		customer's offer has a trade value of $0, but you can still offer it anyways.
 	</p>
 </GamePage>
