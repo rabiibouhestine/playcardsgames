@@ -29,7 +29,7 @@
 		>. If you have any comments or feedbacks on Area 52 (or any of the other games in the document),
 		the best place to reach Wil is the <Link
 			href="https://boardgamegeek.com/thread/2587399/isaludo-ten-new-solo-card-games-playable-standard/page/1"
-			>One Player Guild thread on BGG</Link
+			>One Player Guild thread on BoardGameGeek.com</Link
 		>.
 	</p>
 	<h2 class="text-5xl font-bold">Overview</h2>
