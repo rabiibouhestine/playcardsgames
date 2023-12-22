@@ -26,8 +26,8 @@
 		>. All 10 games can be played with standard playing cards and are very well documented by Wil Su
 		in a <Link href="https://drive.google.com/file/d/1DB2YF46s0oVFUSIpR9vxoGIbhpTKz2jw/view"
 			>free-to-download document</Link
-		>. If you have any comments or feedbacks on Area 52 (or any of the other games on the list), the
-		best place to reach Wil is the <Link
+		>. If you have any comments or feedbacks on Area 52 (or any of the other games in the document),
+		the best place to reach Wil is the <Link
 			href="https://boardgamegeek.com/thread/2587399/isaludo-ten-new-solo-card-games-playable-standard/page/1"
 			>One Player Guild thread on BGG</Link
 		>.
