@@ -26,11 +26,8 @@
 		>. All 10 games can be played with standard playing cards and are very well documented by Wil Su
 		in a <Link href="https://drive.google.com/file/d/1DB2YF46s0oVFUSIpR9vxoGIbhpTKz2jw/view"
 			>free-to-download document</Link
-		>. Will worked on these games in 2020 as his 'lockdown project' after binge playing and
-		reviewing solo standard playing cards games. The list was initially shared on boardgamegeek.com,
-		then on Reddit (where we have found it), and was welcomed with enthusiasm from the ommunities on
-		both platforms. If you have any comments or feedbacks on Area 52 (or any of the other games on
-		the list), the best place to reach Wil is the <Link
+		>. If you have any comments or feedbacks on Area 52 (or any of the other games on the list), the
+		best place to reach Wil is the <Link
 			href="https://boardgamegeek.com/thread/2587399/isaludo-ten-new-solo-card-games-playable-standard/page/1"
 			>One Player Guild thread on BGG</Link
 		>.
