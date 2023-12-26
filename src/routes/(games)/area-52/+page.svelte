@@ -52,7 +52,7 @@
 		respectively.
 	</p>
 	<h2 class="text-5xl font-bold">Rules</h2>
-	<h3 class="text-2xl font-bold">Customer’s Offer</h3>
+	<h3 class="text-2xl font-bold">First Rule</h3>
 	<p>Each customer has an item to trade and a set amount of money.</p>
 	<p>Jacks (J) have $11, Queens (Q) have $12 and Kings (K) have $13.</p>
 	<p>The value of the customer's offered Aces (A) is always $11.</p>
