@@ -74,7 +74,7 @@
 		Row, a new round begins. Continue until you win the game or until you get stuck.
 	</p>
 	<p>
-		If there are no more cards left in the Enemy Draw Deck or the Enemy Row, CONGRATULATONS! You
-		have won the game!
+		If there are no more cards left in the Enemy Draw Deck or the Enemy Row at the end of the
+		Capture Phase, CONGRATULATONS! You have won the game!
 	</p>
 </GamePage>
