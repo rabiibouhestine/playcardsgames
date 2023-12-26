@@ -30,7 +30,7 @@
 	</p>
 	<h2 class="text-5xl font-bold">Setup</h2>
 	<p>
-		Your personal draw deck consists of 2’s, 3’s, 4’s, and two jokers. The remaining cards make up
+		Your personal draw deck starts with 2’s, 3’s, 4’s, and two jokers. The remaining cards make up
 		the Enemy Draw Deck, which is shuffled. At the start of the game, 4 cards are drawn from your
 		deck to create your starting hand.
 	</p>
