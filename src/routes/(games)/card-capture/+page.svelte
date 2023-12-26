@@ -48,7 +48,7 @@
 		In the Discard phase, you can select any cards that you would like to discard (to your personal
 		capture pile), which will be replaced by drawing from your personal draw deck.
 	</p>
-	<p>In the capture phase, you can perform of three actions:</p>
+	<p>In the capture phase, you can perform one of three actions:</p>
 	<h3 class="text-2xl font-bold">Capture cards</h3>
 	<p>
 		Select any card from the enemy row, then select one or more cards from your hand. In order to
