@@ -52,36 +52,43 @@
 		respectively.
 	</p>
 	<h2 class="text-5xl font-bold">Rules</h2>
-	<h3 class="text-2xl font-bold">First Rule</h3>
-	<p>Each customer has an item to trade and a set amount of money.</p>
-	<p>Jacks (J) have $11, Queens (Q) have $12 and Kings (K) have $13.</p>
-	<p>The value of the customer's offered Aces (A) is always $11.</p>
-	<p>The customer’s trade value is the sum of their money and the value of the offered item.</p>
-	<p>A K♠ offering a 3♠, for instance, has an offer of $16.</p>
-	<h3 class="text-2xl font-bold">Your Offer's value</h3>
 	<p>
-		The trade value of items in the shop that match the suit of the current customer's offered item
-		is $0.
+		The game is played over a series of turns. Each turn, three new aliens are revealed, to be
+		defeated (or avoided) one at a time. The card on top is always the current attacker.
 	</p>
 	<p>
-		The trade value of Aces (A) in the Shop can be worth either $1 (On Sale) or $11 at your
-		discretion.
+		One at a time, in order, choose to engage the current attacker via either a dual attack, a
+		single attack, or a sacrifice.
 	</p>
-	<p>Your offer's trade value is the sum of the trade values of 3 selected items.</p>
-	<h3 class="text-2xl font-bold">Successful Trades</h3>
+	<h3 class="text-2xl font-bold">Dual Attack</h3>
 	<p>
-		A trade is successful if the trade value of the current customer's offer is equal to the
-		combined worth of 3 selected items from the shop. In that case, the customer will leave happy.
+		Choose two defenders whose sum adds up exactly to the attacker’s value. The attacker gets
+		discarded, and any defender that matches the attacker's color is also discarded. Fallen
+		defenders get replaced by drawing from the defenders pile.
 	</p>
+	<h3 class="text-2xl font-bold">Single Attack</h3>
 	<p>
-		If it’s impossible to match the current customer’s offer based on the combination of items in
-		the shop, your reputation crumbles! Restart the game and try again, we believe in you :)
+		Choose a defender with a greater value and opposite color from the attacker. Your defender gets
+		discarded and replaced with the attacker. Your soldier was hurt in the fight, it now has a lower
+		value.
 	</p>
-	<h2 class="text-5xl font-bold">Tips</h2>
-	<p>Make sure to take advantage of the Aces (A) dynamic trade value.</p>
+	<h3 class="text-2xl font-bold">Sacrifice</h3>
 	<p>
-		If you can match a customer's offer with only 2 items, no worries, just give them a third item
-		that matches the suit of their offered item. Remember, an item that matches the suit of the
-		customer's offer has a trade value of $0, but you can still offer it anyways.
+		If you cannot or do not want to defeat the invader via an attack, choose a defender and
+		sacrifice it. The defender gets discarded and the current attacker gets moved to the back of the
+		alien deck face down. Another defender is drawed to replace the sacrificed defender.
+	</p>
+	<h3 class="text-2xl font-bold">Second Wave</h3>
+	<p>
+		Once you’ve defeated all cards in the Aliens deck, the discard pile is shuffled and moved to
+		form a second wave of attack. Remember that all cards are discarded to the same pile, including
+		defenders! The second wave will therefore have a greater number of aliens, having both black and
+		red cards.
+	</p>
+	<h2 class="text-5xl font-bold">Game End</h2>
+	<p>
+		If you run out of defenders on the board, you lose the game. Your score is negative of the
+		number of cards left in the alien deck, including all face-up attackers. If you’re somehow still
+		on the first wave. 50 is substracted from the score.
 	</p>
 </GamePage>
