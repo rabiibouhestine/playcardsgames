@@ -64,7 +64,7 @@
 	</p>
 	<h3 class="text-2xl font-bold">Sacrifice cards</h3>
 	<p>
-		Select any 2 cards from your hand and any 1 card from the enemy row, then press the 'Sacrifice
+		Select any 2 cards from your hand and one card from the enemy row, then press the 'Sacrifice
 		Cards' button. The 2 selected cards from your hand get discarded to the enemy captured pile. The
 		selected enemy card is moved back to the back of the enemy draw deck.
 	</p>
