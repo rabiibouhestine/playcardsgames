@@ -126,4 +126,38 @@
 		Any time where both a Hearts power and Diamonds power are resolved together, the Hearts healing
 		is resolved before drawing with Diamonds.
 	</p>
+	<h2 class="text-5xl font-bold">Enemy Immunity</h2>
+	<p>
+		Each enemy is immune to the suit powers of cards played against them which match their suit. For
+		example, you will not draw cards when a diamond is played against the Jack of Diamonds (however
+		the number is still added to the damage total).
+	</p>
+	<h2 class="text-5xl font-bold">Drawing a defeated enemy</h2>
+	<p>
+		Jacks in hand count as a 10, Queens in hand count as a 15 and Kings in hand count as a 20. These
+		values are applied when either playing them as an attack card or discarding them from hand to
+		suffer damage. Their suit power is applied as normal when played.
+	</p>
+	<h2 class="text-5xl font-bold">Playing the Jesters</h2>
+	<p>
+		A Jester can be flipped to activate the following power: “Your entire hand is discarded and
+		refilled to 8 cards by drawing from the Tavern deck - this does not count as drawing for the
+		purpose of enemy diamond immunity.” Since you have two Jesters this can be done twice per game.
+	</p>
+	<p>
+		To activate a Jester, simply click on it. If you get into a situation where a play is not
+		possible, a Jester will be activated automatically. If no Jesters are available, you lose the
+		game.
+	</p>
+	<h2 class="text-5xl font-bold">Game End</h2>
+	<p>
+		The game ends when you win by defeating the last King or when you lose because you are unable to
+		satisfy the damage dealt by an enemy. You also lose if you are unable to play a card (you have
+		no cards in your hand to attack with).
+	</p>
+	<ul>
+		<li>A win having used 2 Jesters = Bronze Victory</li>
+		<li>A win having used 1 Jester = Silver Victory</li>
+		<li>A win having used 0 Jesters = Gold Victory</li>
+	</ul>
 </GamePage>

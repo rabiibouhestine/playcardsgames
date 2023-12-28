@@ -72,7 +72,7 @@ export class Mattress {
         gameContainer.addChild(jokersZone);
 
         // Add jokers labels
-        const jokersLabel = new PIXI.Text("Jokers", {
+        const jokersLabel = new PIXI.Text("Jesters", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 20,
