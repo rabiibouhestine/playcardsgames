@@ -11,6 +11,7 @@ import { Number } from "../../utils/Number";
 import { Message } from "../../utils/Message";
 import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
+import { Header } from "../../utils/Header";
 
 import { Mattress } from "./Mattress";
 import { ConfirmButton } from "./ConfirmButton";
@@ -37,6 +38,9 @@ export class Game extends App {
 
         // disable interactions
         this.gameContainer.eventMode = 'none';
+
+        // add header
+        this.header = new Header(this.gameContainer, {});
 
         // GAME SETUP
 
