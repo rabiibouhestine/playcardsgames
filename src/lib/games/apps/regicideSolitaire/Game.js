@@ -118,7 +118,7 @@ export class Game extends App {
         this.hand = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             name: 'hand',
             type: 'tableau',
-            gap: 8,
+            gap: 4,
             position: {x: 360, y: 467},
             faceUp: true,
             isInteractive: true,
