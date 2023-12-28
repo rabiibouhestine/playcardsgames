@@ -9,7 +9,7 @@ export class Header {
         // Define graphic
         this.graphic = new PIXI.Graphics();
         this.graphic.beginFill(0x000000, 0.15);
-        this.graphic.drawRoundedRect(0, 20, 720, 50, 8);
+        this.graphic.drawRoundedRect(4, 20, 712, 50, 8);
         this.graphic.endFill();
 
         // Define label
