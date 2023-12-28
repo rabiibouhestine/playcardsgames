@@ -55,7 +55,7 @@ export class Game extends App {
 
         this.jokerLeft = new Card(this.gameContainer, this.spritesheet, paramsAtlas, {
             faceName: 'J1',
-            position: {x: 576, y: 117},
+            position: {x: 556, y: 195},
             faceUp: true,
             isInteractive: true,
             location: "jokerLeft",
@@ -64,7 +64,7 @@ export class Game extends App {
 
         this.jokerRight = new Card(this.gameContainer, this.spritesheet, paramsAtlas, {
             faceName: 'J2',
-            position: {x: 666, y: 117},
+            position: {x: 656, y: 195},
             faceUp: true,
             isInteractive: true,
             location: "jokerRight",

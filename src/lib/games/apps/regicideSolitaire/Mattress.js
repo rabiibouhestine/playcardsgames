@@ -67,7 +67,7 @@ export class Mattress {
         // Add jokers zone to mattress
         const jokersZone = new PIXI.Graphics();
         jokersZone.beginFill(0x000000, 0.25);
-        jokersZone.drawRoundedRect(526, 32, 190, 150, 8);
+        jokersZone.drawRoundedRect(496, 90, 220, 180, 8);
         jokersZone.endFill();
         gameContainer.addChild(jokersZone);
 
@@ -80,8 +80,8 @@ export class Mattress {
             align: 'center'
         });
         jokersLabel.anchor.set(0.5);
-        jokersLabel.x = 621;
-        jokersLabel.y = 47;
+        jokersLabel.x = 606;
+        jokersLabel.y = 115;
         gameContainer.addChild(jokersLabel);
 
         // Add castle zone to mattress
