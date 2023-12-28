@@ -52,7 +52,7 @@ export class Mattress {
         gameContainer.addChild(discardPileLabel);
 
         // Add draw pile label
-        const drawPileLabel = new PIXI.Text("Draw", {
+        const drawPileLabel = new PIXI.Text("Tavern", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 20,

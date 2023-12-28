@@ -20,7 +20,7 @@
 	<div bind:this={canvas} class="grow" slot="gameSection" />
 	<h2 class="text-5xl font-bold">Regicide Solitaire</h2>
 	<p>
-		Regicide Solitaire is an online alternative to the single player mode of the card game <Link
+		Regicide Solitaire is an online version of the single player mode of the card game <Link
 			href="https://www.regicidegame.com/">Regicide</Link
 		>. The game was originally designed by <Link
 			href="https://boardgamegeek.com/boardgamedesigner/126153/paul-abrahams">Paul Abrahams</Link
