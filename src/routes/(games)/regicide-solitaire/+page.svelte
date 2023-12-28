@@ -42,6 +42,79 @@
 		hand to satisfy the damage and if you can’t discard enough, you lose!
 	</p>
 	<h2 class="text-5xl font-bold">Setup</h2>
-	<p />
-	<h3 class="text-2xl font-bold">xxxxx</h3>
+	<p>
+		The face cards (K's, Q's and J's) are shuffled to form the Castle deck. They are shuffled in a
+		way that the first 4 cards on top are Jacks (J), the next 4 cards are Queens (Q) and then the 4
+		Kings (K).
+	</p>
+	<p>
+		The top card of the Castle Deck is always flipped to reveal the current enemy. After defeating
+		an enemy, it gets discarded and the next top card in the Castle Deck is revealed.
+	</p>
+	<p>
+		Numbered cards (A..10) are shuffled to form your Tavern deck. The Tavern deck is where cards are
+		dealt and drawn from. During the game, any discarded cards are placed into a discard pile beside
+		the Tavern deck. The game starts with 8 cards drawn from the Tavern deck to your hand.
+	</p>
+	<h2 class="text-5xl font-bold">How to play</h2>
+	<p>
+		You play cards from your hand to deal damage to the current enemy in order to defeat it. The
+		values on the cards determine damage, while the suit provides a special power.
+	</p>
+	<h3 class="text-2xl font-bold">Hearts</h3>
+	<p>
+		Attacking with Hearts refills the Tavern deck from the discard pile. The amount of cards
+		refilled is equal to the total attack value of the cards you attacked with. Note that the the
+		cards refilled are picked randomly from the discard pile.
+	</p>
+	<h3 class="text-2xl font-bold">Diamonds</h3>
+	<p>
+		Attacking with Diamonds refills your hand from the Tavern deck. The amount of cards refilled is
+		equal to the total attack value of the cards you attacked with. Note that you can only hold a
+		maximum of 8 cards in your hand. This effect does not bypass that and only restores cards untill
+		your hand is full.
+	</p>
+	<h3 class="text-2xl font-bold">Clubs</h3>
+	<p>Attacking with Clubs doubles the total attack value of the cards you attacked with.</p>
+	<h3 class="text-2xl font-bold">Spades</h3>
+	<p>
+		Attacking with Spades reduces the attack value of the current enemy by the attack value played.
+		The shield effects of spades remain in effect until the enemy is defeated.
+	</p>
+	<h3 class="text-2xl font-bold">Taking Damage</h3>
+	<p>
+		If not defeated, the enemy attacks you by dealing damage equal to that enemy’s attack value.
+		Select cards from your hand to satisfy the enemy's attack. These cards are discarded to the
+		discard pile.
+	</p>
+	<h2 class="text-5xl font-bold">Animal Companions</h2>
+	<p>
+		Aces (A) are Animal Companions. Animal Companions can be played on their own, but may also be
+		paired with one other card. Animal Companions count as 1 towards the attack total and their suit
+		power is also applied.
+	</p>
+	<p>
+		For example, when playing the 8 of Diamonds with the Animal Companion of Clubs the attack value
+		is 9 and the effects of both suit powers are applied: 9 cards are drawn and 18 damage is dealt.
+	</p>
+	<p>
+		Any time where both a Hearts power and Diamonds power are played together, the Hearts effect is
+		resolved before cards are drawn with Diamonds.
+	</p>
+	<p>
+		Animal Companions can also be paired with one other Animal Companion. If you play an Animal
+		Companion with another card of the same suit, the suit power is only applied once.
+	</p>
+	<h2 class="text-5xl font-bold">Combos</h2>
+	<p>
+		In Step 1, instead of playing a single card, players can combine cards together in sets of 2, 3
+		or 4 of the same number as long as the combined total of the cards played equals 10 or less.
+		Animal Companions cannot be added to a combo or played as a combo on their own; they can only
+		ever be paired with one other card (which could be another Animal Companion). So players can
+		play a pair of 2s, 3s, 4s, or 5s, triple 2s and 3s, or quadruple 2s. When these cards are played
+		together all suit powers are resolved at the total attack value. For example, if a player plays
+		the 3 of Diamonds, Spades and Clubs together, players will draw 9 cards, reduce the enemy’s
+		attack value by 9 and deal 18 damage. Any time where both a Hearts power and Diamonds power are
+		resolved together, resolve the Hearts healing before drawing with Diamonds.
+	</p>
 </GamePage>
