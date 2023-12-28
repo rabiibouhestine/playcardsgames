@@ -134,6 +134,11 @@
 	</p>
 	<h2 class="text-5xl font-bold">Drawing a defeated enemy</h2>
 	<p>
+		If you defeat an enemy by inflicting an attack value that is exactly equal to its remaining
+		health, the enemy is discarded to the top of the Tavern deck, otherwise it is discarded to the
+		discard pile.
+	</p>
+	<p>
 		Jacks in hand count as a 10, Queens in hand count as a 15 and Kings in hand count as a 20. These
 		values are applied when either playing them as an attack card or discarding them from hand to
 		suffer damage. Their suit power is applied as normal when played.
