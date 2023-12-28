@@ -107,14 +107,23 @@
 	</p>
 	<h2 class="text-5xl font-bold">Combos</h2>
 	<p>
-		In Step 1, instead of playing a single card, players can combine cards together in sets of 2, 3
+		Instead of playing a single card to attack with, you can combine cards together in sets of 2, 3
 		or 4 of the same number as long as the combined total of the cards played equals 10 or less.
+	</p>
+	<p>
 		Animal Companions cannot be added to a combo or played as a combo on their own; they can only
-		ever be paired with one other card (which could be another Animal Companion). So players can
-		play a pair of 2s, 3s, 4s, or 5s, triple 2s and 3s, or quadruple 2s. When these cards are played
-		together all suit powers are resolved at the total attack value. For example, if a player plays
-		the 3 of Diamonds, Spades and Clubs together, players will draw 9 cards, reduce the enemy’s
-		attack value by 9 and deal 18 damage. Any time where both a Hearts power and Diamonds power are
-		resolved together, resolve the Hearts healing before drawing with Diamonds.
+		ever be paired with one other card (which could be another Animal Companion).
+	</p>
+	<p>
+		So you can play a pair of 2s, 3s, 4s, or 5s, triple 2s and 3s, or quadruple 2s. When these cards
+		are played together all suit powers are resolved at the total attack value.
+	</p>
+	<p>
+		For example, if you play the 3 of Diamonds, Spades and Clubs together, you will draw 9 cards,
+		reduce the enemy’s attack value by 9 and deal 18 damage.
+	</p>
+	<p>
+		Any time where both a Hearts power and Diamonds power are resolved together, the Hearts healing
+		is resolved before drawing with Diamonds.
 	</p>
 </GamePage>
