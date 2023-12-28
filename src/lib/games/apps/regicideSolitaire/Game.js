@@ -578,17 +578,6 @@ export class Game extends App {
             inSequence: false
         });
 
-        // if discard exactly equals attack, draw 1 card
-        if (this.getSelectionValue() === this.royalAttack.getValue()) {
-            await this.dealer.moveCards({
-                nbCards: 1,
-                source: this.drawPile ,
-                destination: this.hand,
-                positionSource: 'top',
-                positionDestination: 'top'
-            });
-        }
-
         // update phase
         this.phase = 'attack';
         this.selectionNames = [];
