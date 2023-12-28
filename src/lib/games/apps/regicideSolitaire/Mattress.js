@@ -87,34 +87,34 @@ export class Mattress {
         // Add castle zone to mattress
         const castleZone = new PIXI.Graphics();
         castleZone.beginFill(0x000000, 0.25);
-        castleZone.drawRoundedRect(210, 32, 100, 150, 8);
+        castleZone.drawRoundedRect(184, 90, 120, 180, 8);
         castleZone.endFill();
         gameContainer.addChild(castleZone);
 
         // Add royal attack label
         const royalAttackLabel = new PIXI.Text("Attack", {
             fontFamily: 'Arial',
-            fontWeight: 'bold',
+            fontWeight: '900',
             fontSize: 32,
             fill: 0xFFFFFF,
             align: 'center'
         });
         royalAttackLabel.anchor.set(0.5);
-        royalAttackLabel.x = 385;
-        royalAttackLabel.y = 57;
+        royalAttackLabel.x = 380;
+        royalAttackLabel.y = 115;
         gameContainer.addChild(royalAttackLabel);
 
         // Add royal health label
         const royalHealthLabel = new PIXI.Text("Health", {
             fontFamily: 'Arial',
-            fontWeight: 'bold',
+            fontWeight: '900',
             fontSize: 32,
             fill: 0xFFFFFF,
             align: 'center'
         });
         royalHealthLabel.anchor.set(0.5);
-        royalHealthLabel.x = 135;
-        royalHealthLabel.y = 57;
+        royalHealthLabel.x = 109;
+        royalHealthLabel.y = 115;
         gameContainer.addChild(royalHealthLabel);
 
     }
