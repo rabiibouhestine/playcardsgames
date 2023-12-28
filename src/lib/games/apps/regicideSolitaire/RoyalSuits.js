@@ -15,32 +15,32 @@ export class RoyalSuits {
         this.heartsSprite.height = 15;
         this.heartsSprite.alpha = 0.25;
         this.heartsSprite.anchor.set(0.5);
-        this.heartsSprite.x = 230;
-        this.heartsSprite.y = 46;
+        this.heartsSprite.x = 272;
+        this.heartsSprite.y = 116;
 
         this.clubsSprite = new PIXI.Sprite(PIXI.Texture.from(clubsIcon));
         this.clubsSprite.width = 15;
         this.clubsSprite.height = 15;
         this.clubsSprite.alpha = 0.25;
         this.clubsSprite.anchor.set(0.5);
-        this.clubsSprite.x = 250;
-        this.clubsSprite.y = 46;
+        this.clubsSprite.x = 252;
+        this.clubsSprite.y = 116;
 
         this.diamondsSprite = new PIXI.Sprite(PIXI.Texture.from(diamondsIcon));
         this.diamondsSprite.width = 15;
         this.diamondsSprite.height = 15;
         this.diamondsSprite.alpha = 0.25;
         this.diamondsSprite.anchor.set(0.5);
-        this.diamondsSprite.x = 270;
-        this.diamondsSprite.y = 46;
+        this.diamondsSprite.x = 232;
+        this.diamondsSprite.y = 116;
 
         this.spadesSprite = new PIXI.Sprite(PIXI.Texture.from(spadesIcon));
         this.spadesSprite.width = 15;
         this.spadesSprite.height = 15;
         this.spadesSprite.alpha = 0.25;
         this.spadesSprite.anchor.set(0.5);
-        this.spadesSprite.x = 290;
-        this.spadesSprite.y = 46;
+        this.spadesSprite.x = 212;
+        this.spadesSprite.y = 116;
 
         this.gameContainer.addChild(this.heartsSprite);
         this.gameContainer.addChild(this.clubsSprite);

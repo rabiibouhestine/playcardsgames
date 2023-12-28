@@ -75,7 +75,7 @@ export class Game extends App {
             type: 'pile',
             faceNames: royalsDeck,
             backName: "B1",
-            position: {x: 260, y: 117},
+            position: {x: 244, y: 195},
             faceUp: false,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
@@ -155,8 +155,8 @@ export class Game extends App {
         this.royalsPile.getTopCard().flip(true);
 
         // Royal Stats
-        this.royalHealth = new Number(this.gameContainer, {x:135, y: 112}, 0, {});
-        this.royalAttack = new Number(this.gameContainer, {x:385, y: 112}, 0, {});
+        this.royalHealth = new Number(this.gameContainer, {x:109, y: 170}, 0, {});
+        this.royalAttack = new Number(this.gameContainer, {x:380, y: 170}, 0, {});
 
         this.royalHealth.setValue(20);
         this.royalAttack.setValue(10);
