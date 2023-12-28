@@ -85,7 +85,7 @@ export class Game extends App {
         this.drawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: pileDeck,
-            position: {x: 666, y: 277},
+            position: {x: 656, y: 385},
             faceUp: false,
             counter: true,
             onPointerUp: this.handleCardClick.bind(this),
@@ -96,7 +96,7 @@ export class Game extends App {
         this.discardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 576, y: 277},
+            position: {x: 556, y: 385},
             faceUp: true,
             counter: false,
             onPointerUp: this.handleCardClick.bind(this),
@@ -108,7 +108,7 @@ export class Game extends App {
             name: 'field',
             type: 'stackH',
             gap: 50,
-            position: {x: 260, y: 267},
+            position: {x: 245, y: 370},
             faceUp: true,
             onPointerUp: this.handleCardClick.bind(this),
             onPointerOver: this.handleCardOver.bind(this),
@@ -119,7 +119,7 @@ export class Game extends App {
             name: 'hand',
             type: 'tableau',
             gap: 4,
-            position: {x: 360, y: 467},
+            position: {x: 360, y: 575},
             faceUp: true,
             isInteractive: true,
             onPointerUp: this.handleCardClick.bind(this),
@@ -128,7 +128,7 @@ export class Game extends App {
         });
 
         // Info Panel
-        this.Message = new Message(this.gameContainer, {x: 350, y: 368});
+        this.Message = new Message(this.gameContainer, {x: 350, y: 480});
 
         // Confirm Button
         this.confirmButton = new ConfirmButton(this.gameContainer, {
@@ -137,7 +137,9 @@ export class Game extends App {
         
         // Reset Button
         this.resetButton = new Button(this.gameContainer, {
-            onPointerDown: this.handleReset.bind(this)
+            onPointerDown: this.handleReset.bind(this),
+            x: 666,
+            y: 685
         });
 
         // Game Variables

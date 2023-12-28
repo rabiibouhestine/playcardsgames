@@ -26,7 +26,7 @@ export class ConfirmButton {
         this.container.cursor = 'pointer';
         this.container.on('pointerdown', onPointerDown);
         this.container.x = 360;
-        this.container.y = 585;
+        this.container.y = 685;
         this.container.addChild(this.graphic);
         this.container.addChild(this.label);
         this.gameContainer.addChild(this.container);
