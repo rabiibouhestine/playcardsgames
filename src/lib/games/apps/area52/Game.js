@@ -383,6 +383,11 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
+        // clear highlights
+        for (let i = 0; i < 6; i++) {
+            this.mattress.clearHighlight(i);
+        }
+        
         // remove blur
         this.gameContainer.filters = [];
         this.mattressContainer.filters = [];
