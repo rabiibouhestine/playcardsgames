@@ -89,7 +89,7 @@ export class Mattress {
         this.monstersDiscardLabel = new PIXI.Text("Defeated", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -116,7 +116,7 @@ export class Mattress {
         this.attackDiscardLabel = new PIXI.Text("Discarded", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -128,14 +128,14 @@ export class Mattress {
         // Draw Pile Zone
         this.drawPileZone = new PIXI.Graphics();
         this.drawPileZone.beginFill(0x000000, 0.25);
-        this.drawPileZone.drawRoundedRect(12, 495, 110, 160, 8);
+        this.drawPileZone.drawRoundedRect(40, 542, 120, 170, 8);
         this.drawPileZone.endFill();
         mattressContainer.addChild(this.drawPileZone);
 
         // Draw Pile Zone Background
         this.drawPileZoneBg = new PIXI.Graphics();
         this.drawPileZoneBg.beginFill(0x000000, 0.25);
-        this.drawPileZoneBg.drawRoundedRect(27, 510, 80, 110, 6);
+        this.drawPileZoneBg.drawRoundedRect(60, 582, 80, 110, 6);
         this.drawPileZoneBg.endFill();
         mattressContainer.addChild(this.drawPileZoneBg);
 
@@ -143,13 +143,13 @@ export class Mattress {
         this.drawPileLabel = new PIXI.Text("Draw Pile", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
         this.drawPileLabel.anchor.set(0.5);
-        this.drawPileLabel.x = 67;
-        this.drawPileLabel.y = 637;
+        this.drawPileLabel.x = 100;
+        this.drawPileLabel.y = 562;
         mattressContainer.addChild(this.drawPileLabel);
 
         // Hand Zone

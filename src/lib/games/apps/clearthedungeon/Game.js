@@ -153,7 +153,7 @@ export class Game extends App {
         this.drawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: drawPileDeck,
-            position: {x: 67, y: 565},
+            position: {x: 100, y: 637},
             faceUp: false,
             counter: true,
             onPointerDown: this.onCardPointerDown.bind(this),
