@@ -137,7 +137,7 @@ export class Game extends App {
         this.enemyDrawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: this.enemyDeck,
-            position: {x: 70, y: 275},
+            position: {x: 70, y: 279},
             faceUp: false,
             counter: true,
             onPointerDown: this.onCardPointerDown.bind(this)
@@ -147,7 +147,7 @@ export class Game extends App {
         this.enemyDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 650, y: 275},
+            position: {x: 650, y: 279},
             faceUp: false,
             counter: true
         });
@@ -157,7 +157,7 @@ export class Game extends App {
             type: 'tableau',
             name: 'enemy',
             faceNames: [],
-            position: {x: 360, y: 275},
+            position: {x: 360, y: 279},
             faceUp: true,
             gap: 20,
             isInteractive: true
