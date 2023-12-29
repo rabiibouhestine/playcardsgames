@@ -180,6 +180,12 @@ export class Game extends App {
     }
 
     async handleReset() {
+        // reset timer
+        this.header.resetTimer();
+
+        // update game start
+        this.gameStarted = false;
+
         // hide game over panel
         this.gameOverPanel.setVisible(false);
 
@@ -682,6 +688,9 @@ export class Game extends App {
     }
 
     handleGameOver() {
+        // stop timer
+        this.header.stopTimer();
+
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
         this.gameContainer.filters = [blurFilter];
