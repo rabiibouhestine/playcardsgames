@@ -77,7 +77,7 @@ export class Game extends App {
         // add left monsters stack
         this.leftMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
-            gap: 26,
+            gap: 33,
             centered: false,
             faceNames: [],
             position: {x: 250, y: 145},
@@ -88,7 +88,7 @@ export class Game extends App {
         // add center mosters stack
         this.centerMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
-            gap: 26,
+            gap: 33,
             centered: false,
             faceNames: [],
             position: {x: 360, y: 145},
@@ -99,7 +99,7 @@ export class Game extends App {
         // add right monsters stack
         this.rightMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
-            gap: 26,
+            gap: 33,
             centered: false,
             faceNames: [],
             position: {x: 470, y: 145},
@@ -119,7 +119,7 @@ export class Game extends App {
         // add left attack stak
         this.leftAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
-            gap: 26,
+            gap: 33,
             centered: false,
             faceNames: [],
             position: {x: 250, y: 384},
@@ -130,7 +130,7 @@ export class Game extends App {
         // add center attack stack
         this.centerAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
-            gap: 26,
+            gap: 33,
             centered: false,
             faceNames: [],
             position: {x: 360, y: 384},
@@ -141,7 +141,7 @@ export class Game extends App {
         // add right attack stack
         this.rightAttackStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
-            gap: 26,
+            gap: 33,
             centered: false,
             faceNames: [],
             position: {x: 470, y: 384},
