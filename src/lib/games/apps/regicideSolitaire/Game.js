@@ -9,7 +9,6 @@ import { Cards } from '../../utils/Cards';
 import { Dealer } from '../../utils/Dealer';
 import { Number } from "../../utils/Number";
 import { Message } from "../../utils/Message";
-import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
 import { Header } from "../../utils/Header";
 
@@ -139,13 +138,6 @@ export class Game extends App {
         // Confirm Button
         this.confirmButton = new ConfirmButton(this.gameContainer, {
             onPointerDown: this.handleConfirm.bind(this)
-        });
-        
-        // Reset Button
-        this.resetButton = new Button(this.gameContainer, {
-            onPointerDown: this.handleReset.bind(this),
-            x: 666,
-            y: 685
         });
 
         // Game Variables
