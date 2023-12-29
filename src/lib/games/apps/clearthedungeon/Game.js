@@ -505,6 +505,9 @@ export class Game extends App {
         // reset timer
         this.header.resetTimer();
 
+        // clear message
+        this.message.clear();
+        
         // hide game over panel
         this.gameOverPanel.setVisible(false);
 
