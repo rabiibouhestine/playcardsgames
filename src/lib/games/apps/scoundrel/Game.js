@@ -76,7 +76,7 @@ export class Game extends App {
             name: 'room',
             type: 'tableau',
             gap: 20,
-            position: {x: 360, y: 171},
+            position: {x: 360, y: 205},
             faceUp: true,
             isInteractive: true
         });

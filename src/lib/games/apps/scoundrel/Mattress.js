@@ -59,7 +59,7 @@ export class Mattress {
         // Room Zone
         this.roomZone = new PIXI.Graphics();
         this.roomZone.beginFill(0x000000, 0.25);
-        this.roomZone.drawRoundedRect(150, 57, 420, 189, 8);
+        this.roomZone.drawRoundedRect(150, 90, 420, 260, 8);
         this.roomZone.endFill();
         mattressContainer.addChild(this.roomZone);
 
@@ -73,13 +73,13 @@ export class Mattress {
         });
         this.roomZoneLabel.anchor.set(0.5);
         this.roomZoneLabel.x = 360;
-        this.roomZoneLabel.y = 77;
+        this.roomZoneLabel.y = 110;
         mattressContainer.addChild(this.roomZoneLabel);
 
         // Weapon Zone
         this.weaponZone = new PIXI.Graphics();
         this.weaponZone.beginFill(0x000000, 0.25);
-        this.weaponZone.drawRoundedRect(0, 367, 720, 150, 8);
+        this.weaponZone.drawRoundedRect(10, 440, 700, 150, 8);
         this.weaponZone.endFill();
         mattressContainer.addChild(this.weaponZone);
     }
