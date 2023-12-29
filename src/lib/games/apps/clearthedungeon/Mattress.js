@@ -74,14 +74,14 @@ export class Mattress {
         // Monster Discard Zone
         this.monsterDiscardZone = new PIXI.Graphics();
         this.monsterDiscardZone.beginFill(0x000000, 0.25);
-        this.monsterDiscardZone.drawRoundedRect(597, 88, 110, 160, 8);
+        this.monsterDiscardZone.drawRoundedRect(560, 320, 120, 170, 8);
         this.monsterDiscardZone.endFill();
         mattressContainer.addChild(this.monsterDiscardZone);
 
         // Monster Discard Zone Background
         this.monsterDiscardZoneBg = new PIXI.Graphics();
         this.monsterDiscardZoneBg.beginFill(0x000000, 0.25);
-        this.monsterDiscardZoneBg.drawRoundedRect(612, 103, 80, 110, 6);
+        this.monsterDiscardZoneBg.drawRoundedRect(580, 360, 80, 110, 6);
         this.monsterDiscardZoneBg.endFill();
         mattressContainer.addChild(this.monsterDiscardZoneBg);
 
@@ -94,8 +94,8 @@ export class Mattress {
             align: 'center'
         });
         this.monstersDiscardLabel.anchor.set(0.5);
-        this.monstersDiscardLabel.x = 653;
-        this.monstersDiscardLabel.y = 230;
+        this.monstersDiscardLabel.x = 620;
+        this.monstersDiscardLabel.y = 340;
         mattressContainer.addChild(this.monstersDiscardLabel);
 
         // Attack Discard Zone
