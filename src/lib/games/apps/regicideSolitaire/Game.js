@@ -40,7 +40,9 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // add header
-        this.header = new Header(this.gameContainer, {});
+        this.header = new Header(this.gameContainer, {
+            onRestartClick: this.handleReset.bind(this)
+        });
 
         // GAME SETUP
 
