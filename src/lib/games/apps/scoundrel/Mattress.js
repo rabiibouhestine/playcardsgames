@@ -93,7 +93,7 @@ export class Mattress {
         });
         this.healthText.anchor.set(0.5);
         this.healthText.x = 275;
-        this.healthText.y = 615;
+        this.healthText.y = 635;
         mattressContainer.addChild(this.healthText);
 
         // Weapon Text
@@ -106,7 +106,7 @@ export class Mattress {
         });
         this.healthText.anchor.set(0.5);
         this.healthText.x = 445;
-        this.healthText.y = 615;
+        this.healthText.y = 635;
         mattressContainer.addChild(this.healthText);
     }
 }

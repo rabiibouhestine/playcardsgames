@@ -144,10 +144,10 @@ export class Game extends App {
         this.disableButtons();
 
         // add health value
-        this.healthValue = new Number(this.gameContainer, {x:275, y: 670}, 20, {});
+        this.healthValue = new Number(this.gameContainer, {x:275, y: 690}, 20, {});
 
         // add weapon value
-        this.weaponValue = new Number(this.gameContainer, {x:445, y: 670}, 0, {});
+        this.weaponValue = new Number(this.gameContainer, {x:445, y: 690}, 0, {});
 
         // set selected card
         this.selectedCard = null;
