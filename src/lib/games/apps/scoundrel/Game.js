@@ -9,6 +9,7 @@ import { Dealer } from '../../utils/Dealer';
 import { ProgressBar } from "../../utils/ProgressBar";
 import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
+import { Header } from "../../utils/Header";
 
 import { Mattress } from "./Mattress";
 import paramsAtlas from './values.json';
@@ -36,6 +37,11 @@ export class Game extends App {
 
         // add mattress
         this.mattress = new Mattress(this.mattressContainer);
+
+        // add header
+        this.header = new Header(this.gameContainer, {
+            onRestartClick: this.handleRestart.bind(this)
+        });
 
         // make dungeon pile deck
         const dungeonPileDeck = this.dealer.shuffleCards([
@@ -92,16 +98,6 @@ export class Game extends App {
             x: 60,
             y: 304,
             onPointerDown: this.handleSkipRoom.bind(this)
-        });
-
-        // add restart button
-        this.restartButton = new Button(this.gameContainer, {
-            width: 120,
-            height: 50,
-            text: "Restart",
-            x: 660,
-            y: 304,
-            onPointerDown: this.handleRestart.bind(this)
         });
 
         // add heal button
@@ -182,6 +178,9 @@ export class Game extends App {
     }
 
     async handleSkipRoom() {
+        if (!this.header.isTimerRunning) {
+            this.header.startTimer();
+        }
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
@@ -209,6 +208,9 @@ export class Game extends App {
     }
 
     handleCardClick(card) {
+        if (!this.header.isTimerRunning) {
+            this.header.startTimer();
+        }
         if (card.location === 'room') {
             this.hideButtons();
             if (this.selectedCard === null) {
@@ -380,6 +382,9 @@ export class Game extends App {
     }
 
     async handleRestart() {
+        // reset timer
+        this.header.resetTimer();
+
         // disable interactions
         this.gameContainer.eventMode = 'none';
         // remove blur
@@ -434,6 +439,9 @@ export class Game extends App {
     }
 
     handleGameOver(score) {
+        // stop timer
+        this.header.stopTimer();
+
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
         this.gameContainer.filters = [blurFilter];
