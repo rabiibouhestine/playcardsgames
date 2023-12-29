@@ -9,6 +9,7 @@ import { Dealer } from '../../utils/Dealer';
 import { Message } from "../../utils/Message";
 import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
+import { Header } from "../../utils/Header";
 
 import { Mattress } from "./Mattress";
 import paramsAtlas from './values.json';
@@ -37,14 +38,9 @@ export class Game extends App {
         // add message
         this.message = new Message(this.gameContainer, {x: 360, y: 471});
 
-        // add restart button
-        this.restartButton = new Button(this.gameContainer, {
-            width: 110,
-            height: 50,
-            text: "Restart",
-            x: 652,
-            y: 40,
-            onPointerDown: this.handleRestart.bind(this)
+        // add header
+        this.header = new Header(this.gameContainer, {
+            onRestartClick: this.handleRestart.bind(this)
         });
 
         // disable interactions
