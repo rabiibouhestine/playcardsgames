@@ -18,10 +18,10 @@ export class Mattress {
         mattressContainer.addChild(this.enemyDrawPileZoneBG);
 
         // Enemy Draw Pile Label
-        this.enemyDrawPileLabel = new PIXI.Text("Enemy Deck", {
+        this.enemyDrawPileLabel = new PIXI.Text("Enemies", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -48,7 +48,7 @@ export class Mattress {
         this.enemyDiscardPileLabel = new PIXI.Text("Captured", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -79,10 +79,10 @@ export class Mattress {
         mattressContainer.addChild(this.playerDrawPileZoneBG);
 
         // Player Draw Pile Label
-        this.playerDrawPileLabel = new PIXI.Text("Draw Deck", {
+        this.playerDrawPileLabel = new PIXI.Text("Draw Pile", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -109,7 +109,7 @@ export class Mattress {
         this.playerDiscardPileLabel = new PIXI.Text("Captured", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
