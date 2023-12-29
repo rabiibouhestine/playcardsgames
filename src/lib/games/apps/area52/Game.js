@@ -40,7 +40,7 @@ export class Game extends App {
         this.mattress = new Mattress(this.mattressContainer);
 
         // add error message
-        this.errorMessage = new Message(this.gameContainer, { x: 360, y: 270 }, 20);
+        this.errorMessage = new Message(this.gameContainer, { x: 360, y: 90 }, 20);
 
         // game over panel
         this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Score:");
@@ -105,7 +105,7 @@ export class Game extends App {
         this.aliensPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: this.aliensDeck,
-            position: {x: 130, y: 170},
+            position: {x: 130, y: 206},
             faceUp: false,
             counter: true,
             onPointerDown: this.onCardPointerDown.bind(this)
@@ -115,7 +115,7 @@ export class Game extends App {
         this.defendersPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: this.defendersDeck,
-            position: {x: 590, y: 170},
+            position: {x: 590, y: 206},
             faceUp: false,
             counter: true,
             onPointerDown: this.onCardPointerDown.bind(this)
@@ -125,7 +125,7 @@ export class Game extends App {
         this.discardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 450, y: 170},
+            position: {x: 450, y: 206},
             faceUp: false,
             counter: true
         });
@@ -134,7 +134,7 @@ export class Game extends App {
         this.alienStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackH',
             faceNames: [],
-            position: {x: 210, y: 170},
+            position: {x: 210, y: 206},
             faceUp: true,
             counter: false,
             centered:false,

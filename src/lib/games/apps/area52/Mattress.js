@@ -9,14 +9,14 @@ export class Mattress {
         // Aliens Zone
         this.aliensZone = new PIXI.Graphics();
         this.aliensZone.beginFill(0x000000, 0.25);
-        this.aliensZone.drawRoundedRect(70, 75, 300, 170, 8);
+        this.aliensZone.drawRoundedRect(70, 111, 300, 170, 8);
         this.aliensZone.endFill();
         mattressContainer.addChild(this.aliensZone);
 
         // Aliens Pile BG
         this.aliensPileBG = new PIXI.Graphics();
         this.aliensPileBG.beginFill(0x000000, 0.25);
-        this.aliensPileBG.drawRoundedRect(90, 115, 80, 110, 8);
+        this.aliensPileBG.drawRoundedRect(90, 151, 80, 110, 8);
         this.aliensPileBG.endFill();
         mattressContainer.addChild(this.aliensPileBG);
 
@@ -30,20 +30,20 @@ export class Mattress {
         });
         this.aliensLabel.anchor.set(0.5);
         this.aliensLabel.x = 220;
-        this.aliensLabel.y = 95;
+        this.aliensLabel.y = 131;
         mattressContainer.addChild(this.aliensLabel);
 
         // Discard Pile Zone
         this.discardPileZone = new PIXI.Graphics();
         this.discardPileZone.beginFill(0x000000, 0.25);
-        this.discardPileZone.drawRoundedRect(390, 75, 120, 170, 8);
+        this.discardPileZone.drawRoundedRect(390, 111, 120, 170, 8);
         this.discardPileZone.endFill();
         mattressContainer.addChild(this.discardPileZone);
 
         // Discard Pile BG
         this.discardPileBG = new PIXI.Graphics();
         this.discardPileBG.beginFill(0x000000, 0.25);
-        this.discardPileBG.drawRoundedRect(410, 115, 80, 110, 8);
+        this.discardPileBG.drawRoundedRect(410, 151, 80, 110, 8);
         this.discardPileBG.endFill();
         mattressContainer.addChild(this.discardPileBG);
 
@@ -57,20 +57,20 @@ export class Mattress {
         });
         this.discardPileLabel.anchor.set(0.5);
         this.discardPileLabel.x = 450;
-        this.discardPileLabel.y = 95;
+        this.discardPileLabel.y = 131;
         mattressContainer.addChild(this.discardPileLabel);
 
         // Defenders Pile Zone
         this.defendersPileZone = new PIXI.Graphics();
         this.defendersPileZone.beginFill(0x000000, 0.25);
-        this.defendersPileZone.drawRoundedRect(530, 75, 120, 170, 8);
+        this.defendersPileZone.drawRoundedRect(530, 111, 120, 170, 8);
         this.defendersPileZone.endFill();
         mattressContainer.addChild(this.defendersPileZone);
 
         // Defenders Pile BG
         this.defendersPileBG = new PIXI.Graphics();
         this.defendersPileBG.beginFill(0x000000, 0.25);
-        this.defendersPileBG.drawRoundedRect(550, 115, 80, 110, 8);
+        this.defendersPileBG.drawRoundedRect(550, 151, 80, 110, 8);
         this.defendersPileBG.endFill();
         mattressContainer.addChild(this.defendersPileBG);
 
@@ -84,7 +84,7 @@ export class Mattress {
         });
         this.defendersPileLabel.anchor.set(0.5);
         this.defendersPileLabel.x = 590;
-        this.defendersPileLabel.y = 95;
+        this.defendersPileLabel.y = 131;
         mattressContainer.addChild(this.defendersPileLabel);
 
         // Battle Zones
