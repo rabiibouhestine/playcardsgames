@@ -6,7 +6,7 @@ import cardsSpritesheetAtlas from '../../assets/json/spritesheet.json';
 import { App } from '../../utils/App';
 import { Cards } from '../../utils/Cards';
 import { Dealer } from '../../utils/Dealer';
-import { ProgressBar } from "../../utils/ProgressBar";
+import { Number } from "../../utils/Number";
 import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
 import { Header } from "../../utils/Header";
@@ -144,14 +144,10 @@ export class Game extends App {
         this.disableButtons();
 
         // add health value
-        this.healthValue = new ProgressBar(this.gameContainer, {
-            x: 0,
-            y: 530,
-            width: 720,
-            height: 20,
-            value: 20,
-            maxValue: 20
-        });
+        this.healthValue = new Number(this.gameContainer, {x:275, y: 670}, 20, {});
+
+        // add weapon value
+        this.weaponValue = new Number(this.gameContainer, {x:445, y: 670}, 0, {});
 
         // set selected card
         this.selectedCard = null;
