@@ -20,7 +20,7 @@ export class Mattress {
         });
         this.customerOffer.anchor.set(0.5);
         this.customerOffer.x = 288;
-        this.customerOffer.y = 90;
+        this.customerOffer.y = 85;
         mattressContainer.addChild(this.customerOffer);
 
         // Merchant Offer
@@ -34,7 +34,7 @@ export class Mattress {
         });
         this.merchantOffer.anchor.set(0.5);
         this.merchantOffer.x = 431;
-        this.merchantOffer.y = 90;
+        this.merchantOffer.y = 85;
         mattressContainer.addChild(this.merchantOffer);
 
         // Satisfied Customers Zone

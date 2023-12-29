@@ -13,6 +13,7 @@ import { Dealer } from '../../utils/Dealer';
 import { Number } from "../../utils/Number";
 import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
+import { Header } from "../../utils/Header";
 
 import { Mattress } from "./Mattress";
 
@@ -54,14 +55,9 @@ export class Game extends App {
         // add mattress
         this.mattress = new Mattress(this.mattressContainer, this.gameContainer);
 
-        // add restart button
-        this.restartButton = new Button(this.gameContainer, {
-            width: 120,
-            height: 50,
-            text: "Restart",
-            x: 630,
-            y: 39,
-            onPointerDown: this.handleRestart.bind(this)
+        // add header
+        this.header = new Header(this.gameContainer, {
+            onRestartClick: this.handleRestart.bind(this)
         });
 
         // add trade button
@@ -81,10 +77,10 @@ export class Game extends App {
         this.tradeButton.setEnabled(false);
 
         // add customer offer
-        this.customerOffer = new Number(this.gameContainer, { x: 288, y: 116 }, 0, { fontSize: 30 });
+        this.customerOffer = new Number(this.gameContainer, { x: 288, y: 114 }, 0, { fontSize: 30 });
 
         // add merchant offer
-        this.merchantOffer = new Number(this.gameContainer, { x: 431, y: 116 }, 0, { fontSize: 30 });
+        this.merchantOffer = new Number(this.gameContainer, { x: 431, y: 114 }, 0, { fontSize: 30 });
 
         // make items deck
         const itemsDeck = this.dealer.shuffleCards([
