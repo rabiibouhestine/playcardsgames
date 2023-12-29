@@ -14,6 +14,7 @@ export class Mattress {
             fontFamily: 'Impact',
             fontWeight: 'bold',
             fontSize: 20,
+            letterSpacing: 1,
             fill: 0xFFFFFF,
             align: 'center'
         });
@@ -27,6 +28,7 @@ export class Mattress {
             fontFamily: 'Impact',
             fontWeight: 'bold',
             fontSize: 20,
+            letterSpacing: 1,
             fill: 0xFFFFFF,
             align: 'center'
         });
