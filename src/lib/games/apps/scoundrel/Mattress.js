@@ -5,14 +5,14 @@ export class Mattress {
         // Dungeon Zone
         this.dungeonZone = new PIXI.Graphics();
         this.dungeonZone.beginFill(0x000000, 0.25);
-        this.dungeonZone.drawRoundedRect(10, 110, 120, 170, 8);
+        this.dungeonZone.drawRoundedRect(10, 220, 120, 170, 8);
         this.dungeonZone.endFill();
         mattressContainer.addChild(this.dungeonZone);
 
         // Dungeon Zone Background
         this.dungeonZoneBg = new PIXI.Graphics();
         this.dungeonZoneBg.beginFill(0x000000, 0.25);
-        this.dungeonZoneBg.drawRoundedRect(30, 150, 80, 110, 8);
+        this.dungeonZoneBg.drawRoundedRect(30, 260, 80, 110, 8);
         this.dungeonZoneBg.endFill();
         mattressContainer.addChild(this.dungeonZoneBg);
 
@@ -26,20 +26,20 @@ export class Mattress {
         });
         this.dungeonZoneLabel.anchor.set(0.5);
         this.dungeonZoneLabel.x = 70;
-        this.dungeonZoneLabel.y = 130;
+        this.dungeonZoneLabel.y = 240;
         mattressContainer.addChild(this.dungeonZoneLabel);
 
         // Discard Zone
         this.discardZone = new PIXI.Graphics();
         this.discardZone.beginFill(0x000000, 0.25);
-        this.discardZone.drawRoundedRect(590, 110, 120, 170, 8);
+        this.discardZone.drawRoundedRect(590, 220, 120, 170, 8);
         this.discardZone.endFill();
         mattressContainer.addChild(this.discardZone);
 
         // Discard Zone Background
         this.discardZoneBg = new PIXI.Graphics();
         this.discardZoneBg.beginFill(0x000000, 0.25);
-        this.discardZoneBg.drawRoundedRect(610, 150, 80, 110, 8);
+        this.discardZoneBg.drawRoundedRect(610, 260, 80, 110, 8);
         this.discardZoneBg.endFill();
         mattressContainer.addChild(this.discardZoneBg);
 
@@ -53,13 +53,13 @@ export class Mattress {
         });
         this.discardZoneLabel.anchor.set(0.5);
         this.discardZoneLabel.x = 650;
-        this.discardZoneLabel.y = 130;
+        this.discardZoneLabel.y = 240;
         mattressContainer.addChild(this.discardZoneLabel);
 
         // Room Zone
         this.roomZone = new PIXI.Graphics();
         this.roomZone.beginFill(0x000000, 0.25);
-        this.roomZone.drawRoundedRect(150, 90, 420, 260, 8);
+        this.roomZone.drawRoundedRect(150, 200, 420, 260, 8);
         this.roomZone.endFill();
         mattressContainer.addChild(this.roomZone);
 
@@ -73,13 +73,13 @@ export class Mattress {
         });
         this.roomZoneLabel.anchor.set(0.5);
         this.roomZoneLabel.x = 360;
-        this.roomZoneLabel.y = 110;
+        this.roomZoneLabel.y = 220;
         mattressContainer.addChild(this.roomZoneLabel);
 
         // Weapon Zone
         this.weaponZone = new PIXI.Graphics();
         this.weaponZone.beginFill(0x000000, 0.25);
-        this.weaponZone.drawRoundedRect(10, 440, 700, 150, 8);
+        this.weaponZone.drawRoundedRect(10, 550, 700, 150, 8);
         this.weaponZone.endFill();
         mattressContainer.addChild(this.weaponZone);
 
@@ -93,7 +93,7 @@ export class Mattress {
         });
         this.healthText.anchor.set(0.5);
         this.healthText.x = 275;
-        this.healthText.y = 635;
+        this.healthText.y = 105;
         mattressContainer.addChild(this.healthText);
 
         // Weapon Text
@@ -106,7 +106,7 @@ export class Mattress {
         });
         this.healthText.anchor.set(0.5);
         this.healthText.x = 445;
-        this.healthText.y = 635;
+        this.healthText.y = 105;
         mattressContainer.addChild(this.healthText);
     }
 }

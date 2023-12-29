@@ -55,7 +55,7 @@ export class Game extends App {
         this.dungeonPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: dungeonPileDeck,
-            position: {x: 70, y: 205},
+            position: {x: 70, y: 315},
             faceUp: false,
             counter: true,
             onPointerDown: this.handleCardClick.bind(this)
@@ -65,7 +65,7 @@ export class Game extends App {
         this.discardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 650, y: 205},
+            position: {x: 650, y: 315},
             faceUp: false,
             counter: true,
             zIndex: 52
@@ -76,7 +76,7 @@ export class Game extends App {
             name: 'room',
             type: 'tableau',
             gap: 20,
-            position: {x: 360, y: 205},
+            position: {x: 360, y: 315},
             faceUp: true,
             isInteractive: true
         });
@@ -86,7 +86,7 @@ export class Game extends App {
             name: 'weapon',
             type: 'stackH',
             gap: 50,
-            position: {x: 360, y: 515},
+            position: {x: 360, y: 625},
             faceUp: true
         });
 
@@ -96,7 +96,7 @@ export class Game extends App {
             height: 50,
             text: "Skip Room",
             x: 360,
-            y: 305,
+            y: 415,
             onPointerDown: this.handleSkipRoom.bind(this)
         });
 
@@ -106,7 +106,7 @@ export class Game extends App {
             height: 50,
             text: "Heal",
             x: 70,
-            y: 395,
+            y: 505,
             onPointerDown: this.handleHeal.bind(this)
         });
 
@@ -116,7 +116,7 @@ export class Game extends App {
             height: 50,
             text: "Pick",
             x: 650,
-            y: 395,
+            y: 505,
             onPointerDown: this.handlePick.bind(this)
         });
 
@@ -126,7 +126,7 @@ export class Game extends App {
             height: 50,
             text: "Attack with Weapon",
             x: 240,
-            y: 395,
+            y: 505,
             onPointerDown: this.handleWeapon.bind(this)
         });
 
@@ -136,7 +136,7 @@ export class Game extends App {
             height: 50,
             text: "Attack barehanded",
             x: 480,
-            y: 395,
+            y: 505,
             onPointerDown: this.handleHand.bind(this)
         });
 
@@ -144,10 +144,10 @@ export class Game extends App {
         this.disableButtons();
 
         // add health value
-        this.healthValue = new Number(this.gameContainer, {x:275, y: 690}, 20, {});
+        this.healthValue = new Number(this.gameContainer, {x:275, y: 160}, 20, {});
 
         // add weapon value
-        this.weaponValue = new Number(this.gameContainer, {x:445, y: 690}, 0, {});
+        this.weaponValue = new Number(this.gameContainer, {x:445, y: 160}, 0, {});
 
         // set selected card
         this.selectedCard = null;
