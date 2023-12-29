@@ -5,6 +5,9 @@ export class Header {
         onRestartClick = () => {}
     }) {
         this.gameContainer = gameContainer;
+        this.timerId = null;
+        this.isTimerRunning = false;
+        this.currentTime = 0;
 
         // Define graphic
         this.graphic = new PIXI.Graphics();
@@ -67,4 +70,29 @@ export class Header {
         this.gameContainer.addChild(this.container);
     }
 
+    getTime() {
+        return this.currentTime;
+    }
+
+    startTimer() {
+        if (!this.isTimerRunning) {
+          this.isTimerRunning = true;
+          this.timerId = setInterval(() => {
+            this.currentTime += 1000; // Add one second
+            this.timerText.text = new Date(this.currentTime).toISOString().substring(14, 19);
+          }, 1000);
+        }
+    }
+
+    stopTimer() {
+        if (this.isTimerRunning) {
+            clearInterval(this.timerId);
+            this.isTimerRunning = false;
+        }
+    }
+
+    resetTimer() {
+        this.stopTimer();
+        this.currentTime = 0;
+    }
 }

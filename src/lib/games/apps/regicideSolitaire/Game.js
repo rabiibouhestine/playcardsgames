@@ -43,7 +43,7 @@ export class Game extends App {
             onRestartClick: this.handleReset.bind(this)
         });
 
-        // GAME SETUP
+
 
         const pileDeck = this.dealer.shuffleCards([
             'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS',
