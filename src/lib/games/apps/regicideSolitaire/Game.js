@@ -43,7 +43,8 @@ export class Game extends App {
             onRestartClick: this.handleReset.bind(this)
         });
 
-
+        // track game start
+        this.gameStarted = false;
 
         const pileDeck = this.dealer.shuffleCards([
             'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS',
@@ -336,6 +337,10 @@ export class Game extends App {
     }
 
     handleCardClick(card) {
+        if (!this.gameStarted) {
+            this.gameStarted = true;
+            this.header.startTimer();
+        }
         if (card.location === 'hand') {
             if (this.selectionNames.includes(card.faceName)) {
                 card.sprite.y = card.position.y;
