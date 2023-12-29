@@ -66,32 +66,19 @@ export class Game extends App {
 
         // add trade button
         this.tradeButton = new Button(this.gameContainer, {
-            width: 300,
+            width: 150,
             height: 50,
             color: 0x0d47a1,
             alpha: 0.5,
-            text: "Happy to trade with you!",
+            text: "Trade",
             textSize: 20,
-            x: 513,
-            y: 671,
+            x: 360,
+            y: 680,
             onPointerDown: this.handleTrade.bind(this)
         });
 
         // disable trade button
         this.tradeButton.setEnabled(false);
-
-        // add failed button
-        this.failedButton = new Button(this.gameContainer, {
-            width: 300,
-            height: 50,
-            color: 0xbf360c,
-            alpha: 0.5,
-            text: "I can't trade with you..",
-            textSize: 20,
-            x: 201,
-            y: 671,
-            onPointerDown: this.handleFail.bind(this)
-        });
 
         // add customer offer
         this.customerOffer = new Number(this.gameContainer, { x: 285, y: 65 }, 0, { fontSize: 36 });
@@ -258,10 +245,6 @@ export class Game extends App {
                 this.mattress.clearHighlight(i);
             }
         }
-    }
-
-    handleFail() {
-        this.handleGameOver(this.customersDiscardPile.cards.length);
     }
 
     async handleTrade() {
