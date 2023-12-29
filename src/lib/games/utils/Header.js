@@ -19,6 +19,7 @@ export class Header {
             fontSize: 20,
             fill: 0xFFFFFF
         });
+        this.timerText.alpha = 0.8;
         this.timerText.anchor.set(0.5);
         this.timerText.x = 0;
         this.timerText.y = 0;
@@ -30,6 +31,7 @@ export class Header {
             fontSize: 20,
             fill: 0xFFFFFF
         });
+        this.highscoreText.alpha = 0.8;
         this.highscoreText.anchor.set(0, 0.5);
         this.highscoreText.x = -340;
         this.highscoreText.y = 0;
@@ -41,6 +43,7 @@ export class Header {
             fontSize: 20,
             fill: 0xFFFFFF
         });
+        this.restartText.alpha = 0.8;
         this.restartText.anchor.set(1, 0.5);
         this.restartText.x = 340;
         this.restartText.y = 0;
