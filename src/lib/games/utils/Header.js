@@ -9,31 +9,47 @@ export class Header {
         // Define graphic
         this.graphic = new PIXI.Graphics();
         this.graphic.beginFill(0x000000, 0.15);
-        this.graphic.drawRoundedRect(4, 20, 712, 50, 8);
+        this.graphic.drawRoundedRect(-356, -25, 712, 50, 8);
         this.graphic.endFill();
 
-        // Define label
-        // this.label = new PIXI.Text(text, {
-        //     fontFamily: 'Arial',
-        //     fontWeight: 'bold',
-        //     fontSize: textSize,
-        //     fill: textColor,
-        //     align: 'center'
-        // });
-        // this.label.anchor.set(0.5);
+        // Define highscore label
+        this.highscoreLabel = new PIXI.Text("- - - - - - - - -", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 20,
+            fill: 0xFFFFFF
+        });
+        this.highscoreLabel.anchor.set(0, 0.5);
+        this.highscoreLabel.x = -340;
+        this.highscoreLabel.y = 0;
+
+        // Define Restart label
+        this.restartLabel = new PIXI.Text("Restart Game", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 20,
+            fill: 0xFFFFFF
+        });
+        this.restartLabel.anchor.set(1, 0.5);
+        this.restartLabel.x = 340;
+        this.restartLabel.y = 0;
+        this.restartLabel.eventMode = 'static';
+        this.restartLabel.cursor = 'pointer';
+        this.restartLabel.on('pointerdown', onRestartClick);
+        this.restartLabel
+            .on('pointerover', () => {this.restartLabel.style.fill = 0x93c5fd})
+            .on('pointerout', () => {this.restartLabel.style.fill = 0xFFFFFF})
 
         // Define Container
-        // this.container = new PIXI.Container();
-        // this.container.eventMode = 'static';
-        // this.container.cursor = 'pointer';
-        // this.container.on('pointerdown', onPointerDown);
-        // this.container.x = x;
-        // this.container.y = y;
-        // this.container.addChild(this.graphic);
-        // this.container.addChild(this.label);
+        this.container = new PIXI.Container();
+        this.container.x = 360;
+        this.container.y = 45;
+        this.container.addChild(this.graphic);
+        this.container.addChild(this.restartLabel);
+        this.container.addChild(this.highscoreLabel);
 
         // add button to gameContainer
-        this.gameContainer.addChild(this.graphic);
+        this.gameContainer.addChild(this.container);
     }
 
 }
