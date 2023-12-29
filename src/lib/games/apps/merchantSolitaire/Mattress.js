@@ -10,29 +10,29 @@ export class Mattress {
         this.positions = zones.positions;
 
         // Customer Offer
-        this.customerOffer = new PIXI.Text("Customer Offer", {
-            fontFamily: 'Arial',
+        this.customerOffer = new PIXI.Text("CUSTOMER", {
+            fontFamily: 'Impact',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
         this.customerOffer.anchor.set(0.5);
-        this.customerOffer.x = 285;
-        this.customerOffer.y = 24;
+        this.customerOffer.x = 288;
+        this.customerOffer.y = 90;
         mattressContainer.addChild(this.customerOffer);
 
         // Merchant Offer
-        this.merchantOffer = new PIXI.Text("Merchant Offer", {
-            fontFamily: 'Arial',
+        this.merchantOffer = new PIXI.Text("MERCHANT", {
+            fontFamily: 'Impact',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
         this.merchantOffer.anchor.set(0.5);
-        this.merchantOffer.x = 435;
-        this.merchantOffer.y = 24;
+        this.merchantOffer.x = 431;
+        this.merchantOffer.y = 90;
         mattressContainer.addChild(this.merchantOffer);
 
         // Satisfied Customers Zone
