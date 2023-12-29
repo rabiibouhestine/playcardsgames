@@ -55,7 +55,7 @@ export class Game extends App {
         this.dungeonPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: dungeonPileDeck,
-            position: {x: 60, y: 171},
+            position: {x: 70, y: 205},
             faceUp: false,
             counter: true,
             onPointerDown: this.handleCardClick.bind(this)
@@ -65,7 +65,7 @@ export class Game extends App {
         this.discardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 660, y: 171},
+            position: {x: 650, y: 205},
             faceUp: false,
             counter: true,
             zIndex: 52

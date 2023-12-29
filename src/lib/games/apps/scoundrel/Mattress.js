@@ -5,14 +5,14 @@ export class Mattress {
         // Dungeon Zone
         this.dungeonZone = new PIXI.Graphics();
         this.dungeonZone.beginFill(0x000000, 0.25);
-        this.dungeonZone.drawRoundedRect(0, 76, 120, 170, 8);
+        this.dungeonZone.drawRoundedRect(10, 110, 120, 170, 8);
         this.dungeonZone.endFill();
         mattressContainer.addChild(this.dungeonZone);
 
         // Dungeon Zone Background
         this.dungeonZoneBg = new PIXI.Graphics();
         this.dungeonZoneBg.beginFill(0x000000, 0.25);
-        this.dungeonZoneBg.drawRoundedRect(20, 116, 80, 110, 8);
+        this.dungeonZoneBg.drawRoundedRect(30, 150, 80, 110, 8);
         this.dungeonZoneBg.endFill();
         mattressContainer.addChild(this.dungeonZoneBg);
 
@@ -25,21 +25,21 @@ export class Mattress {
             align: 'center'
         });
         this.dungeonZoneLabel.anchor.set(0.5);
-        this.dungeonZoneLabel.x = 60;
-        this.dungeonZoneLabel.y = 96;
+        this.dungeonZoneLabel.x = 70;
+        this.dungeonZoneLabel.y = 130;
         mattressContainer.addChild(this.dungeonZoneLabel);
 
         // Discard Zone
         this.discardZone = new PIXI.Graphics();
         this.discardZone.beginFill(0x000000, 0.25);
-        this.discardZone.drawRoundedRect(600, 76, 120, 170, 8);
+        this.discardZone.drawRoundedRect(590, 110, 120, 170, 8);
         this.discardZone.endFill();
         mattressContainer.addChild(this.discardZone);
 
         // Discard Zone Background
         this.discardZoneBg = new PIXI.Graphics();
         this.discardZoneBg.beginFill(0x000000, 0.25);
-        this.discardZoneBg.drawRoundedRect(620, 116, 80, 110, 8);
+        this.discardZoneBg.drawRoundedRect(610, 150, 80, 110, 8);
         this.discardZoneBg.endFill();
         mattressContainer.addChild(this.discardZoneBg);
 
@@ -52,8 +52,8 @@ export class Mattress {
             align: 'center'
         });
         this.discardZoneLabel.anchor.set(0.5);
-        this.discardZoneLabel.x = 660;
-        this.discardZoneLabel.y = 96;
+        this.discardZoneLabel.x = 650;
+        this.discardZoneLabel.y = 130;
         mattressContainer.addChild(this.discardZoneLabel);
 
         // Room Zone
