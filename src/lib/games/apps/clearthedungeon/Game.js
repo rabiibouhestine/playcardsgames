@@ -177,7 +177,7 @@ export class Game extends App {
             type: 'pile',
             name: 'reserve',
             faceNames: [],
-            position: {x: 653, y: 565},
+            position: {x: 620, y: 637},
             faceUp: true,
             isInteractive: true,
             isDraggable: true

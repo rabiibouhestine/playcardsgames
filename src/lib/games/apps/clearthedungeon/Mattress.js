@@ -162,14 +162,14 @@ export class Mattress {
         // Reserve Zone
         this.reserveZone = new PIXI.Graphics();
         this.reserveZone.beginFill(0x000000, 0.25);
-        this.reserveZone.drawRoundedRect(598, 495, 110, 160, 8);
+        this.reserveZone.drawRoundedRect(560, 542, 120, 170, 8);
         this.reserveZone.endFill();
         mattressContainer.addChild(this.reserveZone);
 
         // Reserve Zone Highlight
         this.reserveZoneHighlight = new PIXI.Graphics();
         this.reserveZoneHighlight.beginFill(this.highlightColor);
-        this.reserveZoneHighlight.drawRoundedRect(598, 495, 110, 160, 8);
+        this.reserveZoneHighlight.drawRoundedRect(560, 542, 120, 170, 8);
         this.reserveZoneHighlight.endFill();
         this.reserveZoneHighlight.alpha = 0;
         mattressContainer.addChild(this.reserveZoneHighlight);
@@ -177,7 +177,7 @@ export class Mattress {
         // Reserve Zone Background
         this.reserveZoneBg = new PIXI.Graphics();
         this.reserveZoneBg.beginFill(0x000000, 0.25);
-        this.reserveZoneBg.drawRoundedRect(613, 510, 80, 110, 6);
+        this.reserveZoneBg.drawRoundedRect(580, 582, 80, 110, 6);
         this.reserveZoneBg.endFill();
         mattressContainer.addChild(this.reserveZoneBg);
 
@@ -185,13 +185,13 @@ export class Mattress {
         this.reserveLabel = new PIXI.Text("Reserve", {
             fontFamily: 'Arial',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             fill: 0xFFFFFF,
             align: 'center'
         });
         this.reserveLabel.anchor.set(0.5);
-        this.reserveLabel.x = 653;
-        this.reserveLabel.y = 637;
+        this.reserveLabel.x = 620;
+        this.reserveLabel.y = 562;
         mattressContainer.addChild(this.reserveLabel);
     }
 
