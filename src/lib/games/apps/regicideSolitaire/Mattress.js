@@ -92,9 +92,9 @@ export class Mattress {
         gameContainer.addChild(castleZone);
 
         // Add royal attack label
-        const royalAttackLabel = new PIXI.Text("Attack", {
-            fontFamily: 'Arial',
-            fontWeight: '900',
+        const royalAttackLabel = new PIXI.Text("ATTACK", {
+            fontFamily: 'IMPACT',
+            letterSpacing: 1,
             fontSize: 32,
             fill: 0xFFFFFF,
             align: 'center'
@@ -105,9 +105,9 @@ export class Mattress {
         gameContainer.addChild(royalAttackLabel);
 
         // Add royal health label
-        const royalHealthLabel = new PIXI.Text("Health", {
-            fontFamily: 'Arial',
-            fontWeight: '900',
+        const royalHealthLabel = new PIXI.Text("HEALTH", {
+            fontFamily: 'IMPACT',
+            letterSpacing: 1,
             fontSize: 32,
             fill: 0xFFFFFF,
             align: 'center'

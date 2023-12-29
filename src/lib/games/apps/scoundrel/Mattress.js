@@ -84,9 +84,9 @@ export class Mattress {
         mattressContainer.addChild(this.weaponZone);
 
         // Health Text
-        this.healthText = new PIXI.Text("Health", {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
+        this.healthText = new PIXI.Text("HEALTH", {
+            fontFamily: 'IMPACT',
+            letterSpacing: 1,
             fontSize: 32,
             fill: 0xFFFFFF,
             align: 'center'
@@ -97,9 +97,9 @@ export class Mattress {
         mattressContainer.addChild(this.healthText);
 
         // Weapon Text
-        this.healthText = new PIXI.Text("Weapon", {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
+        this.healthText = new PIXI.Text("WEAPON", {
+            fontFamily: 'IMPACT',
+            letterSpacing: 1,
             fontSize: 32,
             fill: 0xFFFFFF,
             align: 'center'
