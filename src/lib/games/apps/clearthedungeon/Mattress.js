@@ -155,7 +155,7 @@ export class Mattress {
         // Hand Zone
         this.handZone = new PIXI.Graphics();
         this.handZone.beginFill(0x000000, 0.25);
-        this.handZone.drawRoundedRect(210, 495, 300, 140, 8);
+        this.handZone.drawRoundedRect(205, 562, 310, 150, 8);
         this.handZone.endFill();
         mattressContainer.addChild(this.handZone);
 

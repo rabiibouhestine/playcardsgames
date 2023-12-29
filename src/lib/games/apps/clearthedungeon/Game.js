@@ -166,7 +166,7 @@ export class Game extends App {
             name: 'hand',
             gap: 15,
             faceNames: [],
-            position: {x: 360, y: 565},
+            position: {x: 360, y: 637},
             faceUp: true,
             isInteractive: true,
             isDraggable: true
