@@ -111,7 +111,7 @@ export class Game extends App {
         this.attackDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 652, y: 355},
+            position: {x: 100, y: 414},
             faceUp: false,
             counter: true
         });

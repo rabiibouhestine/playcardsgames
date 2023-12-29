@@ -101,14 +101,14 @@ export class Mattress {
         // Attack Discard Zone
         this.attackDiscardZone = new PIXI.Graphics();
         this.attackDiscardZone.beginFill(0x000000, 0.25);
-        this.attackDiscardZone.drawRoundedRect(597, 285, 110, 160, 8);
+        this.attackDiscardZone.drawRoundedRect(40, 319, 120, 170, 8);
         this.attackDiscardZone.endFill();
         mattressContainer.addChild(this.attackDiscardZone);
 
         // Attack Discard Zone Background
         this.attackDiscardZoneBg = new PIXI.Graphics();
         this.attackDiscardZoneBg.beginFill(0x000000, 0.25);
-        this.attackDiscardZoneBg.drawRoundedRect(612, 300, 80, 110, 6);
+        this.attackDiscardZoneBg.drawRoundedRect(60, 359, 80, 110, 6);
         this.attackDiscardZoneBg.endFill();
         mattressContainer.addChild(this.attackDiscardZoneBg);
 
@@ -121,8 +121,8 @@ export class Mattress {
             align: 'center'
         });
         this.attackDiscardLabel.anchor.set(0.5);
-        this.attackDiscardLabel.x = 653;
-        this.attackDiscardLabel.y = 427;
+        this.attackDiscardLabel.x = 100;
+        this.attackDiscardLabel.y = 339;
         mattressContainer.addChild(this.attackDiscardLabel);
 
         // Draw Pile Zone
