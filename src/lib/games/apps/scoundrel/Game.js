@@ -141,7 +141,7 @@ export class Game extends App {
         });
 
         // hide buttons
-        this.hideButtons();
+        this.disableButtons();
 
         // add health value
         this.healthValue = new ProgressBar(this.gameContainer, {
@@ -184,7 +184,7 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
-        this.hideButtons();
+        this.disableButtons();
         this.skipRoomButton.setEnabled(false);
         await this.dealer.moveCards({
             nbCards: this.roomTableau.cards.length,
@@ -212,11 +212,11 @@ export class Game extends App {
             this.header.startTimer();
         }
         if (card.location === 'room') {
-            this.hideButtons();
+            this.disableButtons();
             if (this.selectedCard === null) {
                 card.sprite.y = card.position.y - 20;
                 this.selectedCard = card;
-                this.showButtons();
+                this.enableButtons();
             } else if (this.selectedCard.faceName === card.faceName) {
                 card.sprite.y = card.position.y;
                 this.selectedCard = null;
@@ -224,27 +224,28 @@ export class Game extends App {
                 this.selectedCard.sprite.y = this.selectedCard.position.y;
                 card.sprite.y = card.position.y - 20;
                 this.selectedCard = card;
-                this.showButtons();
+                this.enableButtons();
             }
         }
     }
 
-    hideButtons() {
-        this.healButton.container.visible = false;
-        this.pickButton.container.visible = false;
-        this.weaponButton.container.visible = false;
-        this.handButton.container.visible = false;
+    disableButtons() {
+        this.healButton.setEnabled(false);
+        this.pickButton.setEnabled(false);
+        this.weaponButton.setEnabled(false);
+        this.handButton.setEnabled(false);
     }
 
-    showButtons() {
+    enableButtons() {
         switch (this.selectedCard.params.suit) {
             case 'H':
-                this.healButton.container.visible = true;
+                this.healButton.setEnabled(true);
                 break;
             case 'D':
-                this.pickButton.container.visible = true;
+                this.pickButton.setEnabled(true);
                 break;
             default:
+                this.handButton.setEnabled(true);
                 const monsterValue = this.selectedCard.params.value;
                 const hasNewWeapon = this.weaponStack.cards.length === 1;
                 const usedWeapon = this.weaponStack.cards.length >= 2;
@@ -254,8 +255,6 @@ export class Game extends App {
                 } else {
                     this.weaponButton.setEnabled(false);
                 }
-                this.weaponButton.container.visible = true;
-                this.handButton.container.visible = true;
                 break;
         }
     }
@@ -264,7 +263,7 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
-        this.hideButtons();
+        this.disableButtons();
         if (!this.usedHeal) {
             this.healthValue.setValue(Math.min(20, this.healthValue.getValue() + this.selectedCard.params.value));
             this.usedHeal = true;
@@ -286,7 +285,7 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
-        this.hideButtons();
+        this.disableButtons();
         await this.dealer.moveCards({
             nbCards: this.weaponStack.cards.length,
             source: this.weaponStack,
@@ -312,7 +311,7 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
-        this.hideButtons();
+        this.disableButtons();
         if (this.weaponStack.getTopCard().params.value < this.selectedCard.params.value) {
             const damage = this.selectedCard.params.value - this.weaponStack.getTopCard().params.value;
             this.healthValue.setValue(Math.max(0, this.healthValue.getValue() - damage));
@@ -334,7 +333,7 @@ export class Game extends App {
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
-        this.hideButtons();
+        this.disableButtons();
         this.healthValue.setValue(Math.max(0, this.healthValue.getValue() - this.selectedCard.params.value));
         await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
@@ -392,7 +391,7 @@ export class Game extends App {
         this.mattressContainer.filters = [];
 
         this.gameOverPanel.setVisible(false);
-        this.hideButtons();
+        this.disableButtons();
         this.selectedCard = null;
         if (this.roomTableau.cards.length) {
             await this.dealer.moveCards({
