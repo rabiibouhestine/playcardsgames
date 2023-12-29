@@ -9,6 +9,7 @@ import { Dealer } from '../../utils/Dealer';
 import { Message } from '../../utils/Message';
 import { Button } from '../../utils/Button';
 import { GameOverPanel } from '../../utils/GameOverPanel';
+import { Header } from "../../utils/Header";
 
 import paramsAtlas from './values.json';
 import { Mattress } from './Mattress';
@@ -43,15 +44,9 @@ export class Game extends App {
         // game over panel
         this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Captured Targets:");
 
-        // add restart button
-        this.restartButton = new Button(this.gameContainer, {
-            width: 120,
-            height: 50,
-            text: "Restart",
-            textSize: 16,
-            x: 625,
-            y: 685,
-            onPointerDown: this.handleRestart.bind(this)
+        // add header
+        this.header = new Header(this.gameContainer, {
+            onRestartClick: this.handleRestart.bind(this)
         });
 
         // add player sacrifice button
@@ -264,6 +259,9 @@ export class Game extends App {
 
     onCardPointerDown(card) {
         this.errorMessage.clear();
+        if (!this.header.isTimerRunning) {
+            this.header.startTimer();
+        }
         if (card.location === 'player') {
             if (this.playerSelectedCards.includes(card.faceName)) {
                 card.sprite.y = card.position.y;
@@ -505,6 +503,10 @@ export class Game extends App {
     async handlePlayerDiscard() {
         this.gameContainer.eventMode = 'none';
 
+        if (!this.header.isTimerRunning) {
+            this.header.startTimer();
+        }
+
         if (this.playerSelectedCards.length) {
             await this.dealer.moveSelection({
                 selectionNames: this.playerSelectedCards,
@@ -557,6 +559,9 @@ export class Game extends App {
     
     async handleRestart() {
         this.gameContainer.eventMode = 'none';
+
+        // reset timer
+        this.header.resetTimer();
 
         // remove blur
         this.gameContainer.filters = [];
@@ -672,6 +677,9 @@ export class Game extends App {
     }
 
     handleGameOver(score) {
+        // stop timer
+        this.header.stopTimer();
+
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
         this.gameContainer.filters = [blurFilter];
