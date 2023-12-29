@@ -7,7 +7,6 @@ import { App } from '../../utils/App';
 import { Cards } from '../../utils/Cards';
 import { Dealer } from '../../utils/Dealer';
 import { Message } from "../../utils/Message";
-import { Number } from "../../utils/Number";
 import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
 
@@ -75,22 +74,13 @@ export class Game extends App {
             counter: true
         });
 
-        // add left monsters health counter
-        this.leftMonstersHealth = new Number(this.gameContainer, { x: 214, y: 30 }, 0, { fontSize: 20 });
-
-        // add center monsters health counter
-        this.centerMonstersHealth = new Number(this.gameContainer, { x: 360, y: 30 }, 0, { fontSize: 20 });
-        
-        // add right monsters health counter
-        this.rightMonstersHealth = new Number(this.gameContainer, { x: 506, y: 30 }, 0, { fontSize: 20 });
-
         // add left monsters stack
         this.leftMonsterStack = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'stackV',
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 214, y: 99},
+            position: {x: 250, y: 145},
             faceUp: false,
             counter: false
         });
@@ -101,7 +91,7 @@ export class Game extends App {
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 360, y: 99},
+            position: {x: 360, y: 145},
             faceUp: false,
             counter: false
         });
@@ -112,7 +102,7 @@ export class Game extends App {
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 506, y: 99},
+            position: {x: 470, y: 145},
             faceUp: false,
             counter: false
         });
@@ -132,7 +122,7 @@ export class Game extends App {
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 214, y: 323},
+            position: {x: 250, y: 384},
             faceUp: true,
             counter: false
         });
@@ -143,7 +133,7 @@ export class Game extends App {
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 360, y: 323},
+            position: {x: 360, y: 384},
             faceUp: true,
             counter: false
         });
@@ -154,7 +144,7 @@ export class Game extends App {
             gap: 26,
             centered: false,
             faceNames: [],
-            position: {x: 506, y: 323},
+            position: {x: 470, y: 384},
             faceUp: true,
             counter: false
         });
@@ -225,15 +215,6 @@ export class Game extends App {
             inSequence: false,
             immediate: true
         });
-
-        // set left monster health
-        this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
-
-        // set center monster health
-        this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
-
-        // set right monster health
-        this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
 
         // flip left monster stack top card
         this.leftMonsterStack.getTopCard().flip(true);
@@ -331,11 +312,6 @@ export class Game extends App {
                     if ( this.leftMonsterStack.cards.length) {
                         // flip top card
                         this.leftMonsterStack.getTopCard().flip(true, false, true);
-                        // set health
-                        this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
-                    } else {
-                        // set health
-                        this.leftMonstersHealth.setValue(0);
                     }
                 }
             } else {
@@ -386,11 +362,6 @@ export class Game extends App {
                     if (this.centerMonsterStack.cards.length) {
                         // flip top card
                         this.centerMonsterStack.getTopCard().flip(true, false, true);
-                        // set health
-                        this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
-                    } else {
-                        // set health
-                        this.centerMonstersHealth.setValue(0);
                     }
                 }
             } else {
@@ -441,11 +412,6 @@ export class Game extends App {
                     if (this.rightMonsterStack.cards.length) {
                         // flip top card
                         this.rightMonsterStack.getTopCard().flip(true, false, true);
-                        // set health
-                        this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
-                    } else {
-                        // set health
-                        this.rightMonstersHealth.setValue(0);
                     }
                 }
             } else {
@@ -551,10 +517,6 @@ export class Game extends App {
         // number of monsters killed
         this.nbMonstersKilled = 0;
 
-        this.rightMonstersHealth.setValue(0);
-        this.centerMonstersHealth.setValue(0);
-        this.leftMonstersHealth.setValue(0);
-
         this.dealer.moveCards({
             nbCards: this.rightMonsterStack.cards.length,
             source: this.rightMonsterStack ,
@@ -658,10 +620,6 @@ export class Game extends App {
         });
 
         await this.dealer.delay(1000);
-
-        this.leftMonstersHealth.setValue(this.leftMonsterStack.getTopCard().params.value);
-        this.centerMonstersHealth.setValue(this.centerMonsterStack.getTopCard().params.value);
-        this.rightMonstersHealth.setValue(this.rightMonsterStack.getTopCard().params.value);
 
         this.leftMonsterStack.getTopCard().flip(true);
         this.centerMonsterStack.getTopCard().flip(true);

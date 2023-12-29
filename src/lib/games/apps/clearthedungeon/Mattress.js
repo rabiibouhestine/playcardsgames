@@ -8,35 +8,35 @@ export class Mattress {
         // Left Monsters Zone
         this.leftMonstersZone = new PIXI.Graphics();
         this.leftMonstersZone.beginFill(0x000000, 0.25);
-        this.leftMonstersZone.drawRoundedRect(159, 15, 110, 233, 8);
+        this.leftMonstersZone.drawRoundedRect(200, 80, 100, 229, 8);
         this.leftMonstersZone.endFill();
         mattressContainer.addChild(this.leftMonstersZone);
 
         // Center Monsters Zone
         this.centerMonstersZone = new PIXI.Graphics();
         this.centerMonstersZone.beginFill(0x000000, 0.25);
-        this.centerMonstersZone.drawRoundedRect(305, 15, 110, 233, 8);
+        this.centerMonstersZone.drawRoundedRect(310, 80, 100, 229, 8);
         this.centerMonstersZone.endFill();
         mattressContainer.addChild(this.centerMonstersZone);
 
         // Right Monsters Zone
         this.rightMonstersZone = new PIXI.Graphics();
         this.rightMonstersZone.beginFill(0x000000, 0.25);
-        this.rightMonstersZone.drawRoundedRect(451, 15, 110, 233, 8);
+        this.rightMonstersZone.drawRoundedRect(420, 81, 100, 229, 8);
         this.rightMonstersZone.endFill();
         mattressContainer.addChild(this.rightMonstersZone);
 
         // Left Attack Zone
         this.leftAttackZone = new PIXI.Graphics();
         this.leftAttackZone.beginFill(0x000000, 0.25);
-        this.leftAttackZone.drawRoundedRect(159, 252, 110, 194, 8);
+        this.leftAttackZone.drawRoundedRect(200, 319, 100, 196, 8);
         this.leftAttackZone.endFill();
         mattressContainer.addChild(this.leftAttackZone);
 
         // Left Attack Zone Highlight
         this.leftAttackZoneHighlight = new PIXI.Graphics();
         this.leftAttackZoneHighlight.beginFill(this.highlightColor);
-        this.leftAttackZoneHighlight.drawRoundedRect(159, 252, 110, 194, 8);
+        this.leftAttackZoneHighlight.drawRoundedRect(200, 319, 100, 196, 8);
         this.leftAttackZoneHighlight.endFill();
         this.leftAttackZoneHighlight.alpha = 0;
         mattressContainer.addChild(this.leftAttackZoneHighlight);
@@ -44,14 +44,14 @@ export class Mattress {
         // Center Attack Zone
         this.centerAttackZone = new PIXI.Graphics();
         this.centerAttackZone.beginFill(0x000000, 0.25);
-        this.centerAttackZone.drawRoundedRect(305, 252, 110, 194, 8);
+        this.centerAttackZone.drawRoundedRect(310, 319, 100, 196, 8);
         this.centerAttackZone.endFill();
         mattressContainer.addChild(this.centerAttackZone);
 
         // Center Attack Zone Highlight
         this.centerAttackZoneHighlight = new PIXI.Graphics();
         this.centerAttackZoneHighlight.beginFill(this.highlightColor);
-        this.centerAttackZoneHighlight.drawRoundedRect(305, 252, 110, 194, 8);
+        this.centerAttackZoneHighlight.drawRoundedRect(310, 319, 100, 196, 8);
         this.centerAttackZoneHighlight.endFill();
         this.centerAttackZoneHighlight.alpha = 0;
         mattressContainer.addChild(this.centerAttackZoneHighlight);
@@ -59,14 +59,14 @@ export class Mattress {
         // Right Attack Zone
         this.rightAttackZone = new PIXI.Graphics();
         this.rightAttackZone.beginFill(0x000000, 0.25);
-        this.rightAttackZone.drawRoundedRect(451, 252, 110, 194, 8);
+        this.rightAttackZone.drawRoundedRect(420, 319, 100, 196, 8);
         this.rightAttackZone.endFill();
         mattressContainer.addChild(this.rightAttackZone);
 
         // Right Attack Zone Highlight
         this.rightAttackZoneHighlight = new PIXI.Graphics();
         this.rightAttackZoneHighlight.beginFill(this.highlightColor);
-        this.rightAttackZoneHighlight.drawRoundedRect(451, 252, 110, 194, 8);
+        this.rightAttackZoneHighlight.drawRoundedRect(420, 319, 100, 196, 8);
         this.rightAttackZoneHighlight.endFill();
         this.rightAttackZoneHighlight.alpha = 0;
         mattressContainer.addChild(this.rightAttackZoneHighlight);
