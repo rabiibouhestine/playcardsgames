@@ -7,7 +7,6 @@ import { App } from '../../utils/App';
 import { Cards } from '../../utils/Cards';
 import { Dealer } from '../../utils/Dealer';
 import { Message } from "../../utils/Message";
-import { Button } from "../../utils/Button";
 import { GameOverPanel } from "../../utils/GameOverPanel";
 import { Header } from "../../utils/Header";
 
@@ -36,7 +35,7 @@ export class Game extends App {
         this.mattress = new Mattress(this.mattressContainer);
 
         // add message
-        this.message = new Message(this.gameContainer, {x: 360, y: 471});
+        this.message = new Message(this.gameContainer, {x: 360, y: 535});
 
         // add header
         this.header = new Header(this.gameContainer, {
@@ -241,6 +240,9 @@ export class Game extends App {
     }
 
     onCardPointerDown(card) {
+        if (!this.header.isTimerRunning) {
+            this.header.startTimer();
+        }
         this.mattress.setHighlighted(true);
         this.message.clear();
     }
@@ -262,7 +264,7 @@ export class Game extends App {
         card.onPointerOut();
 
         if (!isMouseOverLeftAttackZone && !isMouseOverCenterAttackZone && !isMouseOverRightAttackZone && !isMouseOverReserveZone) {
-            this.message.setValue('place the card in one of the highlighted zones');
+            this.message.setValue('place the card in a highlighted zone');
         }
 
         if (isMouseOverLeftAttackZone) {
@@ -500,6 +502,9 @@ export class Game extends App {
     }
 
     async handleRestart() {
+        // reset timer
+        this.header.resetTimer();
+
         // hide game over panel
         this.gameOverPanel.setVisible(false);
 
@@ -634,6 +639,9 @@ export class Game extends App {
     }
 
     handleGameOver() {
+        // stop timer
+        this.header.stopTimer();
+
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
         this.gameContainer.filters = [blurFilter];
