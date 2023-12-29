@@ -81,10 +81,10 @@ export class Game extends App {
         this.tradeButton.setEnabled(false);
 
         // add customer offer
-        this.customerOffer = new Number(this.gameContainer, { x: 285, y: 65 }, 0, { fontSize: 36 });
+        this.customerOffer = new Number(this.gameContainer, { x: 288, y: 116 }, 0, { fontSize: 30 });
 
         // add merchant offer
-        this.merchantOffer = new Number(this.gameContainer, { x: 435, y: 65 }, 0, { fontSize: 36 });
+        this.merchantOffer = new Number(this.gameContainer, { x: 431, y: 116 }, 0, { fontSize: 30 });
 
         // make items deck
         const itemsDeck = this.dealer.shuffleCards([
