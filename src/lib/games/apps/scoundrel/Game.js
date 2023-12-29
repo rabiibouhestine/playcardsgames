@@ -86,7 +86,7 @@ export class Game extends App {
             name: 'weapon',
             type: 'stackH',
             gap: 50,
-            position: {x: 360, y: 442},
+            position: {x: 360, y: 515},
             faceUp: true
         });
 

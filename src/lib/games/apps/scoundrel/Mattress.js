@@ -82,5 +82,31 @@ export class Mattress {
         this.weaponZone.drawRoundedRect(10, 440, 700, 150, 8);
         this.weaponZone.endFill();
         mattressContainer.addChild(this.weaponZone);
+
+        // Health Text
+        this.healthText = new PIXI.Text("Health", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 32,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        this.healthText.anchor.set(0.5);
+        this.healthText.x = 275;
+        this.healthText.y = 615;
+        mattressContainer.addChild(this.healthText);
+
+        // Weapon Text
+        this.healthText = new PIXI.Text("Weapon", {
+            fontFamily: 'Arial',
+            fontWeight: 'bold',
+            fontSize: 32,
+            fill: 0xFFFFFF,
+            align: 'center'
+        });
+        this.healthText.anchor.set(0.5);
+        this.healthText.x = 445;
+        this.healthText.y = 615;
+        mattressContainer.addChild(this.healthText);
     }
 }
