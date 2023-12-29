@@ -38,7 +38,7 @@ export class Game extends App {
         this.mattress = new Mattress(this.mattressContainer);
 
         // add error message
-        this.errorMessage = new Message(this.gameContainer, { x: 360, y: 271 }, 20);
+        this.errorMessage = new Message(this.gameContainer, { x: 360, y: 127 }, 20);
 
         // game over panel
         this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Captured Targets:");
@@ -54,58 +54,47 @@ export class Game extends App {
             onPointerDown: this.handleRestart.bind(this)
         });
 
-        // add surrender button
-        this.surrenderButton = new Button(this.gameContainer, {
-            width: 120,
-            height: 50,
-            text: "Surrender",
-            textSize: 16,
-            x: 480,
-            y: 685,
-            onPointerDown: this.handleSurrender.bind(this)
-        });
-
         // add player sacrifice button
         this.playerSacrificeButton = new Button(this.gameContainer, {
-            width: 150,
+            width: 180,
             height: 50,
             text: "Sacrifice Cards",
-            textSize: 16,
-            x: 190,
-            y: 575,
+            textSize: 20,
+            x: 160,
+            y: 600,
             onPointerDown: this.handlePlayerSacrifice.bind(this)
         });
 
         // add enemy capture button
         this.enemyCaptureButton = new Button(this.gameContainer, {
-            width: 150,
+            width: 180,
             height: 50,
             text: "Get Captured",
-            textSize: 16,
+            textSize: 20,
             x: 360,
-            y: 575,
+            y: 600,
             onPointerDown: this.handleEnemyCapture.bind(this)
         });
 
         // add player capture button
         this.playerCaptureButton = new Button(this.gameContainer, {
-            width: 150,
+            width: 180,
             height: 50,
             text: "Capture Card",
-            textSize: 16,
-            x: 530,
-            y: 575,
+            textSize: 20,
+            x: 560,
+            y: 600,
             onPointerDown: this.handlePlayerCapture.bind(this)
         });
 
         // add player discard button
         this.playerDiscardButton = new Button(this.gameContainer, {
-            width: 160,
+            width: 200,
             height: 50,
             text: "Discard / Proceed",
-            textSize: 16,
+            textSize: 20,
             x: 360,
-            y: 575,
+            y: 600,
             onPointerDown: this.handlePlayerDiscard.bind(this)
         });
 
@@ -153,7 +142,7 @@ export class Game extends App {
         this.enemyDrawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: this.enemyDeck,
-            position: {x: 60, y: 157},
+            position: {x: 70, y: 275},
             faceUp: false,
             counter: true,
             onPointerDown: this.onCardPointerDown.bind(this)
@@ -163,7 +152,7 @@ export class Game extends App {
         this.enemyDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 660, y: 157},
+            position: {x: 650, y: 275},
             faceUp: false,
             counter: true
         });
@@ -173,7 +162,7 @@ export class Game extends App {
             type: 'tableau',
             name: 'enemy',
             faceNames: [],
-            position: {x: 360, y: 157},
+            position: {x: 360, y: 275},
             faceUp: true,
             gap: 20,
             isInteractive: true
@@ -183,7 +172,7 @@ export class Game extends App {
         this.playerDrawPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: this.playerDeck,
-            position: {x: 60, y: 404},
+            position: {x: 70, y: 469},
             faceUp: false,
             counter: true,
             onPointerDown: this.onCardPointerDown.bind(this)
@@ -193,7 +182,7 @@ export class Game extends App {
         this.playerDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 660, y: 404},
+            position: {x: 650, y: 469},
             faceUp: false,
             counter: true
         });
@@ -203,7 +192,7 @@ export class Game extends App {
             type: 'tableau',
             name: 'player',
             faceNames: [],
-            position: {x: 360, y: 404},
+            position: {x: 360, y: 469},
             faceUp: true,
             gap: 20,
             isInteractive: true
@@ -680,10 +669,6 @@ export class Game extends App {
         });
 
         this.gameContainer.eventMode = 'static';
-    }
-
-    handleSurrender() {
-        this.handleGameOver(this.capturedTargets);
     }
 
     handleGameOver(score) {
