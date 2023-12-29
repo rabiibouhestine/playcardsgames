@@ -118,7 +118,7 @@ export class Game extends App {
         this.itemsPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: itemsDeck,
-            position: {x: 431, y: 195},
+            position: {x: 431, y: 230},
             faceUp: false,
             counter: false,
             onPointerDown: this.onCardPointerDown.bind(this)
@@ -128,7 +128,7 @@ export class Game extends App {
         this.customersPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: customersDeck,
-            position: {x: 288, y: 195},
+            position: {x: 288, y: 230},
             faceUp: false,
             counter: false
         });
@@ -137,7 +137,7 @@ export class Game extends App {
         this.itemsDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 630, y: 195},
+            position: {x: 619, y: 230},
             faceUp: true,
             counter: false
         });
@@ -146,7 +146,7 @@ export class Game extends App {
         this.customersDiscardPile = new Cards(this.gameContainer, this.spritesheet, paramsAtlas, {
             type: 'pile',
             faceNames: [],
-            position: {x: 90, y: 195},
+            position: {x: 100, y: 230},
             faceUp: false,
             counter: true
         });
