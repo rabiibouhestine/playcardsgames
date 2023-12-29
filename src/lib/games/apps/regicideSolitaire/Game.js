@@ -43,9 +43,6 @@ export class Game extends App {
             onRestartClick: this.handleReset.bind(this)
         });
 
-        // track game start
-        this.gameStarted = false;
-
         const pileDeck = this.dealer.shuffleCards([
             'AS', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 'TS',
             'AC', '2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', 'TC',
@@ -182,9 +179,6 @@ export class Game extends App {
     async handleReset() {
         // reset timer
         this.header.resetTimer();
-
-        // update game start
-        this.gameStarted = false;
 
         // hide game over panel
         this.gameOverPanel.setVisible(false);
@@ -343,8 +337,7 @@ export class Game extends App {
     }
 
     handleCardClick(card) {
-        if (!this.gameStarted) {
-            this.gameStarted = true;
+        if (!this.header.isTimerRunning) {
             this.header.startTimer();
         }
         if (card.location === 'hand') {
