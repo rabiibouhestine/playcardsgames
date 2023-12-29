@@ -15,7 +15,7 @@ export class Number {
     }) {
         this.value = value;
 
-        this.valueText = new PIXI.Text(value, {
+        this.valueText = new PIXI.Text(this.formatValue(value), {
             fontFamily: fontFamily,
             fontWeight: fontWeight,
             fontSize: fontSize,
@@ -51,7 +51,7 @@ export class Number {
     async setValue(value, immediate = false, sfx = false) {
         this.value = value;
         if (immediate) {
-            this.valueText.text = value;
+            this.valueText.text = this.formatValue(value);
             if (sfx) {
                 this.sfxChangeHowl.play();
             }
@@ -62,7 +62,7 @@ export class Number {
             const nbIncrements = Math.abs(this.valueText.text - value);
             const direction = this.valueText.text < value ? 1 : -1;
             for (let i=1; i <= nbIncrements; i++) {
-                this.valueText.text = parseInt(this.valueText.text) + direction;
+                this.valueText.text = this.formatValue(parseInt(this.valueText.text) + direction);
                 if (sfx) {
                     this.sfxChangeHowl.play();
                 }
@@ -72,6 +72,13 @@ export class Number {
                 resolve();
             });
         }
+    }
+
+    formatValue(value) {
+        return value.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+        })
     }
 
 }
