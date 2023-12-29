@@ -382,6 +382,7 @@ export class Game extends App {
 
         // disable interactions
         this.gameContainer.eventMode = 'none';
+
         // remove blur
         this.gameContainer.filters = [];
         this.mattressContainer.filters = [];
@@ -429,6 +430,10 @@ export class Game extends App {
             positionDestination: 'bottom',
             inSequence: true
         });
+
+        // enable skip room button
+        this.skipRoomButton.setEnabled(true);
+
         // enable interactions
         this.gameContainer.eventMode = 'static';
     }
