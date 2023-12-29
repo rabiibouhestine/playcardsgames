@@ -9,6 +9,7 @@ import { Dealer } from '../../utils/Dealer';
 import { Message } from '../../utils/Message';
 import { Button } from '../../utils/Button';
 import { GameOverPanel } from '../../utils/GameOverPanel';
+import { Header } from "../../utils/Header";
 
 import paramsAtlas from './values.json';
 import battleCardsAtlas from './defenders.json';
@@ -44,14 +45,9 @@ export class Game extends App {
         // game over panel
         this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Score:");
 
-        // add restart button
-        this.restartButton = new Button(this.gameContainer, {
-            width: 120,
-            height: 50,
-            text: "Restart",
-            x: 590,
-            y: 39,
-            onPointerDown: this.handleRestart.bind(this)
+        // add header
+        this.header = new Header(this.gameContainer, {
+            onRestartClick: this.handleRestart.bind(this)
         });
 
         // add sacrifice button
