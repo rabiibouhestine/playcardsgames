@@ -168,6 +168,9 @@ export class Game extends App {
     }
 
     onCardPointerDown(card) {
+        if (!this.header.isTimerRunning) {
+            this.header.startTimer();
+        }
         if (card.params.value !== 11) {
             if (this.selectedItems.includes(card.faceName)) {
                 this.selectedItems = this.selectedItems.filter(name => name !== card.faceName);
@@ -310,6 +313,9 @@ export class Game extends App {
     }
 
     async handleRestart() {
+        // reset timer
+        this.header.resetTimer();
+
         // disable interactions
         this.gameContainer.eventMode = 'none';
 
@@ -389,6 +395,9 @@ export class Game extends App {
     }
 
     handleGameOver(score) {
+        // stop timer
+        this.header.stopTimer();
+
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
         this.gameContainer.filters = [blurFilter];
