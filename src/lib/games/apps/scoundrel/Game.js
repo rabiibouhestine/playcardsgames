@@ -92,11 +92,11 @@ export class Game extends App {
 
         // add skip room button
         this.skipRoomButton = new Button(this.gameContainer, {
-            width: 120,
+            width: 380,
             height: 50,
             text: "Skip Room",
-            x: 60,
-            y: 304,
+            x: 360,
+            y: 305,
             onPointerDown: this.handleSkipRoom.bind(this)
         });
 
