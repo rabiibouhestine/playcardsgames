@@ -94,5 +94,6 @@ export class Header {
     resetTimer() {
         this.stopTimer();
         this.currentTime = 0;
+        this.timerText.text = new Date(this.currentTime).toISOString().substring(14, 19);
     }
 }
