@@ -54,8 +54,8 @@ export class Header {
         this.restartText.cursor = 'pointer';
         this.restartText.on('pointerdown', onRestartClick);
         this.restartText
-            .on('pointerover', () => {this.restartText.style.fill = 0x93c5fd})
-            .on('pointerout', () => {this.restartText.style.fill = 0xFFFFFF})
+            .on('pointerover', () => {this.restartText.alpha = 1})
+            .on('pointerout', () => {this.restartText.alpha = 0.8})
 
         // Define Container
         this.container = new PIXI.Container();
