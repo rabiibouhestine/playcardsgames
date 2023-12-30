@@ -182,6 +182,9 @@ export class Game extends App {
         // hide game over panel
         this.gameOverPanel.setVisible(false);
 
+        // clear message
+        this.Message.clear();
+
         // remove blur
         this.gameContainer.filters = [];
         this.mattressContainer.filters = [];
