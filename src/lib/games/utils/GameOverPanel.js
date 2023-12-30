@@ -72,8 +72,11 @@ export class GameOverPanel {
         modalContainer.addChild(this.panelContainer);
     }
 
-    setVisible(isVisible, score = 0) {
+    setScore(score) {
         this.scoreValueText.text = score;
+    }
+
+    setVisible(isVisible) {
         this.panelContainer.eventMode = isVisible ? 'static' : 'none';
         this.tweenOpacity(isVisible ? 1 : 0);
     }
