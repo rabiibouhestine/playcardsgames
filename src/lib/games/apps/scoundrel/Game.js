@@ -157,7 +157,7 @@ export class Game extends App {
 
         // game over panel
         this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Score:");
-
+        this.gameOverPanel.setVisible(true, 0);
         // draw first room
         await this.dealer.moveCards({
             nbCards: 4,

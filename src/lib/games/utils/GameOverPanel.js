@@ -3,12 +3,12 @@ import * as TWEEN from '@tweenjs/tween.js';
 import { Button } from "../utils/Button";
 
 export class GameOverPanel {
-    constructor(modalContainer, onPointerDown, scoreText) {
+    constructor(modalContainer, onPointerDown) {
 
         // Add Panel
         this.panelGraphic = new PIXI.Graphics();
         this.panelGraphic.beginFill(0x1e88e5);
-        this.panelGraphic.drawRoundedRect(-150, -140, 300, 280, 10);
+        this.panelGraphic.drawRoundedRect(-300, -250, 600, 500, 10);
         this.panelGraphic.endFill();
 
         // Add 'Game Over' text
@@ -20,10 +20,10 @@ export class GameOverPanel {
             align: 'center'
         });
         this.gameOverText.anchor.set(0.5);
-        this.gameOverText.y = -100;
+        this.gameOverText.y = -150;
 
         // Add score label text
-        this.scoreLabelText = new PIXI.Text(scoreText, {
+        this.scoreLabelText = new PIXI.Text('score', {
             fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 24,
@@ -64,7 +64,7 @@ export class GameOverPanel {
             textSize: 24,
             textColor: 0xFFFFFF,
             x: 0,
-            y: 80,
+            y: 150,
             onPointerDown: onPointerDown
         });
 
