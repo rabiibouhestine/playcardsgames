@@ -656,9 +656,7 @@ export class Game extends App {
             return accumulator + paramsAtlas[card.faceName].value;
         }, 0);
         if (!this.hand.cards.length || (this.phase === 'discard' && handValue < this.royalAttack.value)) {
-            if (!this.jokerLeftAlive && !this.jokerRightAlive) {
-                this.handleGameOver();
-            } else {
+            if (this.jokerLeftAlive || this.jokerRightAlive) {
                 // reset selection
                 this.selectionNames = [];
                 this.phase = 'attack';
