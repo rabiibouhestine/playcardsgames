@@ -245,7 +245,7 @@ export class Game extends App {
                 const monsterValue = this.selectedCard.params.value;
                 const hasNewWeapon = this.weaponStack.cards.length === 1;
                 const usedWeapon = this.weaponStack.cards.length >= 2;
-                const canUseWeapon = usedWeapon && this.weaponStack.getTopCard().params.value >= monsterValue;
+                const canUseWeapon = usedWeapon && this.weaponStack.getTopCard().params.value > monsterValue;
                 if (hasNewWeapon || canUseWeapon) {
                     this.weaponButton.setEnabled(true);
                 } else {
