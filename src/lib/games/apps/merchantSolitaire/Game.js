@@ -392,9 +392,12 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
-    handleGameOver(score) {
+    handleGameOver() {
         // stop timer
         this.header.stopTimer();
+
+        // get time
+        const timeformatted = new Date(this.header.getTime()).toISOString().substring(14, 19);
 
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
@@ -405,6 +408,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true, score);
+        this.gameOverPanel.setScore('Satisfied' + this.customersDiscardPile.cards.length + 'customers in ' + timeformatted);
+        this.gameOverPanel.setVisible(true);
     }
 }

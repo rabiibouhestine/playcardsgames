@@ -185,6 +185,9 @@ export class Game extends App {
 
     onCardPointerDown(card) {
         this.errorMessage.clear();
+        if (!this.header.isTimerRunning) {
+            this.header.startTimer();
+        }
         if (this.selectedCards.includes(card.faceName)) {
             this.selectedCards = this.selectedCards.filter(name => name !== card.faceName);
             this.mattress.clearHighlight(card.location);
@@ -371,7 +374,7 @@ export class Game extends App {
                 });
                 await this.drawAliens();
             } else {
-                this.handleGameOver(this.defendersPile.cards.length);
+                this.handleGameOver();
             }
         }
         return new Promise((resolve) => {
@@ -382,6 +385,9 @@ export class Game extends App {
     async handleRestart() {
         // disable interactions
         this.gameContainer.eventMode = 'none';
+
+        // reset timer
+        this.header.resetTimer();
 
         // clear highlights
         for (let i = 0; i < 6; i++) {
@@ -475,7 +481,13 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
-    handleGameOver(score) {
+    handleGameOver() {
+        // stop timer
+        this.header.stopTimer();
+
+        // get time
+        const timeformatted = new Date(this.header.getTime()).toISOString().substring(14, 19);
+
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
         this.gameContainer.filters = [blurFilter];
@@ -485,6 +497,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true, score);
+        this.gameOverPanel.setScore(this.defendersPile.cards.length + ' in ' + timeformatted);
+        this.gameOverPanel.setVisible(true);
     }
 }

@@ -490,7 +490,7 @@ export class Game extends App {
         });
 
         if (this.capturedTargets === this.targets.length) {
-            this.handleGameOver(this.capturedTargets);
+            this.handleGameOver();
         }
 
         if (!this.playerTableau.cards.length) {
@@ -676,9 +676,12 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
     }
 
-    handleGameOver(score) {
+    handleGameOver() {
         // stop timer
         this.header.stopTimer();
+
+        // get time
+        const timeformatted = new Date(this.header.getTime()).toISOString().substring(14, 19);
 
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
@@ -689,6 +692,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true, score);
+        this.gameOverPanel.setScore('Captured all enemies in ' + timeformatted);
+        this.gameOverPanel.setVisible(true);
     }
 }
