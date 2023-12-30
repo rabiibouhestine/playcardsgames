@@ -290,7 +290,7 @@ export class Game extends App {
             positionDestination: 'top',
             inSequence: true
         });
-        this.weaponValue.setValue(paramsAtlas[this.selectedCard.faceName].value);
+        this.weaponValue.setValue(this.selectedCard.params.value);
         await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
@@ -313,6 +313,7 @@ export class Game extends App {
             const damage = this.selectedCard.params.value - this.weaponStack.getTopCard().params.value;
             this.healthValue.setValue(Math.max(0, this.healthValue.getValue() - damage));
         }
+        this.weaponValue.setValue(this.selectedCard.params.value);
         await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
