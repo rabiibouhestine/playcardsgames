@@ -290,6 +290,7 @@ export class Game extends App {
             positionDestination: 'top',
             inSequence: true
         });
+        this.weaponValue.setValue(paramsAtlas[this.selectedCard.faceName].value);
         await this.dealer.moveSelection({
             selectionNames: this.selectedCard.faceName,
             source: this.roomTableau,
