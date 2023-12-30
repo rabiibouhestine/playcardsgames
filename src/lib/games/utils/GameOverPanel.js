@@ -8,7 +8,7 @@ export class GameOverPanel {
         // Add Panel
         this.panelGraphic = new PIXI.Graphics();
         this.panelGraphic.beginFill(0x1e88e5);
-        this.panelGraphic.drawRoundedRect(-300, -250, 600, 500, 10);
+        this.panelGraphic.drawRoundedRect(-300, -200, 600, 400, 10);
         this.panelGraphic.endFill();
 
         // Add 'Game Over' text
@@ -20,18 +20,7 @@ export class GameOverPanel {
             align: 'center'
         });
         this.gameOverText.anchor.set(0.5);
-        this.gameOverText.y = -150;
-
-        // Add score label text
-        this.scoreLabelText = new PIXI.Text('score', {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
-            fontSize: 24,
-            fill: 0xFFFFFF,
-            align: 'center'
-        });
-        this.scoreLabelText.anchor.set(0.5);
-        this.scoreLabelText.y = -20;
+        this.gameOverText.y = -100;
 
         // Add score value text
         this.scoreValueText = new PIXI.Text("", {
@@ -42,13 +31,12 @@ export class GameOverPanel {
             align: 'center'
         });
         this.scoreValueText.anchor.set(0.5);
-        this.scoreValueText.y = 20;
+        this.scoreValueText.y = 0;
 
         // Make Panel Container
         this.panelContainer = new PIXI.Container();
         this.panelContainer.addChild(this.panelGraphic);
         this.panelContainer.addChild(this.gameOverText);
-        this.panelContainer.addChild(this.scoreLabelText);
         this.panelContainer.addChild(this.scoreValueText);
         this.panelContainer.alpha = 0;
         this.panelContainer.eventMode = 'none';
@@ -64,7 +52,7 @@ export class GameOverPanel {
             textSize: 24,
             textColor: 0xFFFFFF,
             x: 0,
-            y: 150,
+            y: 100,
             onPointerDown: onPointerDown
         });
 

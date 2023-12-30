@@ -50,13 +50,11 @@ export class Game extends App {
             'AD', '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', 'TD'
         ]);
 
-        // const royalsDeck = [
-        //     ...this.dealer.shuffleCards(['KD', 'KS', 'KH', 'KC']),
-        //     ...this.dealer.shuffleCards(['QD', 'QS', 'QH', 'QC']),
-        //     ...this.dealer.shuffleCards(['JD', 'JS', 'JH', 'JC'])
-        // ];
-
-        const royalsDeck = ['JD'];
+        const royalsDeck = [
+            ...this.dealer.shuffleCards(['KD', 'KS', 'KH', 'KC']),
+            ...this.dealer.shuffleCards(['QD', 'QS', 'QH', 'QC']),
+            ...this.dealer.shuffleCards(['JD', 'JS', 'JH', 'JC'])
+        ];
 
         this.jokerLeft = new Card(this.gameContainer, this.spritesheet, paramsAtlas, {
             faceName: 'J1',
