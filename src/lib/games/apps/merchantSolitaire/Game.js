@@ -64,8 +64,6 @@ export class Game extends App {
         this.tradeButton = new Button(this.gameContainer, {
             width: 150,
             height: 50,
-            color: 0x0d47a1,
-            alpha: 0.5,
             text: "Trade",
             textSize: 20,
             x: 360,

@@ -42,7 +42,7 @@ export class Button {
         this.container.addChild(this.graphic);
         this.container.addChild(this.label);
         this.container
-            .on('pointerover', () => {this.graphic.alpha = alpha + 0.25})
+            .on('pointerover', () => {this.graphic.alpha = alpha + 0.15})
             .on('pointerout', () => {this.graphic.alpha = alpha})
 
         // add button to gameContainer
