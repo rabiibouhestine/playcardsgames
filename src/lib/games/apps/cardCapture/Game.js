@@ -42,7 +42,7 @@ export class Game extends App {
         this.errorMessage = new Message(this.gameContainer, { x: 360, y: 127 }, 20);
 
         // game over panel
-        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Captured Targets:");
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this));
 
         // add header
         this.header = new Header(this.gameContainer, {

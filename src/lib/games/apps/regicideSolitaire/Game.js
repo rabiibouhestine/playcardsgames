@@ -173,7 +173,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
 
         // game over panel
-        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleReset.bind(this), "Royals defeated:");
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleReset.bind(this));
     }
 
     async handleReset() {

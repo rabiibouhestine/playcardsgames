@@ -162,7 +162,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
 
         // game over panel
-        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Satisfied Customers:");
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this));
     }
 
     onCardPointerDown(card) {

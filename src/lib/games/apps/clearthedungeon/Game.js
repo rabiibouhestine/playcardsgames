@@ -236,7 +236,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'static';
 
         // game over panel
-        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this), "Monsters defeated:");
+        this.gameOverPanel = new GameOverPanel(this.modalContainer, this.handleRestart.bind(this));
     }
 
     onCardPointerDown(card) {
