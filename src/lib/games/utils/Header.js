@@ -24,20 +24,8 @@ export class Header {
         });
         this.timerText.alpha = 0.8;
         this.timerText.anchor.set(0.5);
-        this.timerText.x = 0;
+        this.timerText.x = -310;
         this.timerText.y = 0;
-
-        // Define highscore Text
-        this.highscoreText = new PIXI.Text("- - - - - - - - -", {
-            fontFamily: 'Arial',
-            fontWeight: 'bold',
-            fontSize: 20,
-            fill: 0xFFFFFF
-        });
-        this.highscoreText.alpha = 0.8;
-        this.highscoreText.anchor.set(0, 0.5);
-        this.highscoreText.x = -340;
-        this.highscoreText.y = 0;
 
         // Define Restart Text
         this.restartText = new PIXI.Text("Restart Game", {
@@ -63,7 +51,6 @@ export class Header {
         this.container.y = 45;
         this.container.addChild(this.graphic);
         this.container.addChild(this.restartText);
-        this.container.addChild(this.highscoreText);
         this.container.addChild(this.timerText);
 
         // add button to gameContainer
