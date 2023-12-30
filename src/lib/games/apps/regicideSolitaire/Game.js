@@ -693,6 +693,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true, this.royalsDefeated + " / 12");
+        this.gameOverPanel.setScore(this.royalsDefeated + " / 12");
+        this.gameOverPanel.setVisible(true);
     }
 }
