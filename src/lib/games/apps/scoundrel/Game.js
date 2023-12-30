@@ -453,7 +453,8 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true, score);
+        this.gameOverPanel.setScore(score + ' in ' + this.header.getTime());
+        this.gameOverPanel.setVisible(true);
     }
 
     getMonstersValue() {
