@@ -1,4 +1,4 @@
-<h1 class="text-5xl font-bold">Privacy policy</h1>
+<h1 class="text-5xl font-bold">PRIVACY POLICY</h1>
 
 <p>1. <b>Introduction</b></p>
 <p>Welcome to <b> playcardgames.io</b>.</p>
