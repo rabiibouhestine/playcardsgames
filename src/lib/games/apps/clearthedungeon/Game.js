@@ -645,6 +645,9 @@ export class Game extends App {
         // stop timer
         this.header.stopTimer();
 
+        // get time
+        const timeformatted = new Date(this.header.getTime()).toISOString().substring(14, 19);
+
         // blur screen
         const blurFilter = new PIXI.BlurFilter();
         this.gameContainer.filters = [blurFilter];
@@ -654,6 +657,7 @@ export class Game extends App {
         this.gameContainer.eventMode = 'none';
 
         // show game over panel
-        this.gameOverPanel.setVisible(true, this.nbMonstersKilled + " / 12");
+        this.gameOverPanel.setScore(this.drawPile.cards.length + ' in ' + timeformatted);
+        this.gameOverPanel.setVisible(true);
     }
 }
