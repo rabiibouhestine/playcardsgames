@@ -8,7 +8,7 @@
 	let canvas;
 
 	onMount(() => {
-		game = new Game(canvas);
+		game = new Game(canvas, localStorage.getItem('isAudio'));
 
 		return () => {
 			game.end();

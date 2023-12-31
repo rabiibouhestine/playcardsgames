@@ -8,20 +8,11 @@
 	// let subscriptionModal;
 
 	onMount(() => {
-		const lsIsAudio = localStorage.getItem('isAudio');
-		if (lsIsAudio === false) {
-			isAudio = false;
-		} else {
-			isAudio = true;
-		}
+		isAudio = localStorage.getItem('isAudio');
 	});
 
 	function handleAudio() {
-		if (isAudio) {
-			localStorage.setItem('isAudio', true);
-		} else {
-			localStorage.setItem('isAudio', false);
-		}
+		localStorage.setItem('isAudio', isAudio);
 	}
 
 	// function handleNotification() {
@@ -89,7 +80,7 @@
 			</label> -->
 			<label class="swap">
 				<!-- this hidden checkbox controls the state -->
-				<input type="checkbox" bind:value={isAudio} on:click={handleAudio} />
+				<input type="checkbox" bind:checked={isAudio} on:click={handleAudio} />
 
 				<!-- volume on icon -->
 				<svg
