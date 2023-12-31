@@ -4,9 +4,8 @@ import {Howl, Howler} from 'howler';
 import sfxError from '../assets/audio/error.wav';
 
 export class App {
-    constructor(canvasRef, isMute=false) {
+    constructor(canvasRef) {
         this.canvasRef = canvasRef;
-        this.toggleMute(isMute);
 
         this.app = new PIXI.Application({
             // resizeTo: window,
@@ -49,10 +48,6 @@ export class App {
         this.sfxErrorHowl = new Howl({
             src: [sfxError]
         });
-    }
-
-    toggleMute(isMute) {
-        Howler.mute(isMute);
     }
 
     resize() {

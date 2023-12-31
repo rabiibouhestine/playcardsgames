@@ -1,4 +1,5 @@
 <script>
+	import { Howler } from 'howler';
 	import { onMount } from 'svelte';
 
 	export let title = '';
@@ -9,10 +10,11 @@
 
 	onMount(() => {
 		isMute = JSON.parse(localStorage.getItem('isMute'));
-		console.log(isMute);
+		Howler.mute(isMute);
 	});
 
 	function handleAudio() {
+		Howler.mute(!isMute);
 		localStorage.setItem('isMute', !isMute);
 	}
 
