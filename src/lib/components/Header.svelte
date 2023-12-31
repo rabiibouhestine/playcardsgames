@@ -91,15 +91,14 @@
 </div>
 
 <dialog bind:this={exitModal} class="modal backdrop-blur-md">
-	<div class="modal-box">
+	<div class="modal-box max-w-screen-md">
 		<form method="dialog">
 			<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
 		</form>
 		<div class="flex flex-col justify-center items-center text-center">
 			<h1 class="text-5xl font-bold">Be the first to play new games</h1>
 			<p class="py-6">
-				We would love for you to play our games as soon as they release, get notified whenever we
-				release a new game.
+				Be the first to play new games, get notified whenever we release a new game.
 			</p>
 			<form class="card-body">
 				<div class="form-control">
