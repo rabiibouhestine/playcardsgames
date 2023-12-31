@@ -1,12 +1,22 @@
 <script>
+	import { onMount } from 'svelte';
+
 	export let title = '';
 
-	let notification = true;
+	let notification = false;
 	let exitModal;
+
+	onMount(() => {
+		const notifications = localStorage.getItem('notifications');
+		if (notifications === null) {
+			notification = true;
+		}
+	});
 
 	function handleNotification() {
 		exitModal.showModal();
 		notification = false;
+		localStorage.setItem('notifications', 1);
 	}
 </script>
 
