@@ -16,8 +16,8 @@ import battleCardsAtlas from './defenders.json';
 import { Mattress } from './Mattress';
 
 export class Game extends App {
-    constructor(canvasRef, isAudio) {
-        super(canvasRef, isAudio);
+    constructor(canvasRef, isMute) {
+        super(canvasRef, isMute);
         this.init();
     }
 

@@ -3,16 +3,17 @@
 
 	export let title = '';
 
-	let isAudio = true;
+	let isMute = false;
 	// let notification = false;
 	// let subscriptionModal;
 
 	onMount(() => {
-		isAudio = localStorage.getItem('isAudio');
+		isMute = JSON.parse(localStorage.getItem('isMute'));
+		console.log(isMute);
 	});
 
 	function handleAudio() {
-		localStorage.setItem('isAudio', isAudio);
+		localStorage.setItem('isMute', !isMute);
 	}
 
 	// function handleNotification() {
@@ -80,7 +81,7 @@
 			</label> -->
 			<label class="swap">
 				<!-- this hidden checkbox controls the state -->
-				<input type="checkbox" bind:checked={isAudio} on:click={handleAudio} />
+				<input type="checkbox" bind:checked={isMute} on:click={handleAudio} />
 
 				<!-- volume on icon -->
 				<svg

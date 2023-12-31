@@ -8,7 +8,7 @@
 	let canvas;
 
 	onMount(() => {
-		game = new Game(canvas, localStorage.getItem('isAudio'));
+		game = new Game(canvas, JSON.parse(localStorage.getItem('isMute')));
 
 		return () => {
 			game.end();
