@@ -3,6 +3,6 @@
 </script>
 
 <Header />
-<div class="flex flex-col items-center text-center space-y-4 my-10 mx-10 lg:mx-20">
+<div class="flex flex-col text-center space-y-4 my-10 max-w-screen-md mx-auto px-4">
 	<slot />
 </div>
