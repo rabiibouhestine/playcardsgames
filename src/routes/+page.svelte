@@ -28,7 +28,7 @@
 			name: 'CLEAR THE DUNGEON',
 			src: clearTheDungeonCover,
 			href: '/clear-the-dungeon',
-			time: 5,
+			time: 3,
 			weight: 1.0
 		},
 		{
