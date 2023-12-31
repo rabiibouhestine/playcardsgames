@@ -18,6 +18,10 @@
 		notification = false;
 		localStorage.setItem('notifications', 1);
 	}
+
+	function handleSubscibe() {
+		subscriptionModal.close();
+	}
 </script>
 
 <div class="bg-base-300 border-b border-base-300 sticky top-0 z-10 h-16">
@@ -121,7 +125,7 @@
 					/>
 				</div>
 				<div class="form-control mt-6">
-					<button class="btn btn-primary">Subscribe</button>
+					<button on:click={handleSubscibe} class="btn btn-primary">Subscribe</button>
 				</div>
 			</form>
 		</div>
