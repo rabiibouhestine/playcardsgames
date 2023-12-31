@@ -25,6 +25,6 @@
 			<a href="/privacy" class="link link-hover">Privacy policy</a>
 			<a href="/disclaimer" class="link link-hover">Disclaimer</a>
 		</nav>
-		<p>Copyright © 2023 - All rights reserved by playcardgames.io</p>
+		<p>Copyright © {new Date().getFullYear()} - All rights reserved by playcardgames.io</p>
 	</footer>
 </div>
