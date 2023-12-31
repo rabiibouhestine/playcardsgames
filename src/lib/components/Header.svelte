@@ -4,7 +4,7 @@
 	export let title = '';
 
 	let notification = false;
-	let exitModal;
+	let subscriptionModal;
 
 	onMount(() => {
 		const notifications = localStorage.getItem('notifications');
@@ -14,7 +14,7 @@
 	});
 
 	function handleNotification() {
-		exitModal.showModal();
+		subscriptionModal.showModal();
 		notification = false;
 		localStorage.setItem('notifications', 1);
 	}
@@ -100,7 +100,7 @@
 	</div>
 </div>
 
-<dialog bind:this={exitModal} class="modal backdrop-blur-md">
+<dialog bind:this={subscriptionModal} class="modal backdrop-blur-md">
 	<div class="modal-box max-w-screen-md">
 		<form method="dialog">
 			<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
