@@ -1,17 +1,28 @@
 <script>
-	// import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let title = '';
 
+	let isAudio = true;
 	// let notification = false;
 	// let subscriptionModal;
 
-	// onMount(() => {
-	// 	const notifications = localStorage.getItem('notifications');
-	// 	if (notifications === null) {
-	// 		notification = true;
-	// 	}
-	// });
+	onMount(() => {
+		const lsIsAudio = localStorage.getItem('isAudio');
+		if (lsIsAudio === false) {
+			isAudio = false;
+		} else {
+			isAudio = true;
+		}
+	});
+
+	function handleAudio() {
+		if (isAudio) {
+			localStorage.setItem('isAudio', true);
+		} else {
+			localStorage.setItem('isAudio', false);
+		}
+	}
 
 	// function handleNotification() {
 	// 	subscriptionModal.showModal();
@@ -78,7 +89,7 @@
 			</label> -->
 			<label class="swap">
 				<!-- this hidden checkbox controls the state -->
-				<input type="checkbox" />
+				<input type="checkbox" bind:value={isAudio} on:click={handleAudio} />
 
 				<!-- volume on icon -->
 				<svg
