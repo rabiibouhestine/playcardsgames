@@ -79,7 +79,7 @@
 					The standard deck of cards really doesn't get enough love from the hobby, does it? In
 					every home, there is at least one deck of cards. They're affordable, classy, and
 					multipurpose. The suits, face cards, and ranks all include interesting patterns that could
-					be nicely utilised in beautiful game design.
+					be nicely utilised in creative game design.
 				</p>
 				<p>
 					We believe the standard deck has more to offer than just 'sort cards in a certain way' and
