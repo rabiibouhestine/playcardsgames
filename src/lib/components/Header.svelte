@@ -1,27 +1,27 @@
 <script>
-	import { onMount } from 'svelte';
+	// import { onMount } from 'svelte';
 
 	export let title = '';
 
-	let notification = false;
-	let subscriptionModal;
+	// let notification = false;
+	// let subscriptionModal;
 
-	onMount(() => {
-		const notifications = localStorage.getItem('notifications');
-		if (notifications === null) {
-			notification = true;
-		}
-	});
+	// onMount(() => {
+	// 	const notifications = localStorage.getItem('notifications');
+	// 	if (notifications === null) {
+	// 		notification = true;
+	// 	}
+	// });
 
-	function handleNotification() {
-		subscriptionModal.showModal();
-		notification = false;
-		localStorage.setItem('notifications', 1);
-	}
+	// function handleNotification() {
+	// 	subscriptionModal.showModal();
+	// 	notification = false;
+	// 	localStorage.setItem('notifications', 1);
+	// }
 
-	function handleSubscibe() {
-		subscriptionModal.close();
-	}
+	// function handleSubscibe() {
+	// 	subscriptionModal.close();
+	// }
 </script>
 
 <div class="bg-base-300 border-b border-base-300 sticky top-0 z-10 h-16">
@@ -54,7 +54,7 @@
 			<h1 class="text-md sm:text-2xl font-black">{title}</h1>
 		</div>
 		<div class="navbar-end space-x-4">
-			<label class="swap">
+			<!-- <label class="swap">
 				<input type="button" on:click={handleNotification} />
 				<div class="indicator">
 					{#if notification}
@@ -75,7 +75,7 @@
 						</g></svg
 					>
 				</div>
-			</label>
+			</label> -->
 			<label class="swap">
 				<!-- this hidden checkbox controls the state -->
 				<input type="checkbox" />
@@ -104,7 +104,7 @@
 	</div>
 </div>
 
-<dialog bind:this={subscriptionModal} class="modal backdrop-blur-md">
+<!-- <dialog bind:this={subscriptionModal} class="modal backdrop-blur-md">
 	<div class="modal-box max-w-screen-md">
 		<form method="dialog">
 			<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -130,4 +130,4 @@
 			</form>
 		</div>
 	</div>
-</dialog>
+</dialog> -->
