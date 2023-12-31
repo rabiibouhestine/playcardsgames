@@ -69,6 +69,7 @@ export class App {
     end() {
         Howler.stop();
         Howler.unload();
+        this.spritesheet.destroy(true);
         this.app.stop();
         this.app.destroy(true, true);
     }
