@@ -14,7 +14,7 @@
 			name: 'REGICIDE SOLITAIRE',
 			src: regicideSolitaireCover,
 			href: '/regicide-solitaire',
-			time: 5,
+			time: 8,
 			weight: 1.94
 		},
 		{
