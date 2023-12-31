@@ -23,9 +23,8 @@ export class Game extends App {
 
     async init() {
         // load spritesheet
-        const cardsSpritesheetTexture = await PIXI.Assets.load(cardsSpritesheetImage);
         this.spritesheet = new PIXI.Spritesheet(
-            cardsSpritesheetTexture,
+            PIXI.BaseTexture.from(cardsSpritesheetImage),
             cardsSpritesheetAtlas
         );
         await this.spritesheet.parse();
