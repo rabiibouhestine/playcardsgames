@@ -69,8 +69,6 @@ export class App {
     end() {
         Howler.stop();
         Howler.unload();
-        this.spritesheet.destroy(true);
-        this.canvasRef.removeChild(this.app.view);
         this.app.stop();
         this.app.destroy(true, true);
     }
