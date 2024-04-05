@@ -1,6 +1,7 @@
 <script>
 	import '../app.css';
 	import { onNavigate } from '$app/navigation';
+	import Analytics from '$lib/analytics.svelte';
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -14,6 +15,7 @@
 	});
 </script>
 
+<Analytics />
 <div class="min-h-screen bg-base-100">
 	<slot />
 
