@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import { onNavigate } from '$app/navigation';
-	import Analytics from '$lib/analytics.svelte';
+	import Analytics from '$lib/components/Analytics.svelte';
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
