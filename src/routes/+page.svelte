@@ -73,8 +73,8 @@
 			{/each}
 		</div>
 		<div class="space-y-6 py-10 max-w-screen-lg mx-auto">
-			<div id="about" class="flex flex-col gap-4 px-6 text-center">
-				<h2 class="text-3xl md:text-4xl font-bold mb-4">About Us</h2>
+			<div id="about" class="flex flex-col gap-4 px-6 text-center items-center">
+				<h2 class="text-3xl md:text-4xl font-bold mb-4">About This Website</h2>
 				<p>
 					The standard deck of cards really doesn't get enough love from the hobby, does it? In
 					every home, there is at least one deck of cards. They're affordable, classy, and
@@ -82,22 +82,26 @@
 					be nicely utilised in creative game design.
 				</p>
 				<p>
-					We believe the standard deck has more to offer than just 'sort cards in a certain way' and
+					I believe the standard deck has more to offer than just 'sort cards in a certain way' and
 					'red goes here, black goes there'.
 				</p>
 				<p>
-					PlayCardGames.io is a game site focused on modern thematic solitaire card games. Our goal
+					PlayCardGames.io is a game site focused on modern thematic solitaire card games. My goal
 					is to offer a variety of engaging thematic solitaire card games that can be played with
-					standard playing cards. We put a lot of effort into making the games straightforward and
-					simple to use, and we sincerely hope you love playing them as much as we do creating them.
+					standard playing cards. I put a lot of effort into making the games straightforward and
+					simple to use, and I sincerely hope you love playing them as much as I did creating them.
 				</p>
-			</div>
-			<div id="contact" class="flex flex-col gap-4 px-6 text-center">
-				<h2 class="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
 				<p>
-					You can always contact us with any questions, suggestions or issues. It's best to contact
-					us by email at rabiibouhestine@gmail.com
+					If you enjoyed playing these games and would like to see more, consider supporting the
+					project.
 				</p>
+				<a href="https://www.buymeacoffee.com/rabiibouhestine" target="_blank" class="my-6">
+					<img
+						src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+						alt="Buy Me A Coffee"
+						style="height: 60px !important;width: 217px !important;"
+					/>
+				</a>
 			</div>
 		</div>
 	</div>

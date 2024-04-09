@@ -27,6 +27,11 @@
 			<a href="/privacy" class="link link-hover">Privacy policy</a>
 			<a href="/disclaimer" class="link link-hover">Disclaimer</a>
 		</nav>
-		<p>Copyright © {new Date().getFullYear()} - All rights reserved by playcardgames.io</p>
+		<p class="flex">
+			Made with <span class="text-pink-400">♡</span> by
+			<a href="https://rabiibouhestine.com" target="_blank" class="text-blue-300 link link-hover"
+				>Rabii Bouhestine</a
+			>
+		</p>
 	</footer>
 </div>
