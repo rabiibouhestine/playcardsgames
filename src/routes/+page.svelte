@@ -72,7 +72,7 @@
 				<GameCard {game} />
 			{/each}
 		</div>
-		<div class="space-y-6 py-10 max-w-screen-lg mx-auto">
+		<div class="space-y-6 py-10 max-w-screen-lg mx-auto pb-32">
 			<div id="about" class="flex flex-col gap-4 px-6 text-center items-center">
 				<h2 class="text-3xl md:text-4xl font-bold mb-4">About This Website</h2>
 				<p>
@@ -95,13 +95,6 @@
 					If you enjoyed playing these games and would like to see more, consider supporting the
 					project.
 				</p>
-				<a href="https://www.buymeacoffee.com/rabiibouhestine" target="_blank" class="my-6">
-					<img
-						src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-						alt="Buy Me A Coffee"
-						style="height: 60px !important;width: 217px !important;"
-					/>
-				</a>
 			</div>
 		</div>
 	</div>
