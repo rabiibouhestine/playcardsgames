@@ -6,7 +6,7 @@ A **Svelte-based** web application for playing card games. Styled with **Tailwin
 
 ##  Live Demo
 
-https://play1card1games.netlify.app/
+https://solo-card-games.netlify.app/
 
 ##  Table of Contents
 
